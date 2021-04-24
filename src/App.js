@@ -1,9 +1,13 @@
+import React from 'react'
+import GlobalStyle from 'theme/globalStyle'
+
 const App = () => {
-  return (
-    <div>
+	return (
+		<div>
+			<GlobalStyle/>
       muveez
-    </div>
-  );
+		</div>
+	)
 }
 
-export default App;
+export default App

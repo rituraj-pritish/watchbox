@@ -19,7 +19,7 @@
     ],
     "rules": {
         "indent": [
-            "error",
+            "warn",
             "tab"
         ],
         "linebreak-style": [
@@ -33,6 +33,21 @@
         "semi": [
             "error",
             "never"
-        ]
+        ],
+        "object-curly-spacing": [
+            "error",
+            "always"
+        ],
+        "no-unused-vars": "warn",
+        "react/prop-types": "warn",
+        "react/jsx-first-prop-new-line": [1, "multiline"],
+        "react/jsx-max-props-per-line": [1,
+            {
+                "maximum": 1
+            }
+        ],
+        "jsx-quotes": ["warn", "prefer-single"],
+         "react/jsx-closing-bracket-location": "warn",
+         "react/jsx-closing-tag-location": "warn"
     }
 }
