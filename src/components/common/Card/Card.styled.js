@@ -1,18 +1,47 @@
 import styled from 'styled-components'
 import theme from 'theme'
+import { centerElement, overlay } from 'theme/commonStyles'
 
 const CARD_BG = theme.colors.black
 
+export const Overlay = styled.div`
+  ${overlay};
+  ${centerElement};
+  flex-direction: column;
+  backdrop-filter: blur(0);
+  background: #00000069;
+  border-radius: ${theme.borderRadius};
+  visibility: hidden;
+  transition: backdrop-filter 0.4s;
+  color: white;
+
+  & > svg {
+    margin: ${theme.spacing()} 0;
+    width: 25%;
+  }
+`
+
 export const Wrapper = styled.div`
-  /* background: ${CARD_BG}; */
-  background: grey;
+  background: ${CARD_BG};
+  position: relative;
   overflow: hidden;
   width: fit-content;
   border-radius: ${theme.borderRadius};
   padding: ${theme.spacing(0.3)};
+  cursor: pointer;
+  width: 210px;
+  height: 300px;
+
+  &:hover ${Overlay} {
+    visibility: visible;
+    backdrop-filter: blur(1.5px);
+  }
 `
 
-export const StyledImage = styled.img`
+export const Poster = styled.div`
+  width: 100%;
+  height: calc(100% - ${theme.spacing(3)});
+  background-image: ${({ url }) => `url(${url})`};
   border-top-left-radius: ${theme.borderRadius};
   border-top-right-radius: ${theme.borderRadius};
 `
@@ -23,12 +52,10 @@ export const BottomSection = styled.div`
   border-bottom-left-radius: ${theme.borderRadius};
   border-bottom-right-radius: ${theme.borderRadius};
   display: flex;
+  padding: ${theme.spacing(0.5)};
 
   & > div { // title
-    color: ${theme.colors.white}
-  }
-
-  & > div { // year
-    color: ${theme.colors.white}
+    font-weight: 500;
+    color: ${theme.colors.white};
   }
 `

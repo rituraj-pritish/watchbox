@@ -1,0 +1,1 @@
+export { default as genre } from './genre'

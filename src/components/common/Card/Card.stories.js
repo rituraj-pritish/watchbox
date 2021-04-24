@@ -2,26 +2,25 @@ import React from 'react'
 import Card from './index'
 
 const details =  {
+	'original_language': 'en',
+	'original_title': 'Zack Snyder\'s Justice League',
+	'poster_path': '/tnAuB8q5vv7Ax9UAEje5Xi4BXik.jpg',
 	'video': false,
-	'vote_average': 8.2,
-	'overview': 'Washed-up MMA fighter Cole Young, unaware of his heritage, and hunted by Emperor Shang Tsung\'s best warrior, Sub-Zero, seeks out and trains with Earth\'s greatest champions as he prepares to stand against the enemies of Outworld in a high stakes battle for the universe.',
-	'release_date': '2021-04-07',
+	'vote_average': 8.5,
+	'id': 791373,
+	'release_date': '2021-03-18',
+	'vote_count': 5091,
+	'title': 'Zack Snyder\'s Justice League',
 	'adult': false,
-	'backdrop_path': '/3phkepIrEHnTNGE6ajEGdBfRxki.jpg',
-	'vote_count': 546,
+	'backdrop_path': '/pcDc2WJAYGJTTvRSEIpRZwM3Ola.jpg',
+	'overview': 'Determined to ensure Superman\'s ultimate sacrifice was not in vain, Bruce Wayne aligns forces with Diana Prince with plans to recruit a team of metahumans to protect the world from an approaching threat of catastrophic proportions.',
 	'genre_ids': [
-		14,
 		28,
 		12,
-		878,
-		53
+		14,
+		878
 	],
-	'id': 460465,
-	'original_language': 'en',
-	'original_title': 'Mortal Kombat',
-	'poster_path': '/6K0RCDfP9ExbTcYgryaQHTGmET7.jpg',
-	'title': 'Mortal Kombat',
-	'popularity': 3500.808,
+	'popularity': 2375.449,
 	'media_type': 'movie'
 }
 
