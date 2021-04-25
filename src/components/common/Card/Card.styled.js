@@ -29,8 +29,12 @@ export const Wrapper = styled.div`
   border-radius: ${theme.borderRadius};
   padding: ${theme.spacing(0.3)};
   cursor: pointer;
-  width: 210px;
-  height: 300px;
+  width: 200px;
+  height: 350px;
+  /* width: calc(1/6 * 100vw);
+  height: calc(2/7 * 100vh); */
+  display: flex;
+  flex-direction: column;
 
   &:hover ${Overlay} {
     visibility: visible;
@@ -52,7 +56,9 @@ export const BottomSection = styled.div`
   border-bottom-left-radius: ${theme.borderRadius};
   border-bottom-right-radius: ${theme.borderRadius};
   display: flex;
+  align-items: center;
   padding: ${theme.spacing(0.5)};
+  flex-grow: 1;
 
   & > div { // title
     font-weight: 500;

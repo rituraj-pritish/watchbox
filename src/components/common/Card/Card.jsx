@@ -12,6 +12,7 @@ import { GENRE_LIST } from 'components/GlobalState'
 
 const Card = ({ 
 	title, 
+	name,
 	poster_path, 
 	vote_average, 
 	release_date,
@@ -40,7 +41,7 @@ const Card = ({
 			<Poster url={getImageUrl(poster_path, 200)} />
 			<BottomSection>
 				<div>
-					{title}
+					{title || name}
 				</div>
 			</BottomSection>
 		</Wrapper>
@@ -49,6 +50,7 @@ const Card = ({
 
 Card.propTypes = {
 	title: PropTypes.string,
+	name: PropTypes.string,
 	poster_path: PropTypes.string,
 	release_date: PropTypes.string,
 	vote_average: PropTypes.number,
