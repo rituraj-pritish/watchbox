@@ -28,11 +28,10 @@ export const Wrapper = styled.div`
   width: fit-content;
   border-radius: ${theme.borderRadius};
   padding: ${theme.spacing(0.3)};
+  padding-bottom: 0;
   cursor: pointer;
-  width: 200px;
-  height: 350px;
-  /* width: calc(1/6 * 100vw);
-  height: calc(2/7 * 100vh); */
+  max-width: 200px;
+  max-height: 350px;
   display: flex;
   flex-direction: column;
 
@@ -44,17 +43,17 @@ export const Wrapper = styled.div`
 
 export const Poster = styled.div`
   width: 100%;
-  height: calc(100% - ${theme.spacing(3)});
+  height: calc(100% - ${theme.spacing(3.2)});
   background-image: ${({ url }) => `url(${url})`};
-  border-top-left-radius: ${theme.borderRadius};
-  border-top-right-radius: ${theme.borderRadius};
+  border-radius: ${theme.borderRadius};
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
 `
 
 export const BottomSection = styled.div`
   background: ${CARD_BG};
-  margin-top: ${theme.spacing(-0.21)};
-  border-bottom-left-radius: ${theme.borderRadius};
-  border-bottom-right-radius: ${theme.borderRadius};
+  border-radius: ${theme.borderRadius};
   display: flex;
   align-items: center;
   padding: ${theme.spacing(0.5)};

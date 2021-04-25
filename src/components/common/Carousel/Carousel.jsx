@@ -1,15 +1,13 @@
-import React, { useRef } from 'react'
+import React from 'react'
 import PropTypes from 'prop-types'
 import 'slick-carousel/slick/slick.css'
 import 'slick-carousel/slick/slick-theme.css'
 import Slider from 'react-slick'
 
 import Card from '../Card'
-import { Title, Wrapper } from './Carousel.styled'
+import { SliderWrapper, Title, Wrapper } from './Carousel.styled'
 
 const Carousel = ({ title, data }) => {
-	const ref = useRef()
-
 	const settings = {
 		swipeToSlide: true,
 		arrows: true,
@@ -17,20 +15,46 @@ const Carousel = ({ title, data }) => {
 		infinite: true,
 		speed: 500,
 		slidesToShow: 5,
-		slidesToScroll: 5
+		slidesToScroll: 5,
+
+		responsive: [
+			{
+				breakpoint: 1150,
+				settings: {
+					slidesToShow: 4,
+					slidesToScroll: 4
+				}
+			},
+			{
+				breakpoint: 900,
+				settings: {
+					slidesToShow: 3,
+					slidesToScroll: 3
+				}
+			},
+			{
+				breakpoint: 600,
+				settings: {
+					slidesToShow: 2,
+					slidesToScroll: 2
+				}
+			}
+		]
 	}
 
 	return (
-		<Wrapper ref={ref}>
+		<Wrapper>
 			<Title>{title}</Title>
-			<Slider {...settings}>
-				{data.map((item) => (
-					<Card
-						key={item.id}
-						{...item}
-					/>
-				))}
-			</Slider>
+			<SliderWrapper>
+				<Slider {...settings}>
+					{data.map((item) => (
+						<Card
+							key={item.id}
+							{...item}
+						/>
+					))}
+				</Slider>
+			</SliderWrapper>
 		</Wrapper>
 	)
 }
