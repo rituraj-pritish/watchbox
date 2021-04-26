@@ -10,7 +10,7 @@ import { SliderWrapper, Title, Wrapper } from './Carousel.styled'
 const Carousel = ({ title, data }) => {
 	const settings = {
 		swipeToSlide: true,
-		arrows: true,
+		arrows: data ? true : false,
 		rows: 1,
 		infinite: true,
 		speed: 500,
@@ -47,7 +47,10 @@ const Carousel = ({ title, data }) => {
 			<Title>{title}</Title>
 			<SliderWrapper>
 				<Slider {...settings}>
-					{data.map((item) => (
+					{!data && new Array(5).fill(0).map((_, idx) => (
+						<Card key={idx}/>
+					))}
+					{data && data.map((item) => (
 						<Card
 							key={item.id}
 							{...item}

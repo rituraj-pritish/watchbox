@@ -3,24 +3,36 @@ import PropTypes from 'prop-types'
 import moment from 'moment'
 import { buildStyles, CircularProgressbar } from 'react-circular-progressbar'
 import 'react-circular-progressbar/dist/styles.css'
+import Skeleton from 'react-loading-skeleton'
 
 import { getImageUrl } from 'api'
-import { BottomSection, Overlay, Poster, Wrapper } from './Card.styled'
+import { BottomSection, Overlay, Poster, SkeletonWrapper, Wrapper } from './Card.styled'
 import { useState } from '@hookstate/core'
 import { GENRE_LIST } from 'components/GlobalState'
 
-
-const Card = ({ 
-	title, 
+const Card = ({
+	id,
+	title,
 	name,
-	poster_path, 
-	vote_average, 
+	poster_path,
+	vote_average,
 	release_date,
-	genre_ids,
+	genre_ids
 }) => {
-	const genreById = useState(GENRE_LIST).get()
+	if (!id)
+		return (
+			<Wrapper>
+				<SkeletonWrapper>
+					<Skeleton height='100%'/>
+					<BottomSection>
+						<Skeleton/>
+					</BottomSection>
+				</SkeletonWrapper>
+			</Wrapper>
+		)
 
-	const genres = genre_ids.map(id => genreById[id])
+	const genreById = useState(GENRE_LIST).get()
+	const genres = genre_ids.map((id) => genreById[id])
 
 	return (
 		<Wrapper>
@@ -36,25 +48,26 @@ const Card = ({
 						trailColor: 'grey'
 					})}
 				/>
-				{genres.map((genre, idx) => <div key={idx}>{genre}</div>)}
+				{genres.map((genre, idx) => (
+					<div key={idx}>{genre}</div>
+				))}
 			</Overlay>
 			<Poster url={getImageUrl(poster_path, 200)} />
 			<BottomSection>
-				<div>
-					{title || name}
-				</div>
+				<div>{title || name}</div>
 			</BottomSection>
 		</Wrapper>
 	)
 }
 
 Card.propTypes = {
+	id: PropTypes.string,
 	title: PropTypes.string,
 	name: PropTypes.string,
 	poster_path: PropTypes.string,
 	release_date: PropTypes.string,
 	vote_average: PropTypes.number,
-	genre_ids: PropTypes.arrayOf(PropTypes.string)
+	genre_ids: PropTypes.arrayOf(PropTypes.number)
 }
 
 export default Card

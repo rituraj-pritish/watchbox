@@ -432,3 +432,9 @@ export const defaultView = () => (
 		<Carousel title='Trending' data={data}/>
 	</div>
 )
+
+export const loadingView = () => (
+	<div style={{ background: '#242424', height: '100vh', padding: '2rem' }}>
+		<Carousel title='Trending' />
+	</div>
+)

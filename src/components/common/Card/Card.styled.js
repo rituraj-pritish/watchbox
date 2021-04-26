@@ -64,3 +64,25 @@ export const BottomSection = styled.div`
     color: ${theme.colors.white};
   }
 `
+
+export const SkeletonWrapper = styled.div`
+  height: 100%; 
+  display: flex;
+  flex-direction: column;
+  margin-top: -1px;
+
+  // poster skeleton
+  & > span:first-child {
+    height: calc(100% - ${theme.spacing(3.2)});
+  }
+
+  // title skeleton
+  & > div:last-child {
+    width: auto;
+
+    // skeleton wrapper
+    & > span {
+      width: 100%;
+    }
+  }
+`
