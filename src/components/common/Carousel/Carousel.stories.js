@@ -428,13 +428,16 @@ const data = [
 ]
 
 export const defaultView = () => (
-	<div style={{ background: '#242424', height: '100vh', padding: '2rem' }}>
-		<Carousel title='Trending' data={data}/>
+	<div style={{  height: '100vh', padding: '2rem' }}>
+		<Carousel
+			title='Trending'
+			data={data}
+		/>
 	</div>
 )
 
 export const loadingView = () => (
-	<div style={{ background: '#242424', height: '100vh', padding: '2rem' }}>
+	<div style={{ height: '100vh', padding: '2rem' }}>
 		<Carousel title='Trending' />
 	</div>
 )
