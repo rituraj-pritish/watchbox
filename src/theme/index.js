@@ -4,7 +4,8 @@ export default {
 	spacing: (factor = 1) => `${factor * SIZE_UNIT}rem`,
 	borderRadius: '5px',
 
-	space: [0, 8, 16, 24, 32],
+	space: [0, 4, 8, 16, 24, 32],
+	fontSizes: [0, 12.8, 16, 20, 25, 31.25],
 
 	colors: {
 		appBg: '#1b1b1b',

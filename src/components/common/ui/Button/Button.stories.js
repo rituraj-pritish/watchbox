@@ -3,7 +3,7 @@ import React from 'react'
 import FlexBox from '../FlexBox'
 import Button from './index'
 
-export default { title: 'Button' }
+export default { title: 'Buttons' }
 
 export const buttons = () => {
 	return(
