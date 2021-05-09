@@ -1,13 +1,13 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import { BrowserRouter as Router } from 'react-router-dom'
-
-import GlobalState from 'components/GlobalState'
 import { ThemeConsumer, ThemeProvider } from 'styled-components'
-import GlobalStyle from 'theme/globalStyle'
 import { SkeletonTheme } from 'react-loading-skeleton'
-import useTheme from 'hooks/useTheme'
+
 import { darkTheme, lightTheme } from 'theme'
+import GlobalState from 'components/GlobalState'
+import GlobalStyle from 'theme/globalStyle'
+import useTheme from 'hooks/useTheme'
 
 const Providers = ({ children }) => {
 	const { isDarkMode } = useTheme()

@@ -1,6 +1,6 @@
 const SIZE_UNIT = 1
 
-const commonTheme = {
+const theme = {
 	spacing: (factor = 1) => `${factor * SIZE_UNIT}rem`,
 	borderRadius: '5px',
 	maxWidth: '1200px',
@@ -15,10 +15,10 @@ const commonTheme = {
 }
 
 export const darkTheme = {
-	...commonTheme,
+	...theme,
 
 	colors: {
-		...commonTheme.colors,
+		...theme.colors,
 		appBg: '#252525',
 		layout: '#353535',
 		paper: '#101010',
@@ -43,10 +43,10 @@ export const darkTheme = {
 }
 
 export const lightTheme = {
-	...commonTheme,
+	...theme,
 
 	colors: {
-		...commonTheme.colors,
+		...theme.colors,
 
 		appBg: '#DEDEDE',
 		layout: '#C8C8C8',
@@ -71,4 +71,4 @@ export const lightTheme = {
 	}
 }
 
-export default commonTheme
+export default theme

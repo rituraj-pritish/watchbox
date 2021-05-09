@@ -1,7 +1,7 @@
 import React from 'react';
 import { addDecorator } from '@storybook/react';
 
-import Providers from '../src/Providers'
+import Providers from '../src/components/App/Providers'
 import useTheme from '../src/hooks/useTheme'
 
 addDecorator(story => {

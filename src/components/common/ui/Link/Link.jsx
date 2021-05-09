@@ -5,10 +5,11 @@ import Text from '../Text'
 import { StyledLink } from './Link.styled'
 
 const Link = ({
-	children
+	children,
+	...rest
 }) => {
 	return (
-		<Text color='secondary'>
+		<Text color='secondary' {...rest}>
 			<StyledLink>
 				{children}
 			</StyledLink>
