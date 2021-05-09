@@ -10,6 +10,7 @@ export const Wrapper = styled.div`
   width: fit-content;
   border-right: ${({ hideRightBorder }) => hideRightBorder && 'none'};
   border-left: ${({ hideLeftBorder }) => hideLeftBorder && 'none'};
+  height: fit-content;
 `
 
 export const Option = styled.div`

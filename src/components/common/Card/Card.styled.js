@@ -2,8 +2,6 @@ import styled from 'styled-components'
 import theme from 'theme'
 import { centerElement, overlay } from 'theme/commonStyles'
 
-const CARD_BG = theme.colors.black
-
 export const Overlay = styled.div`
   ${overlay};
   ${centerElement};
@@ -22,7 +20,7 @@ export const Overlay = styled.div`
 `
 
 export const Wrapper = styled.div`
-  background: ${CARD_BG};
+  background: ${({ theme }) => theme.colors.paper};
   position: relative;
   overflow: hidden;
   width: fit-content;
@@ -43,6 +41,7 @@ export const Wrapper = styled.div`
 
 export const Poster = styled.div`
   width: 100%;
+  height: 300px;
   height: calc(100% - ${theme.spacing(3.2)});
   background-image: ${({ url }) => `url(${url})`};
   border-radius: ${theme.borderRadius};
@@ -52,17 +51,12 @@ export const Poster = styled.div`
 `
 
 export const BottomSection = styled.div`
-  background: ${CARD_BG};
+  background: ${({ theme }) => theme.colors.paper};
   border-radius: ${theme.borderRadius};
   display: flex;
   align-items: center;
   padding: ${theme.spacing(0.5)};
   flex-grow: 1;
-
-  & > div { // title
-    font-weight: 500;
-    color: ${theme.colors.white};
-  }
 `
 
 export const SkeletonWrapper = styled.div`

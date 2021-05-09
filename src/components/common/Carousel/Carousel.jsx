@@ -5,9 +5,12 @@ import 'slick-carousel/slick/slick-theme.css'
 import Slider from 'react-slick'
 
 import Card from '../Card'
-import { SliderWrapper, Title, Wrapper } from './Carousel.styled'
+import { SliderWrapper, Wrapper } from './Carousel.styled'
+import Text from '../ui/Text'
+import Toggle from '../Toggle'
+import FlexBox from '../ui/FlexBox'
 
-const Carousel = ({ title, data }) => {
+const Carousel = ({ title, data, toggleOptions, onToggleChange, containerRef }) => {
 	const settings = {
 		swipeToSlide: true,
 		arrows: data ? true : false,
@@ -43,19 +46,36 @@ const Carousel = ({ title, data }) => {
 	}
 
 	return (
-		<Wrapper>
-			<Title>{title}</Title>
+		<Wrapper ref={containerRef}>
+			<div/>
+			<FlexBox
+				alignItems='center'
+				mb={3}
+			>
+				<Text
+					bold
+					color='primary'
+					size={4}
+					mr={4}
+				>
+					{title}
+				</Text>
+				{toggleOptions && (
+					<Toggle
+						options={toggleOptions}
+						onChange={onToggleChange}
+					/>
+				)}
+			</FlexBox>
 			<SliderWrapper>
 				<Slider {...settings}>
-					{!data && new Array(5).fill(0).map((_, idx) => (
-						<Card key={idx}/>
-					))}
+					{!data && new Array(5).fill(0).map((_, idx) => <Card key={idx} />)}
 					{data && data.map((item) => (
 						<Card
 							key={item.id}
 							{...item}
-						/>
-					))}
+						/>)
+					)}
 				</Slider>
 			</SliderWrapper>
 		</Wrapper>
@@ -64,7 +84,10 @@ const Carousel = ({ title, data }) => {
 
 Carousel.propTypes = {
 	title: PropTypes.string.isRequired,
-	data: PropTypes.array.isRequired
+	data: PropTypes.array.isRequired,
+	toggleOptions: PropTypes.array,
+	onToggleChange: PropTypes.func,
+	containerRef: PropTypes.any.isRequired
 }
 
 export default Carousel

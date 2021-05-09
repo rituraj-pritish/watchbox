@@ -441,3 +441,30 @@ export const loadingView = () => (
 		<Carousel title='Trending' />
 	</div>
 )
+
+export const withToggle = () => (
+	<div style={{ height: '100vh', padding: '2rem' }}>
+		<Carousel
+			title='Trending'
+			toggleOptions={[
+				{ label: 'Option 1', value: 1 },
+				{ label: 'Option 2', value: 2 }
+			]}
+			data={data}
+		/>
+	</div>
+)
+
+export const fetching = () => (
+	<div style={{ height: '100vh', padding: '2rem' }}>
+		<div style={{ height: '200vh' }}/>
+		<Carousel
+			title='Trending'
+			toggleOptions={[
+				{ label: 'Movies', value: '/movie/top_rated' },
+				{ label: 'TV', value: '/tv/top_rated' }
+			]}
+			data={data}
+		/>
+	</div>
+)

@@ -1,12 +1,6 @@
 import styled from 'styled-components'
 import theme from 'theme'
 
-export const Title = styled.div`
-  color: ${theme.colors.white};
-  margin-bottom: ${theme.spacing()};
-  font-size: ${theme.spacing(1.7)};
-`
-
 export const SliderWrapper = styled.div`
   position: relative;
   padding-bottom: 30%; // to maintain aspect ratio
@@ -18,7 +12,7 @@ export const SliderWrapper = styled.div`
     bottom: 0;
     left: 0;
     right: 0;
-    max-width: 1200px;
+    max-width: ${theme.maxWidth};
     max-height: 360px;
   }
 
@@ -50,22 +44,27 @@ export const SliderWrapper = styled.div`
 
   // arrows
   .slick-arrow {
-    margin-top: -4px;
+    margin-top: -5px;
     z-index: 1;
-    background: black;
+    background: ${({ theme }) => theme.colors.text.tertiary + '33'}; // opacity 33%
     height: 98%;
     width: ${theme.spacing(2)};
-    opacity: 0.3;
-    border-top-right-radius: ${theme.borderRadius};
-    border-bottom-right-radius: ${theme.borderRadius};
+
+    &:before {
+      color: ${({ theme }) => theme.colors.text.secondary};
+    }
   }
 
   .slick-next {
     right: 0;
+    border-top-right-radius: ${theme.borderRadius};
+    border-bottom-right-radius: ${theme.borderRadius};
   }
 
   .slick-prev {
     left: 0;
+    border-top-left-radius: ${theme.borderRadius};
+    border-bottom-left-radius: ${theme.borderRadius};
   }
 
   //media queries
@@ -111,6 +110,12 @@ export const SliderWrapper = styled.div`
     // card      
     .slick-slide > div > div {
       width: 87%;
+    }
+  }
+
+  @media (hover:none) {
+    .slick-arrow {
+      visibility: hidden;
     }
   }
 `

@@ -6,9 +6,16 @@ import 'react-circular-progressbar/dist/styles.css'
 import Skeleton from 'react-loading-skeleton'
 
 import { getImageUrl } from 'api'
-import { BottomSection, Overlay, Poster, SkeletonWrapper, Wrapper } from './Card.styled'
+import {
+	BottomSection,
+	Overlay,
+	Poster,
+	SkeletonWrapper,
+	Wrapper
+} from './Card.styled'
 import { useState } from '@hookstate/core'
 import { GENRE_LIST } from 'components/GlobalState'
+import Text from '../ui/Text'
 
 const Card = ({
 	id,
@@ -23,9 +30,9 @@ const Card = ({
 		return (
 			<Wrapper>
 				<SkeletonWrapper>
-					<Skeleton height='100%'/>
+					<Skeleton height='100%' />
 					<BottomSection>
-						<Skeleton/>
+						<Skeleton />
 					</BottomSection>
 				</SkeletonWrapper>
 			</Wrapper>
@@ -54,7 +61,7 @@ const Card = ({
 			</Overlay>
 			<Poster url={getImageUrl(poster_path, 200)} />
 			<BottomSection>
-				<div>{title || name}</div>
+				<Text bold>{title || name}</Text>
 			</BottomSection>
 		</Wrapper>
 	)
