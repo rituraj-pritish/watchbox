@@ -3,6 +3,7 @@ import PropTypes from 'prop-types'
 
 import { BUTTON_VARIANTS, BUTTON_TYPES } from 'constants/buttons'
 import { StyledButton } from './Button.styles'
+import useTheme from 'hooks/useTheme'
 
 const Button = ({
 	variant = BUTTON_VARIANTS.PRIMARY,
@@ -10,10 +11,13 @@ const Button = ({
 	children,
 	...rest
 }) => {
+	const { isDarkMode } = useTheme()
+
 	return (
 		<StyledButton
 			variant={variant}
 			type={type}
+			isDarkMode={isDarkMode}
 			{...rest}
 		>
 			{children}

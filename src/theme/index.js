@@ -1,6 +1,6 @@
 const SIZE_UNIT = 1
 
-export default {
+const commonTheme = {
 	spacing: (factor = 1) => `${factor * SIZE_UNIT}rem`,
 	borderRadius: '5px',
 
@@ -8,43 +8,66 @@ export default {
 	fontSizes: [0, 12.8, 16, 20, 25, 31.25],
 
 	colors: {
-		appBg: '#1b1b1b',
-		layout: '#292929',
-		
-		overlay: '#7171714f',
-		selection: '#f86272c9',
-		lightBlack: '#1b1b1b',
-		white: '#fff',
+		white: '#FFFFFF',
+		black: '#202020'
+	}
+}
 
-		danger: '#c02c34',
-		primary: {
-			main: '#f74a60',
-			light: '#ffadc2'
-		},
-		secondary: {
-			main: '#07c3c1',
-			light: '#07C3C18c'
-		},
-		black: {
-			main: '#101010',
-			light: '#2c2c2c'
-		},
-		grey: {
-			main: '#adadad',
-			dark: '#424242',
-			light: '#d0d0d0'
-		},
+export const darkTheme = {
+	...commonTheme,
+
+	colors: {
+		...commonTheme.colors,
+		appBg: '#252525',
+		layout: '#353535',
+		paper: '#101010',
+		primary: '#9A5EBE',
+		primaryLight: '#BC99D1',
+		secondary: '#6BE2DC',
+		secondaryLight: '#4A99988C',
+		tertiary: '#3C3C3C',
+		tertiaryLight: '#505050',
+		selection: '#B18CC8',
+		danger: '#F35B5B',
+		cancel: '#4B4B4B',
+		skeleton: '#1E1E1E',
+		skeletonHighlight: '#242424',
 
 		text: {
-			white: '#ffffff',
-			black: '#121212',
-			lightGrey: '#d0d0d0'
-		},
-
-		skeleton: {
-			background: '##1e1e1e',
-			// todo decide highlight color
-			highlightColor: '#3a3a3a'
+			primary: '#B26DDB',
+			secondary: '#FFFFFF',
+			tertiary: '#D0D0D0'
 		}
 	}
 }
+
+export const lightTheme = {
+	...commonTheme,
+
+	colors: {
+		...commonTheme.colors,
+
+		appBg: '#DEDEDE',
+		layout: '#C8C8C8',
+		paper: '#F4F4F4',
+		primary: '#B262E3',
+		primaryLight: '#CA8EEE',
+		secondary: '#31ABAA',
+		secondaryLight: '#75CECD8C',
+		tertiary: '#FCFCFC',
+		tertiaryLight: '#D3D3D3',
+		selection: '#D7B2ED',
+		danger: '#EB4848',
+		cancel: '#B1B1B1',
+		skeleton: '#DADADA',
+		skeletonHighlight: '#cccccc',
+
+		text: {
+			primary: '#A852DC',
+			secondary: '#0B0B0B',
+			tertiary: '#2D2D2D'
+		}
+	}
+}
+
+export default commonTheme

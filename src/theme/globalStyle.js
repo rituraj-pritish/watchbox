@@ -1,5 +1,4 @@
 import { createGlobalStyle } from 'styled-components'
-import theme from 'theme'
  
 const GlobalStyle = createGlobalStyle`
   @import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@100;400&display=swap');
@@ -11,7 +10,8 @@ const GlobalStyle = createGlobalStyle`
       sans-serif;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
-    background: ${theme.colors.appBg};
+    background: ${({ theme }) => theme.colors.appBg};
+    color: ${({ theme }) => theme.colors.text.secondary};
   }
 
   code {

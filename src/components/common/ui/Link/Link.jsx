@@ -8,11 +8,11 @@ const Link = ({
 	children
 }) => {
 	return (
-		<StyledLink>
-			<Text color='secondary.main'>
+		<Text color='secondary'>
+			<StyledLink>
 				{children}
-			</Text>
-		</StyledLink>
+			</StyledLink>
+		</Text>
 	)
 }
 

@@ -4,7 +4,7 @@ import theme from 'theme'
 
 export const Wrapper = styled.div`
   border-radius: ${theme.spacing(2)};
-  border: ${({ theme }) => `2px solid ${theme.colors.secondary.main}`};
+  border: ${({ theme }) => `2px solid ${theme.colors.secondary}`};
   display: flex;
   overflow: hidden;
   width: fit-content;
@@ -15,9 +15,10 @@ export const Wrapper = styled.div`
 export const Option = styled.div`
   border-radius: ${theme.spacing(2)};
   background: ${({ isSelected, theme }) => isSelected 
-		? theme.colors.secondary.main : theme.colors.appBg };
-  color: ${({ isSelected, theme }) => isSelected 
-		? theme.colors.text.black : theme.colors.text.lightGrey };
+		? theme.colors.secondary : theme.colors.appBg };
+  color: ${({ isSelected, isDarkMode,  theme }) => isSelected 
+		? isDarkMode ? theme.colors.black : theme.colors.white
+		: theme.colors.text.tertiary };
   font-weight: ${({ isSelected }) => isSelected && 'bold'};
   padding: ${theme.spacing(0.5)} ${theme.spacing()};
   cursor: pointer;
