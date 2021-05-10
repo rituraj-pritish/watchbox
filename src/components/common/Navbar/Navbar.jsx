@@ -1,3 +1,4 @@
+import useAuthentication from 'hooks/useAuthentication'
 import useTheme from 'hooks/useTheme'
 import React from 'react'
 import FlexBox from '../ui/FlexBox'
@@ -7,27 +8,37 @@ import Text from '../ui/Text'
 import { Content, Wrapper } from './Navbar.styles'
 
 const Navbar = () => {
+	const { isAuthenticated } = useAuthentication()
 	const { toggleTheme } = useTheme()
 
 	return (
 		<Wrapper>
 			<Content>
-				<Text size={4}>
-					WatchBox
-				</Text>
+				<Link
+					to='/'
+					size={4}
+					color='text.secondary'
+				>
+          WatchBox
+				</Link>
 
 				<FlexBox alignItems='center'>
 					<Text
 						onClick={toggleTheme}
 						mr={3}
-					>Toggle
+					>
+            Toggle
 					</Text>
-					<Link
-						size={3}
-						color='primary'
-					>Login
-					</Link>	
-				</FlexBox>			
+					{!isAuthenticated && (
+						<Link
+							to='/login'
+							size={3}
+							color='primary'
+						>
+              Login
+						</Link>
+					)}
+				</FlexBox>
 			</Content>
 		</Wrapper>
 	)

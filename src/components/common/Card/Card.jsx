@@ -12,7 +12,7 @@ import {
 	Poster,
 	SkeletonWrapper,
 	Wrapper
-} from './Card.styled'
+} from './Card.styles'
 import { useState } from '@hookstate/core'
 import { GENRE_LIST } from 'components/GlobalState'
 import Text from '../ui/Text'

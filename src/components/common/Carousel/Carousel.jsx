@@ -5,7 +5,7 @@ import 'slick-carousel/slick/slick-theme.css'
 import Slider from 'react-slick'
 
 import Card from '../Card'
-import { SliderWrapper, Wrapper } from './Carousel.styled'
+import { SliderWrapper, Wrapper } from './Carousel.styles'
 import Text from '../ui/Text'
 import Toggle from '../Toggle'
 import FlexBox from '../ui/FlexBox'

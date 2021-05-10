@@ -2,15 +2,19 @@ import React from 'react'
 import PropTypes from 'prop-types'
 
 import Text from '../Text'
-import { StyledLink } from './Link.styled'
+import { StyledLink } from './Link.styles'
 
 const Link = ({
 	children,
+	to,
 	...rest
 }) => {
 	return (
-		<Text color='secondary' {...rest}>
-			<StyledLink>
+		<Text
+			color='secondary'
+			{...rest}
+		>
+			<StyledLink to={to}>
 				{children}
 			</StyledLink>
 		</Text>
@@ -18,7 +22,8 @@ const Link = ({
 }
 
 Link.propTypes = {
-	children: PropTypes.node.isRequired
+	children: PropTypes.node.isRequired,
+	to: PropTypes.string.isRequired
 }
 
 export default Link

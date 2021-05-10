@@ -12,8 +12,8 @@ const Text = ({
 }) => {
 	return (
 		<StyledText
-			fontWeight={bold && 'bold'}
-			fontStyle={italic && 'italic'}
+			fontWeight={bold ? 'bold' : undefined}
+			fontStyle={italic ? 'italic' : undefined}
 			fontSize={size}
 			{...rest}
 		>
@@ -24,7 +24,7 @@ const Text = ({
 
 Text.propTypes = {
 	children: PropTypes.node.isRequired,
-	size: PropTypes.oneOfType([PropTypes.string, PropTypes.number]).isRequired,
+	size: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
 	bold: PropTypes.bool,
 	italic: PropTypes.bool
 }
