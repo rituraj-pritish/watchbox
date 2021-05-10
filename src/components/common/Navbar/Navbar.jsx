@@ -8,7 +8,7 @@ import Text from '../ui/Text'
 import { Content, Wrapper } from './Navbar.styles'
 
 const Navbar = () => {
-	const { isAuthenticated } = useAuthentication()
+	const { isAuthenticated, logout } = useAuthentication()
 	const { toggleTheme } = useTheme()
 
 	return (
@@ -37,6 +37,15 @@ const Navbar = () => {
 						>
               Login
 						</Link>
+					)}
+					{isAuthenticated && (
+						<Text
+							size={3}
+							color='secondary'
+							onClick={logout}
+						>
+              Logout
+						</Text>
 					)}
 				</FlexBox>
 			</Content>

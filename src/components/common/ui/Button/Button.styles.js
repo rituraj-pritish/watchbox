@@ -3,6 +3,7 @@ import { space } from 'styled-system'
 
 import { BUTTON_TYPES, BUTTON_VARIANTS } from 'constants/buttons'
 import theme from 'theme'
+import { centerElement } from 'theme/commonStyles'
 
 const getColor = (variant, type, theme, isDarkMode) => {
 	if(type === BUTTON_TYPES.OUTLINED) {
@@ -36,6 +37,7 @@ const getBgColor = (variant, type, theme) => {
 }
 
 export const StyledButton = styled.div`
+	position: relative;
 	border-radius: ${theme.borderRadius};
 	width: fit-content;
 	height: fit-content;
@@ -57,4 +59,13 @@ export const StyledButton = styled.div`
 }
 	
 	${space}
+`
+
+export const SpinnerWrapper = styled.div`
+	position: absolute;
+	top: 0;
+	right: 0;
+	bottom: 0;
+	left: 0;
+	${centerElement};
 `

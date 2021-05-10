@@ -1,4 +1,5 @@
 import api from 'api'
+import { SESSION_ID_KEY } from 'hooks/useAuthentication'
 
 const getNewToken = () => api('/authentication/token/new')
 
@@ -33,3 +34,14 @@ export const login = (data) => new Promise((resolve, reject) => {
 })
 
 export const getUser = () => api('/account')
+
+export const logout = () => {
+	const sessionId = localStorage.getItem(SESSION_ID_KEY)
+
+	return api('/authentication/session', {
+		method: 'DELETE',
+		body: {
+			session_id: sessionId
+		}
+	})
+}

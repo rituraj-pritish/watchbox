@@ -1,6 +1,10 @@
 import { createState, useState } from '@hookstate/core'
 
-import { getUser, login as loginEndpoint } from 'api/endpoints/authentication' 
+import { 
+	getUser, 
+	login as loginEndpoint, 
+	logout as logoutEndpoint 
+} from 'api/endpoints/authentication' 
 
 const INITIAL_STATE = {
 	isLoading: true,
@@ -49,9 +53,22 @@ export default () => {
 		}
 	}
 
+	const logout = async () => {
+		try {
+			await logoutEndpoint()
+			authState.set({
+				...INITIAL_STATE, isLoading: false
+			})
+			localStorage.removeItem(SESSION_ID_KEY)
+			//todo handle error
+		// eslint-disable-next-line no-empty
+		} catch (err) {}
+	}
+
 	return {
 		login,
 		checkIfAuthenticated,
-		...authState.get()
+		...authState.get(),
+		logout
 	}
 }

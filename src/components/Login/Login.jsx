@@ -4,14 +4,15 @@ import Button from 'components/common/ui/Button'
 import Input from 'components/common/ui/Input'
 import FlexBox from 'components/common/ui/FlexBox'
 import useAuthentication from 'hooks/useAuthentication'
+import useAsync from 'hooks/useAsync'
 
 const Login = () => {
 	const { login } = useAuthentication()
-
+	const { callFunction, requesting } = useAsync(login)
 	const [username, setUsername] = useState('kumar.shubham.learn')
 	const [password, setPassword] = useState('vinny007')
 
-	const handleClick = () => login({ username, password })
+	const handleClick = () => callFunction({ username, password })
 
 	return (
 		<FlexBox
@@ -36,7 +37,12 @@ const Login = () => {
 				mt={3}
 				justifyContent='flex-end'
 			>
-				<Button onClick={handleClick}>Login</Button>
+				<Button
+					loading={requesting}
+					onClick={handleClick}
+				>
+					Login
+				</Button>
 			</FlexBox>
 		</FlexBox>
 	)
