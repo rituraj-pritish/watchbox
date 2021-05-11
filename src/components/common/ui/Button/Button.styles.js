@@ -4,6 +4,7 @@ import { space } from 'styled-system'
 import { BUTTON_TYPES, BUTTON_VARIANTS } from 'constants/buttons'
 import theme from 'theme'
 import { centerElement } from 'theme/commonStyles'
+import { darken, lighten } from 'polished'
 
 const getColor = (variant, type, theme, isDarkMode) => {
 	if(type === BUTTON_TYPES.OUTLINED) {
@@ -46,7 +47,7 @@ export const StyledButton = styled.div`
   padding: ${({ theme }) => `${theme.spacing(0.5)} ${theme.spacing(1)}`};
 	box-sizing: border-box;
 
-	${({ theme, variant, type, isDarkMode }) => {
+	${({ theme, variant, type, isDarkMode, loading }) => {
 		const bgColor = getBgColor(variant, type, theme)
 		const color = getColor(variant, type, theme, isDarkMode)
 
@@ -54,10 +55,23 @@ export const StyledButton = styled.div`
 			background: ${bgColor};
 			color: ${color};
 			box-shadow: ${type === BUTTON_TYPES.OUTLINED ? `0 0 0 2px ${color}` : 'none'};
+
+			&:hover {
+				background: ${!loading && lighten(0.05, bgColor)};
+			}
+
+			&:active {
+				background: ${!loading && darken(0.03, bgColor)};
+			}
 		`
 	} 
 }
-	
+
+	${({ loading }) => loading && css`
+		cursor: not-allowed;
+		opacity: 0.7;
+	`};
+
 	${space}
 `
 

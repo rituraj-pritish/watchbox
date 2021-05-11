@@ -10,7 +10,7 @@ const Button = ({
 	variant = BUTTON_VARIANTS.PRIMARY,
 	type = BUTTON_TYPES.DEFAULT,
 	children,
-	loading,
+	loading = false,
 	...rest
 }) => {
 	const { isDarkMode } = useTheme()
@@ -20,6 +20,7 @@ const Button = ({
 			variant={variant}
 			type={type}
 			isDarkMode={isDarkMode}
+			loading={loading}
 			{...rest}
 		>
 			{loading && <SpinnerWrapper>loading</SpinnerWrapper>}

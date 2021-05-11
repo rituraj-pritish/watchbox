@@ -9,8 +9,8 @@ import useAsync from 'hooks/useAsync'
 const Login = () => {
 	const { login } = useAuthentication()
 	const { callFunction, requesting } = useAsync(login)
-	const [username, setUsername] = useState('kumar.shubham.learn')
-	const [password, setPassword] = useState('vinny007')
+	const [username, setUsername] = useState('uniqueJohnDoe21')
+	const [password, setPassword] = useState('123456')
 
 	const handleClick = () => callFunction({ username, password })
 

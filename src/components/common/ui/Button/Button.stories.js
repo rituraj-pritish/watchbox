@@ -8,8 +8,16 @@ export default { title: 'Buttons' }
 export const buttons = () => {
 	return(
 		<>
-			<FlexBox m={2} alignItems='center'>
+			<FlexBox
+				m={2}
+				alignItems='center'
+			>
 				<Button m={2}>Primary</Button>
+				<Button
+					m={2}
+					loading
+				>Primary
+				</Button>
 				<Button
 					m={1}
 					type={BUTTON_TYPES.OUTLINED}
@@ -17,10 +25,19 @@ export const buttons = () => {
 				</Button>
 			</FlexBox>
 
-			<FlexBox m={2} alignItems='center'>
+			<FlexBox
+				m={2}
+				alignItems='center'
+			>
 				<Button
 					variant={BUTTON_VARIANTS.SECONDARY}
 					m={2}
+				>Primary
+				</Button>
+				<Button
+					variant={BUTTON_VARIANTS.SECONDARY}
+					m={2}
+					loading
 				>Primary
 				</Button>
 				<Button
@@ -31,10 +48,19 @@ export const buttons = () => {
 				</Button>
 			</FlexBox>
 
-			<FlexBox m={2} alignItems='center'>
+			<FlexBox
+				m={2}
+				alignItems='center'
+			>
 				<Button
 					variant={BUTTON_VARIANTS.DANGER}
 					m={2}
+				>Danger
+				</Button>
+				<Button
+					variant={BUTTON_VARIANTS.DANGER}
+					m={2}
+					loading
 				>Danger
 				</Button>
 				<Button
@@ -45,10 +71,19 @@ export const buttons = () => {
 				</Button>
 			</FlexBox>
 
-			<FlexBox m={2} alignItems='center'>
+			<FlexBox
+				m={2}
+				alignItems='center'
+			>
 				<Button
 					variant={BUTTON_VARIANTS.CANCEL}
 					m={2}
+				>Cancel
+				</Button>
+				<Button
+					variant={BUTTON_VARIANTS.CANCEL}
+					m={2}
+					loading
 				>Cancel
 				</Button>
 				<Button
