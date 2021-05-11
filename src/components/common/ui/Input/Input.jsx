@@ -29,7 +29,7 @@ const Input = ({
 			<Text
 				mb={2}
 				bold
-				color='text.tertiary'
+				color='tertiary'
 			>
 				{label}
 			</Text>

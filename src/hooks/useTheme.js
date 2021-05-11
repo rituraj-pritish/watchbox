@@ -1,4 +1,5 @@
 import { createState, useState } from '@hookstate/core'
+import { darkTheme, lightTheme } from 'theme'
 
 const THEME_KEY = 'theme'
 
@@ -18,5 +19,7 @@ export default () => {
 		theme.set(newTheme)
 	}
 
-	return { isDarkMode , toggleTheme }
+	const currentTheme = isDarkMode ? darkTheme : lightTheme
+
+	return { isDarkMode , toggleTheme, theme: currentTheme }
 }

@@ -8,6 +8,7 @@ const Text = ({
 	size = 2,
 	bold = false,
 	italic = false,
+	color = 'text.secondary',
 	...rest
 }) => {
 	return (
@@ -15,6 +16,7 @@ const Text = ({
 			fontWeight={bold ? 'bold' : undefined}
 			fontStyle={italic ? 'italic' : undefined}
 			fontSize={size}
+			color={color}
 			{...rest}
 		>
 			{children}
@@ -26,7 +28,8 @@ Text.propTypes = {
 	children: PropTypes.node.isRequired,
 	size: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
 	bold: PropTypes.bool,
-	italic: PropTypes.bool
+	italic: PropTypes.bool,
+	color: PropTypes.string
 }
 
 export default Text

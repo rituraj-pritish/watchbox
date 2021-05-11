@@ -1,12 +1,11 @@
 import styled from 'styled-components'
 
-import { color, space, typography } from 'styled-system'
+import { space, typography } from 'styled-system'
 
 export const StyledText = styled.div`
-  color: ${({ theme }) => theme.colors.text.white};
+  color: ${({ theme, color }) => theme.colors.text[color] || theme.colors[color] || color};
 
-  ${space}
   ${typography}
-  ${color}
+  ${space}
 `
 

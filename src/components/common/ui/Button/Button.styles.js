@@ -6,7 +6,7 @@ import theme from 'theme'
 import { centerElement } from 'theme/commonStyles'
 import { darken, lighten } from 'polished'
 
-const getColor = (variant, type, theme, isDarkMode) => {
+export const getColor = (variant, type, theme, isDarkMode) => {
 	if(type === BUTTON_TYPES.OUTLINED) {
 		return getBgColor(variant, BUTTON_TYPES.DEFAULT, theme)
 	} else {

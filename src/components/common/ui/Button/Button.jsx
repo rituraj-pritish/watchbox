@@ -1,8 +1,9 @@
 import React from 'react'
 import PropTypes from 'prop-types'
+import { Ring } from 'react-spinners-css'
 
 import { BUTTON_VARIANTS, BUTTON_TYPES } from 'constants/buttons'
-import { SpinnerWrapper, StyledButton } from './Button.styles'
+import { SpinnerWrapper, StyledButton, getColor } from './Button.styles'
 import useTheme from 'hooks/useTheme'
 import Text from '../Text'
 
@@ -13,7 +14,7 @@ const Button = ({
 	loading = false,
 	...rest
 }) => {
-	const { isDarkMode } = useTheme()
+	const { isDarkMode, theme } = useTheme()
 
 	return (
 		<StyledButton
@@ -23,7 +24,14 @@ const Button = ({
 			loading={loading}
 			{...rest}
 		>
-			{loading && <SpinnerWrapper>loading</SpinnerWrapper>}
+			{loading && (
+				<SpinnerWrapper>
+					<Ring 
+						size={28}
+						color={getColor(variant, type, theme, isDarkMode)}
+					/>
+				</SpinnerWrapper>
+			)}
 			<Text color={loading ? 'transparent' : undefined}>
 				{children}
 			</Text>

@@ -17,7 +17,7 @@ const Navbar = () => {
 				<Link
 					to='/'
 					size={4}
-					color='text.secondary'
+					color='secondary'
 				>
           WatchBox
 				</Link>
