@@ -9,20 +9,29 @@ import Login from 'components/Login'
 import useAuthentication from 'hooks/useAuthentication'
 
 const App = () => {
-	const { checkIfAuthenticated } = useAuthentication()
+	const { checkIfAuthenticated, isLoading, isAuthenticated } = useAuthentication()
 	useEffect(() => {
 		checkIfAuthenticated()	
 	}, [])
+
+	const render = () => {
+		if(isLoading) return 'app content loading screen'
+		if(isAuthenticated) return 'protected routes'
+		
+		return (
+			<Route
+				path='/login'
+				component={Login}
+			/>
+		)
+	}
 
 	return (
 		<Providers>
 			<AppWrapper>
 				<Navbar/>
 				<div>
-					<Route
-						path='/login'
-						component={Login}
-					/>
+					{render()}
 				</div>
 				<Footer/>
 			</AppWrapper>

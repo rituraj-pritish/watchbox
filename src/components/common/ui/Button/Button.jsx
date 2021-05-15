@@ -11,7 +11,7 @@ const Button = ({
 	variant = BUTTON_VARIANTS.PRIMARY,
 	type = BUTTON_TYPES.DEFAULT,
 	children,
-	loading = false,
+	isLoading = false,
 	...rest
 }) => {
 	const { isDarkMode, theme } = useTheme()
@@ -21,10 +21,10 @@ const Button = ({
 			variant={variant}
 			type={type}
 			isDarkMode={isDarkMode}
-			loading={loading}
+			isLoading={isLoading}
 			{...rest}
 		>
-			{loading && (
+			{isLoading && (
 				<SpinnerWrapper>
 					<Ring 
 						size={28}
@@ -32,7 +32,7 @@ const Button = ({
 					/>
 				</SpinnerWrapper>
 			)}
-			<Text color={loading ? 'transparent' : undefined}>
+			<Text color={isLoading ? 'transparent' : undefined}>
 				{children}
 			</Text>
 		</StyledButton>
@@ -43,7 +43,7 @@ Button.propTypes = {
 	variant: PropTypes.oneOf([...Object.values(BUTTON_VARIANTS)]),
 	type: PropTypes.oneOf([...Object.values(BUTTON_TYPES)]),
 	children: PropTypes.node.isRequired,
-	loading: PropTypes.bool
+	isLoading: PropTypes.bool
 }
 
 export default Button

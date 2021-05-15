@@ -47,7 +47,7 @@ export const StyledButton = styled.div`
   padding: ${({ theme }) => `${theme.spacing(0.5)} ${theme.spacing(1)}`};
 	box-sizing: border-box;
 
-	${({ theme, variant, type, isDarkMode, loading }) => {
+	${({ theme, variant, type, isDarkMode, isLoading }) => {
 		const bgColor = getBgColor(variant, type, theme)
 		const color = getColor(variant, type, theme, isDarkMode)
 
@@ -57,17 +57,17 @@ export const StyledButton = styled.div`
 			box-shadow: ${type === BUTTON_TYPES.OUTLINED ? `0 0 0 2px ${color}` : 'none'};
 
 			&:hover {
-				background: ${!loading && lighten(0.05, bgColor)};
+				background: ${!isLoading && lighten(0.05, bgColor)};
 			}
 
 			&:active {
-				background: ${!loading && darken(0.03, bgColor)};
+				background: ${!isLoading && darken(0.03, bgColor)};
 			}
 		`
 	} 
 }
 
-	${({ loading }) => loading && css`
+	${({ isLoading }) => isLoading && css`
 		cursor: not-allowed;
 		opacity: 0.7;
 	`};

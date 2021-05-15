@@ -1,18 +1,22 @@
 import React, { useState } from 'react'
+import { useQuery } from 'react-query'
 
 import Button from 'components/common/ui/Button'
 import Input from 'components/common/ui/Input'
 import FlexBox from 'components/common/ui/FlexBox'
 import useAuthentication from 'hooks/useAuthentication'
-import useAsync from 'hooks/useAsync'
 
 const Login = () => {
 	const { login } = useAuthentication()
-	const { callFunction, requesting } = useAsync(login)
+
 	const [username, setUsername] = useState('uniqueJohnDoe21')
 	const [password, setPassword] = useState('123456')
 
-	const handleClick = () => callFunction({ username, password })
+	const { refetch: handleClick, isFetching } = useQuery(
+		'login',
+		() => login({ username, password }),
+		{ enabled: false }
+	)
 
 	return (
 		<FlexBox
@@ -38,10 +42,10 @@ const Login = () => {
 				justifyContent='flex-end'
 			>
 				<Button
-					loading={requesting}
+					isLoading={isFetching}
 					onClick={handleClick}
 				>
-					Login
+          Login
 				</Button>
 			</FlexBox>
 		</FlexBox>

@@ -8,27 +8,32 @@ import { darkTheme, lightTheme } from 'theme'
 import GlobalState from 'components/GlobalState'
 import GlobalStyle from 'theme/globalStyle'
 import useTheme from 'hooks/useTheme'
+import { QueryClient, QueryClientProvider } from 'react-query'
+
+const queryClient = new QueryClient()
 
 const Providers = ({ children }) => {
 	const { isDarkMode } = useTheme()
 
 	return (
-		<Router>
-			<ThemeProvider theme={isDarkMode ? darkTheme : lightTheme}>
-				<ThemeConsumer>
-					{(theme) => (
-						<SkeletonTheme
-							color={theme.colors.skeleton}
-							highlightColor={theme.colors.skeletonHighlight}
-						>
-							<GlobalState />
-							<GlobalStyle />
-							{children}
-						</SkeletonTheme>
-					)}
-				</ThemeConsumer>
-			</ThemeProvider>
-		</Router>
+		<QueryClientProvider client={queryClient}>
+			<Router>
+				<ThemeProvider theme={isDarkMode ? darkTheme : lightTheme}>
+					<ThemeConsumer>
+						{(theme) => (
+							<SkeletonTheme
+								color={theme.colors.skeleton}
+								highlightColor={theme.colors.skeletonHighlight}
+							>
+								<GlobalState />
+								<GlobalStyle />
+								{children}
+							</SkeletonTheme>
+						)}
+					</ThemeConsumer>
+				</ThemeProvider>
+			</Router>
+		</QueryClientProvider>
 	)
 }
 
