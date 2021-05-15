@@ -3,80 +3,70 @@ import theme from 'theme'
 import { centerElement, overlay } from 'theme/commonStyles'
 
 export const Overlay = styled.div`
-  ${overlay};
-  ${centerElement};
-  flex-direction: column;
-  backdrop-filter: blur(0);
-  background: #00000069;
+  ${overlay}
   border-radius: ${theme.borderRadius};
-  visibility: hidden;
-  transition: backdrop-filter 0.4s;
-  color: white;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  padding: ${theme.spacing()};
+  cursor: default;
+  background: ${({ isDarkMode }) => isDarkMode ? '#000000ad' : '#efefefe8'};
+  opacity: 0;
 
-  & > svg {
-    margin: ${theme.spacing()} 0;
-    width: 25%;
+  svg {
+    width: ${theme.spacing(4)};
+    fill: ${({ theme }) => theme.colors.text.secondary};
+    margin: 0 auto;
+    cursor: pointer;
+    transition: fill 0.2s;
+
+    &:hover {
+      fill: ${({ theme }) => theme.colors.primary};
+    }
   }
 `
 
 export const Wrapper = styled.div`
-  background: ${({ theme }) => theme.colors.paper};
   position: relative;
-  overflow: hidden;
-  width: fit-content;
+  width: 200px;
+  height: 320px;
+  padding: ${theme.spacing(0.5)};
+  background: ${({ theme }) => theme.colors.paper};
   border-radius: ${theme.borderRadius};
-  padding: ${theme.spacing(0.3)};
-  padding-bottom: 0;
-  cursor: pointer;
-  max-width: 200px;
-  max-height: 350px;
   display: flex;
   flex-direction: column;
+  cursor: pointer;
+  box-shadow: ${({ isDarkMode }) =>  
+		`0 0px 15px 10px ${isDarkMode ?'#2c2c2ce0' : '#d8d8d882'}`};
 
   &:hover ${Overlay} {
-    visibility: visible;
-    backdrop-filter: blur(1.5px);
+    opacity: 1;
   }
 `
 
 export const Poster = styled.div`
+  background: ${({ url }) => `url(${url})`};
+  height: 100%;
   width: 100%;
-  height: 300px;
-  height: calc(100% - ${theme.spacing(3.2)});
-  background-image: ${({ url }) => `url(${url})`};
   border-radius: ${theme.borderRadius};
-  background-repeat: no-repeat;
   background-position: center;
   background-size: cover;
 `
 
-export const BottomSection = styled.div`
-  background: ${({ theme }) => theme.colors.paper};
-  border-radius: ${theme.borderRadius};
-  display: flex;
-  align-items: center;
-  padding: ${theme.spacing(0.5)};
-  flex-grow: 1;
-`
-
 export const SkeletonWrapper = styled.div`
-  height: 100%; 
-  display: flex;
+  width: 100%;
   flex-direction: column;
-  margin-top: -1px;
+  display: flex;
+  flex-grow: 1;
 
-  // poster skeleton
   & > span:first-child {
-    height: calc(100% - ${theme.spacing(3.2)});
+    flex-grow: 1;
   }
 
-  // title skeleton
-  & > div:last-child {
-    width: auto;
-
-    // skeleton wrapper
-    & > span {
-      width: 100%;
-    }
+  & > span:nth-child(2) {
+    height: 44px;
+    ${centerElement}
   }
 `
+

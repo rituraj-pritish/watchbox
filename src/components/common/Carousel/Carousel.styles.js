@@ -1,6 +1,9 @@
 import styled from 'styled-components'
 import theme from 'theme'
 
+import { ReactComponent as ChevronRight } from 'assets/icons/chevron-right.svg'
+
+
 export const SliderWrapper = styled.div`
   position: relative;
   padding-bottom: 30%; // to maintain aspect ratio
@@ -50,8 +53,12 @@ export const SliderWrapper = styled.div`
     height: 98%;
     width: ${theme.spacing(2)};
 
+    svg {
+      padding: ${theme.spacing(0.25)};
+    }
+
     &:before {
-      color: ${({ theme }) => theme.colors.text.secondary};
+      content: '';
     }
   }
 

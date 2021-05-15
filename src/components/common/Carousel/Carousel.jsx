@@ -1,14 +1,17 @@
-import React from 'react'
+import React, { useRef } from 'react'
 import PropTypes from 'prop-types'
 import 'slick-carousel/slick/slick.css'
 import 'slick-carousel/slick/slick-theme.css'
 import Slider from 'react-slick'
 
+import { ReactComponent as ChevronRight } from 'assets/icons/chevron-right.svg'
+import { ReactComponent as ChevronLeft } from 'assets/icons/chevron-left.svg'
 import Card from '../Card'
 import { SliderWrapper, Wrapper } from './Carousel.styles'
 import Text from '../ui/Text'
 import Toggle from '../Toggle'
 import FlexBox from '../ui/FlexBox'
+import Icon from '../ui/Icon'
 
 const Carousel = ({ title, data, toggleOptions, onToggleChange, containerRef }) => {
 	const settings = {
@@ -19,7 +22,23 @@ const Carousel = ({ title, data, toggleOptions, onToggleChange, containerRef }) 
 		speed: 500,
 		slidesToShow: 5,
 		slidesToScroll: 5,
-
+		nextArrow: (
+			<Icon
+				className='slick-arrow slick-next'
+				color='white'
+				size={30}
+			>
+				<ChevronRight/>
+			</Icon>
+		),
+		prevArrow: (
+			<Icon
+				className='slick-arrow slick-prev'
+				color='white'
+			>
+				<ChevronLeft/>
+			</Icon>
+		),
 		responsive: [
 			{
 				breakpoint: 1150,

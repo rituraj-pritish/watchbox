@@ -27,3 +27,5 @@ const details =  {
 export default { title: 'Card' }
 
 export const defaultView = () => <Card {...details}/>
+
+export const loadingView = () => <Card />

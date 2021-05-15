@@ -5,12 +5,16 @@ import { Wrapper } from './Icon.styled'
 const Icon = ({
 	children, 
 	size = 16,
-	color
+	color,
+	className,
+	onClick
 }) => {
 	return (
 		<Wrapper
 			size={size}
 			color={color}
+			className={className}
+			onClick={onClick}
 		>
 			{children}
 		</Wrapper>
@@ -18,9 +22,11 @@ const Icon = ({
 }
 
 Icon.propTypes = {
+	className: PropTypes.string,
 	children: PropTypes.node.isRequired,
 	size: PropTypes.number,
-	color: PropTypes.string
+	color: PropTypes.string,
+	onClick: PropTypes.func
 }
 
 export default Icon

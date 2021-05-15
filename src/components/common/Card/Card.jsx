@@ -1,21 +1,17 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-import moment from 'moment'
-import { buildStyles, CircularProgressbar } from 'react-circular-progressbar'
-import 'react-circular-progressbar/dist/styles.css'
-import Skeleton from 'react-loading-skeleton'
-
-import { getImageUrl } from 'api'
-import {
-	BottomSection,
-	Overlay,
-	Poster,
-	SkeletonWrapper,
-	Wrapper
-} from './Card.styles'
 import { useState } from '@hookstate/core'
+
+import 'react-circular-progressbar/dist/styles.css'
+
+import { ReactComponent as PlayIcon } from 'assets/icons/play-icon.svg'
+import { getImageUrl } from 'api'
+import { Overlay, Poster, SkeletonWrapper, Wrapper } from './Card.styles'
 import { GENRE_LIST } from 'components/GlobalState'
 import Text from '../ui/Text'
+import Skeleton from '../ui/Skeleton'
+import useTheme from 'hooks/useTheme'
+import FlexBox from '../ui/FlexBox'
 
 const Card = ({
 	id,
@@ -26,14 +22,17 @@ const Card = ({
 	release_date,
 	genre_ids
 }) => {
+	const { isDarkMode } = useTheme()
+
 	if (!id)
 		return (
 			<Wrapper>
 				<SkeletonWrapper>
-					<Skeleton height='100%' />
-					<BottomSection>
-						<Skeleton />
-					</BottomSection>
+					<Skeleton
+						height='100%'
+						mb={2}
+					/>
+					<Skeleton height={16} />
 				</SkeletonWrapper>
 			</Wrapper>
 		)
@@ -42,27 +41,36 @@ const Card = ({
 	const genres = genre_ids.map((id) => genreById[id])
 
 	return (
-		<Wrapper>
-			<Overlay>
-				<div>{moment(release_date).year()}</div>
-				<CircularProgressbar
-					value={vote_average * 10}
-					text={vote_average}
-					styles={buildStyles({
-						textSize: '30px',
-						textColor: 'white',
-						pathColor: 'white',
-						trailColor: 'grey'
-					})}
-				/>
-				{genres.map((genre, idx) => (
-					<div key={idx}>{genre}</div>
-				))}
+		<Wrapper isDarkMode={isDarkMode}>
+			<Overlay isDarkMode={isDarkMode}>
+				<div/>
+				
+				<PlayIcon/>
+
+				<div>
+					{genres.map((g) => (
+						<Text
+							align='center'
+							key={g}
+						>
+							{g}
+						</Text>
+					))}
+				</div>
 			</Overlay>
-			<Poster url={getImageUrl(poster_path, 200)} />
-			<BottomSection>
-				<Text bold>{title || name}</Text>
-			</BottomSection>
+
+			<Poster url={getImageUrl(poster_path)} />
+			<FlexBox
+				height={36}
+				mt={2}
+				alignItems='center'
+			>
+				<Text
+					bold
+				>
+					{title || name}
+				</Text>
+			</FlexBox>
 		</Wrapper>
 	)
 }
