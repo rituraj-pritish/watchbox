@@ -4,9 +4,11 @@ import { Route } from 'react-router'
 import Providers from './Providers'
 import Navbar from 'components/common/Navbar'
 import Footer from 'components/common/Footer'
-import { AppWrapper } from './App.styles'
+import { AppContent, AppWrapper } from './App.styles'
 import Login from 'components/Login'
 import useAuthentication from 'hooks/useAuthentication'
+import Skeleton from 'components/common/ui/Skeleton'
+import FlexBox from 'components/common/ui/FlexBox'
 
 const App = () => {
 	const { checkIfAuthenticated, isLoading, isAuthenticated } = useAuthentication()
@@ -15,8 +17,24 @@ const App = () => {
 	}, [])
 
 	const render = () => {
-		if(isLoading) return 'app content loading screen'
-		if(isAuthenticated) return 'protected routes'
+		if(isLoading) return (
+			<FlexBox flexDirection='column'>
+				<Skeleton
+					width='100%'
+					height={300}
+					mb={3}
+				/>
+				<Skeleton
+					width='100%'
+					height={300}
+				/>
+			</FlexBox>
+		)
+
+		if(isAuthenticated) return (
+			<>
+			</>
+		)
 		
 		return (
 			<Route
@@ -30,9 +48,9 @@ const App = () => {
 		<Providers>
 			<AppWrapper>
 				<Navbar/>
-				<div>
+				<AppContent>
 					{render()}
-				</div>
+				</AppContent>
 				<Footer/>
 			</AppWrapper>
 		</Providers>
