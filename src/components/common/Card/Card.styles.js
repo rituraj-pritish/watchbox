@@ -16,7 +16,7 @@ export const Overlay = styled.div`
 
   svg {
     width: ${theme.spacing(4)};
-    fill: ${({ theme }) => theme.colors.text.secondary};
+    fill: ${({ theme }) => theme.colors.textSecondary};
     margin: 0 auto;
     cursor: pointer;
     transition: fill 0.2s;

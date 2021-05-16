@@ -7,7 +7,8 @@ const Icon = ({
 	size = 16,
 	color,
 	className,
-	onClick
+	onClick,
+	...rest
 }) => {
 	return (
 		<Wrapper
@@ -15,6 +16,7 @@ const Icon = ({
 			color={color}
 			className={className}
 			onClick={onClick}
+			{...rest}
 		>
 			{children}
 		</Wrapper>

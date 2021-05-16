@@ -9,7 +9,7 @@ const Text = ({
 	bold = false,
 	italic = false,
 	align = 'left',
-	color = 'text.secondary',
+	color = 'textSecondary',
 	...rest
 }) => {
 	return (

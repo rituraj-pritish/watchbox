@@ -30,7 +30,7 @@ const Navbar = () => {
 		if(isAuthenticated) return (
 			<Text
 				size={3}
-				color='secondary'
+				color='textSecondary'
 				onClick={logout}
 			>
               Logout
@@ -54,7 +54,7 @@ const Navbar = () => {
 				<Link
 					to='/'
 					size={4}
-					color='secondary'
+					color='textSecondary'
 				>
           WatchBox
 				</Link>

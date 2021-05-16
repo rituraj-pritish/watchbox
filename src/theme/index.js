@@ -34,11 +34,9 @@ export const darkTheme = {
 		skeleton: '#1E1E1E',
 		skeletonHighlight: '#242424',
 
-		text: {
-			primary: '#B26DDB',
-			secondary: '#FFFFFF',
-			tertiary: '#D0D0D0'
-		}
+		textPrimary: '#B26DDB',
+		textSecondary: '#FFFFFF',
+		textTertiary: '#D0D0D0'
 	}
 }
 
@@ -63,11 +61,9 @@ export const lightTheme = {
 		skeleton: '#DADADA',
 		skeletonHighlight: '#cccccc',
 
-		text: {
-			primary: '#A852DC',
-			secondary: '#0B0B0B',
-			tertiary: '#2D2D2D'
-		}
+		textPrimary: '#A852DC',
+		textSecondary: '#0B0B0B',
+		textTertiary: '#2D2D2D'
 	}
 }
 

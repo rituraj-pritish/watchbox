@@ -49,7 +49,7 @@ export const SliderWrapper = styled.div`
   .slick-arrow {
     margin-top: -5px;
     z-index: 1;
-    background: ${({ theme }) => theme.colors.text.tertiary + '33'}; // opacity 33%
+    background: ${({ theme }) => theme.colors.textTertiary + '33'}; // opacity 33%
     height: 98%;
     width: ${theme.spacing(2)};
 

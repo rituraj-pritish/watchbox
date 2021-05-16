@@ -45,12 +45,12 @@ const Dropdown = ({ options, onChange, value: initialValue, label }) => {
 					<Text
 						ml={3}
 						mr={2}
-						color='secondary'
+						color='textSecondary'
 						bold
 					>
 						{valueLabelPairs[selected]}
 					</Text>
-					<Icon color='tertiary'>
+					<Icon color='textTertiary'>
 						{showOptions ? <ChevronUp/> : <ChevronDown/>}
 					</Icon>
 				</FlexBox>

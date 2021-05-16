@@ -19,7 +19,7 @@ export const Option = styled.div`
 		? theme.colors.secondary : theme.colors.appBg };
   color: ${({ isSelected, isDarkMode,  theme }) => isSelected 
 		? isDarkMode ? theme.colors.black : theme.colors.white
-		: theme.colors.text.tertiary };
+		: theme.colors.textTertiary };
   font-weight: ${({ isSelected }) => isSelected && 'bold'};
   padding: ${theme.spacing(0.5)} ${theme.spacing()};
   cursor: pointer;

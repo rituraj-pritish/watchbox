@@ -13,8 +13,9 @@ export const Wrapper = styled.div`
     height: 100%;
 
     path {
-      fill: ${({ theme, color }) => theme.colors.text[color] || theme.colors[color] || color};
+      fill: ${({ theme, color }) => theme.colors[color] || color};
     }
   }
+
   ${space};
 `
