@@ -26,15 +26,13 @@ const Button = ({
 		>
 			{isLoading && (
 				<SpinnerWrapper>
-					<Ring 
+					<Ring
 						size={28}
 						color={getColor(variant, type, theme, isDarkMode)}
 					/>
 				</SpinnerWrapper>
 			)}
-			<Text color={isLoading ? 'transparent' : undefined}>
-				{children}
-			</Text>
+			<Text color={isLoading && 'transparent'}>{children}</Text>
 		</StyledButton>
 	)
 }

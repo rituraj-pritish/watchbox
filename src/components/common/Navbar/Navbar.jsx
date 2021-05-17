@@ -1,6 +1,7 @@
-import useAuthentication from 'hooks/useAuthentication'
-import useTheme from 'hooks/useTheme'
 import React from 'react'
+
+import useAuthentication from 'hooks/useAuthentication'
+import ThemeToggle from '../ThemeToggle'
 import FlexBox from '../ui/FlexBox'
 import Link from '../ui/Link/Link'
 import Skeleton from '../ui/Skeleton'
@@ -10,7 +11,6 @@ import { Content, Wrapper } from './Navbar.styles'
 
 const Navbar = () => {
 	const { isAuthenticated, isLoading, logout } = useAuthentication()
-	const { toggleTheme } = useTheme()
 
 	const render = () => {
 		if(isLoading) return (
@@ -60,14 +60,8 @@ const Navbar = () => {
 				</Link>
 
 				<FlexBox alignItems='center'>
-					<Text
-						onClick={toggleTheme}
-						mr={3}
-					>
-            Toggle
-					</Text>
-					
 					{render()}
+					<ThemeToggle/>
 				</FlexBox>
 			</Content>
 		</Wrapper>

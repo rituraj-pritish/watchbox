@@ -6,11 +6,15 @@ import { IconContainer, Wrapper } from './ThemeToggle.styles'
 import useTheme from 'hooks/useTheme'
 
 const ThemeToggle = () => {
-	const { isDarkMode } = useTheme()
+	const { isDarkMode, toggleTheme } = useTheme()
+
 	return (
-		<Wrapper>
-			<IconContainer>
-				{isDarkMode ? <MoonIcon/> : <SunIcon/>}
+		<Wrapper
+			isDarkMode={isDarkMode}
+			onClick={toggleTheme}
+		>
+			<IconContainer isDarkMode={isDarkMode}>
+				{isDarkMode ? <MoonIcon /> : <SunIcon />}
 			</IconContainer>
 		</Wrapper>
 	)
