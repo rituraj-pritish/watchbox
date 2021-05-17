@@ -12,6 +12,7 @@ import Text from '../ui/Text'
 import Skeleton from '../ui/Skeleton'
 import useTheme from 'hooks/useTheme'
 import FlexBox from '../ui/FlexBox'
+import usePositionOffset from 'hooks/usePositionOffset'
 
 const Card = ({
 	id,
@@ -23,7 +24,9 @@ const Card = ({
 	genre_ids
 }) => {
 	const { isDarkMode } = useTheme()
-
+	const genreById = useState(GENRE_LIST).get()
+	const genres = genre_ids?.map((id) => genreById[id])
+	
 	if (!id)
 		return (
 			<Wrapper>
@@ -36,9 +39,6 @@ const Card = ({
 				</SkeletonWrapper>
 			</Wrapper>
 		)
-
-	const genreById = useState(GENRE_LIST).get()
-	const genres = genre_ids.map((id) => genreById[id])
 
 	return (
 		<Wrapper isDarkMode={isDarkMode}>

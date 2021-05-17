@@ -4,6 +4,11 @@ import { addDecorator } from '@storybook/react';
 import Providers from '../src/components/App/Providers'
 import useTheme from '../src/hooks/useTheme'
 
+if (typeof global.process === 'undefined') {
+  const { worker } = require('../src/mocks')
+  worker.start()
+}
+
 addDecorator(story => {
   const { isDarkMode, toggleTheme } = useTheme()
 

@@ -4,6 +4,8 @@ import { getGenresList } from 'api/endpoints/genre'
 
 export const GENRE_LIST = createState({})
 
+// todo convert to custom hook for useGenrelist
+// and use useQuery
 const GlobalState = () => {
 	useEffect(() => {
 		getGenresList().then((res) => {
