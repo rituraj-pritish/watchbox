@@ -18,14 +18,22 @@ const apiKey = process.env.REACT_APP_TMDB_API_KEY
 
 const api = (
 	url,
-	options = {}
+	options = {},
+	params = {}
 ) => {
 	const sessionId = localStorage.getItem(SESSION_ID_KEY)
 
+	const stringParams = Object.entries(params).reduce((acc, [key, value]) => {
+		acc += `&${key}=${value}`
+		return acc
+	}, '')
+
 	const pathname = TMDB_BASE_URL + url +
 		`?api_key=${apiKey}` +
-		(sessionId ? `&session_id=${sessionId}` : '')
+	(sessionId ? `&session_id=${sessionId}` : '') +
+	stringParams
 
+	console.log('pa', params,  stringParams)
 	return fetch(pathname , {
 		...DEFAULT_OPTIONS,
 		...options,

@@ -2,7 +2,8 @@ import React from 'react';
 import { addDecorator } from '@storybook/react';
 
 import Providers from '../src/components/App/Providers'
-import useTheme from '../src/hooks/useTheme'
+import ThemeToggle from '../src/components/common/ThemeToggle'
+import { marginBottom } from 'styled-system'
 
 if (typeof global.process === 'undefined') {
   const { worker } = require('../src/mocks')
@@ -10,12 +11,10 @@ if (typeof global.process === 'undefined') {
 }
 
 addDecorator(story => {
-  const { isDarkMode, toggleTheme } = useTheme()
-
   return (
   <Providers>
-    <div style={{marginBottom: '2rem'}} onClick={toggleTheme}>
-      TOGGLE: {isDarkMode ? 'Dark' : 'Light'}
+    <div style={{marginBottom: 20}}>
+      <ThemeToggle/>
     </div>
     {story()}
   </Providers>

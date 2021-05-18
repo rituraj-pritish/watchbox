@@ -1,18 +1,16 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-import { useState } from '@hookstate/core'
 
 import 'react-circular-progressbar/dist/styles.css'
 
 import { ReactComponent as PlayIcon } from 'assets/icons/play-icon.svg'
 import { getImageUrl } from 'api'
 import { Overlay, Poster, SkeletonWrapper, Wrapper } from './Card.styles'
-import { GENRE_LIST } from 'components/GlobalState'
 import Text from '../ui/Text'
 import Skeleton from '../ui/Skeleton'
 import useTheme from 'hooks/useTheme'
 import FlexBox from '../ui/FlexBox'
-import usePositionOffset from 'hooks/usePositionOffset'
+import Genres from '../Genres'
 
 const Card = ({
 	id,
@@ -24,8 +22,6 @@ const Card = ({
 	genre_ids
 }) => {
 	const { isDarkMode } = useTheme()
-	const genreById = useState(GENRE_LIST).get()
-	const genres = genre_ids?.map((id) => genreById[id])
 	
 	if (!id)
 		return (
@@ -47,16 +43,10 @@ const Card = ({
 				
 				<PlayIcon/>
 
-				<div>
-					{genres.map((g) => (
-						<Text
-							align='center'
-							key={g}
-						>
-							{g}
-						</Text>
-					))}
-				</div>
+				<Genres
+					ids={genre_ids}
+					vertical
+				/>
 			</Overlay>
 
 			<Poster url={getImageUrl(poster_path)} />
