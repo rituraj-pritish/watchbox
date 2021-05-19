@@ -45,15 +45,6 @@ export const Wrapper = styled.div`
   }
 `
 
-export const Poster = styled.div`
-  background: ${({ url }) => `url(${url})`};
-  height: 100%;
-  width: 100%;
-  border-radius: ${theme.borderRadius};
-  background-position: center;
-  background-size: cover;
-`
-
 export const SkeletonWrapper = styled.div`
   width: 100%;
   flex-direction: column;

@@ -9,14 +9,8 @@ export const Wrapper = styled.div`
   height: 300px;
 `
 
-export const Poster = styled.div`
-  width: 100%;
-  height: 100%;
-  max-width: 200px;
-  border-radius: ${theme.borderRadius};
-  background: ${({ url }) => `url(${url})`};
-  background-position: center;
-  background-size: cover;
+export const WrapperSmall = styled(Wrapper)`
+  height: 150px;
 `
 
 export const RightSection = styled.div`

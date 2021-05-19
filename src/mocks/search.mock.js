@@ -402,7 +402,9 @@ const RESPONSE = {
 
 export default [
 	rest.get(URL + '/search/multi', (req, res, ctx) => {
-		ctx.delay()
-		return res(ctx.json(RESPONSE))
+		return res(
+			ctx.delay(2000),
+			ctx.json(RESPONSE)
+		)
 	})
 ]

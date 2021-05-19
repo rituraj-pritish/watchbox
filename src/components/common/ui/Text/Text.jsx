@@ -19,6 +19,7 @@ const Text = ({
 			fontStyle={italic ? 'italic' : undefined}
 			fontSize={size}
 			color={color}
+
 			{...rest}
 		>
 			{children}
@@ -32,7 +33,8 @@ Text.propTypes = {
 	bold: PropTypes.bool,
 	italic: PropTypes.bool,
 	color: PropTypes.string,
-	align: PropTypes.string
+	align: PropTypes.string,
+	maxLines: PropTypes.number
 }
 
 export default Text

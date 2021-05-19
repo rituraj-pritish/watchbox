@@ -1,0 +1,8 @@
+const POSTER_SIZES = {
+	X_SMALL: 92,
+	SMALL: 185,
+	MEDIUM: 342,
+	LARGE: 500
+}
+
+export default POSTER_SIZES

@@ -4,13 +4,14 @@ import PropTypes from 'prop-types'
 import 'react-circular-progressbar/dist/styles.css'
 
 import { ReactComponent as PlayIcon } from 'assets/icons/play-icon.svg'
-import { getImageUrl } from 'api'
-import { Overlay, Poster, SkeletonWrapper, Wrapper } from './Card.styles'
+import { Overlay, SkeletonWrapper, Wrapper } from './Card.styles'
 import Text from '../ui/Text'
 import Skeleton from '../ui/Skeleton'
 import useTheme from 'hooks/useTheme'
 import FlexBox from '../ui/FlexBox'
 import Genres from '../Genres'
+import Image from '../ui/Image'
+import POSTER_SIZES from 'constants/posterSizes'
 
 const Card = ({
 	id,
@@ -22,7 +23,7 @@ const Card = ({
 	genre_ids
 }) => {
 	const { isDarkMode } = useTheme()
-	
+
 	if (!id)
 		return (
 			<Wrapper>
@@ -39,9 +40,9 @@ const Card = ({
 	return (
 		<Wrapper isDarkMode={isDarkMode}>
 			<Overlay isDarkMode={isDarkMode}>
-				<div/>
-				
-				<PlayIcon/>
+				<div />
+
+				<PlayIcon />
 
 				<Genres
 					ids={genre_ids}
@@ -49,17 +50,16 @@ const Card = ({
 				/>
 			</Overlay>
 
-			<Poster url={getImageUrl(poster_path)} />
+			<Image
+				url={poster_path}
+				imageSize={POSTER_SIZES.MEDIUM}
+			/>
 			<FlexBox
 				height={36}
 				mt={2}
 				alignItems='center'
 			>
-				<Text
-					bold
-				>
-					{title || name}
-				</Text>
+				<Text bold>{title || name}</Text>
 			</FlexBox>
 		</Wrapper>
 	)
