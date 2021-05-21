@@ -17,6 +17,8 @@ const Icon = ({
 			className={className}
 			onClick={onClick}
 			{...rest}
+
+			isClickable={!!onClick}
 		>
 			{children}
 		</Wrapper>

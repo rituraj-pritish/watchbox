@@ -33,7 +33,6 @@ const api = (
 	(sessionId ? `&session_id=${sessionId}` : '') +
 	stringParams
 
-	console.log('pa', params,  stringParams)
 	return fetch(pathname , {
 		...DEFAULT_OPTIONS,
 		...options,

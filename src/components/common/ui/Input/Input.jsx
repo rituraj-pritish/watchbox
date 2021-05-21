@@ -10,6 +10,7 @@ const Input = ({
 	onChange,
 	value,
 	space,
+	className,
 	...rest
 }) => {
 	const { isDarkMode } = useTheme()
@@ -34,6 +35,7 @@ const Input = ({
 				{label}
 			</Text>
 			<StyledInput
+				className={className}
 				value={text}
 				onChange={handleChange}
 				isDarkMode={isDarkMode}
@@ -49,7 +51,8 @@ Input.propTypes = {
 	value: PropTypes.oneOfType([
 		PropTypes.string,PropTypes.number,
 	]),
-	space: PropTypes.number
+	space: PropTypes.number,
+	className: PropTypes.string
 }
 
 export default Input

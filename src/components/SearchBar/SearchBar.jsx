@@ -1,18 +1,26 @@
 import React, { useEffect, useState } from 'react'
 
+import { ReactComponent as CrossIcon } from 'assets/icons/cross.svg'
 import Input from 'components/common/ui/Input'
 import debounce from 'helpers/debounce'
 import { useQuery } from 'react-query'
 import api from 'api'
-import { ResultsContainer } from './SearchBar.styles'
+import { Results, ResultsContainer } from './SearchBar.styles'
 import ListItem from 'components/common/ListItem'
 import Link from 'components/common/ui/Link'
-import useComponentVisible from 'hooks/useComponentVisible'
+import Icon from 'components/common/ui/Icon'
 
 const SearchBar = () => {
-	const [ref, isVisible, setIsVisible] = useComponentVisible()
-	const [query, setQuery] = useState()
-	const { data, refetch, isFetching } = useQuery(
+	const [isVisible, setIsVisible] = useState(false)
+	const [query, setQuery] = useState('')
+
+	const { 
+		data, 
+		refetch, 
+		isFetching, 
+		isFetched,
+		remove 
+	} = useQuery(
 		['search', query],
 		() => api('/search/multi', {}, { query }),
 		{ enabled: false }
@@ -20,15 +28,16 @@ const SearchBar = () => {
 
 	useEffect(() => {
 		if (query) {
+			setIsVisible(true)
 			refetch()
 		}
 	}, [query])
 
 	useEffect(() => {
-		if(isFetching || data) {
-			setIsVisible(true)
+		if(!isVisible && (isFetching || isFetched)) {
+			remove()
 		}
-	}, [isFetching, data])
+	}, [isVisible])
 
 	const render = () => {
 		if (!data)
@@ -48,25 +57,37 @@ const SearchBar = () => {
 	}
 
 	return (
-		<div>
+		<>
 			<Input
 				placeholder='Search movies, tv shows or person'
 				onChange={debounce(setQuery, 1000)}
 			/>
 			{isVisible && (
-				<ResultsContainer ref={ref}>
+				<ResultsContainer>
 					<div>
-						{render()}
-					</div>
-					<Link
-						align='right'
-						ml={-3}
-					>
+						<Icon 
+							color='textTertiary'
+							my={3}
+							ml='auto'
+							mr={3}
+							onClick={() => setIsVisible(false)}
+						>
+							<CrossIcon/>
+						</Icon>
+						<Results>
+							{render()}
+						</Results>
+						<Link
+							align='right'
+							mr={3}
+							p={3}
+						>
 						View all results
-					</Link>
+						</Link>
+					</div>
 				</ResultsContainer>
 			)}
-		</div>
+		</>
 	)
 }
 
