@@ -36,10 +36,10 @@ const Modal = ({
 						borderRadius: theme.borderRadius,
 						background: theme.colors.appBg,
           
-						left: styles.width ? '50%' : undefined,
-						top: styles.height ? '50%' : undefined,
-						transform: `translate(${styles.width ? '-50%' : '0'}, 
-            ${styles.height ? '-50%' : '0'})`,
+						left: styles?.width ? '50%' : undefined,
+						top: styles?.height ? '50%' : undefined,
+						transform: `translate(${styles?.width ? '-50%' : '0'}, 
+            ${styles?.height ? '-50%' : '0'})`,
 						...styles,
 					}
 				}}

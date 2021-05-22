@@ -7,7 +7,7 @@ export const Background = styled.div`
   height: ${({ height }) => isNaN(height) ? height : (height + 'px')};
   width: ${({ width }) => isNaN(width) ? width : (width + 'px') };
   min-width: ${({ width }) => isNaN(width) ? width : (width + 'px') };
-  border-radius: ${theme.borderRadius};
+  border-radius: ${({ circle }) => circle ? '50%' : theme.borderRadius};
   background-position: center;
   background-size: cover;
 

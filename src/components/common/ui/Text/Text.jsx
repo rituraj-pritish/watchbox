@@ -10,6 +10,7 @@ const Text = ({
 	italic = false,
 	align = 'left',
 	color = 'textSecondary',
+	elRef,
 	...rest
 }) => {
 	return (
@@ -19,6 +20,7 @@ const Text = ({
 			fontStyle={italic ? 'italic' : undefined}
 			fontSize={size}
 			color={color}
+			ref={elRef}
 
 			{...rest}
 		>
@@ -28,6 +30,7 @@ const Text = ({
 }
 
 Text.propTypes = {
+	elRef: PropTypes.object,
 	children: PropTypes.node.isRequired,
 	size: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
 	bold: PropTypes.bool,
