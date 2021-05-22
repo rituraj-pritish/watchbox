@@ -12,6 +12,7 @@ import FlexBox from '../ui/FlexBox'
 import Genres from '../Genres'
 import Image from '../ui/Image'
 import POSTER_SIZES from 'constants/posterSizes'
+import TrailerModal from 'components/TrailerModal'
 
 const Card = ({
 	id,
@@ -20,6 +21,7 @@ const Card = ({
 	poster_path,
 	vote_average,
 	release_date,
+	media_type,
 	genre_ids
 }) => {
 	const { isDarkMode } = useTheme()
@@ -42,8 +44,12 @@ const Card = ({
 			<Overlay isDarkMode={isDarkMode}>
 				<div />
 
-				<PlayIcon />
-
+				<TrailerModal
+					trigger={<PlayIcon />}
+					mediaType={media_type}
+					mediaId={id}
+				/>
+				
 				<Genres
 					ids={genre_ids}
 					vertical
