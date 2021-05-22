@@ -13,7 +13,7 @@ import useTheme from 'hooks/useTheme'
 const Dropdown = ({ options, onChange, value: initialValue, label }) => {
 	const { isDarkMode } = useTheme()
 	const [selected, setSelected] = useState(initialValue)
-	const [ref, showOptions, setShowOptions] = useComponentVisible(true)
+	const [ref, showOptions, setShowOptions] = useComponentVisible(false)
 
 	const valueLabelPairs = useMemo(
 		() =>
@@ -40,7 +40,7 @@ const Dropdown = ({ options, onChange, value: initialValue, label }) => {
 				onClick={() => setShowOptions(!showOptions)}
 				isDarkMode={isDarkMode}
 			>
-				<Text color='tertiary'>{label}</Text>
+				<Text color='textTdertiary'>{label}</Text>
 				<FlexBox alignItems='center'>
 					<Text
 						ml={3}

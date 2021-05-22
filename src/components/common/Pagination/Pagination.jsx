@@ -9,7 +9,8 @@ import { Number, StyledIcon } from './Pagination.styles'
 const Pagination = ({ 
 	initialPage = 1, 
 	totalPages, 
-	pageRange = 5 
+	pageRange = 5,
+	...rest 
 }) => {
 	const [currentPage, setCurrentPage] = useState(initialPage)
 
@@ -38,7 +39,10 @@ const Pagination = ({
 	}
 
 	return (
-		<FlexBox>
+		<FlexBox
+			justifyContent='center'
+			{...rest}
+		>
 			<StyledIcon
 				disabled={currentPage === 1}
 				color='primary'

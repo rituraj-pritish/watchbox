@@ -27,6 +27,7 @@ export const Menu = styled.div`
   background: ${({ theme }) => theme.colors.tertiary};
   border-radius: ${theme.borderRadius};
   padding: ${theme.spacing(0.3)} 0;
+  z-index: 5;
 `
 
 export const Option = styled.div`
