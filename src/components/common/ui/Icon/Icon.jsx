@@ -8,6 +8,7 @@ const Icon = ({
 	color,
 	className,
 	onClick,
+	disabled,
 	...rest
 }) => {
 	return (
@@ -16,6 +17,7 @@ const Icon = ({
 			color={color}
 			className={className}
 			onClick={onClick}
+			disabled={disabled}
 			{...rest}
 
 			isClickable={!!onClick}

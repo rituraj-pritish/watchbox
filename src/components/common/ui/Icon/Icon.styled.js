@@ -8,6 +8,8 @@ export const Wrapper = styled.div`
   height: ${({ size }) => size + 'px'};
   ${centerElement};
   cursor: ${({ isClickable }) => isClickable && 'pointer'};
+  pointer-events: ${({ disabled }) => disabled && 'none'};
+  opacity: ${({ disabled }) => disabled && 0.8};
 
   svg {
     width: 100%;
