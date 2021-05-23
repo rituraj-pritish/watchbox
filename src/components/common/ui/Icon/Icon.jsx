@@ -9,6 +9,7 @@ const Icon = ({
 	className,
 	onClick,
 	disabled,
+	circle,
 	...rest
 }) => {
 	return (
@@ -18,6 +19,7 @@ const Icon = ({
 			className={className}
 			onClick={onClick}
 			disabled={disabled}
+			circle={circle}
 			{...rest}
 
 			isClickable={!!onClick}
@@ -32,7 +34,9 @@ Icon.propTypes = {
 	children: PropTypes.node.isRequired,
 	size: PropTypes.number,
 	color: PropTypes.string,
-	onClick: PropTypes.func
+	onClick: PropTypes.func,
+	disabled: PropTypes.bool,
+	circle: PropTypes.bool
 }
 
 export default Icon

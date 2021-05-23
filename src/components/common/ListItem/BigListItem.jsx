@@ -9,6 +9,8 @@ import Image from '../ui/Image'
 import POSTER_SIZES from 'constants/posterSizes'
 import Link from '../ui/Link'
 import Skeleton from '../ui/Skeleton'
+import MediaActions from 'components/MediaActions'
+import FlexBox from '../ui/FlexBox'
 
 const DATE_FORMAT = 'DD MMM YYYY'
 
@@ -17,6 +19,7 @@ const BigListItem = ({
 	title,
 	release_date,
 	overview,
+	media_type,
 	genre_ids,
 	id
 }) => {
@@ -47,6 +50,14 @@ const BigListItem = ({
 					height={16}
 					mt={3}
 					mr={3}
+				/>
+				<Skeleton
+					mt={3 }
+					count={4}
+					mr={3}
+					circle
+					height={45}
+					width={45}
 				/>
 			</RightSection>
 		</Wrapper>
@@ -80,6 +91,11 @@ const BigListItem = ({
 					{overview}
 				</Text>
 				<Genres ids={genre_ids} />
+				<FlexBox mb={3}/>
+				<MediaActions
+					mediaType={media_type}
+					mediaId={id}
+				/>
 			</RightSection>   
 		</Wrapper>
 	)

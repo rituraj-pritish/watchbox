@@ -20,13 +20,13 @@ export const Wrapper = styled.div`
   }
 
 
-  ${({ size, isClickable, theme }) => isClickable && css`
+  ${({ size, isClickable, theme, circle }) => isClickable && css`
       padding: ${theme.spacing(0.5)};
       cursor: pointer;
       width: fit-content;
       height: fit-content;
       background: ${theme.colors.tertiary};
-      border-radius: ${theme.borderRadius};
+      border-radius: ${circle ? '50%' : theme.borderRadius};
 
       &:hover {
         background: ${theme.colors.tertiaryLight};
