@@ -11,8 +11,9 @@ import useTheme from 'hooks/useTheme'
 import FlexBox from '../ui/FlexBox'
 import Genres from '../Genres'
 import Image from '../ui/Image'
-import POSTER_SIZES from 'constants/posterSizes'
+import { POSTER_SIZES } from 'constants/imageSizes'
 import TrailerModal from 'components/TrailerModal'
+import { useHistory } from 'react-router'
 
 const Card = ({
 	id,
@@ -25,6 +26,7 @@ const Card = ({
 	genre_ids
 }) => {
 	const { isDarkMode } = useTheme()
+	const history = useHistory()
 
 	if (!id)
 		return (
@@ -40,7 +42,10 @@ const Card = ({
 		)
 
 	return (
-		<Wrapper isDarkMode={isDarkMode}>
+		<Wrapper
+			isDarkMode={isDarkMode}
+			onClick={() => history.push(`/${title ? 'movie' : 'tv'}/${id}`)}
+		>
 			<Overlay isDarkMode={isDarkMode}>
 				<div />
 
@@ -49,7 +54,7 @@ const Card = ({
 					mediaType={title ? 'movie' : 'tv'}
 					mediaId={id}
 				/>
-				
+
 				<Genres
 					ids={genre_ids}
 					vertical

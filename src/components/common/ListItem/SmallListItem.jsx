@@ -5,7 +5,7 @@ import { RightSection, WrapperSmall } from './ListItem.styles'
 import Text from '../ui/Text'
 import moment from 'moment'
 import Image from '../ui/Image'
-import POSTER_SIZES from 'constants/posterSizes'
+import POSTER_SIZES from 'constants/imageSizes'
 import Link from '../ui/Link'
 import Skeleton from '../ui/Skeleton'
 

@@ -9,7 +9,8 @@ import Login from 'components/Login'
 import useAuthentication from 'hooks/useAuthentication'
 import Skeleton from 'components/common/ui/Skeleton'
 import FlexBox from 'components/common/ui/FlexBox'
-import Home from 'modules/Home/Home'
+import Home from 'modules/home/Home'
+import Movie from 'modules/movies/Movie'
 
 const App = () => {
 	const { checkIfAuthenticated, isLoading, isAuthenticated } = useAuthentication()
@@ -20,8 +21,14 @@ const App = () => {
 	const commonRoutes = (
 		<>
 			<Route
+				exact
 				path='/'
 				component={Home}
+			/>
+			<Route
+				exact
+				path='/movie/:movieId'
+				component={Movie}
 			/>
 		</>
 	)

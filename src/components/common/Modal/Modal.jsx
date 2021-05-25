@@ -17,7 +17,13 @@ const Modal = ({
 
 	return (
 		<>
-			<div onClick={() => setIsOpen(true)}>{trigger}</div>
+			<div
+				onClick={(e) => {
+					setIsOpen(true)
+					e.stopPropagation()
+				}}
+			>{trigger}
+			</div>
 			<ReactModal
 				isOpen={isOpen}
 				onRequestClose={() => {

@@ -8,9 +8,11 @@ import Skeleton from '../ui/Skeleton'
 import Text from '../ui/Text'
 
 import { Content, Wrapper } from './Navbar.styles'
+import useTheme from 'hooks/useTheme'
 
 const Navbar = () => {
 	const { isAuthenticated, isLoading, logout } = useAuthentication()
+	const { isDarkMode } = useTheme()
 
 	const render = () => {
 		if(isLoading) return (
@@ -49,7 +51,7 @@ const Navbar = () => {
 	}
 
 	return (
-		<Wrapper>
+		<Wrapper isDarkMode={isDarkMode}>
 			<Content>
 				<Link
 					to='/'

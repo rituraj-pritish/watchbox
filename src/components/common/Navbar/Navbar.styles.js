@@ -6,11 +6,16 @@ export const Wrapper = styled.nav`
   background: ${({ theme }) => theme.colors.layout};
   display: flex;
   justify-content: center;
-  padding: 0 ${theme.spacing()};
   height: 50px;
+  position: sticky;
+  top: 0;
+  left: 0;
+  z-index: 10;
+  box-shadow: ${({ isDarkMode }) => `0 0 15px 0px ${isDarkMode ? '#111111' : '#828282'}`};
 `
 
 export const Content = styled.div`
+  padding: 0 ${theme.spacing()};
   max-width: ${theme.maxWidth};
   height: 100%;
   width: 100%;
