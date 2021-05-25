@@ -54,7 +54,6 @@ Modal.propTypes = {
 	trigger: PropTypes.node.isRequired,
 	styles: PropTypes.object,
 	children: PropTypes.node.isRequired,
-	isOpen: PropTypes.bool.isRequired,
 	onRequestClose: PropTypes.func,
 	onOpen: PropTypes.func,
 	onClose: PropTypes.func,

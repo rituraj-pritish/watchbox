@@ -1,17 +1,9 @@
-import api from 'api'
 import { useQuery } from 'react-query'
-
-const getQueryKey = path => {
-	const key = path.split('/')
-	key.shift()
-	return key
-}
 
 const options = {
 	enabled: false
 }
 
-export default (paths) => {
-	return paths
-		.map(path => useQuery(getQueryKey(path), () => api(path), options))
+export default (params) => {
+	return params.map(({ key, request }) => useQuery(key, request, options))
 }

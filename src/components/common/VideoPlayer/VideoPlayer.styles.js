@@ -19,4 +19,7 @@ export const StyledSkeleton = styled(Skeleton)`
   bottom: 0;
   width: calc(100% + 2px);
   height: calc(100% + 2px);
+  background-color: ${({ theme }) => theme.colors.skeleton};
+  background-image: ${({ theme }) => 
+		`linear-gradient( 90deg,${theme.colors.skeleton},${theme.colors.skeletonHighlight},${theme.colors.skeleton} )`};
 `

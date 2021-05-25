@@ -5,10 +5,10 @@ import Carousel from './Carousel'
 import usePositionOffset from 'hooks/usePositionOffset'
 import useCarouselData from 'hooks/useCarouselData'
 
-const CarouselContainer = ({ path, toggleOptions, ...rest }) => {
+const CarouselContainer = ({ request, toggleOptions, ...rest }) => {
 	const [ref, isTriggered] = usePositionOffset(300)
 	const queries = useCarouselData(
-		path ? [path] : toggleOptions.map(({ value }) => value)
+		request ? [request] : toggleOptions
 	)
 	const [selectedOptionIndex, setSelectedOptionIndex] = useState(0)
 	const [data, setData] = useState(null)
@@ -44,7 +44,7 @@ const CarouselContainer = ({ path, toggleOptions, ...rest }) => {
 }
 
 CarouselContainer.propTypes = {
-	path: PropTypes.string,
+	request: PropTypes.object,
 	toggleOptions: PropTypes.array
 }
 

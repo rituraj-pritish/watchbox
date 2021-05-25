@@ -1,16 +1,16 @@
 import React from 'react'
 import PropTypes from 'prop-types'
+import { useQuery } from 'react-query'
 
 import Modal from 'components/common/Modal'
 import Text from 'components/common/ui/Text'
 import VideoPlayer from 'components/common/VideoPlayer'
-import { useQuery } from 'react-query'
-import api from 'api'
+import { getVideos } from 'api/endpoints/media'
 
 const TrailerModal = ({ trigger, mediaType, mediaId }) => {
 	const { data, refetch } = useQuery(
 		[mediaType, mediaId, 'videos'],
-		() => api(`/${mediaType}/${mediaId}/videos`),
+		() => getVideos(mediaType, mediaId),
 		{ enabled: false }
 	)
 

@@ -35,6 +35,7 @@ const Carousel = ({ title, data, toggleOptions, onToggleChange, containerRef }) 
 			<Icon
 				className='slick-arrow slick-prev'
 				color='white'
+				size={30}
 			>
 				<ChevronLeft/>
 			</Icon>
@@ -103,7 +104,7 @@ const Carousel = ({ title, data, toggleOptions, onToggleChange, containerRef }) 
 
 Carousel.propTypes = {
 	title: PropTypes.string.isRequired,
-	data: PropTypes.array.isRequired,
+	data: PropTypes.array,
 	toggleOptions: PropTypes.array,
 	onToggleChange: PropTypes.func,
 	containerRef: PropTypes.any.isRequired

@@ -1,5 +1,5 @@
 import React, { useEffect } from 'react'
-import { Route } from 'react-router'
+import { Route, Switch } from 'react-router'
 
 import Providers from './Providers'
 import Navbar from 'components/common/Navbar'
@@ -9,12 +9,22 @@ import Login from 'components/Login'
 import useAuthentication from 'hooks/useAuthentication'
 import Skeleton from 'components/common/ui/Skeleton'
 import FlexBox from 'components/common/ui/FlexBox'
+import Home from 'modules/Home/Home'
 
 const App = () => {
 	const { checkIfAuthenticated, isLoading, isAuthenticated } = useAuthentication()
 	useEffect(() => {
 		checkIfAuthenticated()	
 	}, [])
+
+	const commonRoutes = (
+		<>
+			<Route
+				path='/'
+				component={Home}
+			/>
+		</>
+	)
 
 	const render = () => {
 		if(isLoading) return (
@@ -33,14 +43,18 @@ const App = () => {
 
 		if(isAuthenticated) return (
 			<>
+				{commonRoutes}
 			</>
 		)
 		
 		return (
-			<Route
-				path='/login'
-				component={Login}
-			/>
+			<>
+				{commonRoutes}
+				<Route
+					path='/login'
+					component={Login}
+				/>
+			</>
 		)
 	}
 
@@ -49,7 +63,9 @@ const App = () => {
 			<AppWrapper>
 				<Navbar/>
 				<AppContent>
-					{render()}
+					<Switch>
+						{render()}
+					</Switch>
 				</AppContent>
 				<Footer/>
 			</AppWrapper>

@@ -17,6 +17,7 @@ export default (offset = 0) => {
 
 	useEffect(() => {
 		window.addEventListener('scroll', onScroll)
+		onScroll()
 		return function cleanup () {
 			window.removeEventListener('scroll', onScroll)
 		}

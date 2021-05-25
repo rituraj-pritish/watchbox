@@ -28,7 +28,7 @@ const Card = ({
 
 	if (!id)
 		return (
-			<Wrapper>
+			<Wrapper isDarkMode={isDarkMode}>
 				<SkeletonWrapper>
 					<Skeleton
 						height='100%'
@@ -46,7 +46,7 @@ const Card = ({
 
 				<TrailerModal
 					trigger={<PlayIcon />}
-					mediaType={media_type}
+					mediaType={title ? 'movie' : 'tv'}
 					mediaId={id}
 				/>
 				
@@ -72,7 +72,7 @@ const Card = ({
 }
 
 Card.propTypes = {
-	id: PropTypes.string,
+	id: PropTypes.number,
 	title: PropTypes.string,
 	name: PropTypes.string,
 	poster_path: PropTypes.string,

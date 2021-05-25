@@ -27,7 +27,7 @@ const VideoPlayer = ({
 }
 
 VideoPlayer.propTypes = {
-	videoKey: PropTypes.string.isRequired,
+	videoKey: PropTypes.string,
 }
 
 export default VideoPlayer
