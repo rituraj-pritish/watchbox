@@ -11,6 +11,7 @@ import Skeleton from 'components/common/ui/Skeleton'
 import FlexBox from 'components/common/ui/FlexBox'
 import Home from 'modules/home/Home'
 import Movie from 'modules/movies/Movie'
+import CastAndCrew from 'components/CastAndCrew'
 
 const App = () => {
 	const { checkIfAuthenticated, isLoading, isAuthenticated } = useAuthentication()
@@ -29,6 +30,11 @@ const App = () => {
 				exact
 				path='/movie/:movieId'
 				component={Movie}
+			/>
+			<Route
+				exact
+				path='/movie/:movieId/cast&crew'
+				component={CastAndCrew}
 			/>
 		</>
 	)

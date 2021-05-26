@@ -16,7 +16,7 @@ const PageTitle = ({
 		<FlexBox flexDirection='column'>
 			<FlexBox>
 				{
-					ancestors.map(({ text, link }, index) => (
+					ancestors.map(({ text, path }, index) => (
 						<FlexBox
 							key={text}
 							alignItems='center'
@@ -33,7 +33,7 @@ const PageTitle = ({
 								)
 							}
 							<Link
-								to={link}
+								to={path}
 							>
 								{text}
 							</Link>
@@ -52,7 +52,7 @@ const PageTitle = ({
 				}
 			</FlexBox>
 			<Text
-				mt={1}
+				mt={2}
 				size={5}
 				bold
 				color='primary'
@@ -67,7 +67,7 @@ PageTitle.propTypes = {
 	title: PropTypes.string.isRequired,
 	ancestors: PropTypes.arrayOf(PropTypes.shape({
 		text: PropTypes.string.isRequired,
-		link: PropTypes.string.isRequired,
+		path: PropTypes.string.isRequired,
 	}))
 }
 

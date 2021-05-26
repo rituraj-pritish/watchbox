@@ -1,8 +1,11 @@
 import { getPopularMovies } from 'api/endpoints/movies'
 import Carousel from 'components/common/Carousel'
+import useTitle from 'hooks/useTitle'
 import React from 'react'
 
 const Home = () => {
+	useTitle('Home')
+	
 	return (
 		<div>
 			<Carousel

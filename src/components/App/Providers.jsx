@@ -10,7 +10,14 @@ import GlobalStyle from 'theme/globalStyle'
 import useTheme from 'hooks/useTheme'
 import { QueryClient, QueryClientProvider } from 'react-query'
 
-const queryClient = new QueryClient()
+const queryClient = new QueryClient({
+	defaultOptions: {
+		queries: {
+			refetchOnMount: false,
+			refetchOnWindowFocus: false
+		}
+	}
+})
 
 const Providers = ({ children }) => {
 	const { isDarkMode } = useTheme()

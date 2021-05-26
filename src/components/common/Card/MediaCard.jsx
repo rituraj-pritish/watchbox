@@ -15,14 +15,13 @@ import { POSTER_SIZES } from 'constants/imageSizes'
 import TrailerModal from 'components/TrailerModal'
 import { useHistory } from 'react-router'
 
-const Card = ({
+const MediaCard = ({
 	id,
 	title,
 	name,
 	poster_path,
 	vote_average,
 	release_date,
-	media_type,
 	genre_ids
 }) => {
 	const { isDarkMode } = useTheme()
@@ -66,17 +65,22 @@ const Card = ({
 				imageSize={POSTER_SIZES.MEDIUM}
 			/>
 			<FlexBox
-				height={36}
+				height={40}
 				mt={2}
 				alignItems='center'
 			>
-				<Text bold>{title || name}</Text>
+				<Text
+					maxLines={2}
+					bold
+				>
+					{title || name}
+				</Text>
 			</FlexBox>
 		</Wrapper>
 	)
 }
 
-Card.propTypes = {
+MediaCard.propTypes = {
 	id: PropTypes.number,
 	title: PropTypes.string,
 	name: PropTypes.string,
@@ -86,4 +90,4 @@ Card.propTypes = {
 	genre_ids: PropTypes.arrayOf(PropTypes.number)
 }
 
-export default Card
+export default MediaCard

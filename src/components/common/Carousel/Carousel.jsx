@@ -12,8 +12,17 @@ import Text from '../ui/Text'
 import Toggle from '../Toggle'
 import FlexBox from '../ui/FlexBox'
 import Icon from '../ui/Icon'
+import Link from '../ui/Link'
 
-const Carousel = ({ title, data, toggleOptions, onToggleChange, containerRef }) => {
+const Carousel = ({ 
+	title, 
+	data, 
+	toggleOptions, 
+	onToggleChange, 
+	containerRef, 
+	person,
+	viewAllLink
+}) => {
 	const settings = {
 		swipeToSlide: true,
 		arrows: data ? true : false,
@@ -70,21 +79,27 @@ const Carousel = ({ title, data, toggleOptions, onToggleChange, containerRef }) 
 			<div/>
 			<FlexBox
 				alignItems='center'
+				justifyContent='space-between'
 				mb={3}
 			>
-				<Text
-					bold
-					color='primary'
-					size={4}
-					mr={4}
-				>
-					{title}
-				</Text>
-				{toggleOptions && (
-					<Toggle
-						options={toggleOptions}
-						onChange={onToggleChange}
-					/>
+				<div>
+					<Text
+						bold
+						color='primary'
+						size={4}
+						mr={4}
+					>
+						{title}
+					</Text>
+					{toggleOptions && (
+						<Toggle
+							options={toggleOptions}
+							onChange={onToggleChange}
+						/>
+					)}
+				</div>
+				{viewAllLink && (
+					<Link to={viewAllLink}>View all</Link>
 				)}
 			</FlexBox>
 			<SliderWrapper>
@@ -92,6 +107,7 @@ const Carousel = ({ title, data, toggleOptions, onToggleChange, containerRef }) 
 					{!data && new Array(5).fill(0).map((_, idx) => <Card key={idx} />)}
 					{data && data.map((item) => (
 						<Card
+							person={person}
 							key={item.id}
 							{...item}
 						/>)
@@ -107,7 +123,9 @@ Carousel.propTypes = {
 	data: PropTypes.array,
 	toggleOptions: PropTypes.array,
 	onToggleChange: PropTypes.func,
-	containerRef: PropTypes.any.isRequired
+	containerRef: PropTypes.any.isRequired,
+	person: PropTypes.bool,
+	viewAllLink: PropTypes.string,
 }
 
 export default Carousel
