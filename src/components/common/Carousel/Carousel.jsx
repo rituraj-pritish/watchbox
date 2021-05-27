@@ -20,7 +20,6 @@ const Carousel = ({
 	toggleOptions, 
 	onToggleChange, 
 	containerRef, 
-	person,
 	viewAllLink
 }) => {
 	const settings = {
@@ -107,7 +106,6 @@ const Carousel = ({
 					{!data && new Array(5).fill(0).map((_, idx) => <Card key={idx} />)}
 					{data && data.map((item) => (
 						<Card
-							person={person}
 							key={item.id}
 							{...item}
 						/>)
@@ -124,7 +122,6 @@ Carousel.propTypes = {
 	toggleOptions: PropTypes.array,
 	onToggleChange: PropTypes.func,
 	containerRef: PropTypes.any.isRequired,
-	person: PropTypes.bool,
 	viewAllLink: PropTypes.string,
 }
 

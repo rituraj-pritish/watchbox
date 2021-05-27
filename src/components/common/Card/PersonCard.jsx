@@ -1,5 +1,6 @@
 import React from 'react'
 import PropTypes from 'prop-types'
+import { useHistory } from 'react-router'
 
 import { SkeletonWrapper, Wrapper } from './Card.styles'
 import useTheme from 'hooks/useTheme'
@@ -9,6 +10,7 @@ import FlexBox from '../ui/FlexBox'
 import Text from '../ui/Text'
 
 const PersonCard = ({ id, profile_path, name, character }) => {
+	const history = useHistory()
 	const { isDarkMode } = useTheme()
 
 	if (!id)
@@ -25,17 +27,26 @@ const PersonCard = ({ id, profile_path, name, character }) => {
 		)
 
 	return (
-		<Wrapper isDarkMode={isDarkMode}>
+		<Wrapper
+			isDarkMode={isDarkMode}
+			onClick={() => history.push(`/person/${id}`)}
+		>
 			<Image url={profile_path} />
 			<FlexBox
 				height={40}
 				mt={2}
 				flexDirection='column'
 			>
-				<Text bold>{name}</Text>
+				<Text
+					bold
+					maxLines={1}
+				>
+					{name}
+				</Text>
 				<Text
 					italic
 					size={1}
+					maxLines={1}
 				> 
           as {character}
 				</Text>
@@ -45,7 +56,10 @@ const PersonCard = ({ id, profile_path, name, character }) => {
 }
 
 PersonCard.propTypes = {
-	id: PropTypes.number
+	id: PropTypes.number,
+	profile_path: PropTypes.string,
+	name: PropTypes.string,
+	character: PropTypes.string,
 }
 
 export default PersonCard

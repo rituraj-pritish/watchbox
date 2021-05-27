@@ -1072,6 +1072,5 @@ export const person = () => (
 	<CarouselMain
 		title='Cast'
 		data={CAST}
-		person
 	/>
 )

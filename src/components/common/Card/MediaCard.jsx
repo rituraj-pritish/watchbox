@@ -47,7 +47,6 @@ const MediaCard = ({
 		>
 			<Overlay isDarkMode={isDarkMode}>
 				<div />
-
 				<TrailerModal
 					trigger={<PlayIcon />}
 					mediaType={title ? 'movie' : 'tv'}

@@ -16,13 +16,11 @@ const Modal = ({
 	const { theme, isDarkMode } = useTheme()
 
 	return (
-		<>
+		<div onClick={e => e.stopPropagation()}>
 			<div
-				onClick={(e) => {
-					setIsOpen(true)
-					e.stopPropagation()
-				}}
-			>{trigger}
+				onClick={() => setIsOpen(true)}
+			>
+				{trigger}
 			</div>
 			<ReactModal
 				isOpen={isOpen}
@@ -52,7 +50,7 @@ const Modal = ({
 			>
 				{children}
 			</ReactModal>
-		</>
+		</div>
 	)
 }
 

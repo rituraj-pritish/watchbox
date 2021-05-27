@@ -1,21 +1,29 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import PropTypes from 'prop-types'
+import { useHistory } from 'react-router'
 
 import { ReactComponent as ChevronRight } from 'assets/icons/chevron-right.svg'
 import { ReactComponent as ChevronLeft } from 'assets/icons/chevron-left.svg'
 import FlexBox from '../ui/FlexBox'
 import { Number, StyledIcon } from './Pagination.styles'
+import useUrlParams from 'hooks/useUrlParams'
 
-const Pagination = ({ 
-	initialPage = 1, 
+const Pagination = ({
 	totalPages, 
 	pageRange = 5,
 	...rest 
 }) => {
-	const [currentPage, setCurrentPage] = useState(initialPage)
+	const history = useHistory()
+	const { p: page } = useUrlParams(['p'])
+	const [currentPage, setCurrentPage] = useState(page ? parseInt(page) : 1)
 
 	const incrementPage = () => setCurrentPage((p) => p + 1)
 	const decrementPage = () => setCurrentPage((p) => p - 1)
+
+	useEffect(() => {
+		const { pathname } = history.location
+		history.push(`${pathname}?p=${currentPage}`)
+	}, [currentPage])
 
 	const breakEl = <Number disabled>...</Number>
 
@@ -23,6 +31,10 @@ const Pagination = ({
 	const showEndBreak = currentPage <= (totalPages - pageRange)
 
 	const getPageRange = () => {
+		if(totalPages < pageRange) {
+			return Array.from({ length: totalPages }, (_, i) => i + 1)
+		}
+
 		if(currentPage <= pageRange && currentPage >= 1) {
 			return Array.from({ length: pageRange }, (_, i) => i + 1)
 		} else if(currentPage >= (totalPages - pageRange) && currentPage <= totalPages) {

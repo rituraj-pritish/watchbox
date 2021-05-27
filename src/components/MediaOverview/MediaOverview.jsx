@@ -21,7 +21,8 @@ const MediaOverview = ({
 	id,
 	genres,
 	runtime,
-	release_date
+	release_date,
+	number_of_seasons
 }) => {
 	if(!id) {
 		return <Skeleton height={400}/>
@@ -55,7 +56,8 @@ const MediaOverview = ({
 					>
 						{title || name}
 					</Text>
-					<Text>{minutesToHoursMinutes(runtime)}</Text>
+					{runtime && <Text>{minutesToHoursMinutes(runtime)}</Text>}
+					{number_of_seasons && <Text>{number_of_seasons} Seasons</Text>}
 					<Text
 						italic
 						size={3}
@@ -65,6 +67,7 @@ const MediaOverview = ({
 					</Text>
 					<Text 
 						my={3}
+						maxLines={6}
 					>
 						{overview}
 					</Text>

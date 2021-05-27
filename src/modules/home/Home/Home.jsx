@@ -1,4 +1,5 @@
 import { getPopularMovies } from 'api/endpoints/movies'
+import { getPopularTv } from 'api/endpoints/tv'
 import Carousel from 'components/common/Carousel'
 import useTitle from 'hooks/useTitle'
 import React from 'react'
@@ -11,7 +12,7 @@ const Home = () => {
 			<Carousel
 				title='Popular'
 				request={{
-					request: getPopularMovies,
+					request: getPopularTv,
 					key: ['movies', 'popular']
 				}}
 			/>

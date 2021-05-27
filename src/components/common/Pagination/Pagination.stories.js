@@ -7,7 +7,7 @@ export const pagination = () => (
 	<>
 		<Pagination
 			initialPage={2}
-			totalPages={15}
+			totalPages={2}
 		/>
 	</>
 )
