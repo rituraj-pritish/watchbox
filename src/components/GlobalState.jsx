@@ -1,13 +1,19 @@
 import { createState } from '@hookstate/core'
-import { getGenresList } from 'api/endpoints/genre'
-import { useQuery } from 'react-query'
+import { useQueries } from 'react-query'
+
+import { getMovieGenres, getTvGenres } from 'api/endpoints/genre'
 
 export const GENRE_LIST = createState({})
 
 const GlobalState = () => {
-	useQuery('genres', getGenresList, {
-		onSuccess: data => {
-			const genres = data.genres.reduce(
+	const results = useQueries([
+		{ queryKey: ['genres', 'movies'], queryFn: getMovieGenres },
+		{ queryKey: ['genres', 'tvs'], queryFn: getTvGenres }
+	])
+
+	if (results.every(({ isSuccess, isLoading }) => isSuccess && !isLoading)) {
+		const genres = [...results[0].data.genres, ...results[1].data.genres]
+			.reduce(
 				(acc, current) => ({
 					...acc,
 					[current.id]: current.name
@@ -15,9 +21,8 @@ const GlobalState = () => {
 				{}
 			)
 
-			GENRE_LIST.set(genres)
-		}
-	})
+		GENRE_LIST.set(genres)
+	}
 
 	return null
 }

@@ -40,7 +40,10 @@ const App = () => {
 			/>
 			<Route
 				exact
-				path={['/movie/:movieId/cast&crew', '/tv/:tvId/cast&crew']}
+				path={[
+					'/movie/:movieId/:creditType',
+					'/tv/:tvId/:creditType'
+				]}
 				component={CastAndCrew}
 			/>
 

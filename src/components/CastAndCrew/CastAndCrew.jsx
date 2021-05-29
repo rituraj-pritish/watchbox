@@ -7,10 +7,11 @@ import { getMovieDetails } from 'api/endpoints/movies'
 import { getTvDetails } from 'api/endpoints/tv'
 import useTitle from 'hooks/useTitle'
 import List from 'components/List'
+import { capitalize } from 'helpers/string'
 
 const CastAndCrew = () => {
 	const history = useHistory()
-	const { movieId, tvId } = useParams()
+	const { movieId, tvId, creditType } = useParams()
 	const mediaType = history.location.pathname.includes('movie')
 		? 'movie' : 'tv'
 	const mediaId = movieId || tvId
@@ -19,18 +20,20 @@ const CastAndCrew = () => {
 		[mediaType, mediaId],
 		() => mediaType === 'movie' ? getMovieDetails(mediaId) : getTvDetails(mediaId),
 	)
-	useTitle(`Cast & Crew - ${data?.title || data?.name}`)
+	useTitle(`${capitalize(creditType)} - ${data?.title || data?.name}`)
 
+	const listData = data?.credits?.[creditType]
+	
 	return (
 		<div>
 			<PageTitle
-				title='Cast & Crew'
+				title={creditType}
 				ancestors={[
-					{ text: data?.title || data?.name , path: `/${mediaType}/${mediaId}` }
+					{ title: data?.title || data?.name , path: `/${mediaType}/${mediaId}` }
 				]}
 			/>
 			<List 
-				data={data?.credits?.cast}
+				data={listData}
 				onlyGrid
 			/>
 		</div>

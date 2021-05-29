@@ -1,23 +1,24 @@
 import React from 'react'
 import userEvent from '@testing-library/user-event'
 
-import { render, screen, waitFor } from 'tests/utils'
+import { render, screen } from 'tests/utils'
 import Card from '..'
-import { media, cast } from '../Card.stories'
+import { MOVIE } from 'src/tests/mocks/movies.mock.js'
+import { PERSON } from 'src/tests/mocks/person.mock.js'
 
 describe('Card tests', () => {
 	test('Clicking on movie changes to movie route', () => {
-		const { history } = render(<Card {...media}/>)
+		const { history } = render(<Card {...MOVIE}/>)
 
-		userEvent.click(screen.getByTestId(media.id))
-		expect(history.location.pathname).toBe(`/movie/${media.id}`)
+		userEvent.click(screen.getByTestId(MOVIE.id))
+		expect(history.location.pathname).toBe(`/movie/${MOVIE.id}`)
 	})
 
 	test('Clicking on person changes to person route', () => {
-		const { history } = render(<Card {...cast}/>)
+		const { history } = render(<Card {...PERSON}/>)
     
-		userEvent.click(screen.getByTestId(cast.id))
-		expect(history.location.pathname).toBe(`/person/${cast.id}`)
+		userEvent.click(screen.getByTestId(PERSON.id))
+		expect(history.location.pathname).toBe(`/person/${PERSON.id}`)
 	})
 
 	test('Clicking on play icon does not change route' , async () => {

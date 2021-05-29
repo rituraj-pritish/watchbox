@@ -9,7 +9,7 @@ import { GENRE_LIST } from 'components/GlobalState'
 const Genres = ({ ids, vertical = false }) => {
 	const genreById = useState(GENRE_LIST).get()
 	const genres = ids?.map((id) => genreById[id])
-  
+
 	return (
 		<FlexBox 
 			flexDirection={vertical ? 'column' : 'row'}

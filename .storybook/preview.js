@@ -6,7 +6,7 @@ import ThemeToggle from '../src/components/common/ThemeToggle'
 import { marginBottom } from 'styled-system'
 
 if (typeof global.process === 'undefined') {
-  const { worker } = require('../src/mocks')
+  const { worker } = require('../src/tests/mocks')
   worker.start()
 }
 

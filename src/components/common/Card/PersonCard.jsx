@@ -9,7 +9,13 @@ import Image from '../ui/Image'
 import FlexBox from '../ui/FlexBox'
 import Text from '../ui/Text'
 
-const PersonCard = ({ id, profile_path, name, character }) => {
+const PersonCard = ({ 
+	id, 
+	profile_path, 
+	name, 
+	character,
+	job
+}) => {
 	const history = useHistory()
 	const { isDarkMode } = useTheme()
 
@@ -49,7 +55,7 @@ const PersonCard = ({ id, profile_path, name, character }) => {
 					size={1}
 					maxLines={1}
 				> 
-          as {character}
+					{character ? `as ${character}` : job}
 				</Text>
 			</FlexBox>
 		</Wrapper>

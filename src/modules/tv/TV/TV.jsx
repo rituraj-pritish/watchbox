@@ -23,7 +23,14 @@ const TV = () => {
 				title='Cast'
 				person
 				data={data?.credits?.cast}
-				viewAllLink={`/tv/${tvId}/cast&crew`}
+				viewAllLink={`/tv/${tvId}/cast`}
+			/>
+
+			<Carousel
+				title='Crew'
+				person
+				data={data?.credits?.crew}
+				viewAllLink={`/tv/${tvId}/crew`}
 			/>
 		</>
 	)

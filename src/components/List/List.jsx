@@ -11,6 +11,7 @@ import { GridContainer, ListContainer } from './List.styles'
 import Pagination from 'components/common/Pagination'
 import Dropdown from 'components/common/Dropdown'
 import useUrlParams from 'hooks/useUrlParams'
+import { getUniqueArrayOfObjects } from 'helpers/array'
 
 const LIST = 'LIST'
 const GRID = 'GRID'
@@ -26,7 +27,8 @@ const List = ({ data = [], onlyGrid = false }) => {
 	}, [page])
 	
 	const factor = (page || 1) - 1
-	const currentPageData = data.slice(
+	const uniqueData = getUniqueArrayOfObjects(data, 'id')
+	const currentPageData = uniqueData.slice(
 		factor * ITEMS_IN_PAGE,
 		factor * ITEMS_IN_PAGE + ITEMS_IN_PAGE
 	)

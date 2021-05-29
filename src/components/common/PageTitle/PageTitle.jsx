@@ -7,14 +7,11 @@ import FlexBox from '../ui/FlexBox'
 import Link from '../ui/Link'
 import Text from '../ui/Text'
 import Icon from '../ui/Icon'
-import { useHistory } from 'react-router'
 
 const PageTitle = ({
 	title,
 	ancestors
 }) => {
-	const history = useHistory()
-	console.log('his', history)
 	return (
 		<FlexBox flexDirection='column'>
 			<FlexBox>
@@ -59,6 +56,7 @@ const PageTitle = ({
 				size={5}
 				bold
 				color='primary'
+				capitalize
 			>
 				{title}
 			</Text>

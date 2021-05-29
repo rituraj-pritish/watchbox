@@ -27,26 +27,43 @@ const Pagination = ({
 
 	const breakEl = <Number disabled>...</Number>
 
-	const showStartBreak = currentPage > pageRange 
-	const showEndBreak = currentPage <= (totalPages - pageRange)
+	const halfRange = parseInt(pageRange / 2)
+
+	const showStartBreak = currentPage > halfRange &&
+		currentPage !== halfRange + 1 &&
+		totalPages > (pageRange + 1)
+	const showEndBreak = currentPage <= (totalPages - pageRange) &&
+		totalPages > (pageRange + 1)
+
+	const getNearValues = () => {
+		let diff = halfRange
+		return Array.from({ length: pageRange }, () => {
+			const val = currentPage - diff
+			diff -= 1
+			return val
+		})
+	}
 
 	const getPageRange = () => {
-		if(totalPages < pageRange) {
+		if(totalPages <= pageRange + 1) {
 			return Array.from({ length: totalPages }, (_, i) => i + 1)
 		}
 
-		if(currentPage <= pageRange && currentPage >= 1) {
-			return Array.from({ length: pageRange }, (_, i) => i + 1)
-		} else if(currentPage >= (totalPages - pageRange) && currentPage <= totalPages) {
+		if(showEndBreak && showStartBreak) {
+			if(currentPage - halfRange < halfRange + 1) {
+				return Array.from(({ length: pageRange }), (_, i) => halfRange + 1 + i)
+			}
+
+			return getNearValues()
+		} else if(showStartBreak) {
 			return Array.from({ length: pageRange }, (_, i) => totalPages - i)
-				.sort((a,b) => a - b)
-		}	else {
-			let diff = parseInt(pageRange / 2)
-			return Array.from({ length: pageRange }, () => {
-				const val = currentPage - diff
-				diff -= 1
-				return val
-			})
+				.reverse()
+		} else if(showEndBreak) {
+			if(currentPage - (parseInt(pageRange / 2)) < 1) {
+				return Array.from({ length: pageRange }, (_, i) => i + 1)
+			}
+
+			return getNearValues()
 		}
 	}
 
