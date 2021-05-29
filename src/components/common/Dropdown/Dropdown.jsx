@@ -10,7 +10,7 @@ import FlexBox from '../ui/FlexBox'
 import Icon from '../ui/Icon'
 import useTheme from 'hooks/useTheme'
 
-const Dropdown = ({ options, onChange, value: initialValue, label }) => {
+const Dropdown = ({ options, onChange, value: initialValue, label, ...rest }) => {
 	const { isDarkMode } = useTheme()
 	const [selected, setSelected] = useState(initialValue)
 	const [ref, showOptions, setShowOptions] = useComponentVisible(false)
@@ -35,7 +35,7 @@ const Dropdown = ({ options, onChange, value: initialValue, label }) => {
 	}
 
 	return (
-		<Wrapper>
+		<Wrapper {...rest}>
 			<Trigger
 				onClick={() => setShowOptions(!showOptions)}
 				isDarkMode={isDarkMode}

@@ -1,11 +1,14 @@
 import { darken, lighten } from 'polished'
 import styled from 'styled-components'
+import { space } from 'styled-system'
 import theme from 'theme'
 
 export const Wrapper = styled.div`
   position: relative;
   width: fit-content;
   cursor: pointer;
+
+  ${space};
 `
 
 export const Trigger = styled.div`

@@ -20,7 +20,8 @@ const Carousel = ({
 	toggleOptions, 
 	onToggleChange, 
 	containerRef, 
-	viewAllLink
+	viewAllLink,
+	...rest
 }) => {
 	const settings = {
 		swipeToSlide: true,
@@ -74,7 +75,10 @@ const Carousel = ({
 	}
 
 	return (
-		<Wrapper ref={containerRef}>
+		<Wrapper
+			ref={containerRef}
+			{...rest}
+		>
 			<div/>
 			<FlexBox
 				alignItems='center'

@@ -14,7 +14,7 @@ const TV = () => {
 		() => getTvDetails(tvId),
 	)
 
-	useTitle(`${data?.title} - TV`)
+	useTitle(`${data?.name} - TV`)
 
 	return (
 		<>
@@ -24,6 +24,7 @@ const TV = () => {
 				person
 				data={data?.credits?.cast}
 				viewAllLink={`/tv/${tvId}/cast`}
+				my={3}
 			/>
 
 			<Carousel

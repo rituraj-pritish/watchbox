@@ -8,6 +8,7 @@ import { getTvDetails } from 'api/endpoints/tv'
 import useTitle from 'hooks/useTitle'
 import List from 'components/List'
 import { capitalize } from 'helpers/string'
+import { filterFn } from 'helpers/array'
 
 const CastAndCrew = () => {
 	const history = useHistory()
@@ -35,6 +36,15 @@ const CastAndCrew = () => {
 			<List 
 				data={listData}
 				onlyGrid
+				filter={{
+					initialValue: 'all',
+					options: [
+						{ label: 'All', value: 'all' },
+						{ label: 'Male', value: 'gender/2' },
+						{ label: 'Female', value: 'gender/1' }
+					],
+					filterFn: filterFn
+				}}
 			/>
 		</div>
 	)

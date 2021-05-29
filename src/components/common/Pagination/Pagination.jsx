@@ -25,6 +25,10 @@ const Pagination = ({
 		history.push(`${pathname}?p=${currentPage}`)
 	}, [currentPage])
 
+	useEffect(() => {
+		setCurrentPage(1)
+	}, [totalPages])
+
 	const breakEl = <Number disabled>...</Number>
 
 	const halfRange = parseInt(pageRange / 2)

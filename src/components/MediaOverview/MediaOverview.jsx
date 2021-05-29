@@ -10,6 +10,7 @@ import MediaActions from 'components/MediaActions'
 import Genres from 'components/common/Genres'
 import { minutesToHoursMinutes } from 'helpers/timeConversions'
 import Skeleton from 'components/common/ui/Skeleton'
+import Data from './Data'
 
 const MediaOverview = ({
 	title,
@@ -22,7 +23,11 @@ const MediaOverview = ({
 	genres,
 	runtime,
 	release_date,
-	number_of_seasons
+	number_of_seasons,
+	first_air_date,
+	last_air_date,
+	status,
+	type
 }) => {
 	if(!id) {
 		return <Skeleton height={400}/>
@@ -81,17 +86,34 @@ const MediaOverview = ({
 						ids={genres?.map(({ id }) => id)}
 					/>
 
-					<FlexBox
-						mt={3}
-						flexDirection='column'
-					>
-						<Text
-							size={1}
-							bold
-						>
-							Released
-						</Text>
-						<Text>{release_date}</Text>
+					<FlexBox mt={3}>
+						<Data
+							label='Release'
+							value={release_date}
+							isDate
+						/>
+
+						<Data
+							label='First Aired'
+							value={first_air_date}
+							isDate
+						/>
+
+						<Data
+							label='Last Aired'
+							value={last_air_date}
+							isDate
+						/>
+
+						<Data
+							label='Status'
+							value={status}
+						/>
+
+						<Data
+							label='Type'
+							value={type}
+						/>
 					</FlexBox>
 				</FlexBox>
 			</Overview>

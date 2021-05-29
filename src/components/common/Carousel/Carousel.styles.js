@@ -1,4 +1,5 @@
 import styled from 'styled-components'
+import { space } from 'styled-system'
 import theme from 'theme'
 
 export const SliderWrapper = styled.div`
@@ -127,4 +128,6 @@ export const SliderWrapper = styled.div`
 
 export const Wrapper = styled.div`
   position: relative;
+
+  ${space};
 `
