@@ -13,4 +13,12 @@ export const AppContent = styled.div`
   padding: ${theme.spacing()};
   margin: 0 auto;
   width: calc(100% - ${theme.spacing(2)});
+  display: flex;
+  flex-direction: column;
+
+  & > div {
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+  }
 `

@@ -11,6 +11,7 @@ const Image = ({
 	height = '100%',
 	circle = false,
 	className,
+	fallback,
 	...rest
 }) => {
 	return (
@@ -19,7 +20,8 @@ const Image = ({
 			width={width}
 			height={height}
 			circle={circle}
-			url={getImageUrl(url, imageSize)}
+			url={url ? getImageUrl(url, imageSize) : undefined}
+			fallback={fallback}
 			{...rest}
 		/>
 	)
@@ -28,14 +30,15 @@ const Image = ({
 Image.propTypes = {
 	className: PropTypes.string,
 	circle: PropTypes.bool,
-	url: PropTypes.string.isRequired,
+	url: PropTypes.string,
 	imageSize: PropTypes.number,
 	width: PropTypes.oneOfType([
 		PropTypes.string, PropTypes.number
 	]),
 	height: PropTypes.oneOfType([
 		PropTypes.string, PropTypes.number
-	])
+	]),
+	fallback: PropTypes.string
 }
 
 export default Image

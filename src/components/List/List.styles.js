@@ -1,6 +1,12 @@
 import styled from 'styled-components'
 import theme from 'theme'
 
+export const Wrapper = styled.div`
+  flex-grow: 1;
+  display: flex;
+  flex-direction: column;
+`
+
 export const ListContainer = styled.div`
   & > div {
     margin: ${theme.spacing()} 0;

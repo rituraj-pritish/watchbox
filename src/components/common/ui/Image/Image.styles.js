@@ -3,7 +3,7 @@ import { space } from 'styled-system'
 import theme from 'theme'
 
 export const Background = styled.div`
-  background-image: ${({ url }) => `url(${url})`};
+  background-image: ${({ url, fallback }) => `url(${url || fallback})`};
   height: ${({ height }) => isNaN(height) ? height : (height + 'px')};
   width: ${({ width }) => isNaN(width) ? width : (width + 'px') };
   min-width: ${({ width }) => isNaN(width) ? width : (width + 'px') };

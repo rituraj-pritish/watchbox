@@ -7,7 +7,7 @@ import Card from 'components/common/Card'
 import ListItem from 'components/common/ListItem'
 import FlexBox from 'components/common/ui/FlexBox'
 import Icon from 'components/common/ui/Icon'
-import { GridContainer, ListContainer } from './List.styles'
+import { GridContainer, ListContainer, Wrapper } from './List.styles'
 import Pagination from 'components/common/Pagination'
 import Dropdown from 'components/common/Dropdown'
 import useUrlParams from 'hooks/useUrlParams'
@@ -34,7 +34,7 @@ const List = ({ data = [], onlyGrid = false }) => {
 	)
 	
 	return (
-		<div>
+		<Wrapper>
 			<FlexBox
 				justifyContent='flex-end'
 				alignItems='center'
@@ -86,13 +86,15 @@ const List = ({ data = [], onlyGrid = false }) => {
 				</GridContainer>
 			)}
 
+			<FlexBox flexGrow={1}/>
+
 			{data.length > ITEMS_IN_PAGE && (
 				<Pagination
 					mt={4}
 					totalPages={parseInt(data.length / ITEMS_IN_PAGE) + 1}
 				/>
 			)}
-		</div>
+		</Wrapper>
 	)
 }
 

@@ -8,13 +8,17 @@ import Skeleton from '../ui/Skeleton'
 import Image from '../ui/Image'
 import FlexBox from '../ui/FlexBox'
 import Text from '../ui/Text'
+import Male from 'assets/images/default-male.jpeg'
+import Female from 'assets/images/default-female.png'
+import GENDER from 'constants/gender'
 
 const PersonCard = ({ 
 	id, 
 	profile_path, 
 	name, 
 	character,
-	job
+	job,
+	gender
 }) => {
 	const history = useHistory()
 	const { isDarkMode } = useTheme()
@@ -38,7 +42,10 @@ const PersonCard = ({
 			onClick={() => history.push(`/person/${id}`)}
 			data-testid={id}
 		>
-			<Image url={profile_path} />
+			<Image
+				url={profile_path}
+				fallback={GENDER[gender] === 'male' ? Male : Female}
+			/>
 			<FlexBox
 				height={40}
 				mt={2}
@@ -67,6 +74,8 @@ PersonCard.propTypes = {
 	profile_path: PropTypes.string,
 	name: PropTypes.string,
 	character: PropTypes.string,
+	job: PropTypes.string,
+	gender: PropTypes.number,
 }
 
 export default PersonCard
