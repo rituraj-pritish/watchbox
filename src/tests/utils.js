@@ -1,18 +1,13 @@
 import React from 'react'
 import { render as rtlRender } from '@testing-library/react'
 import '@testing-library/jest-dom/extend-expect'
-
-import Providers from 'components/App/Providers'
-import { MemoryRouter, Router } from 'react-router'
+import { Router } from 'react-router'
 import { createMemoryHistory } from 'history'
 
-window.matchMedia = window.matchMedia || function() {
-	return {
-		matches : false,
-		addListener : function() {},
-		removeListener: function() {}
-	}
-}
+import Providers from 'components/App/Providers'
+import App from 'components/App'
+
+
 
 export const render = (ui, { route } = { route: '/' }) => {
 	const history = createMemoryHistory({
@@ -31,6 +26,25 @@ export const render = (ui, { route } = { route: '/' }) => {
   
 	return {
 		...rtlRender(ui, { wrapper: Wrapper }),
+		history
+	}
+}
+
+export const renderApp = ({ route } = { route: '/' }) => {
+	const history = createMemoryHistory({
+		initialEntries: [route]
+	})
+
+	const Wrapper = ({ children }) => {
+		return (
+			<Router history={history}>
+				{children}
+			</Router>
+		)
+	}
+  
+	return {
+		...rtlRender(<App/>, { wrapper: Wrapper }),
 		history
 	}
 }

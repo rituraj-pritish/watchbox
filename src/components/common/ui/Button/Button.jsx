@@ -22,6 +22,7 @@ const Button = ({
 			type={type}
 			isDarkMode={isDarkMode}
 			isLoading={isLoading}
+			role='button'
 			{...rest}
 		>
 			{isLoading && (
