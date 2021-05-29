@@ -13,7 +13,7 @@ const Home = () => {
 				title='Popular'
 				request={{
 					request: getPopularTv,
-					key: ['movies', 'popular']
+					key: ['tv', 'popular']
 				}}
 			/>
 		</div>

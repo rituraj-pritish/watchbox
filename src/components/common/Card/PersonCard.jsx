@@ -30,6 +30,7 @@ const PersonCard = ({ id, profile_path, name, character }) => {
 		<Wrapper
 			isDarkMode={isDarkMode}
 			onClick={() => history.push(`/person/${id}`)}
+			data-testid={id}
 		>
 			<Image url={profile_path} />
 			<FlexBox

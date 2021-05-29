@@ -7,7 +7,12 @@ import Text from 'components/common/ui/Text'
 import VideoPlayer from 'components/common/VideoPlayer'
 import { getVideos } from 'api/endpoints/media'
 
-const TrailerModal = ({ trigger, mediaType, mediaId }) => {
+const TrailerModal = ({ 
+	trigger,
+	title, 
+	mediaType, 
+	mediaId 
+}) => {
 	const { data, refetch } = useQuery(
 		[mediaType, mediaId, 'videos'],
 		() => getVideos(mediaType, mediaId),
@@ -15,6 +20,7 @@ const TrailerModal = ({ trigger, mediaType, mediaId }) => {
 	)
 
 	const trailerVideoKey = data?.results.find(({ type }) => type === 'Trailer')?.key
+
 	return (
 		<Modal
 			trigger={trigger}
@@ -33,7 +39,7 @@ const TrailerModal = ({ trigger, mediaType, mediaId }) => {
 				mb={3}
 				size={4}
 			>
-        Name of movie
+				{title}
 			</Text>
 			<VideoPlayer videoKey={trailerVideoKey} />
 		</Modal>

@@ -1,7 +1,7 @@
 import React from 'react'
 import Card from './index'
 
-const details =  {
+export const media =  {
 	'original_language': 'en',
 	'original_title': 'Zack Snyder\'s Justice League',
 	'poster_path': '/tnAuB8q5vv7Ax9UAEje5Xi4BXik.jpg',
@@ -24,7 +24,7 @@ const details =  {
 	'media_type': 'movie'
 }
 
-const cast = {
+export const cast = {
 	'adult': false,
 	'gender': 2,
 	'id': 28846,
@@ -41,7 +41,7 @@ const cast = {
 
 export default { title: 'Card' }
 
-export const defaultView = () => <Card {...details}/>
+export const defaultView = () => <Card {...media}/>
 
 export const loadingView = () => <Card />
 

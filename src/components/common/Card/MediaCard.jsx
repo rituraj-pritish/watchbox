@@ -44,13 +44,17 @@ const MediaCard = ({
 		<Wrapper
 			isDarkMode={isDarkMode}
 			onClick={() => history.push(`/${title ? 'movie' : 'tv'}/${id}`)}
+			data-testid={id}
 		>
 			<Overlay isDarkMode={isDarkMode}>
 				<div />
 				<TrailerModal
-					trigger={<PlayIcon />}
+					trigger={(
+						<PlayIcon data-testid='play-icon'/>
+					)}
 					mediaType={title ? 'movie' : 'tv'}
 					mediaId={id}
+					title={title || name}
 				/>
 
 				<Genres

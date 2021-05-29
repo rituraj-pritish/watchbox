@@ -7,18 +7,21 @@ import FlexBox from '../ui/FlexBox'
 import Link from '../ui/Link'
 import Text from '../ui/Text'
 import Icon from '../ui/Icon'
+import { useHistory } from 'react-router'
 
 const PageTitle = ({
 	title,
 	ancestors
 }) => {
+	const history = useHistory()
+	console.log('his', history)
 	return (
 		<FlexBox flexDirection='column'>
 			<FlexBox>
 				{
-					ancestors.map(({ text, path }, index) => (
+					ancestors.map(({ title, path }, index) => (
 						<FlexBox
-							key={text}
+							key={title}
 							alignItems='center'
 						>
 							{
@@ -35,7 +38,7 @@ const PageTitle = ({
 							<Link
 								to={path}
 							>
-								{text}
+								{title}
 							</Link>
 							{
 								index !== (ancestors.length - 1) && (
@@ -66,7 +69,7 @@ const PageTitle = ({
 PageTitle.propTypes = {
 	title: PropTypes.string.isRequired,
 	ancestors: PropTypes.arrayOf(PropTypes.shape({
-		text: PropTypes.string.isRequired,
+		title: PropTypes.string.isRequired,
 		path: PropTypes.string.isRequired,
 	}))
 }
