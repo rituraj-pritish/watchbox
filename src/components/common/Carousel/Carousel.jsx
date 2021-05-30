@@ -108,7 +108,7 @@ const Carousel = ({
 			<SliderWrapper>
 				<Slider {...settings}>
 					{!data && new Array(5).fill(0).map((_, idx) => <Card key={idx} />)}
-					{data && data.map((item) => (
+					{data && data.slice(0, 20).map((item) => (
 						<Card
 							key={item.id}
 							{...item}

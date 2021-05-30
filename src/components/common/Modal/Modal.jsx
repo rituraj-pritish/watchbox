@@ -3,6 +3,7 @@ import PropTypes from 'prop-types'
 
 import ReactModal from 'react-modal'
 import useTheme from 'hooks/useTheme'
+import { Trigger } from './Modal.styles'
 
 const Modal = ({
 	children,
@@ -17,11 +18,11 @@ const Modal = ({
 
 	return (
 		<div onClick={e => e.stopPropagation()}>
-			<div
+			<Trigger
 				onClick={() => setIsOpen(true)}
 			>
 				{trigger}
-			</div>
+			</Trigger>
 			<ReactModal
 				isOpen={isOpen}
 				onRequestClose={() => {

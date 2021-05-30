@@ -3,8 +3,8 @@ import userEvent from '@testing-library/user-event'
 
 import { render, screen } from 'tests/utils'
 import Card from '..'
-import { MOVIE } from 'src/tests/mocks/movies.mock.js'
-import { PERSON } from 'src/tests/mocks/person.mock.js'
+import { MOVIE } from 'tests/mocks/movies.mock.js'
+import { PERSON } from 'tests/mocks/person.mock.js'
 
 describe('Card tests', () => {
 	test('Clicking on movie changes to movie route', () => {
@@ -22,7 +22,7 @@ describe('Card tests', () => {
 	})
 
 	test('Clicking on play icon does not change route' , async () => {
-		const { history } = render(<Card {...media}/>)
+		const { history } = render(<Card {...MOVIE}/>)
 		userEvent.click(screen.getByTestId('play-icon'))
 
 		expect(history.location.pathname).toBe('/')
