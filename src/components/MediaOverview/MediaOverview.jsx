@@ -90,19 +90,16 @@ const MediaOverview = ({
 						<Data
 							label='Release'
 							value={release_date}
-							isDate
 						/>
 
 						<Data
 							label='First Aired'
 							value={first_air_date}
-							isDate
 						/>
 
 						<Data
 							label='Last Aired'
 							value={last_air_date}
-							isDate
 						/>
 
 						<Data

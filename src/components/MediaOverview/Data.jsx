@@ -9,8 +9,7 @@ const DATE_FORMAT = 'DD MMM YYYY'
 
 const Data = ({
 	label,
-	value,
-	isDate = false
+	value
 }) => {
 	if(!value) return null
 
@@ -24,15 +23,14 @@ const Data = ({
 			>
 				{label}
 			</Text>
-			<Text bold>{isDate ? moment(value).format(DATE_FORMAT)  : value}</Text>
+			<Text bold>{moment(value)._isValid ? moment(value).format(DATE_FORMAT)  : value}</Text>
 		</FlexBox>
 	)
 }
 
 Data.propTypes = {
 	label: PropTypes.string.isRequired,
-	value: PropTypes.string,
-	isDate: PropTypes.bool
+	value: PropTypes.string
 }
 
 export default Data

@@ -11,6 +11,7 @@ import PageTitle from 'components/common/PageTitle'
 import VideoCard from 'components/common/Videos/VideoCard'
 import List from 'components/List'
 import { ListWrapper } from './MediaPage.styles'
+import { filterFn, getUniqueElements } from 'helpers/array'
 
 const MediaPage = () => {
 	const history = useHistory()
@@ -23,9 +24,15 @@ const MediaPage = () => {
 	)
 	useTitle(`${capitalize(type)} - ${data?.title || data?.name}`)
 
-	const list = type === 'videos' 
+	const isVideos = type === 'videos'
+
+	const list = isVideos 
 		? data?.videos?.results 
 		: data ? [...data?.images?.backdrops, ...data?.images?.posters] : []
+
+	const videoTypes = isVideos
+		? getUniqueElements(list?.map(({ type }) => type))
+		: null
 
 	return (
 		<div>
@@ -39,6 +46,18 @@ const MediaPage = () => {
 				onlyGrid
 				data={list}
 				uniqueIdentifier={null}
+				itemsOnOnePage={isVideos ? 15 : 21}
+				filter={type === 'video' ? {
+					initialValue: 'all',
+					options: [
+						{ label: 'All', value: 'all' },
+						...videoTypes?.map(type => ({
+							label: type,
+							value: `type/${type}`
+						}))
+					],
+					filterFn
+				} : undefined}
 				dataRender={(data) => {
 					return (
 						<ListWrapper>
@@ -52,7 +71,7 @@ const MediaPage = () => {
 									}}
 								/>
 							)) }
-							{type === 'videos' && data.map(({ key }) => (
+							{isVideos && data.map(({ key }) => (
 								<VideoCard
 									key={key}
 									videoKey={key}

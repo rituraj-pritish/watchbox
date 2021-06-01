@@ -41,7 +41,8 @@ const List = ({
 
 List.propTypes = {
 	data: PropTypes.array,
-	itemType: PropTypes.string.isRequired
+	itemType: PropTypes.string.isRequired,
+	dataRender: PropTypes.func
 }
 
 export default List

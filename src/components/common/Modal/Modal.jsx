@@ -33,6 +33,7 @@ const Modal = ({
 				onAfterClose={onClose}
 				style={{
 					overlay: {
+						zIndex: 5,
 						background: isDarkMode ? '#84848482' : '#82828259'
 					},
 					content: {

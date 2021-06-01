@@ -18,6 +18,10 @@ export const getUniqueArrayOfObjects = (array, attribute) => {
 	return unique
 }
 
+export const getUniqueElements = array => {
+	return [...new Set(array)]
+}
+
 export const sortFn = (data, key, order = 'desc') => {
 	return data.sort((a,b) => {
 		const aVal = a[key]

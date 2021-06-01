@@ -14,7 +14,6 @@ import List from './List'
 
 export const LIST = 'LIST'
 export const GRID = 'GRID'
-const ITEMS_IN_PAGE = 20
 
 const getSortState = (value) => {
 	if (!value) return null
@@ -38,7 +37,8 @@ const ListContainer = ({
 	sort = {},
 	filter = {},
 	uniqueIdentifier = 'id',
-	dataRender
+	dataRender,
+	itemsOnOnePage = 20
 }) => {
 	const [itemType, setItemType] = useState(GRID)
 	const [sortOption, setSortOption] = useState(getSortState(sort.initialValue))
@@ -68,8 +68,8 @@ const ListContainer = ({
 		: filteredData
 
 	const currentPageData = sortedData.slice(
-		factor * ITEMS_IN_PAGE,
-		factor * ITEMS_IN_PAGE + ITEMS_IN_PAGE
+		factor * itemsOnOnePage,
+		factor * itemsOnOnePage + itemsOnOnePage
 	)
 
 	return (
@@ -121,10 +121,10 @@ const ListContainer = ({
 				dataRender={dataRender}
 			/>
 			<FlexBox flexGrow={1} />
-			{sortedData.length > ITEMS_IN_PAGE && (
+			{sortedData.length > itemsOnOnePage && (
 				<Pagination
 					mt={4}
-					totalPages={parseInt(filteredData.length / ITEMS_IN_PAGE) + 1}
+					totalPages={parseInt(filteredData.length / itemsOnOnePage) + 1}
 				/>
 			)}
 		</Wrapper>
@@ -132,8 +132,10 @@ const ListContainer = ({
 }
 
 ListContainer.propTypes = {
-	data: PropTypes.array.isRequired,
+	data: PropTypes.array,
 	onlyGrid: PropTypes.bool,
+	uniqueIdentifier: PropTypes.string,
+	dataRender: PropTypes.func,
 	sort: PropTypes.shape({
 		options: PropTypes.array.isRequired,
 		initialValue: PropTypes.string.isRequired,
@@ -143,7 +145,8 @@ ListContainer.propTypes = {
 		options: PropTypes.array.isRequired,
 		initialValue: PropTypes.string.isRequired,
 		filterFn: PropTypes.func.isRequired
-	})
+	}),
+	itemsOnOnePage: PropTypes.number
 }
 
 export default ListContainer

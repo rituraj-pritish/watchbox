@@ -14,6 +14,8 @@ import FlexBox from '../ui/FlexBox'
 import Icon from '../ui/Icon'
 import Link from '../ui/Link'
 
+const DATA_CHUNK = 20
+
 const Carousel = ({ 
 	title, 
 	data, 

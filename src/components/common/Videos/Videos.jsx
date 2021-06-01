@@ -1,15 +1,15 @@
 import React from 'react'
 import PropTypes from 'prop-types'
+
 import FlexBox from '../ui/FlexBox'
 import Text from '../ui/Text'
 import Link from '../ui/Link'
-import Image from '../ui/Image'
-import Modal from '../Modal'
-import VideoPlayer from '../VideoPlayer'
 import VideoCard from './VideoCard'
 
-const Videos = ({ data, viewAllLink }) => {
-	if(!data) return null
+const DATA_CHUNK = 10
+
+const Videos = ({ data = [], viewAllLink }) => {
+	const hasMoreData = data.length > DATA_CHUNK
 	return (
 		<div>
 			<FlexBox
@@ -24,12 +24,14 @@ const Videos = ({ data, viewAllLink }) => {
 				>
           Videos
 				</Text>
-				<Link
-					size={1}
-					to={viewAllLink}
-				>
-					View all
-				</Link>
+				{hasMoreData && (
+					<Link
+						size={1}
+						to={viewAllLink}
+					>
+						View all
+					</Link>
+				)}
 			</FlexBox>
 
 			<FlexBox
@@ -37,7 +39,7 @@ const Videos = ({ data, viewAllLink }) => {
 				overflowY='hidden'
 				pb={2}
 			>
-				{data.slice(0, 10).map((item) => {
+				{data.slice(0, DATA_CHUNK).map((item) => {
 					const { key } = item
 					return (
 						<VideoCard
@@ -51,6 +53,9 @@ const Videos = ({ data, viewAllLink }) => {
 	)
 }
 
-Videos.propTypes = {}
+Videos.propTypes = {
+	data: PropTypes.array,
+	viewAllLink: PropTypes.string
+}
 
 export default Videos

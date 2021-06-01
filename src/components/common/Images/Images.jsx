@@ -7,14 +7,19 @@ import FlexBox from '../ui/FlexBox'
 import Link from '../ui/Link'
 import ImageCard from './ImageCard'
 
+const DATA_CHUNK = 20
+
 const Images = ({ 
-	data,
+	data = [],
 	viewAllLink,
 	...rest
 }) => {
 	if(!data) return null
+	const hasMoreData = data.length > DATA_CHUNK
 	return (
-		<Wrapper {...rest}>
+		<Wrapper
+			{...rest}
+		>
 			<FlexBox
 				justifyContent='space-between'
 				alignItems='flex-end'
@@ -27,21 +32,23 @@ const Images = ({
 				>
         Images
 				</Text>
-				<Link
-					size={1}
-					to={viewAllLink}
-				>
+				{hasMoreData && (
+					<Link
+						size={1}
+						to={viewAllLink}
+					>
 					View all
-				</Link>
+					</Link>
+				)}
 			</FlexBox>
 
 			<FlexBox
 				overflowX='auto'
 				pb={2}
 			>
-				{data.backdrops.slice(0, 20)?.map((item) => (
+				{data.slice(0, 20)?.map((item) => (
 					<ImageCard
-						key={item.key}
+						key={item.file_path}
 						{...item}
 					/>	
 				)
@@ -52,7 +59,7 @@ const Images = ({
 }
 
 Images.propTypes = {
-	data: PropTypes.object,
+	data: PropTypes.array,
 	viewAllLink: PropTypes.string
 }
 
