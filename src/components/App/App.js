@@ -14,6 +14,7 @@ import Movie from 'modules/movies/Movie'
 import CastAndCrew from 'components/CastAndCrew'
 import Person from 'modules/person/Person'
 import TV from 'modules/tv/TV'
+import MediaPage from 'components/MediaPage'
 
 const App = () => {
 	const { checkIfAuthenticated, isLoading, isAuthenticated } = useAuthentication()
@@ -41,10 +42,18 @@ const App = () => {
 			<Route
 				exact
 				path={[
-					'/movie/:movieId/:creditType',
-					'/tv/:tvId/:creditType'
+					'/movie/:movieId/credits/:creditType',
+					'/tv/:tvId/credits/:creditType'
 				]}
 				component={CastAndCrew}
+			/>
+			<Route
+				exact
+				path={[
+					'/movie/:movieId/media/:mediaType',
+					'/tv/:tvId/media/:mediaType'
+				]}
+				component={MediaPage}
 			/>
 
 			<Route

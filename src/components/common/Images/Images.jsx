@@ -33,6 +33,7 @@ const Images = ({
 
 			<FlexBox
 				overflowX='auto'
+				pb={2}
 			>
 				{data.backdrops.slice(0, 20).map((item) => {
 					const { file_path, aspect_ratio } = item
@@ -49,7 +50,6 @@ const Images = ({
 									imageSize={isBackdrop ? BACKDROP_SIZES.MEDIUM : undefined}
 									url={file_path}
 									mr={3}
-									mb={3}
 								/>
 							)}
 							styles={{

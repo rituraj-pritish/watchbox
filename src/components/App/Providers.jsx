@@ -33,7 +33,7 @@ const Providers = ({ children }) => {
 								highlightColor={theme.colors.skeletonHighlight}
 							>
 								<GlobalState />
-								<GlobalStyle />
+								<GlobalStyle isDarkMode={isDarkMode} />
 								{children}
 							</SkeletonTheme>
 						)}
