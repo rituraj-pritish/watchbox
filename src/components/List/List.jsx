@@ -8,8 +8,11 @@ import { GRID, LIST } from './ListContainer'
 
 const List = ({ 
 	data = [], 
-	itemType
+	itemType,
+	dataRender
 }) => {
+	if(dataRender) return dataRender(data)
+
 	return (
 		<>
 			{itemType === LIST && (

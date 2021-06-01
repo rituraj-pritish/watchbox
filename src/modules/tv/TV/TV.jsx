@@ -30,12 +30,12 @@ const TV = () => {
 			/>
 
 			<Images
-				data={data.images}
+				data={data?.images}
 				mb={4}
 				viewAllLink={`/tv/${data?.id}/media/photos`}
 			/>
 			<Videos 
-				data={data.videos.results}
+				data={data?.videos?.results}
 				viewAllLink={`/tv/${data?.id}/media/videos`}
 			/>
 

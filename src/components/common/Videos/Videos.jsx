@@ -6,9 +6,10 @@ import Link from '../ui/Link'
 import Image from '../ui/Image'
 import Modal from '../Modal'
 import VideoPlayer from '../VideoPlayer'
+import VideoCard from './VideoCard'
 
 const Videos = ({ data, viewAllLink }) => {
-	console.log('dat', data)
+	if(!data) return null
 	return (
 		<div>
 			<FlexBox
@@ -23,7 +24,12 @@ const Videos = ({ data, viewAllLink }) => {
 				>
           Videos
 				</Text>
-				<Link to={viewAllLink}>View all</Link>
+				<Link
+					size={1}
+					to={viewAllLink}
+				>
+					View all
+				</Link>
 			</FlexBox>
 
 			<FlexBox
@@ -33,30 +39,11 @@ const Videos = ({ data, viewAllLink }) => {
 			>
 				{data.slice(0, 10).map((item) => {
 					const { key } = item
-
 					return (
-						<Modal
+						<VideoCard
 							key={key}
-							trigger={
-								<div style={{ pointerEvents: 'none' }}>
-									<VideoPlayer
-										videoKey={key}
-										autoPlay={false}
-										height={300}
-										width={500}
-										mr={3}
-									/>
-								</div>
-							}
-							styles={{
-								height: '50vw',
-								width: '80vw'
-							}}
-						>
-							<VideoPlayer
-								videoKey={key}
-							/>
-						</Modal>
+							videoKey={key}
+						/>
 					)
 				})}
 			</FlexBox>

@@ -36,7 +36,9 @@ const ListContainer = ({
 	data = [],
 	onlyGrid = false,
 	sort = {},
-	filter = {}
+	filter = {},
+	uniqueIdentifier = 'id',
+	dataRender
 }) => {
 	const [itemType, setItemType] = useState(GRID)
 	const [sortOption, setSortOption] = useState(getSortState(sort.initialValue))
@@ -50,7 +52,7 @@ const ListContainer = ({
 	}, [page])
 
 	const factor = (page || 1) - 1
-	const uniqueData = getUniqueArrayOfObjects(data, 'id')
+	const uniqueData = getUniqueArrayOfObjects(data, uniqueIdentifier)
 
 	let dataCopy = uniqueData
 
@@ -101,7 +103,6 @@ const ListContainer = ({
 						options={filter.options}
 						value={filterOption.value}
 						onChange={(val) => setFilterOption(getFilterState(val))}
-						mr={3}
 					/>
 				)}
 				{sort.options && (
@@ -110,12 +111,14 @@ const ListContainer = ({
 						options={sort.options}
 						value={Object.values(sortOption).join('/')}
 						onChange={(val) => setSortOption(getSortState(val))}
+						ml={3}
 					/>
 				)}
 			</FlexBox>
 			<List
 				data={currentPageData}
 				itemType={itemType}
+				dataRender={dataRender}
 			/>
 			<FlexBox flexGrow={1} />
 			{sortedData.length > ITEMS_IN_PAGE && (

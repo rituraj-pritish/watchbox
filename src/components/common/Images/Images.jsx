@@ -3,17 +3,16 @@ import PropTypes from 'prop-types'
 
 import { Wrapper } from './Images.styles'
 import Text from '../ui/Text'
-import Modal from '../Modal'
-import Image from '../ui/Image'
 import FlexBox from '../ui/FlexBox'
-import { BACKDROP_SIZES } from 'constants/imageSizes'
 import Link from '../ui/Link'
+import ImageCard from './ImageCard'
 
 const Images = ({ 
 	data,
 	viewAllLink,
 	...rest
 }) => {
+	if(!data) return null
 	return (
 		<Wrapper {...rest}>
 			<FlexBox
@@ -28,44 +27,25 @@ const Images = ({
 				>
         Images
 				</Text>
-				<Link to={viewAllLink}>View all</Link>
+				<Link
+					size={1}
+					to={viewAllLink}
+				>
+					View all
+				</Link>
 			</FlexBox>
 
 			<FlexBox
 				overflowX='auto'
 				pb={2}
 			>
-				{data.backdrops.slice(0, 20).map((item) => {
-					const { file_path, aspect_ratio } = item
-					const isBackdrop = aspect_ratio > 1
-					const triggerHeight = 300
-					const expandedHeight = 50
-					return (
-						<Modal
-							key={file_path}
-							trigger={(
-								<Image
-									height={triggerHeight}
-									width={triggerHeight * aspect_ratio}
-									imageSize={isBackdrop ? BACKDROP_SIZES.MEDIUM : undefined}
-									url={file_path}
-									mr={3}
-								/>
-							)}
-							styles={{
-								height: 'fit-content',
-								width: 'fit-content'
-							}}
-						>
-							<Image
-								url={file_path}
-								height={`${expandedHeight}vh`}
-								width={`${expandedHeight * aspect_ratio}vh`}
-								imageSize={null}
-							/>
-						</Modal>
-					)
-				})}
+				{data.backdrops.slice(0, 20)?.map((item) => (
+					<ImageCard
+						key={item.key}
+						{...item}
+					/>	
+				)
+				)}
 			</FlexBox>
 		</Wrapper>
 	)

@@ -1,8 +1,10 @@
 import moment from 'moment'
 
 export const getUniqueArrayOfObjects = (array, attribute) => {
+	if(!attribute) return array
+	
 	const obj = {}
-  
+
 	const unique = array.filter(el => {
 
 		if(el[attribute] in obj) {

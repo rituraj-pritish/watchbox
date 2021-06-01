@@ -12,15 +12,21 @@ const Image = ({
 	circle = false,
 	className,
 	fallback,
+	directUrl,
 	...rest
 }) => {
+	const getUrl = () => {
+		if(url) return getImageUrl(url, imageSize)
+		if(directUrl) return directUrl
+	}
+
 	return (
 		<Background
 			className={className}
 			width={width}
 			height={height}
 			circle={circle}
-			url={url ? getImageUrl(url, imageSize) : undefined}
+			url={getUrl()}
 			fallback={fallback}
 			{...rest}
 		/>
@@ -31,6 +37,7 @@ Image.propTypes = {
 	className: PropTypes.string,
 	circle: PropTypes.bool,
 	url: PropTypes.string,
+	directUrl: PropTypes.string,
 	imageSize: PropTypes.number,
 	width: PropTypes.oneOfType([
 		PropTypes.string, PropTypes.number

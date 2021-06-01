@@ -1,5 +1,5 @@
 import styled from 'styled-components'
-import { space } from 'styled-system'
+import { layout, space } from 'styled-system'
 import theme from 'theme'
 
 export const Background = styled.div`
@@ -11,5 +11,6 @@ export const Background = styled.div`
   background-position: center;
   background-size: cover;
 
+  ${layout}
   ${space}
 `

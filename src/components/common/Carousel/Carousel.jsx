@@ -102,7 +102,12 @@ const Carousel = ({
 					)}
 				</div>
 				{viewAllLink && (
-					<Link to={viewAllLink}>View all</Link>
+					<Link
+						size={1}
+						to={viewAllLink}
+					>
+						View all
+					</Link>
 				)}
 			</FlexBox>
 			<SliderWrapper>
