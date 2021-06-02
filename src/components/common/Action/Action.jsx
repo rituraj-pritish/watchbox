@@ -3,6 +3,9 @@ import PropTypes from 'prop-types'
 
 import Icon from '../ui/Icon'
 import { useMutation } from 'react-query'
+import Tooltip from '../Tooltip'
+import Text from '../ui/Text'
+import useAuthentication from 'hooks/useAuthentication'
 
 const Action = ({
 	children,
@@ -13,17 +16,36 @@ const Action = ({
 	...rest
 }) => {
 	const { mutate } = useMutation(apiRequest, requestOptions)
+	const { isAuthenticated } = useAuthentication()
+
+	const tooltipEl = (
+		<>
+			<Text
+				bold
+				mb={1}
+			>
+				{tooltip}
+			</Text>
+			{!isAuthenticated && (
+				<Text size={1}>
+				Login required !
+				</Text>
+			)}
+		</>
+	)
 
 	return (
-		<Icon
-			onClick={mutate}
-			circle
-			size={20}
-			p={12}
-			{...rest}
-		>
-			{children}
-		</Icon>
+		<Tooltip tooltip={tooltipEl}>
+			<Icon
+				onClick={mutate}
+				circle
+				size={20}
+				p={12}
+				{...rest}
+			>
+				{children}
+			</Icon>
+		</Tooltip>
 	)
 }
 

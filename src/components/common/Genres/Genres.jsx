@@ -16,7 +16,7 @@ const Genres = ({ ids, vertical = false }) => {
 		>
 			{genres?.map(genre => (
 				<Link
-					to=''
+					to='/'
 					key={genre}
 					mb={vertical ? 2 : undefined}
 					mr={!vertical ? 3 : undefined}

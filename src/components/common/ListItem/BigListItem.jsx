@@ -65,7 +65,7 @@ const BigListItem = ({
 
 	return (
 		<Wrapper>
-			<Link>
+			<Link to={`/${media_type}/${id}`}>
 				<Image
 					url={poster_path}
 					width={200}
@@ -78,6 +78,7 @@ const BigListItem = ({
 					color='primary'
 					mb={2}
 					size={3}
+					to={`/${media_type}/${id}`}
 				>
 					{title}
 				</Link>

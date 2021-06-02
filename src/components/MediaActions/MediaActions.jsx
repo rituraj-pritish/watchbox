@@ -3,9 +3,7 @@ import PropTypes from 'prop-types'
 import FlexBox from 'components/common/ui/FlexBox'
 import Action from 'components/common/Action'
 
-import { ReactComponent as StarIcon } from 'assets/icons/star.svg'
 import { ReactComponent as BookmarkIcon } from 'assets/icons/bookmark.svg'
-import { ReactComponent as ListIcon } from 'assets/icons/list-dotted.svg'
 import { ReactComponent as HeartIcon } from 'assets/icons/heart.svg'
 import { 
 	addToFavorite, 
@@ -13,6 +11,8 @@ import {
 	removeFromFavorite, 
 	removeFromWatchlist 
 } from 'api/endpoints/account'
+import RateMedia from 'components/RateMedia'
+import AddToList from 'components/AddToList'
 
 const MediaActions = ({
 	mediaType,
@@ -33,31 +33,30 @@ const MediaActions = ({
 
 	return (
 		<FlexBox>
-			<Action
-				mr={3}
-				apiRequest={() => favoriteRequest(accountId, mediaDetails)}
-			>
-				<StarIcon/>
-			</Action>
+			<RateMedia
+				mediaType={mediaType}
+				mediaId={mediaId}
+			/>
 
 			<Action
 				mr={3}
 				apiRequest={() => watchlistRequest(accountId, mediaDetails)}
+				tooltip='Add to watchlist'
 			>
 				<BookmarkIcon/>
 			</Action>
 
 			<Action
 				mr={3}
+				tooltip='Add to favorites'
 			>
 				<HeartIcon/>
 			</Action>
 
-			<Action
-				mr={3}
-			>
-				<ListIcon/>
-			</Action>
+			<AddToList
+				mediaType={mediaType}
+				mediaId={mediaId}
+			/>
 		</FlexBox>
 	)
 }
