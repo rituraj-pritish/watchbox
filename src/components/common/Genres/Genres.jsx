@@ -1,13 +1,12 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-import { useState } from '@hookstate/core'
 
 import FlexBox from '../ui/FlexBox'
 import Link from '../ui/Link'
-import { GENRE_LIST } from 'components/GlobalState'
+import useGenres from 'hooks/useGenres'
 
 const Genres = ({ ids, vertical = false }) => {
-	const genreById = useState(GENRE_LIST).get()
+	const { genres: genreById } = useGenres()
 	const genres = ids?.map((id) => genreById[id])
 
 	return (

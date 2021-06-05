@@ -13,22 +13,34 @@ import {
 } from 'api/endpoints/account'
 import RateMedia from 'components/RateMedia'
 import AddToList from 'components/AddToList'
+import useAuthentication from 'hooks/useAuthentication'
+import useFavorites from 'hooks/useFavorites'
+import useWatchlist from 'hooks/useWatchlist'
 
 const MediaActions = ({
 	mediaType,
 	mediaId
 }) => {
-	const accountId = 'accountId'
+	const { user } = useAuthentication()
+	const accountId = user.id
+	const { 
+		checkIfFavorite, 
+		refetchFavorites
+	} = useFavorites()
+	const { 
+		checkIfInWatchlist, 
+		refetchWatchlist
+	} = useWatchlist()
 
 	const mediaDetails = {
 		media_type: mediaType,
 		media_id: mediaId
 	}
 
-	const isFavorite = false
+	const isFavorite = checkIfFavorite(mediaId)
 	const favoriteRequest = isFavorite ? removeFromFavorite : addToFavorite
 
-	const isInWatchlist = false
+	const isInWatchlist = checkIfInWatchlist(mediaId)
 	const watchlistRequest = isInWatchlist ? removeFromWatchlist : addToWatchlist
 
 	return (
@@ -40,15 +52,24 @@ const MediaActions = ({
 
 			<Action
 				mr={3}
+				tooltip={isInWatchlist ? 'Remove from watchlist' :'Add to watchlist'}
+				color={isInWatchlist && 'green'}
 				apiRequest={() => watchlistRequest(accountId, mediaDetails)}
-				tooltip='Add to watchlist'
+				requestOptions={{
+					onSuccess: () => refetchWatchlist(mediaType)
+				}}
 			>
 				<BookmarkIcon/>
 			</Action>
 
 			<Action
 				mr={3}
-				tooltip='Add to favorites'
+				tooltip={isFavorite ? 'Remove from favorites' :'Add to favorites'}
+				color={isFavorite && 'red'}
+				apiRequest={() => favoriteRequest(accountId, mediaDetails)}
+				requestOptions={{
+					onSuccess: () => refetchFavorites(mediaType)
+				}}
 			>
 				<HeartIcon/>
 			</Action>

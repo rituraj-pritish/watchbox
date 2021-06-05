@@ -7,3 +7,14 @@ export const getTvDetails = movieId => {
 export const getPopularTv = (page = 1) => {
 	return api('/tv/popular', {}, { page })
 }
+
+
+export const getFavoriteShows = (accountId, page = 1) => {
+	return api(`/account/${accountId}/favorite/tv`, {}, { page })
+}
+
+
+export const getShowsWatchlist = (accountId, page = 1) => {
+	return api(`/account/${accountId}/watchlist/tv`, {}, { page })
+}
+
