@@ -8,6 +8,9 @@ import Person from 'modules/person/Person'
 import TV from 'modules/tv/TV'
 import MediaPage from 'components/MediaPage'
 import Seasons from 'modules/tv/Seasons'
+import Season from 'modules/tv/Season'
+import Episodes from 'modules/tv/Episodes'
+import Episode from 'modules/tv/Episode'
 
 const CommonRoutes = () => {
 	return (
@@ -52,6 +55,21 @@ const CommonRoutes = () => {
 				exact
 				path='/tv/:tvId/seasons'
 				component={Seasons}
+			/>
+			<Route
+				exact
+				path='/tv/:tvId/seasons/:seasonNumber'
+				component={Season}
+			/>
+			<Route
+				exact
+				path='/tv/:tvId/seasons/:seasonNumber/episodes'
+				component={Episodes}
+			/>
+			<Route
+				exact
+				path='/tv/:tvId/seasons/:seasonNumber/episodes/:episodeNumber'
+				component={Episode}
 			/>
 		</>
 	)

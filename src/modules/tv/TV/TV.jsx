@@ -17,7 +17,23 @@ const TV = () => {
 	)
 
 	useTitle(`${data?.name} - TV`)
-	console.log('da', data?.seasons)
+
+	const seasons = data
+		? data.seasons.map(({ 
+			id, 
+			poster_path, 
+			name, 
+			episode_count, 
+			season_number 
+		}) => ({
+			id,
+			title: name,
+			subTitle: ` ${episode_count} Episodes`,
+			image_path: poster_path,
+			link: `/tv/${tvId}/seasons/${season_number}`
+		}))
+		: []
+
 	return (
 		<>
 			<MediaOverview {...data} />
@@ -31,7 +47,7 @@ const TV = () => {
 
 			<Carousel 
 				title='Seasons'
-				data={data?.seasons}
+				data={seasons}
 				viewAllLink={`/tv/${tvId}/seasons`}
 				mb={4}
 			/>

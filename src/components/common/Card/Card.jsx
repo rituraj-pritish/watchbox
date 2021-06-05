@@ -8,22 +8,23 @@ import Image from '../ui/Image'
 import FlexBox from '../ui/FlexBox'
 import Text from '../ui/Text'
 
-const SeasonCard = ({
-	id,
-	poster_path,
-	episode_count,
-	name
+const Card = ({
+	title,
+	subTitle,
+	image_path,
+	link,
+	imageSize
 }) => {
 	const history = useHistory()
 	const { isDarkMode } = useTheme()
 	return (
 		<Wrapper
 			isDarkMode={isDarkMode}
-			onClick={() => history.push(`/tv/${id}/seasons/${id}`)}
-			data-testid={id}
+			onClick={() => history.push(link)}
 		>
 			<Image
-				url={poster_path}
+				url={image_path}
+				imageSize={imageSize}
 			/>
 			<FlexBox
 				height={40}
@@ -34,24 +35,25 @@ const SeasonCard = ({
 					bold
 					maxLines={1}
 				>
-					{name}
+					{title}
 				</Text>
 				<Text
 					size={1}
 					maxLines={1}
 				> 
-					{episode_count} Episodes
+					{subTitle}
 				</Text>
 			</FlexBox>
 		</Wrapper>
 	)
 }
 
-SeasonCard.propTypes = {
-	id: PropTypes.number.isRequired,
-	poster_path: PropTypes.string,
-	episode_count: PropTypes.number,
-	name: PropTypes.string.isRequired
+Card.propTypes = {
+	title: PropTypes.string,
+	subTitle: PropTypes.string,
+	image_path: PropTypes.string,
+	link: PropTypes.string,
+	imageSize: PropTypes.number
 }
 
-export default SeasonCard
+export default Card

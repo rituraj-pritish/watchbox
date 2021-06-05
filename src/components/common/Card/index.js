@@ -3,7 +3,7 @@ import React from 'react'
 import useTheme from 'hooks/useTheme'
 import MediaCard from './MediaCard'
 import PersonCard from './PersonCard'
-import SeasonCard from './SeasonCard'
+import  SimpleCard from './Card'
 import { SkeletonWrapper, Wrapper } from './Card.styles'
 import Skeleton from '../ui/Skeleton'
 
@@ -24,8 +24,8 @@ const Card = props => {
 		)
 	}
 
-	if('season_number' in props) {
-		return <SeasonCard {...props}/>
+	if('image_path' in props || 'subTitle' in props) {
+		return <SimpleCard {...props}/>
 	} else if ('profile_path' in props) {
 		return <PersonCard{...props}/>
 	} else {

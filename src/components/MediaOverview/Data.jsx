@@ -12,6 +12,7 @@ const Data = ({
 	value
 }) => {
 	if(!value) return null
+	const isDate = typeof value === 'string' && moment(value)._isValid
 
 	return (
 		<FlexBox
@@ -23,7 +24,7 @@ const Data = ({
 			>
 				{label}
 			</Text>
-			<Text bold>{moment(value)._isValid ? moment(value).format(DATE_FORMAT)  : value}</Text>
+			<Text bold>{isDate ? moment(value).format(DATE_FORMAT)  : value}</Text>
 		</FlexBox>
 	)
 }
