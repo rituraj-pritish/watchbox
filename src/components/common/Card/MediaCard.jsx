@@ -4,9 +4,8 @@ import PropTypes from 'prop-types'
 import 'react-circular-progressbar/dist/styles.css'
 
 import { ReactComponent as PlayIcon } from 'assets/icons/play-icon.svg'
-import { Overlay, SkeletonWrapper, Wrapper } from './Card.styles'
+import { Overlay, Wrapper } from './Card.styles'
 import Text from '../ui/Text'
-import Skeleton from '../ui/Skeleton'
 import useTheme from 'hooks/useTheme'
 import FlexBox from '../ui/FlexBox'
 import Genres from '../Genres'
@@ -14,6 +13,7 @@ import Image from '../ui/Image'
 import { POSTER_SIZES } from 'constants/imageSizes'
 import TrailerModal from 'components/TrailerModal'
 import { useHistory } from 'react-router'
+import CardActions from './CardActions'
 
 const MediaCard = ({
 	id,
@@ -27,18 +27,7 @@ const MediaCard = ({
 	const { isDarkMode } = useTheme()
 	const history = useHistory()
 
-	if (!id)
-		return (
-			<Wrapper isDarkMode={isDarkMode}>
-				<SkeletonWrapper>
-					<Skeleton
-						height='100%'
-						mb={2}
-					/>
-					<Skeleton height={16} />
-				</SkeletonWrapper>
-			</Wrapper>
-		)
+	const mediaType = title ? 'movie' : 'tv'
 
 	return (
 		<Wrapper
@@ -47,12 +36,12 @@ const MediaCard = ({
 			data-testid={id}
 		>
 			<Overlay isDarkMode={isDarkMode}>
-				<div />
+				<div/>
 				<TrailerModal
 					trigger={(
 						<PlayIcon data-testid='play-icon'/>
 					)}
-					mediaType={title ? 'movie' : 'tv'}
+					mediaType={mediaType}
 					mediaId={id}
 					title={title || name}
 				/>
@@ -62,7 +51,11 @@ const MediaCard = ({
 					vertical
 				/>
 			</Overlay>
-
+			
+			<CardActions
+				mediaType={mediaType}
+				mediaId={id}
+			/>
 			<Image
 				url={poster_path}
 				imageSize={POSTER_SIZES.MEDIUM}

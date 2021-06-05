@@ -23,6 +23,7 @@ const Carousel = ({
 	onToggleChange, 
 	containerRef, 
 	viewAllLink,
+	cardRender,
 	...rest
 }) => {
 	const settings = {
@@ -115,11 +116,13 @@ const Carousel = ({
 			<SliderWrapper>
 				<Slider {...settings}>
 					{!data && new Array(5).fill(0).map((_, idx) => <Card key={idx} />)}
-					{data && data.slice(0, 20).map((item) => (
-						<Card
-							key={item.id}
-							{...item}
-						/>)
+					{data && data.slice(0, DATA_CHUNK).map((item) => cardRender
+						? cardRender(item)
+						:	(
+							<Card
+								key={item.id}
+								{...item}
+							/>)
 					)}
 				</Slider>
 			</SliderWrapper>
@@ -132,8 +135,9 @@ Carousel.propTypes = {
 	data: PropTypes.array,
 	toggleOptions: PropTypes.array,
 	onToggleChange: PropTypes.func,
-	containerRef: PropTypes.any.isRequired,
+	containerRef: PropTypes.any,
 	viewAllLink: PropTypes.string,
+	cardRender: PropTypes.func
 }
 
 export default Carousel

@@ -1,4 +1,5 @@
 import styled from 'styled-components'
+import { space } from 'styled-system'
 import theme from 'theme'
 
 export const Wrapper = styled.div`
@@ -7,6 +8,7 @@ export const Wrapper = styled.div`
   border-radius: ${theme.borderRadius};
   padding: ${theme.spacing(0.5)};
   height: 300px;
+  ${space}
 `
 
 export const WrapperSmall = styled(Wrapper)`

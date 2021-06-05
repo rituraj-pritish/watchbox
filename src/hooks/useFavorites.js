@@ -2,9 +2,14 @@ import { useQueries, useQueryClient } from 'react-query'
 
 import { getFavoriteMovies } from 'api/endpoints/movies'
 import { getFavoriteShows } from 'api/endpoints/tv'
+import { addToFavorite, removeFromFavorite } from 'api/endpoints/account'
+import useAuthentication from './useAuthentication'
 
 // if notFetched -> for multiple pages
-export default () => {
+export default (mediaId, mediaType) => {
+	const { user } = useAuthentication()
+	const accountId = user?.id
+
 	const [movies, shows] = useQueries([
 		{ queryKey: ['favorites', 'movies'], queryFn: getFavoriteMovies },
 		{ queryKey: ['favorites', 'tvs'], queryFn: getFavoriteShows }
@@ -14,15 +19,9 @@ export default () => {
 
 	const favoriteMovies = movies.data?.results || []
 	const favoriteShows = shows.data?.results || []
-
 	const allItems = [...favoriteMovies, ...favoriteShows]
-  
-	const checkIfFavorite = mediaId => {
-		const media = allItems.find(({ id }) => id === mediaId)
-		return !!media
-	}
 
-	const refetchFavorites = (mediaType) => {
+	const refetchFavorites = () => {
 		if(mediaType === 'movie') {
 			movies.refetch()
 		} else {
@@ -30,8 +29,24 @@ export default () => {
 		}
 	}
 
+	const isFavorite = !!allItems.find(({ id }) => id === mediaId)
+
+	const payload = {
+		media_type: mediaType,
+		media_id: mediaId
+	}
+
+	const toggleFavorite = () => {
+		if(isFavorite) {
+			return removeFromFavorite(accountId, payload)
+		} else {
+			return addToFavorite(accountId, payload)
+		}
+	}
+
 	return {
-		checkIfFavorite,
-		refetchFavorites
+		refetchFavorites,
+		isFavorite,
+		toggleFavorite
 	}
 }

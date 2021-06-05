@@ -12,7 +12,7 @@ const Action = ({
 	apiRequest,
 	requestOptions,
 	tooltip,
-	onClick,
+	circle = true,
 	...rest
 }) => {
 	const { mutate } = useMutation(apiRequest, requestOptions)
@@ -38,7 +38,7 @@ const Action = ({
 		<Tooltip tooltip={tooltipEl}>
 			<Icon
 				onClick={isAuthenticated ? mutate : null}
-				circle
+				circle={circle}
 				size={20}
 				p={12}
 				{...rest}

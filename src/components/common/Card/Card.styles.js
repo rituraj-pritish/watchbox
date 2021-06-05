@@ -1,6 +1,7 @@
 import styled from 'styled-components'
 import theme from 'theme'
 import { centerElement, overlay } from 'theme/commonStyles'
+import Action from '../Action'
 
 export const Overlay = styled.div`
   ${overlay}
@@ -27,6 +28,21 @@ export const Overlay = styled.div`
   }
 `
 
+export const ActionWrapper = styled.div`
+  display: flex;
+  margin-left: auto;
+  position: absolute;
+  top: 0;
+  right: ${theme.spacing(0.5)};
+`
+
+export const StyledAction = styled(Action)`
+  background: ${({ theme }) => theme.colors.tertiaryLight};
+  border-top-left-radius: unset;
+  border-top-right-radius: unset;
+  opacity: ${({ isVisible }) => isVisible ? 1 : 0};
+`
+
 export const Wrapper = styled.div`
   position: relative;
   width: 200px;
@@ -42,6 +58,14 @@ export const Wrapper = styled.div`
 
   &:hover ${Overlay} {
     opacity: 1;
+  }
+
+  &:hover ${StyledAction} {
+    opacity: 1;
+    background: transparent;
+      &:hover {
+        background: transparent;
+      }
   }
 `
 

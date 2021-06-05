@@ -10,10 +10,14 @@ import Icon from '../ui/Icon'
 
 const PageTitle = ({
 	title,
-	ancestors
+	ancestors,
+	...rest
 }) => {
 	return (
-		<FlexBox flexDirection='column'>
+		<FlexBox
+			flexDirection='column'
+			{...rest}
+		>
 			<FlexBox>
 				{
 					ancestors.map(({ title, path }, index) => (

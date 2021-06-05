@@ -1,47 +1,29 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-import FlexBox from 'components/common/ui/FlexBox'
-import Action from 'components/common/Action'
 
 import { ReactComponent as BookmarkIcon } from 'assets/icons/bookmark.svg'
 import { ReactComponent as HeartIcon } from 'assets/icons/heart.svg'
-import { 
-	addToFavorite, 
-	addToWatchlist, 
-	removeFromFavorite, 
-	removeFromWatchlist 
-} from 'api/endpoints/account'
-import RateMedia from 'components/RateMedia'
-import AddToList from 'components/AddToList'
-import useAuthentication from 'hooks/useAuthentication'
 import useFavorites from 'hooks/useFavorites'
 import useWatchlist from 'hooks/useWatchlist'
+import FlexBox from 'components/common/ui/FlexBox'
+import Action from 'components/common/Action'
+import RateMedia from 'components/RateMedia'
+import AddToList from 'components/AddToList'
 
 const MediaActions = ({
 	mediaType,
 	mediaId
 }) => {
-	const { user } = useAuthentication()
-	const accountId = user.id
 	const { 
-		checkIfFavorite, 
-		refetchFavorites
-	} = useFavorites()
+		isFavorite, 
+		refetchFavorites,
+		toggleFavorite
+	} = useFavorites(mediaId, mediaType)
 	const { 
-		checkIfInWatchlist, 
-		refetchWatchlist
-	} = useWatchlist()
-
-	const mediaDetails = {
-		media_type: mediaType,
-		media_id: mediaId
-	}
-
-	const isFavorite = checkIfFavorite(mediaId)
-	const favoriteRequest = isFavorite ? removeFromFavorite : addToFavorite
-
-	const isInWatchlist = checkIfInWatchlist(mediaId)
-	const watchlistRequest = isInWatchlist ? removeFromWatchlist : addToWatchlist
+		isInWatchlist, 
+		refetchWatchlist,
+		toggleWatchlist
+	} = useWatchlist(mediaId, mediaType)
 
 	return (
 		<FlexBox>
@@ -54,9 +36,9 @@ const MediaActions = ({
 				mr={3}
 				tooltip={isInWatchlist ? 'Remove from watchlist' :'Add to watchlist'}
 				color={isInWatchlist && 'green'}
-				apiRequest={() => watchlistRequest(accountId, mediaDetails)}
+				apiRequest={toggleWatchlist}
 				requestOptions={{
-					onSuccess: () => refetchWatchlist(mediaType)
+					onSuccess: refetchWatchlist
 				}}
 			>
 				<BookmarkIcon/>
@@ -66,9 +48,9 @@ const MediaActions = ({
 				mr={3}
 				tooltip={isFavorite ? 'Remove from favorites' :'Add to favorites'}
 				color={isFavorite && 'red'}
-				apiRequest={() => favoriteRequest(accountId, mediaDetails)}
+				apiRequest={toggleFavorite}
 				requestOptions={{
-					onSuccess: () => refetchFavorites(mediaType)
+					onSuccess: refetchFavorites
 				}}
 			>
 				<HeartIcon/>

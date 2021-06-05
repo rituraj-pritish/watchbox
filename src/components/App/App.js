@@ -9,60 +9,13 @@ import Login from 'components/Login'
 import useAuthentication from 'hooks/useAuthentication'
 import Skeleton from 'components/common/ui/Skeleton'
 import FlexBox from 'components/common/ui/FlexBox'
-import Home from 'modules/home/Home'
-import Movie from 'modules/movies/Movie'
-import CastAndCrew from 'components/CastAndCrew'
-import Person from 'modules/person/Person'
-import TV from 'modules/tv/TV'
-import MediaPage from 'components/MediaPage'
+import CommonRoutes from './CommonRoutes'
 
 const App = () => {
 	const { checkIfAuthenticated, isLoading, isAuthenticated } = useAuthentication()
 	useEffect(() => {
 		checkIfAuthenticated()	
 	}, [])
-
-	const commonRoutes = (
-		<>
-			<Route
-				exact
-				path='/'
-				component={Home}
-			/>
-			<Route
-				exact
-				path='/person/:personId'
-				component={Person}
-			/>
-			<Route
-				exact
-				path='/movie/:movieId'
-				component={Movie}
-			/>
-			<Route
-				exact
-				path={[
-					'/movie/:movieId/credits/:creditType',
-					'/tv/:tvId/credits/:creditType'
-				]}
-				component={CastAndCrew}
-			/>
-			<Route
-				exact
-				path={[
-					'/movie/:movieId/media/:mediaType',
-					'/tv/:tvId/media/:mediaType'
-				]}
-				component={MediaPage}
-			/>
-
-			<Route
-				exact
-				path='/tv/:tvId'
-				component={TV}
-			/>
-		</>
-	)
 
 	const render = () => {
 		if(isLoading) return (
@@ -81,13 +34,13 @@ const App = () => {
 
 		if(isAuthenticated) return (
 			<>
-				{commonRoutes}
+				<CommonRoutes/>
 			</>
 		)
 		
 		return (
 			<>
-				{commonRoutes}
+				<CommonRoutes/>
 				<Route
 					path='/login'
 					component={Login}

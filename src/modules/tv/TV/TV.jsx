@@ -17,7 +17,7 @@ const TV = () => {
 	)
 
 	useTitle(`${data?.name} - TV`)
-
+	console.log('da', data?.seasons)
 	return (
 		<>
 			<MediaOverview {...data} />
@@ -27,6 +27,13 @@ const TV = () => {
 				data={data?.credits?.cast}
 				viewAllLink={`/tv/${tvId}/credits/cast`}
 				my={3}
+			/>
+
+			<Carousel 
+				title='Seasons'
+				data={data?.seasons}
+				viewAllLink={`/tv/${tvId}/seasons`}
+				mb={4}
 			/>
 
 			<Images

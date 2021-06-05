@@ -1,6 +1,7 @@
 import styled, { css } from 'styled-components'
 import { space } from 'styled-system'
 
+import theme from 'theme'
 import { centerElement } from 'theme/commonStyles'
 
 export const Wrapper = styled.div`
@@ -9,6 +10,7 @@ export const Wrapper = styled.div`
   ${centerElement};
   pointer-events: ${({ disabled }) => disabled && 'none'};
   opacity: ${({ disabled }) => disabled && 0.8};
+  border-radius: ${theme.borderRadius};
 
   svg {
     width: 100%;
@@ -37,6 +39,6 @@ export const Wrapper = styled.div`
         height: ${ size + 'px'};
       }
   `};
-
+  
   ${space};
 `

@@ -17,7 +17,10 @@ const Icon = ({
 			size={size}
 			color={color}
 			className={className}
-			onClick={onClick}
+			onClick={e => {
+				e.stopPropagation()
+				onClick()
+			}}
 			disabled={disabled}
 			circle={circle}
 			{...rest}

@@ -28,10 +28,10 @@ const CastAndCrew = () => {
 	return (
 		<div>
 			<PageTitle
-				title={creditType}
 				ancestors={[
 					{ title: data?.title || data?.name , path: `/${mediaType}/${mediaId}` }
 				]}
+				title={creditType}
 			/>
 			<List 
 				data={listData}
