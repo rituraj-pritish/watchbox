@@ -24,9 +24,11 @@ const Carousel = ({
 	containerRef, 
 	viewAllLink,
 	cardRender,
+	isLoading,
 	...rest
 }) => {
 	const settings = {
+		lazyLoad: true,
 		swipeToSlide: true,
 		arrows: data ? true : false,
 		rows: 1,
@@ -115,7 +117,7 @@ const Carousel = ({
 			</FlexBox>
 			<SliderWrapper>
 				<Slider {...settings}>
-					{!data && new Array(5).fill(0).map((_, idx) => <Card key={idx} />)}
+					{(!data || isLoading) && new Array(5).fill(0).map((_, idx) => <Card key={idx} />)}
 					{data && data.slice(0, DATA_CHUNK).map((item) => cardRender
 						? cardRender(item)
 						:	(

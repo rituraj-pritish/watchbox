@@ -60,6 +60,7 @@ const Season = () => {
 				title='Episodes'
 				data={episodes}
 				viewAllLink={`/tv/${tvId}/seasons/${seasonNumber}/episodes`}
+				mb={3}
 			/>
 
 			<Images

@@ -11,6 +11,7 @@ import PageTitle from 'components/common/PageTitle'
 import Carousel from 'components/common/Carousel/Carousel'
 import Images from 'components/common/Images'
 import EpisodeOverview from './EpisodeOverview'
+import useTitle from 'hooks/useTitle'
 
 const Episode = () => {
 	const { tvId, seasonNumber, episodeNumber } = useParams()
@@ -22,7 +23,8 @@ const Episode = () => {
 		[tvId, 'season', seasonNumber, 'episodes', episodeNumber],
 		() => getEpisodeDetails(tvId, seasonNumber, episodeNumber)
 	)
-	console.log('e', episode)
+	useTitle(`Episode ${episode?.episode_number} - ${season?.name} - ${show?.name}`)
+
 	return (
 		<div>
 			<PageTitle

@@ -1,9 +1,9 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import { useParams } from 'react-router'
 import { useQuery } from 'react-query'
 
-import { getTvDetails } from 'api/endpoints/tv'
-import Carousel from 'components/common/Carousel/Carousel'
+import { getRecommendedShows, getTvDetails } from 'api/endpoints/tv'
+import Carousel from 'components/common/Carousel'
 import MediaOverview from 'components/MediaOverview'
 import useTitle from 'hooks/useTitle'
 import Images from 'components/common/Images'
@@ -14,9 +14,16 @@ const TV = () => {
 	const { data } = useQuery(
 		['tv', tvId],
 		() => getTvDetails(tvId),
+		{
+			staleTime: Infinity
+		}
 	)
 
 	useTitle(`${data?.name} - TV`)
+
+	useEffect(() => {
+		window.scrollTo({ top: 0 })
+	}, [tvId])
 
 	const seasons = data
 		? data.seasons.map(({ 
@@ -57,6 +64,7 @@ const TV = () => {
 				mb={4}
 				viewAllLink={`/tv/${data?.id}/media/photos`}
 			/>
+			
 			<Videos 
 				data={data?.videos?.results}
 				viewAllLink={`/tv/${data?.id}/media/videos`}
@@ -68,6 +76,16 @@ const TV = () => {
 				data={data?.credits?.crew}
 				viewAllLink={`/tv/${tvId}/credits/crew`}
 				mt={4}
+			/>
+
+			<Carousel
+				title='Recommended'
+				request={{
+					key: ['tv', tvId, 'recommendations'],
+					request: () => getRecommendedShows(tvId)
+				}}
+				requestDeps={[tvId]}
+				mt={3}
 			/>
 		</>
 	)

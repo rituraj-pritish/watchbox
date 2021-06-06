@@ -5,8 +5,18 @@ import Carousel from './Carousel'
 import usePositionOffset from 'hooks/usePositionOffset'
 import useCarouselData from 'hooks/useCarouselData'
 
-const CarouselContainer = ({ request, toggleOptions, ...rest }) => {
+const CarouselContainer = ({ request, toggleOptions, requestDeps = [], ...rest }) => {
 	const [ref, isTriggered] = usePositionOffset(300)
+	
+	if('data' in rest) {
+		return (
+			<Carousel 
+				containerRef={ref}
+				{...rest}
+			/>
+		)
+	}
+	
 	const queries = useCarouselData(
 		request ? [request] : toggleOptions
 	)
@@ -17,7 +27,7 @@ const CarouselContainer = ({ request, toggleOptions, ...rest }) => {
 		if (!isTriggered) return
 		if(queries[selectedOptionIndex].isFetched) return
 		queries[selectedOptionIndex].refetch()
-	}, [isTriggered])
+	}, [isTriggered, ...requestDeps])
 
 	useEffect(() => {
 		if (queries[selectedOptionIndex].isSuccess) {
@@ -36,6 +46,7 @@ const CarouselContainer = ({ request, toggleOptions, ...rest }) => {
 	return (
 		<Carousel
 			containerRef={ref}
+			isLoading={queries[selectedOptionIndex].isLoading}
 			toggleOptions={toggleOptions}
 			onToggleChange={onToggleChange}
 			data={data}
@@ -46,7 +57,8 @@ const CarouselContainer = ({ request, toggleOptions, ...rest }) => {
 
 CarouselContainer.propTypes = {
 	request: PropTypes.object,
-	toggleOptions: PropTypes.array
+	toggleOptions: PropTypes.array,
+	requestDeps: PropTypes.array
 }
 
 export default CarouselContainer

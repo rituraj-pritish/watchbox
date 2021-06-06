@@ -10,6 +10,7 @@ import Image from 'components/common/ui/Image'
 import { RightSection, Wrapper } from 'components/common/ListItem/ListItem.styles'
 import Link from 'components/common/ui/Link'
 import Text from 'components/common/ui/Text'
+import useTitle from 'hooks/useTitle'
 
 const DATE_FORMAT = 'DD MMM YYYY'
 
@@ -20,6 +21,8 @@ const Episodes = () => {
 		[tvId, 'season', seasonNumber], 
 		() => getSeasonDetails(tvId, seasonNumber)
 	)
+	useTitle(`Episodes - ${season?.name} - ${show?.name}`)
+
 	const episodes = season?.episodes || []
 
 	return (

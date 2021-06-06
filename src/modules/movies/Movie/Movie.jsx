@@ -6,6 +6,8 @@ import { getMovieDetails } from 'api/endpoints/movies'
 import Carousel from 'components/common/Carousel/Carousel'
 import MediaOverview from 'components/MediaOverview'
 import useTitle from 'hooks/useTitle'
+import Images from 'components/common/Images'
+import Videos from 'components/common/Videos/Videos'
 
 const Movie = () => {
 	const { movieId } = useParams()
@@ -23,7 +25,26 @@ const Movie = () => {
 				title='Cast'
 				person
 				data={data?.credits?.cast}
-				viewAllLink={`/movie/${movieId}/cast&crew`}
+				viewAllLink={`/movie/${movieId}/credits/cast`}
+				mt={4}
+			/>
+			<Images
+				data={data ? [...data?.images?.backdrops, ...data?.images?.posters] : []}
+				my={4}
+				viewAllLink={`/movie/${data?.id}/media/photos`}
+			/>
+			
+			<Videos 
+				data={data?.videos?.results}
+				viewAllLink={`/movie/${data?.id}/media/videos`}
+			/>
+
+			<Carousel
+				title='Crew'
+				person
+				data={data?.credits?.crew}
+				viewAllLink={`/movie/${movieId}/credits/crew`}
+				mt={4}
 			/>
 		</>
 	)

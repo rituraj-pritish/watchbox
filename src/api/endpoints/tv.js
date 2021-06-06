@@ -35,3 +35,6 @@ export const getShowsWatchlist = (accountId, page = 1) => {
 	return api(`/account/${accountId}/watchlist/tv`, {}, { page })
 }
 
+export const getRecommendedShows = showId => {
+	return api(`/tv/${showId}/recommendations`)
+}

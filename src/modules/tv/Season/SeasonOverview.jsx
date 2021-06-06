@@ -37,12 +37,12 @@ const SeasonOverview = ({
 				</Text>
 				<FlexBox mt={3}>
 					<Data
-						label='Aired'
-						value={air_date}
-					/>
-					<Data
 						label='Total Episodes'
 						value={episodes?.length}
+					/>
+					<Data
+						label='Aired'
+						value={air_date}
 					/>
 				</FlexBox>
 			</FlexBox>
