@@ -6,16 +6,52 @@ import Text from '../ui/Text'
 import FlexBox from '../ui/FlexBox'
 import Link from '../ui/Link'
 import ImageCard from './ImageCard'
+import { shuffleArray } from 'helpers/array'
+import Skeleton from '../ui/Skeleton'
 
 const DATA_CHUNK = 20
 
 const Images = ({ 
-	data = [],
+	data,
 	viewAllLink,
 	...rest
 }) => {
-	if(!data) return null
-	const hasMoreData = data.length > DATA_CHUNK
+	const images = React.useMemo(() => data 
+		? shuffleArray(Object.values(data).flat()) 
+		: [],
+	[data])
+	const hasMoreData = images.length > DATA_CHUNK
+
+	const render = () => {
+		if(!data) return new Array(3).fill(0).map((_, idx) => (
+			<Skeleton
+				key={idx}
+				width={500}
+				height={300}
+				mr={3}
+				mb={3}
+			/>
+		))
+
+		if(images.length === 0) return (
+			<FlexBox
+				width='100%'
+				height={300}
+				justifyContent='center'
+				alignItems='center'
+			>
+				No images available
+			</FlexBox>
+		)
+
+		return images.slice(0, DATA_CHUNK)?.map((item) => (
+			<ImageCard
+				key={item.file_path}
+				{...item}
+			/>	
+		))
+	}
+
 	return (
 		<Wrapper
 			{...rest}
@@ -46,20 +82,14 @@ const Images = ({
 				overflowX='auto'
 				pb={2}
 			>
-				{data.slice(0, 20)?.map((item) => (
-					<ImageCard
-						key={item.file_path}
-						{...item}
-					/>	
-				)
-				)}
+				{render()}
 			</FlexBox>
 		</Wrapper>
 	)
 }
 
 Images.propTypes = {
-	data: PropTypes.array,
+	data: PropTypes.object,
 	viewAllLink: PropTypes.string
 }
 

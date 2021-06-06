@@ -79,6 +79,31 @@ const Carousel = ({
 		]
 	}
 
+	const render = () => {
+		if(isLoading || !data) return new Array(5)
+			.fill(0).map((_, idx) => <Card key={idx} />)
+
+		if(data.length === 0) return (
+			<div>
+				<FlexBox
+					alignItems='center'
+					height='100%'
+				>
+					No data available
+				</FlexBox>
+			</div>
+		)
+
+		return data.slice(0, DATA_CHUNK).map((item) => cardRender
+			? cardRender(item)
+			:	(
+				<Card
+					key={item.id}
+					{...item}
+				/>)
+		)
+	}
+
 	return (
 		<Wrapper
 			ref={containerRef}
@@ -117,15 +142,7 @@ const Carousel = ({
 			</FlexBox>
 			<SliderWrapper>
 				<Slider {...settings}>
-					{(!data || isLoading) && new Array(5).fill(0).map((_, idx) => <Card key={idx} />)}
-					{data && data.slice(0, DATA_CHUNK).map((item) => cardRender
-						? cardRender(item)
-						:	(
-							<Card
-								key={item.id}
-								{...item}
-							/>)
-					)}
+					{render()}
 				</Slider>
 			</SliderWrapper>
 		</Wrapper>

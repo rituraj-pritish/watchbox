@@ -1074,3 +1074,10 @@ export const person = () => (
 		data={CAST}
 	/>
 )
+
+export const noData = () => (
+	<CarouselMain
+		title='No data'
+		data={[]}
+	/>
+)

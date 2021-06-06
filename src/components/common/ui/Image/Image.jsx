@@ -1,10 +1,10 @@
-import React from 'react'
+import React, { useState } from 'react'
 import PropTypes from 'prop-types'
 
 import { getImageUrl } from 'api'
-import { Background } from './Image.styles'
+import { Background, StyledSkeleton, Wrapper } from './Image.styles'
 
-const Image = ({ 
+const ImageComp = ({ 
 	url, 
 	imageSize = 185, 
 	width = '100%', 
@@ -19,21 +19,33 @@ const Image = ({
 		if(url) return getImageUrl(url, imageSize)
 		if(directUrl) return directUrl
 	}
+	
+	const [isLoaded, setIsLoaded] = useState(() => getUrl() ? false : true)
+
+	const img = new Image()
+	img.onload = () => setIsLoaded(true)
+	img.src = getUrl()
 
 	return (
-		<Background
-			className={className}
-			width={width}
-			height={height}
-			circle={circle}
-			url={getUrl()}
-			fallback={fallback}
-			{...rest}
-		/>
+		<Wrapper {...rest}>
+			{
+				(!isLoaded) && (
+					<StyledSkeleton/>
+				)
+			}
+			<Background
+				className={className}
+				width={width}
+				height={height}
+				circle={circle}
+				url={getUrl()}
+				fallback={fallback}
+			/>
+		</Wrapper>
 	)
 }
 
-Image.propTypes = {
+ImageComp.propTypes = {
 	className: PropTypes.string,
 	circle: PropTypes.bool,
 	url: PropTypes.string,
@@ -48,4 +60,4 @@ Image.propTypes = {
 	fallback: PropTypes.string
 }
 
-export default Image
+export default ImageComp

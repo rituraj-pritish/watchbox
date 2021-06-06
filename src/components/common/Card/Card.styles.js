@@ -14,6 +14,7 @@ export const Overlay = styled.div`
   cursor: default;
   background: ${({ isDarkMode }) => isDarkMode ? '#000000ad' : '#efefefe8'};
   opacity: 0;
+  z-index: 1;
 
   svg {
     width: ${theme.spacing(4)};
@@ -34,6 +35,7 @@ export const ActionWrapper = styled.div`
   position: absolute;
   top: 0;
   right: ${theme.spacing(0.5)};
+  z-index: 1;
 `
 
 export const StyledAction = styled(Action)`

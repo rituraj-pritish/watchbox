@@ -29,7 +29,7 @@ const Movie = () => {
 				mt={4}
 			/>
 			<Images
-				data={data ? [...data?.images?.backdrops, ...data?.images?.posters] : []}
+				data={data?.images}
 				my={4}
 				viewAllLink={`/movie/${data?.id}/media/photos`}
 			/>

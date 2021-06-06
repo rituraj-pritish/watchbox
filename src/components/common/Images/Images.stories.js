@@ -803,5 +803,9 @@ const IMAGES = {
 }
 
 export const images = () => (
-	<Images data={IMAGES}/>
+	<>
+		<Images data={IMAGES}/>
+		<Images />
+		<Images data={{}}/>
+	</>
 )

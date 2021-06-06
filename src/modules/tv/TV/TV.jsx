@@ -60,7 +60,7 @@ const TV = () => {
 			/>
 
 			<Images
-				data={data ? [...data?.images?.backdrops, ...data?.images?.posters] : []}
+				data={data?.images}
 				mb={4}
 				viewAllLink={`/tv/${data?.id}/media/photos`}
 			/>

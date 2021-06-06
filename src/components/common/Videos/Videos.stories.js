@@ -337,5 +337,8 @@ const VIDEOS = [
 ]
 
 export const videos = () => (
-	<Videos data={VIDEOS}/>
+	<>
+		<Videos data={VIDEOS}/>
+		<Videos />
+	</>
 )
