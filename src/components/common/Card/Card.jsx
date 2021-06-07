@@ -25,6 +25,7 @@ const Card = ({
 			<Image
 				url={image_path}
 				imageSize={imageSize}
+				flexGrow={1}
 			/>
 			<FlexBox
 				height={40}

@@ -16,7 +16,7 @@ const theme = {
 
 export const darkTheme = {
 	...theme,
-
+	isDarkMode: true,
 	colors: {
 		...theme.colors,
 		appBg: '#252525',

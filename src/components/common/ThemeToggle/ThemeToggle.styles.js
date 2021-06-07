@@ -16,7 +16,7 @@ export const Wrapper = styled.div`
   align-items: center;
   position: relative;
   cursor: pointer;
-  margin-left: ${theme.spacing()};
+  margin-right: ${theme.spacing()};
 `
 
 export const IconContainer = styled.div`

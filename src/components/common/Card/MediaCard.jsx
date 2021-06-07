@@ -59,6 +59,7 @@ const MediaCard = ({
 			<Image
 				url={poster_path}
 				imageSize={POSTER_SIZES.MEDIUM}
+				flexGrow={1}
 			/>
 			<FlexBox
 				height={40}

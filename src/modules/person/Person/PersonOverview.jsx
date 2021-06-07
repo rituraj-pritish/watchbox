@@ -1,11 +1,15 @@
 import React from 'react'
 import PropTypes from 'prop-types'
+
 import FlexBox from 'components/common/ui/FlexBox'
 import Image from 'components/common/ui/Image'
 import { POSTER_SIZES } from 'constants/imageSizes'
 import Text from 'components/common/ui/Text'
 import Skeleton from 'components/common/ui/Skeleton'
 import Data from 'components/MediaOverview/Data'
+import Male from 'assets/images/default-male.jpeg'
+import Female from 'assets/images/default-female.png'
+import GENDER from 'constants/gender'
 
 const PersonOverview = ({
 	profile_path,
@@ -13,7 +17,8 @@ const PersonOverview = ({
 	biography,
 	id,
 	birthday,
-	known_for_department
+	known_for_department,
+	gender
 }) => {
 	if(!id) return (
 		<FlexBox>
@@ -44,6 +49,7 @@ const PersonOverview = ({
 			<Image
 				url={profile_path}
 				imageSize={POSTER_SIZES.MEDIUM}
+				fallback={GENDER[gender] === 'male' ? Male : Female}
 				width={250}
 				height={380}
 				mr={3}

@@ -5,6 +5,7 @@ import {
 	login as loginEndpoint, 
 	logout as logoutEndpoint 
 } from 'api/endpoints/authentication' 
+import { useHistory } from 'react-router'
 
 const INITIAL_STATE = {
 	isLoading: true,
@@ -16,6 +17,7 @@ const AUTH_STATE = createState(INITIAL_STATE)
 export const SESSION_ID_KEY = 'session_id'
 
 export default () => {
+	const history = useHistory()
 	const authState = useState(AUTH_STATE)
 
 	const login = async data => {
@@ -30,6 +32,7 @@ export default () => {
 					isAuthenticated: true,
 					user
 				})
+				history.push('/')
 			}
 		} catch (err) {
 			// todo show message

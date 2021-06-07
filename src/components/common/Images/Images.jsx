@@ -33,7 +33,7 @@ const Images = ({
 			/>
 		))
 
-		if(images.length === 0) return (
+		if(data && images.length === 0) return (
 			<FlexBox
 				width='100%'
 				height={300}

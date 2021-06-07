@@ -1,5 +1,5 @@
 import styled from 'styled-components'
-import { layout, space } from 'styled-system'
+import { flexbox, layout, space } from 'styled-system'
 import theme from 'theme'
 import Skeleton from '../Skeleton'
 
@@ -19,8 +19,8 @@ export const Wrapper = styled.div`
   width: ${({ width }) => isNaN(width) ? width : (width + 'px') };
   border-radius: ${({ circle }) => circle ? '50%' : theme.borderRadius};
   z-index: 0;
-  flex-grow: 1;
 
+  ${flexbox}
   ${layout}
   ${space}
 `

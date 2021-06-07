@@ -5,13 +5,13 @@ import ThemeToggle from '../ThemeToggle'
 import FlexBox from '../ui/FlexBox'
 import Link from '../ui/Link/Link'
 import Skeleton from '../ui/Skeleton'
-import Text from '../ui/Text'
 
 import { Content, Wrapper } from './Navbar.styles'
 import useTheme from 'hooks/useTheme'
+import UserBadge from './UserBadge'
 
 const Navbar = () => {
-	const { isAuthenticated, isLoading, logout } = useAuthentication()
+	const { isAuthenticated, isLoading } = useAuthentication()
 	const { isDarkMode } = useTheme()
 
 	const render = () => {
@@ -30,13 +30,7 @@ const Navbar = () => {
 		)
 
 		if(isAuthenticated) return (
-			<Text
-				size={3}
-				color='textSecondary'
-				onClick={logout}
-			>
-              Logout
-			</Text>
+			<UserBadge/>
 		)
 
 		return (
@@ -62,8 +56,8 @@ const Navbar = () => {
 				</Link>
 
 				<FlexBox alignItems='center'>
-					{render()}
 					<ThemeToggle/>
+					{render()}
 				</FlexBox>
 			</Content>
 		</Wrapper>

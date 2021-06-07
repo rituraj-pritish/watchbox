@@ -31,6 +31,7 @@ const PersonCard = ({
 			<Image
 				url={profile_path}
 				fallback={GENDER[gender] === 'male' ? Male : Female}
+				flexGrow={1}
 			/>
 			<FlexBox
 				height={40}

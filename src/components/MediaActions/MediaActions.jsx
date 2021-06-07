@@ -27,10 +27,10 @@ const MediaActions = ({
 
 	return (
 		<FlexBox>
-			<RateMedia
+			{/* <RateMedia
 				mediaType={mediaType}
 				mediaId={mediaId}
-			/>
+			/> */}
 
 			<Action
 				mr={3}
@@ -56,10 +56,10 @@ const MediaActions = ({
 				<HeartIcon/>
 			</Action>
 
-			<AddToList
+			{/* <AddToList
 				mediaType={mediaType}
 				mediaId={mediaId}
-			/>
+			/> */}
 		</FlexBox>
 	)
 }
