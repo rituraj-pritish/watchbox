@@ -83,7 +83,7 @@ const Carousel = ({
 		if(isLoading || !data) return new Array(5)
 			.fill(0).map((_, idx) => <Card key={idx} />)
 
-		if(data.length === 0) return (
+		if(data && data.length === 0) return (
 			<div>
 				<FlexBox
 					alignItems='center'

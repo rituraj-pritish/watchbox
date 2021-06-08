@@ -69,6 +69,7 @@ const BigListItem = ({
 				<Image
 					url={poster_path}
 					width={200}
+					height='100%'
 					imageSize={POSTER_SIZES.MEDIUM}
 				/>   
 			</Link>

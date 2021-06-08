@@ -8,6 +8,7 @@ import MediaOverview from 'components/MediaOverview'
 import useTitle from 'hooks/useTitle'
 import Images from 'components/common/Images'
 import Videos from 'components/common/Videos'
+import ReviewsSection from 'components/ReviewsSection'
 
 const TV = () => {
 	const { tvId } = useParams()
@@ -59,9 +60,14 @@ const TV = () => {
 				mb={4}
 			/>
 
+			<ReviewsSection
+				data={data?.reviews?.results}
+				viewAllLink={`/tv/${data?.id}/reviews`}
+			/>
+
 			<Images
 				data={data?.images}
-				mb={4}
+				my={4}
 				viewAllLink={`/tv/${data?.id}/media/photos`}
 			/>
 			

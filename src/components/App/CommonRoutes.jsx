@@ -11,6 +11,7 @@ import Seasons from 'modules/tv/Seasons'
 import Season from 'modules/tv/Season'
 import Episodes from 'modules/tv/Episodes'
 import Episode from 'modules/tv/Episode'
+import Reviews from 'components/Reviews'
 
 const CommonRoutes = () => {
 	return (
@@ -45,6 +46,14 @@ const CommonRoutes = () => {
 					'/tv/:tvId/media/:mediaType'
 				]}
 				component={MediaPage}
+			/>
+			<Route
+				exact
+				path={[
+					'/movie/:movieId/reviews',
+					'/tv/:tvId/reviews'
+				]}
+				component={Reviews}
 			/>
 			<Route
 				exact

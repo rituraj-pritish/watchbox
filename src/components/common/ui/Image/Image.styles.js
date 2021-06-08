@@ -11,6 +11,7 @@ export const StyledSkeleton = styled(Skeleton)`
   bottom: 0;
   height: 100%;
   width: 100%;
+  border-radius: ${({ circle }) => circle && '50%'};
 `
 
 export const Wrapper = styled.div`

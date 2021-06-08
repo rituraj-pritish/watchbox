@@ -8,6 +8,7 @@ import MediaOverview from 'components/MediaOverview'
 import useTitle from 'hooks/useTitle'
 import Images from 'components/common/Images'
 import Videos from 'components/common/Videos/Videos'
+import ReviewsSection from 'components/ReviewsSection'
 
 const Movie = () => {
 	const { movieId } = useParams()
@@ -26,8 +27,14 @@ const Movie = () => {
 				person
 				data={data?.credits?.cast}
 				viewAllLink={`/movie/${movieId}/credits/cast`}
-				mt={4}
+				my={4}
 			/>
+
+			<ReviewsSection
+				data={data?.reviews?.results}
+				viewAllLink={`/movie/${data?.id}/reviews`}
+			/>
+			
 			<Images
 				data={data?.images}
 				my={4}

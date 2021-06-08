@@ -27,10 +27,14 @@ const ImageComp = ({
 	img.src = getUrl()
 
 	return (
-		<Wrapper {...rest}>
+		<Wrapper
+			height={height}
+			width={width}
+			{...rest}
+		>
 			{
 				(!isLoaded) && (
-					<StyledSkeleton/>
+					<StyledSkeleton circle={circle}/>
 				)
 			}
 			<Background

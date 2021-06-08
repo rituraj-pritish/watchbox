@@ -12,7 +12,7 @@ const Avatar = ({
 			circle
 			width={size}
 			height={size}
-			url={avatar_path}
+			directUrl={avatar_path}
 		/>
 	)
 }

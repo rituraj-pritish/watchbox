@@ -1,7 +1,7 @@
 import api from 'api'
 
 export const getTvDetails = showId => {
-	return api(`/tv/${showId}`, {}, { append_to_response: 'credits,images,videos' })
+	return api(`/tv/${showId}`, {}, { append_to_response: 'credits,images,videos,reviews' })
 }
 
 export const getSeasonDetails = (showId, seasonNumber) => {

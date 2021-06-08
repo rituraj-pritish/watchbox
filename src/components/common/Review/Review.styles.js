@@ -1,4 +1,5 @@
 import styled from 'styled-components'
+import { space } from 'styled-system'
 import theme from 'theme'
 
 export const Wrapper = styled.div`
@@ -9,4 +10,6 @@ export const Wrapper = styled.div`
   height: ${({ fullView }) => fullView ? '100%' : 'fit-content'};
   width: 100%;
   padding: ${theme.spacing()};
+
+  ${space}
 `

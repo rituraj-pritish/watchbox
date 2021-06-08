@@ -45,6 +45,8 @@ const Episodes = () => {
 						<Image
 							url={item.still_path}
 							width={200}
+							height='100%'
+							flexGrow={1}
 							imageSize={POSTER_SIZES.LARGE}
 						/>
 					</Link>

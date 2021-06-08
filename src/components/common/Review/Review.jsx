@@ -20,7 +20,7 @@ const Review = ({ fullView, ...review }) => {
 	} = review
 	const [contentRef, isOverflowingHeight] = useOverflow()
 
-	if (fullView || !id) return (
+	if (!id) return (
 		<Wrapper fullView={fullView}>
 			<FlexBox
 				alignItems='center'
@@ -45,7 +45,10 @@ const Review = ({ fullView, ...review }) => {
 	)
 
 	return (
-		<Wrapper fullView={fullView}>
+		<Wrapper
+			fullView={fullView}
+			my={2}
+		>
 			<FlexBox
 				alignItems='center'
 				mb={3}
@@ -59,7 +62,7 @@ const Review = ({ fullView, ...review }) => {
 					bold
 					size={2}
 				>
-					{author_details.name}
+					{author_details.name || author_details.username}
 				</Text>
 				<Text
 					color='textTertiary'
@@ -82,6 +85,7 @@ const Review = ({ fullView, ...review }) => {
 						<Link
 							align='right'
 							mt={2}
+							size={1}
 						>
               View full review
 						</Link>
