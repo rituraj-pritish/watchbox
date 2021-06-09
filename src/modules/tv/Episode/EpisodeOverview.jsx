@@ -55,7 +55,12 @@ const EpisodeOverview = ({
 }
 
 EpisodeOverview.propTypes = {
-
+	still_path: PropTypes.string,
+	name: PropTypes.string,
+	overview: PropTypes.string,
+	air_date: PropTypes.string,
+	episode_number: PropTypes.number,
+	season_number: PropTypes.number,
 }
 
 export default EpisodeOverview

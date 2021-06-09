@@ -82,7 +82,13 @@ const PersonOverview = ({
 }
 
 PersonOverview.propTypes = {
-
+	profile_path: PropTypes.string,
+	name: PropTypes.string,
+	biography: PropTypes.string,
+	id: PropTypes.number,
+	birthday: PropTypes.string,
+	known_for_department: PropTypes.string,
+	gender: PropTypes.number,
 }
 
 export default PersonOverview

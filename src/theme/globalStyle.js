@@ -30,7 +30,7 @@ const GlobalStyle = createGlobalStyle`
 
   ::-webkit-scrollbar-thumb:hover {
     background-color: ${({ isDarkMode }) =>
-		isDarkMode ?  lighten(0.2,'#c6c6c6') : darken(0.2, '#bebebe')}; 
+	isDarkMode ?  lighten(0.2,'#c6c6c6') : darken(0.2, '#bebebe')}; 
   }
 
 

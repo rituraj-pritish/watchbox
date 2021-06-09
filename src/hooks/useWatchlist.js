@@ -1,7 +1,9 @@
+import { useEffect } from 'react'
+import { useQueries } from 'react-query'
+
 import { addToWatchlist, removeFromWatchlist } from 'api/endpoints/account'
 import { getMovieWatchlist } from 'api/endpoints/movies'
 import { getShowsWatchlist } from 'api/endpoints/tv'
-import { useQueries } from 'react-query'
 import useAuthentication from './useAuthentication'
 
 export default (mediaId, mediaType) => {
@@ -9,9 +11,16 @@ export default (mediaId, mediaType) => {
 	const accountId = user?.id
 
 	const [movies, shows] = useQueries([
-		{ queryKey: ['watchlist', 'movies'], queryFn: getMovieWatchlist },
-		{ queryKey: ['watchlist', 'tvs'], queryFn: getShowsWatchlist }
+		{ queryKey: ['watchlist', 'movies'], queryFn: getMovieWatchlist, enabled: false },
+		{ queryKey: ['watchlist', 'tvs'], queryFn: getShowsWatchlist, enabled: false }
 	])
+
+	useEffect(() => {
+		if(accountId && !movies.isFetched && !shows.isFetched) {
+			movies.refetch()
+			shows.refetch()
+		}
+	}, [accountId])
 
 	const moviesWatchlist = movies.data?.results || []
 	const showsWatchlist = shows.data?.results || []

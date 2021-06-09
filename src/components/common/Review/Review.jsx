@@ -21,7 +21,10 @@ const Review = ({ fullView, ...review }) => {
 	const [contentRef, isOverflowingHeight] = useOverflow()
 
 	if (!id) return (
-		<Wrapper fullView={fullView}>
+		<Wrapper
+			fullView={fullView}
+			my={2}
+		>
 			<FlexBox
 				alignItems='center'
 				mb={3}

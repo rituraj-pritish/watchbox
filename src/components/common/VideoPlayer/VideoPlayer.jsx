@@ -32,6 +32,13 @@ const VideoPlayer = ({
 
 VideoPlayer.propTypes = {
 	videoKey: PropTypes.string,
+	autoPlay: PropTypes.bool,
+	width: PropTypes.oneOfType([
+		PropTypes.string, PropTypes.number
+	]),
+	height: PropTypes.oneOfType([
+		PropTypes.string, PropTypes.number
+	]),
 }
 
 export default VideoPlayer

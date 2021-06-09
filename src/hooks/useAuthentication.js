@@ -5,7 +5,9 @@ import {
 	login as loginEndpoint, 
 	logout as logoutEndpoint 
 } from 'api/endpoints/authentication' 
+import { queryClient } from 'components/App/Providers'
 import { useHistory } from 'react-router'
+import useUrlParams from './useUrlParams'
 
 const INITIAL_STATE = {
 	isLoading: true,
@@ -16,9 +18,19 @@ const AUTH_STATE = createState(INITIAL_STATE)
 
 export const SESSION_ID_KEY = 'session_id'
 
+const QUERIES_TO_RESET = [
+	['favorites', 'movies'],
+	['favorites', 'tvs'],
+	['watchlist', 'movies'],
+	['watchlist', 'tvs']
+]
+
 export default () => {
+	const { redirect_url } = useUrlParams(['redirect_url'])
 	const history = useHistory()
 	const authState = useState(AUTH_STATE)
+
+	// const client = useQueryClient()
 
 	const login = async data => {
 		try {
@@ -32,7 +44,7 @@ export default () => {
 					isAuthenticated: true,
 					user
 				})
-				history.push('/')
+				history.push(redirect_url || '/')
 			}
 		} catch (err) {
 			// todo show message
@@ -63,6 +75,11 @@ export default () => {
 				...INITIAL_STATE, isLoading: false
 			})
 			localStorage.removeItem(SESSION_ID_KEY)
+
+			QUERIES_TO_RESET.forEach(key => {
+				queryClient.resetQueries(key)
+			})
+
 			//todo handle error
 		// eslint-disable-next-line no-empty
 		} catch (err) {}

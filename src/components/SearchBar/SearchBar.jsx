@@ -5,13 +5,14 @@ import Input from 'components/common/ui/Input'
 import debounce from 'helpers/debounce'
 import { useQuery } from 'react-query'
 import api from 'api'
-import { Results, ResultsContainer } from './SearchBar.styles'
+import { Results, ResultsContainer, StyledInput } from './SearchBar.styles'
 import ListItem from 'components/common/ListItem'
 import Link from 'components/common/ui/Link'
 import Icon from 'components/common/ui/Icon'
+import useComponentVisible from 'hooks/useComponentVisible'
 
 const SearchBar = () => {
-	const [isVisible, setIsVisible] = useState(false)
+	const [ref, isVisible, setIsVisible] = useComponentVisible(false)
 	const [query, setQuery] = useState('')
 
 	const { 
@@ -58,23 +59,28 @@ const SearchBar = () => {
 
 	return (
 		<>
-			<Input
+			<StyledInput
 				placeholder='Search movies, tv shows or person'
 				onChange={debounce(setQuery, 1000)}
+				flex={1}
+				px={60}
 			/>
 			{isVisible && (
-				<ResultsContainer>
+				<ResultsContainer ref={ref}>
 					<div>
 						<Icon 
 							color='textTertiary'
 							my={3}
 							ml='auto'
 							mr={3}
-							onClick={() => setIsVisible(false)}
+							onClick={() => {
+								setQuery('')
+								setIsVisible(false)
+							}}
 						>
 							<CrossIcon/>
 						</Icon>
-						<Results>
+						<Results onClick={() => setIsVisible(false)}>
 							{render()}
 						</Results>
 						<Link

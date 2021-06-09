@@ -48,10 +48,10 @@ export const StyledButton = styled.div`
 	box-sizing: border-box;
 
 	${({ theme, variant, type, isDarkMode, isLoading }) => {
-		const bgColor = getBgColor(variant, type, theme)
-		const color = getColor(variant, type, theme, isDarkMode)
+	const bgColor = getBgColor(variant, type, theme)
+	const color = getColor(variant, type, theme, isDarkMode)
 
-		return css`
+	return css`
 			background: ${bgColor};
 			color: ${color};
 			box-shadow: ${type === BUTTON_TYPES.OUTLINED ? `0 0 0 2px ${color}` : 'none'};
@@ -64,7 +64,7 @@ export const StyledButton = styled.div`
 				background: ${!isLoading && darken(0.03, bgColor)};
 			}
 		`
-	} 
+} 
 }
 
 	${({ isLoading }) => isLoading && css`

@@ -9,8 +9,11 @@ import Skeleton from '../ui/Skeleton'
 import { Content, Wrapper } from './Navbar.styles'
 import useTheme from 'hooks/useTheme'
 import UserBadge from './UserBadge'
+import SearchBar from 'components/SearchBar'
+import { useHistory } from 'react-router'
 
 const Navbar = () => {
+	const history = useHistory()
 	const { isAuthenticated, isLoading } = useAuthentication()
 	const { isDarkMode } = useTheme()
 
@@ -35,7 +38,11 @@ const Navbar = () => {
 
 		return (
 			<Link
-				to='/login'
+				to={() => {
+					const { pathname, search } = history.location
+					const redirectUrl = pathname + (search ? `?${search}` : '')
+					return '/login' + `?redirect_url=${redirectUrl}`
+				}}
 				size={3}
 				color='primary'
 			>
@@ -54,7 +61,7 @@ const Navbar = () => {
 				>
           WatchBox
 				</Link>
-
+				<SearchBar/>
 				<FlexBox alignItems='center'>
 					<ThemeToggle/>
 					{render()}

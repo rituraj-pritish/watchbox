@@ -37,7 +37,7 @@ const Action = ({
 	return (
 		<Tooltip tooltip={tooltipEl}>
 			<Icon
-				onClick={isAuthenticated ? mutate : null}
+				onClick={isAuthenticated ? mutate : () => {}}
 				circle={circle}
 				size={20}
 				p={12}

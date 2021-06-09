@@ -23,6 +23,7 @@ export const SliderWrapper = styled.div`
 
   .slick-track {
     height: 100%;
+    margin-left: 0;
   }
 
   .slick-slide {

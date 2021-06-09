@@ -47,7 +47,7 @@ const SmallListItem = ({
 		)
 
 	return (
-		<Link>
+		<Link to={`/${media_type}/${id}`}>
 			<WrapperSmall>
 				<Image
 					url={poster_path}

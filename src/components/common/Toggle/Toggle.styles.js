@@ -16,7 +16,7 @@ export const Wrapper = styled.div`
 export const Option = styled.div`
   border-radius: ${theme.spacing(2)};
   background: ${({ isSelected, theme }) => isSelected 
-		? theme.colors.secondary : theme.colors.appBg };
+	? theme.colors.secondary : theme.colors.appBg };
   color: ${({ isSelected, isDarkMode,  theme }) => isSelected 
 		? isDarkMode ? theme.colors.black : theme.colors.white
 		: theme.colors.textTertiary };

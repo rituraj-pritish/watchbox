@@ -27,13 +27,15 @@ const Input = ({
 			space={space}
 			{...rest}
 		>
-			<Text
-				mb={2}
-				bold
-				color='textTertiary'
-			>
-				{label}
-			</Text>
+			{label && (
+				<Text
+					mb={2}
+					bold
+					color='textTertiary'
+				>
+					{label}
+				</Text>
+			)}
 			<StyledInput
 				className={className}
 				value={text}

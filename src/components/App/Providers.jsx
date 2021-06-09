@@ -10,7 +10,7 @@ import GlobalStyle from 'theme/globalStyle'
 import useTheme from 'hooks/useTheme'
 import { QueryClient, QueryClientProvider } from 'react-query'
 
-const queryClient = new QueryClient({
+export const queryClient = new QueryClient({
 	defaultOptions: {
 		queries: {
 			refetchOnMount: false,

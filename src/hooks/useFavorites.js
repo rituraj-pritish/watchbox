@@ -1,3 +1,4 @@
+import { useEffect } from 'react'
 import { useQueries, useQueryClient } from 'react-query'
 
 import { getFavoriteMovies } from 'api/endpoints/movies'
@@ -11,11 +12,18 @@ export default (mediaId, mediaType) => {
 	const accountId = user?.id
 
 	const [movies, shows] = useQueries([
-		{ queryKey: ['favorites', 'movies'], queryFn: getFavoriteMovies },
-		{ queryKey: ['favorites', 'tvs'], queryFn: getFavoriteShows }
+		{ queryKey: ['favorites', 'movies'], queryFn: getFavoriteMovies, enabled: false },
+		{ queryKey: ['favorites', 'tvs'], queryFn: getFavoriteShows, enabled: false }
 	])
 
 	const client = useQueryClient()
+
+	useEffect(() => {
+		if(accountId && !movies.isFetched && !shows.isFetched) {
+			movies.refetch()
+			shows.refetch()
+		}
+	}, [accountId])
 
 	const favoriteMovies = movies.data?.results || []
 	const favoriteShows = shows.data?.results || []
