@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react'
+import React, { useEffect, useRef, useState } from 'react'
 
 import { ReactComponent as CrossIcon } from 'assets/icons/cross.svg'
 import Input from 'components/common/ui/Input'
@@ -14,6 +14,7 @@ import useComponentVisible from 'hooks/useComponentVisible'
 const SearchBar = () => {
 	const [ref, isVisible, setIsVisible] = useComponentVisible(false)
 	const [query, setQuery] = useState('')
+	const inputRef = useRef()
 
 	const { 
 		data, 
@@ -35,6 +36,9 @@ const SearchBar = () => {
 	}, [query])
 
 	useEffect(() => {
+		if(!isVisible) {
+			inputRef.current.reset()
+		}
 		if(!isVisible && (isFetching || isFetched)) {
 			remove()
 		}
@@ -64,6 +68,7 @@ const SearchBar = () => {
 				onChange={debounce(setQuery, 1000)}
 				flex={1}
 				px={60}
+				ref={inputRef}
 			/>
 			{isVisible && (
 				<ResultsContainer ref={ref}>

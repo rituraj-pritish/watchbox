@@ -1,6 +1,6 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-import { BrowserRouter as Router } from 'react-router-dom'
+import { BrowserRouter, Router } from 'react-router-dom'
 import { ThemeConsumer, ThemeProvider } from 'styled-components'
 import { SkeletonTheme } from 'react-loading-skeleton'
 
@@ -19,12 +19,16 @@ export const queryClient = new QueryClient({
 	}
 })
 
-const Providers = ({ children }) => {
+const Providers = ({ children, history }) => {
 	const { isDarkMode } = useTheme()
+
+	const RouterComponent = process.env.NODE_ENV === 'test'
+		? Router
+		: BrowserRouter
 
 	return (
 		<QueryClientProvider client={queryClient}>
-			<Router>
+			<RouterComponent history={history}>
 				<ThemeProvider theme={isDarkMode ? darkTheme : lightTheme}>
 					<ThemeConsumer>
 						{(theme) => (
@@ -39,13 +43,14 @@ const Providers = ({ children }) => {
 						)}
 					</ThemeConsumer>
 				</ThemeProvider>
-			</Router>
+			</RouterComponent>
 		</QueryClientProvider>
 	)
 }
 
 Providers.propTypes = {
-	children: PropTypes.node.isRequired
+	children: PropTypes.node.isRequired,
+	history: PropTypes.object
 }
 
 export default Providers

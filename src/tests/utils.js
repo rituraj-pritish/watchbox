@@ -35,16 +35,8 @@ export const renderApp = ({ route } = { route: '/' }) => {
 		initialEntries: [route]
 	})
 
-	const Wrapper = ({ children }) => {
-		return (
-			<Router history={history}>
-				{children}
-			</Router>
-		)
-	}
-  
 	return {
-		...rtlRender(<App/>, { wrapper: Wrapper }),
+		...rtlRender(<App history={history} />),
 		history
 	}
 }

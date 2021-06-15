@@ -1,10 +1,7 @@
 import React from 'react'
-import { useQuery } from 'react-query'
-import { useHistory, useParams } from 'react-router'
+import { useParams } from 'react-router'
 
 import { capitalize } from 'helpers/string'
-import { getMovieDetails } from 'api/endpoints/movies'
-import { getTvDetails } from 'api/endpoints/tv'
 import useTitle from 'hooks/useTitle'
 import ImageCard from 'components/common/Images/ImageCard'
 import PageTitle from 'components/common/PageTitle'
@@ -12,23 +9,23 @@ import VideoCard from 'components/common/Videos/VideoCard'
 import List from 'components/List'
 import { ListWrapper } from './MediaPage.styles'
 import { filterFn, getUniqueElements } from 'helpers/array'
+import useMovie from 'hooks/useMovie'
+import useShow from 'hooks/useShow'
+import usePerson from 'hooks/usePerson'
 
 const MediaPage = () => {
-	const history = useHistory()
-	const { movieId, tvId, mediaType: type } = useParams()
-	const mediaType = history.location.pathname.includes('movie') ? 'movie' : 'tv'
-	const mediaId = movieId || tvId
+	let data
+	const { movieId, tvId, personId, mediaType: type } = useParams()
+	if(movieId) data = useMovie()
+	if(tvId) data = useShow()
+	if(personId) data = usePerson()
 
-	const { data } = useQuery([mediaType, mediaId], () =>
-		mediaType === 'movie' ? getMovieDetails(mediaId) : getTvDetails(mediaId)
-	)
 	useTitle(`${capitalize(type)} - ${data?.title || data?.name}`)
-
 	const isVideos = type === 'videos'
 
 	const list = isVideos 
 		? data?.videos?.results 
-		: data ? [...data?.images?.backdrops, ...data?.images?.posters] : []
+		: data?.images ? Object.values(data.images).reduce((acc, curr) => [...acc, ...curr], []) : []
 
 	const videoTypes = isVideos
 		? getUniqueElements(list?.map(({ type }) => type))
@@ -39,7 +36,7 @@ const MediaPage = () => {
 			<PageTitle
 				title={type}
 				ancestors={[
-					{ title: data?.title || data?.name, path: `/${mediaType}/${mediaId}` }
+					{ title: data?.title || data?.name, path: `/${data.mediaType}/${data?.id}` }
 				]}
 			/>
 			<List

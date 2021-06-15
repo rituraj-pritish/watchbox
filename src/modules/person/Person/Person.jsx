@@ -18,6 +18,7 @@ const Person = () => {
 			<PersonOverview {...data} />
 			<Images 
 				data={data?.images?.profiles}
+				viewAllLink={`/person/${personId}/media/photos`}
 				mt={4}
 			/>
 		</div>

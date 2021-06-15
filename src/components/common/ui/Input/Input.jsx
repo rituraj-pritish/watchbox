@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { forwardRef, useImperativeHandle, useState } from 'react'
 import PropTypes from 'prop-types'
 import FlexBox from '../FlexBox'
 import Text from '../Text'
@@ -12,9 +12,13 @@ const Input = ({
 	space,
 	className,
 	...rest
-}) => {
+}, ref) => {
 	const { isDarkMode } = useTheme()
 	const [text, setText] = useState(value || '')
+
+	useImperativeHandle(ref, () => ({
+		reset: () => setText('')
+	}))
 
 	const handleChange = e => {
 		setText(e.target.value)
@@ -57,4 +61,4 @@ Input.propTypes = {
 	className: PropTypes.string
 }
 
-export default Input
+export default forwardRef(Input)

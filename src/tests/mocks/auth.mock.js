@@ -42,5 +42,9 @@ export default [
 			'include_adult': false,
 			'username': 'uniqueJohnDoe21'
 		}))
+	}),
+
+	rest.delete(URL + '/authentication/session', (req, res, ctx) => {
+		return res(ctx.json({ success: true }))
 	})
 ]

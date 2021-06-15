@@ -43,7 +43,8 @@ const CommonRoutes = () => {
 				exact
 				path={[
 					'/movie/:movieId/media/:mediaType',
-					'/tv/:tvId/media/:mediaType'
+					'/tv/:tvId/media/:mediaType',
+					'/person/:personId/media/:mediaType'
 				]}
 				component={MediaPage}
 			/>
