@@ -44,7 +44,9 @@ const CommonRoutes = () => {
 				path={[
 					'/movie/:movieId/media/:mediaType',
 					'/tv/:tvId/media/:mediaType',
-					'/person/:personId/media/:mediaType'
+					'/tv/:tvId/seasons/:seasonNumber/media/:mediaType',
+					'/tv/:tvId/seasons/:seasonNumber/episodes/:episodeNumber/media/:mediaType',
+					'/person/:personId/media/:mediaType',
 				]}
 				component={MediaPage}
 			/>

@@ -50,7 +50,6 @@ const Videos = ({ data, viewAllLink }) => {
 			<FlexBox
 				justifyContent='space-between'
 				alignItems='flex-end'
-				mb={4}
 			>
 				<Text
 					bold
@@ -73,6 +72,7 @@ const Videos = ({ data, viewAllLink }) => {
 				overflowX='auto'
 				overflowY='hidden'
 				pb={2}
+				mt={4}
 			>
 				{render()}
 			</FlexBox>

@@ -1,8 +1,10 @@
 import React from 'react'
 
 import ToggleMenu from 'components/common/ToggleMenu'
-import Image from 'components/common/ui/Image'
 import useAuthentication from 'hooks/useAuthentication'
+import Avatar from 'components/common/Avatar'
+
+const BADGE_SIZE = 35
 
 const UserBadge = () => {
 	const { user, logout } = useAuthentication()
@@ -11,11 +13,9 @@ const UserBadge = () => {
 	return (
 		<ToggleMenu 
 			trigger={(
-				<Image
-					circle
-					url={avatar_path}
-					width={37}
-					height={37}
+				<Avatar
+					avatar_path={avatar_path}
+					size={BADGE_SIZE}
 				/>
 			)}
 		>

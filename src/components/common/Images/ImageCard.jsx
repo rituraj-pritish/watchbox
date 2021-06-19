@@ -1,8 +1,10 @@
 import React from 'react'
 import PropTypes from 'prop-types'
+
 import Image from '../ui/Image'
 import { BACKDROP_SIZES } from 'constants/imageSizes'
 import Modal from '../Modal'
+import { StyledImage } from './Images.styles'
 
 const ImageCard = ({
 	file_path,
@@ -11,13 +13,15 @@ const ImageCard = ({
 }) => {
 	const isBackdrop = aspect_ratio > 1
 	const triggerHeight = 300
-	const expandedHeight = 50
+
+	const expandedHeight = isBackdrop ? `${80 / aspect_ratio}vw` : '80vh'
+	const expandedWidth = isBackdrop ? '80vw' : `${80 * aspect_ratio}vh`
 
 	return (
 		<Modal
 			key={file_path}
 			trigger={(
-				<Image
+				<StyledImage
 					height={triggerHeight}
 					width={triggerHeight * aspect_ratio}
 					imageSize={isBackdrop ? BACKDROP_SIZES.MEDIUM : undefined}
@@ -33,8 +37,8 @@ const ImageCard = ({
 		>
 			<Image
 				url={file_path}
-				height={`${expandedHeight}vh`}
-				width={`${expandedHeight * aspect_ratio}vh`}
+				height={expandedHeight}
+				width={expandedWidth}
 				imageSize={null}
 			/>
 		</Modal>

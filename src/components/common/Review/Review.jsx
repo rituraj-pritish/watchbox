@@ -54,7 +54,7 @@ const Review = ({ fullView, ...review }) => {
 		>
 			<FlexBox
 				alignItems='center'
-				mb={3}
+				py={3}
 			>
 				<Avatar
 					{...author_details}
@@ -95,7 +95,8 @@ const Review = ({ fullView, ...review }) => {
 					}
 					styles={{
 						width: '50%',
-						height: '50%'
+						height: '50%',
+						overflow: 'hidden'
 					}}
 				>
 					<Review

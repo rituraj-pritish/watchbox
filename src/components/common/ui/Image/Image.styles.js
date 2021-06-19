@@ -12,6 +12,9 @@ export const StyledSkeleton = styled(Skeleton)`
   height: 100%;
   width: 100%;
   border-radius: ${({ circle }) => circle && '50%'};
+  background-color: ${({ theme }) => theme.colors.skeleton};
+  background-image: ${({ theme }) => 
+		`linear-gradient( 90deg,${theme.colors.skeleton},${theme.colors.skeletonHighlight},${theme.colors.skeleton} )`};
 `
 
 export const Wrapper = styled.div`

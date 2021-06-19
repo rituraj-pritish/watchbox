@@ -22,6 +22,7 @@ const Home = () => {
 					request: getPopularMovies,
 					key: ['movies', 'popular']
 				}}
+				mt={4}
 			/>
 		</div>
 	)

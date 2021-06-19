@@ -2,8 +2,8 @@ import React from 'react'
 import { useQuery } from 'react-query'
 import { useParams } from 'react-router'
 
-import { getMovieDetails } from 'api/endpoints/movies'
-import Carousel from 'components/common/Carousel/Carousel'
+import { getMovieDetails, getRecommendedMovies } from 'api/endpoints/movies'
+import Carousel from 'components/common/Carousel'
 import MediaOverview from 'components/MediaOverview'
 import useTitle from 'hooks/useTitle'
 import Images from 'components/common/Images'
@@ -52,6 +52,16 @@ const Movie = () => {
 				data={data?.credits?.crew}
 				viewAllLink={`/movie/${movieId}/credits/crew`}
 				mt={4}
+			/>
+
+			<Carousel
+				title='Recommended'
+				request={{
+					key: ['tv', movieId, 'recommendations'],
+					request: () => getRecommendedMovies(movieId)
+				}}
+				requestDeps={[movieId]}
+				mt={3}
 			/>
 		</>
 	)

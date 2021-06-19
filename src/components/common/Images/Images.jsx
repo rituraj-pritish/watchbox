@@ -59,7 +59,6 @@ const Images = ({
 			<FlexBox
 				justifyContent='space-between'
 				alignItems='flex-end'
-				mb={4}
 			>
 				<Text
 					bold
@@ -80,6 +79,7 @@ const Images = ({
 
 			<FlexBox
 				overflowX='auto'
+				pt={4}
 				pb={2}
 			>
 				{render()}

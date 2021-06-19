@@ -21,3 +21,6 @@ export const getMovieWatchlist = (accountId, page = 1) => {
 	return api(`/account/${accountId}/watchlist/movies`, {}, { page })
 }
 
+export const getRecommendedMovies = movieId => {
+	return api(`/movie/${movieId}/recommendations`)
+}

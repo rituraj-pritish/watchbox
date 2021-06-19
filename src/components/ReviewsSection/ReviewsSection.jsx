@@ -7,12 +7,24 @@ import FlexBox from 'components/common/ui/FlexBox'
 import Link from 'components/common/ui/Link'
 
 const ReviewsSection = ({ data, viewAllLink }) => {
+	const hasData = data?.length > 0
+
 	const render = () => {
 		if(!data) return new Array(3).fill(0).map((_, idx) => (
 			<Review
 				key={idx}
 			/>
 		))
+
+		if(!hasData) return (
+			<FlexBox
+				justifyContent='center'
+				alignItems='center'
+				height={50}
+			>
+				No reviews available
+			</FlexBox>
+		)
 
 		return data.slice(0, 3).map(item => (
 			<Review
@@ -21,6 +33,7 @@ const ReviewsSection = ({ data, viewAllLink }) => {
 			/>
 		))
 	}
+
 	return (
 		<div>
 			<FlexBox
@@ -33,12 +46,14 @@ const ReviewsSection = ({ data, viewAllLink }) => {
 				>
 					Reviews
 				</Text>
-				<Link 
-					to={viewAllLink}
-					size={1}
-				>
+				{hasData && (
+					<Link 
+						to={viewAllLink}
+						size={1}
+					>
 					View all
-				</Link>
+					</Link>
+				)}
 			</FlexBox>
 			{render()}
 		</div>
