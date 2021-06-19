@@ -1,0 +1,123 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Review renders review component with full review 1`] = `
+<div>
+  <div
+    class="css-ahmskn-SkeletonTheme"
+  >
+    <div
+      class="sc-dPiKHq ktXSgo"
+    >
+      <div
+        class="sc-dkPtyc eqceaR"
+      >
+        <div
+          class="sc-egiSv bEDQSa"
+          height="40"
+          width="40"
+        >
+          <div
+            class="sc-bqiQRQ jJORTs"
+            height="40"
+            width="40"
+          />
+        </div>
+        <div
+          class="sc-hKwCoD dAmahb"
+          color="textSecondary"
+          font-size="2"
+          font-weight="bold"
+        >
+          TheDarkKnight31
+        </div>
+        <div
+          class="sc-hKwCoD jllRuy"
+          color="textTertiary"
+          font-size="2"
+        >
+          12 Apr 2021 11:09 AM
+        </div>
+      </div>
+      <div
+        class="sc-hKwCoD excitZ"
+        color="textSecondary"
+        font-size="2"
+      >
+        I will be short. You should understand how hard to make movies based on such a legendary universe (expectation is too high!), with a lot of characters that need screen time, and with limited budget, PLUS in a pandemic situation, - the director made a great job.
+
+This is the best adaptation of such a legendary title.
+      </div>
+      <div>
+        <div
+          class="sc-kfPtPH jkzmwL"
+        >
+          <div
+            class="sc-hKwCoD fqsjRy"
+            color="secondary"
+            font-size="1"
+          >
+            <a
+              class="sc-eCImvq iuTZXO"
+              href=""
+            >
+              View full review
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`Review renders review component without full review 1`] = `
+<div>
+  <div
+    class="css-ahmskn-SkeletonTheme"
+  >
+    <div
+      class="sc-dPiKHq ktXSgo"
+    >
+      <div
+        class="sc-dkPtyc eqceaR"
+      >
+        <div
+          class="sc-egiSv bEDQSa"
+          height="40"
+          width="40"
+        >
+          <div
+            class="sc-bqiQRQ jJORTs"
+            height="40"
+            width="40"
+          />
+        </div>
+        <div
+          class="sc-hKwCoD dAmahb"
+          color="textSecondary"
+          font-size="2"
+          font-weight="bold"
+        >
+          TheDarkKnight31
+        </div>
+        <div
+          class="sc-hKwCoD jllRuy"
+          color="textTertiary"
+          font-size="2"
+        >
+          12 Apr 2021 11:09 AM
+        </div>
+      </div>
+      <div
+        class="sc-hKwCoD excitZ"
+        color="textSecondary"
+        font-size="2"
+      >
+        I will be short. You should understand how hard to make movies based on such a legendary universe (expectation is too high!), with a lot of characters that need screen time, and with limited budget, PLUS in a pandemic situation, - the director made a great job.
+
+This is the best adaptation of such a legendary title.
+      </div>
+    </div>
+  </div>
+</div>
+`;

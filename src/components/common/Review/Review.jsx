@@ -96,7 +96,9 @@ const Review = ({ fullView, ...review }) => {
 					styles={{
 						width: '50%',
 						height: '50%',
-						overflow: 'hidden'
+						overflow: 'hidden',
+						paddingTop: '0.5rem',
+						paddingBottom: '1.5rem'
 					}}
 				>
 					<Review

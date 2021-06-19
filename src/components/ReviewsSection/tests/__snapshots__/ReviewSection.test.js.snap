@@ -1,0 +1,214 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Reviews section Does not Render view all link 1`] = `
+<div>
+  <div
+    class="css-ahmskn-SkeletonTheme"
+  >
+    <div>
+      <div
+        class="sc-dkPtyc ggyVGj"
+      >
+        <div
+          class="sc-hKwCoD ecqkwW"
+          color="textPrimary"
+          font-size="4"
+        >
+          Reviews
+        </div>
+      </div>
+      <div
+        class="sc-dkPtyc dxBLBq"
+        height="50"
+      >
+        No reviews available
+      </div>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`Reviews section Render empty message if no data 1`] = `
+<div>
+  <div
+    class="css-ahmskn-SkeletonTheme"
+  >
+    <div>
+      <div
+        class="sc-dkPtyc ggyVGj"
+      >
+        <div
+          class="sc-hKwCoD ecqkwW"
+          color="textPrimary"
+          font-size="4"
+        >
+          Reviews
+        </div>
+      </div>
+      <div
+        class="sc-dkPtyc dxBLBq"
+        height="50"
+      >
+        No reviews available
+      </div>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`Reviews section Render view all link if totals reviews greater than 3 1`] = `
+<div>
+  <div
+    class="css-ahmskn-SkeletonTheme"
+  >
+    <div>
+      <div
+        class="sc-dkPtyc ggyVGj"
+      >
+        <div
+          class="sc-hKwCoD ecqkwW"
+          color="textPrimary"
+          font-size="4"
+        >
+          Reviews
+        </div>
+        <div
+          class="sc-hKwCoD bVSAYo"
+          color="secondary"
+          font-size="1"
+        >
+          <a
+            class="sc-eCImvq iuTZXO"
+            href="/link"
+          >
+            View all
+          </a>
+        </div>
+      </div>
+      <div
+        class="sc-dPiKHq ktXSgo"
+      >
+        <div
+          class="sc-dkPtyc gzMWFX"
+        >
+          <span>
+            <span
+              class="react-loading-skeleton sc-jRQAMF dkWHGm css-1eg0sfo-skeletonStyles-Skeleton"
+              style="width: 40px; height: 40px; border-radius: 50%;"
+            >
+              ‌
+            </span>
+          </span>
+          <span>
+            <span
+              class="react-loading-skeleton sc-jRQAMF evKoAY css-1eg0sfo-skeletonStyles-Skeleton"
+              style="width: 150px; height: 20px;"
+            >
+              ‌
+            </span>
+          </span>
+        </div>
+        <span>
+          <span
+            class="react-loading-skeleton sc-jRQAMF eDrjwW css-1eg0sfo-skeletonStyles-Skeleton"
+          >
+            ‌
+          </span>
+          <span
+            class="react-loading-skeleton sc-jRQAMF eDrjwW css-1eg0sfo-skeletonStyles-Skeleton"
+          >
+            ‌
+          </span>
+          <span
+            class="react-loading-skeleton sc-jRQAMF eDrjwW css-1eg0sfo-skeletonStyles-Skeleton"
+          >
+            ‌
+          </span>
+        </span>
+      </div>
+      <div
+        class="sc-dPiKHq ktXSgo"
+      >
+        <div
+          class="sc-dkPtyc gzMWFX"
+        >
+          <span>
+            <span
+              class="react-loading-skeleton sc-jRQAMF dkWHGm css-1eg0sfo-skeletonStyles-Skeleton"
+              style="width: 40px; height: 40px; border-radius: 50%;"
+            >
+              ‌
+            </span>
+          </span>
+          <span>
+            <span
+              class="react-loading-skeleton sc-jRQAMF evKoAY css-1eg0sfo-skeletonStyles-Skeleton"
+              style="width: 150px; height: 20px;"
+            >
+              ‌
+            </span>
+          </span>
+        </div>
+        <span>
+          <span
+            class="react-loading-skeleton sc-jRQAMF eDrjwW css-1eg0sfo-skeletonStyles-Skeleton"
+          >
+            ‌
+          </span>
+          <span
+            class="react-loading-skeleton sc-jRQAMF eDrjwW css-1eg0sfo-skeletonStyles-Skeleton"
+          >
+            ‌
+          </span>
+          <span
+            class="react-loading-skeleton sc-jRQAMF eDrjwW css-1eg0sfo-skeletonStyles-Skeleton"
+          >
+            ‌
+          </span>
+        </span>
+      </div>
+      <div
+        class="sc-dPiKHq ktXSgo"
+      >
+        <div
+          class="sc-dkPtyc gzMWFX"
+        >
+          <span>
+            <span
+              class="react-loading-skeleton sc-jRQAMF dkWHGm css-1eg0sfo-skeletonStyles-Skeleton"
+              style="width: 40px; height: 40px; border-radius: 50%;"
+            >
+              ‌
+            </span>
+          </span>
+          <span>
+            <span
+              class="react-loading-skeleton sc-jRQAMF evKoAY css-1eg0sfo-skeletonStyles-Skeleton"
+              style="width: 150px; height: 20px;"
+            >
+              ‌
+            </span>
+          </span>
+        </div>
+        <span>
+          <span
+            class="react-loading-skeleton sc-jRQAMF eDrjwW css-1eg0sfo-skeletonStyles-Skeleton"
+          >
+            ‌
+          </span>
+          <span
+            class="react-loading-skeleton sc-jRQAMF eDrjwW css-1eg0sfo-skeletonStyles-Skeleton"
+          >
+            ‌
+          </span>
+          <span
+            class="react-loading-skeleton sc-jRQAMF eDrjwW css-1eg0sfo-skeletonStyles-Skeleton"
+          >
+            ‌
+          </span>
+        </span>
+      </div>
+    </div>
+  </div>
+</div>
+`;

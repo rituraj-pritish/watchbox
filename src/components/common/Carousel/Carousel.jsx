@@ -156,7 +156,8 @@ Carousel.propTypes = {
 	onToggleChange: PropTypes.func,
 	containerRef: PropTypes.any,
 	viewAllLink: PropTypes.string,
-	cardRender: PropTypes.func
+	cardRender: PropTypes.func,
+	isLoading: PropTypes.bool
 }
 
 export default Carousel

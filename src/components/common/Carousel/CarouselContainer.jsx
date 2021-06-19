@@ -7,7 +7,7 @@ import useCarouselData from 'hooks/useCarouselData'
 
 const CarouselContainer = ({ request, toggleOptions, requestDeps = [], ...rest }) => {
 	const [ref, isTriggered] = usePositionOffset(300)
-	
+	console.log('req', request)
 	if('data' in rest) {
 		return (
 			<Carousel 

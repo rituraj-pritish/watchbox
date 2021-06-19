@@ -16,10 +16,8 @@ export const render = (ui, { route } = { route: '/' }) => {
 
 	const Wrapper = ({ children }) => {
 		return (
-			<Providers>
-				<Router history={history}>
-					{children}
-				</Router>
+			<Providers history={history}>
+				{children}
 			</Providers>
 		)
 	}
