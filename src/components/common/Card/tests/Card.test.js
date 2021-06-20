@@ -3,8 +3,7 @@ import userEvent from '@testing-library/user-event'
 
 import { render, screen, waitFor } from 'tests/utils'
 import Card from '..'
-import { MOVIE } from 'tests/mocks/movies.mock.js'
-import { PERSON } from 'tests/mocks/person.mock.js'
+import { MOVIE, PERSON } from './data'
 
 describe('Card tests', () => {
 	test.only('Movie card', async () => {

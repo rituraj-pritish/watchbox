@@ -23,6 +23,7 @@ const Login = () => {
 			flexDirection='column'
 			p={3}
 			mx='auto'
+			width='100%'
 			maxWidth={400}
 		>
 			<Input

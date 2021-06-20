@@ -1,13 +1,11 @@
 import React from 'react'
 import { render as rtlRender } from '@testing-library/react'
 import '@testing-library/jest-dom/extend-expect'
-import { Router } from 'react-router'
 import { createMemoryHistory } from 'history'
 
 import Providers from 'components/App/Providers'
 import App from 'components/App'
-
-
+import './mocks'
 
 export const render = (ui, { route } = { route: '/' }) => {
 	const history = createMemoryHistory({
@@ -33,8 +31,10 @@ export const renderApp = ({ route } = { route: '/' }) => {
 		initialEntries: [route]
 	})
 
+	const ui = React.cloneElement(<App/>)
+
 	return {
-		...rtlRender(<App history={history} />),
+		...rtlRender(ui),
 		history
 	}
 }

@@ -22,7 +22,7 @@ export const queryClient = new QueryClient({
 const Providers = ({ children, history }) => {
 	const { isDarkMode } = useTheme()
 
-	const RouterComponent = process.env.NODE_ENV === 'test'
+	const RouterComponent = history
 		? Router
 		: BrowserRouter
 

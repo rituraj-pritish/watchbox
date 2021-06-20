@@ -7,9 +7,11 @@ import { GridContainer, ListContainer } from './List.styles'
 import { GRID, LIST } from './ListContainer'
 
 const List = ({ 
-	data = [], 
+	isLoading,
+	data, 
 	itemType,
-	dataRender
+	dataRender,
+	itemsOnOnePage
 }) => {
 	if(dataRender) return dataRender(data)
 
@@ -17,22 +19,26 @@ const List = ({
 		<>
 			{itemType === LIST && (
 				<ListContainer>
-					{data.map((item) => (
-						<ListItem
-							key={item.id}
-							{...item}
-						/>
-					))}
+					{isLoading 
+						? new Array(itemsOnOnePage).fill(0).map((_, idx) => <ListItem key={idx}/>)
+						:data.map((item) => (
+							<ListItem
+								key={item.id}
+								{...item}
+							/>
+						))}
 				</ListContainer>
 			)}
 			{itemType === GRID && (
 				<GridContainer>
-					{data.map((item) => (
-						<Card
-							key={item.id}
-							{...item}
-						/>
-					))}
+					{isLoading
+						? new Array(itemsOnOnePage).fill(0).map((_, idx) => <Card key={idx}/>)
+						:data.map((item) => (
+							<Card
+								key={item.id}
+								{...item}
+							/>
+						))}
 				</GridContainer>
 			)}
 		</>
@@ -40,9 +46,11 @@ const List = ({
 }
 
 List.propTypes = {
+	isLoading: PropTypes.bool.isRequired,
 	data: PropTypes.array,
 	itemType: PropTypes.string.isRequired,
-	dataRender: PropTypes.func
+	dataRender: PropTypes.func,
+	itemsOnOnePage: PropTypes.number.isRequired
 }
 
 export default List

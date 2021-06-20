@@ -35,7 +35,7 @@ const ReviewsSection = ({ data, viewAllLink }) => {
 	}
 
 	return (
-		<div>
+		<div data-testid='Reviews-section'>
 			<FlexBox
 				mb={3}
 				justifyContent='space-between'

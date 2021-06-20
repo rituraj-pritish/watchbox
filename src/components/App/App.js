@@ -1,5 +1,4 @@
 import React, { useEffect } from 'react'
-import PropTypes from 'prop-types'
 import { Route, Switch } from 'react-router'
 
 import Providers from './Providers'
@@ -12,7 +11,7 @@ import Skeleton from 'components/common/ui/Skeleton'
 import FlexBox from 'components/common/ui/FlexBox'
 import CommonRoutes from './CommonRoutes'
 
-const App = ({ history }) => {
+const App = () => {
 	const { checkIfAuthenticated, isLoading, isAuthenticated } = useAuthentication()
 	useEffect(() => {
 		checkIfAuthenticated()	
@@ -51,7 +50,7 @@ const App = ({ history }) => {
 	}
 
 	return (
-		<Providers history={history}>
+		<Providers>
 			<AppWrapper>
 				<Navbar/>
 				<AppContent>
@@ -63,10 +62,6 @@ const App = ({ history }) => {
 			</AppWrapper>
 		</Providers>
 	)
-}
-
-App.propTypes = {
-	history: PropTypes.object
 }
 
 export default App

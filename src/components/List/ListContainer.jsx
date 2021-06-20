@@ -33,7 +33,7 @@ const getFilterState = (value) => {
 }
 
 const ListContainer = ({
-	data = [],
+	data,
 	onlyGrid = false,
 	sort = {},
 	filter = {},
@@ -52,15 +52,15 @@ const ListContainer = ({
 	useEffect(() => {
 		window.scrollTo({ top: 0, behavior: 'smooth' })
 	}, [page])
-
+	
 	const factor = (page || 1) - 1
-	const uniqueData = getUniqueArrayOfObjects(data, uniqueIdentifier)
-
-	let dataCopy = uniqueData
+	const uniqueData = getUniqueArrayOfObjects(data || [], uniqueIdentifier)
 
 	useEffect(() => {
 		dataCopy = uniqueData
 	}, [filterOption])
+
+	let dataCopy = uniqueData
 
 	const filteredData = filter.filterFn
 		? filter.filterFn(dataCopy, filterOption.value, filterOption.compareValue)
@@ -124,6 +124,8 @@ const ListContainer = ({
 				)}
 			</FlexBox>
 			<List
+				isLoading={!data}
+				itemsOnOnePage={itemsOnOnePage}
 				data={currentPageData}
 				itemType={itemType}
 				dataRender={dataRender}

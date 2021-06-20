@@ -13,6 +13,7 @@ import Episodes from 'modules/tv/Episodes'
 import Episode from 'modules/tv/Episode'
 import Reviews from 'components/Reviews'
 import SearchResults from 'components/SearchResults'
+import Discover from 'modules/discover/Discover'
 
 const CommonRoutes = () => {
 	return (
@@ -21,6 +22,11 @@ const CommonRoutes = () => {
 				exact
 				path='/'
 				component={Home}
+			/>
+			<Route
+				exact
+				path='/discover/:mediaType'
+				component={Discover}
 			/>
 			<Route
 				exact

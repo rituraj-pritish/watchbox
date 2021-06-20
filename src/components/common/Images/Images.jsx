@@ -54,6 +54,7 @@ const Images = ({
 
 	return (
 		<Wrapper
+			data-testid='Photos-section'
 			{...rest}
 		>
 			<FlexBox
@@ -65,7 +66,7 @@ const Images = ({
 					size={4}
 					color='textPrimary'
 				>
-        Images
+        Photos
 				</Text>
 				{hasMoreData && (
 					<Link

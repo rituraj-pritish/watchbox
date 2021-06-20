@@ -47,6 +47,7 @@ const MediaCard = ({
 				/>
 
 				<Genres
+					mediaType={mediaType}
 					ids={genre_ids}
 					vertical
 				/>

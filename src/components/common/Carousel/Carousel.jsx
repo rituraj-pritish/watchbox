@@ -38,9 +38,11 @@ const Carousel = ({
 		slidesToScroll: 5,
 		nextArrow: (
 			<Icon
+				onClick={() => console.log('yessss caleda;sdlfkj')}
 				className='slick-arrow slick-next'
 				color='white'
 				size={30}
+				data-testid='slick-next'
 			>
 				<ChevronRight/>
 			</Icon>
@@ -50,6 +52,7 @@ const Carousel = ({
 				className='slick-arrow slick-prev'
 				color='white'
 				size={30}
+				data-testid='slick-prev'
 			>
 				<ChevronLeft/>
 			</Icon>
@@ -83,7 +86,7 @@ const Carousel = ({
 		if(isLoading || !data) return new Array(5)
 			.fill(0).map((_, idx) => <Card key={idx} />)
 
-		if(data && data.length === 0) return (
+		if(Array.isArray(data) && data.length === 0) return (
 			<div>
 				<FlexBox
 					alignItems='center'
@@ -107,6 +110,7 @@ const Carousel = ({
 	return (
 		<Wrapper
 			ref={containerRef}
+			data-testid={`${title}-section`}
 			{...rest}
 		>
 			<div/>

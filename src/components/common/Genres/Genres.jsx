@@ -5,17 +5,18 @@ import FlexBox from '../ui/FlexBox'
 import Link from '../ui/Link'
 import useGenres from 'hooks/useGenres'
 
-const Genres = ({ ids, vertical = false }) => {
+const Genres = ({ mediaType, ids, vertical = false }) => {
 	const { genres: genreById } = useGenres()
-	const genres = ids?.map((id) => genreById[id])
+	const genres = ids?.map((id) => [id, genreById[id]])
 
 	return (
 		<FlexBox 
 			flexDirection={vertical ? 'column' : 'row'}
 		>
-			{genres?.map(genre => (
+			{genres?.map(([id, genre]) => (
 				<Link
-					to='/'
+					to={`/discover/${mediaType}?genreId=${id}`}
+					onClick={e => e.stopPropagation()}
 					key={genre}
 					mb={vertical ? 2 : undefined}
 					mr={!vertical ? 3 : undefined}
@@ -29,6 +30,7 @@ const Genres = ({ ids, vertical = false }) => {
 }
 
 Genres.propTypes = { 
+	mediaType: PropTypes.string.isRequired,
 	ids: PropTypes.arrayOf(PropTypes.number),
 	vertical: PropTypes.bool
 }

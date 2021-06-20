@@ -1,7 +1,6 @@
 import React from 'react'
 import Card from './index'
-import { MOVIE } from 'tests/mocks/movies.mock.js'
-import { PERSON } from 'tests/mocks/person.mock.js'
+import { MOVIE, PERSON } from './tests/data'
 
 export default { title: 'Card' }
 

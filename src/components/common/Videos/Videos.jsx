@@ -46,7 +46,7 @@ const Videos = ({ data, viewAllLink }) => {
 	}
 	
 	return (
-		<div>
+		<div data-testid='Videos-section' >
 			<FlexBox
 				justifyContent='space-between'
 				alignItems='flex-end'

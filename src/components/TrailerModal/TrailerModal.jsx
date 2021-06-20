@@ -49,6 +49,7 @@ const TrailerModal = ({
 TrailerModal.propTypes = {
 	trigger: PropTypes.node.isRequired,
 	mediaType: PropTypes.string.isRequired,
+	title: PropTypes.string.isRequired,
 	mediaId: PropTypes.number.isRequired
 }
 

@@ -364,10 +364,37 @@ const DATA = [
 	}
 ]
 
-export const list = () => (
+export const defaultView = () => (
 	<div style={{ maxWidth: '1200px' }}>
 		<List
 			data={DATA}
+			sort={{
+				initialValue: 'popularity',
+				options: [
+					{ label: 'Popularity', value: 'popularity/desc' },
+					{ label: 'Popularity asc', value: 'popularity/asc' },
+					{ label: 'Release Date', value: 'release_date/desc' },
+					{ label: 'Release Date asc', value: 'release_date/asc' }
+				],
+				sortFn
+			}}
+			filter={{
+				initialValue: 'all',
+				options: [
+					{ label: 'All', value: 'all' },
+					{ label: 'Released', value: 'release_date' },
+					{ label: 'Movie', value: 'title' }
+				],
+				filterFn
+			}}
+		/>
+	</div>
+)
+
+export const loadingView = () => (
+	<div style={{ maxWidth: '1200px' }}>
+		<List
+			// data={DATA}
 			sort={{
 				initialValue: 'popularity',
 				options: [

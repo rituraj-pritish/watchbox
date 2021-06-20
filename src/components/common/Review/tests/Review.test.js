@@ -1,8 +1,6 @@
 import React from 'react'
 import * as hooks from 'hooks/useOverflow'
 
-// jest.mock('hooks/useOverflow.js', () => () => [jest.fn(), true])
-
 import { render, screen } from 'tests/utils'
 import Review from '../index'
 import userEvent from '@testing-library/user-event'

@@ -83,6 +83,7 @@ const MediaOverview = ({
 					/>
 					<FlexBox mt={3}/>
 					<Genres
+						mediaType={title ? 'movie' : 'tv'}
 						ids={genres?.map(({ id }) => id)}
 					/>
 
