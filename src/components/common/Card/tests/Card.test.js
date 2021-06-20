@@ -1,15 +1,28 @@
 import React from 'react'
 import userEvent from '@testing-library/user-event'
 
-import { render, screen } from 'tests/utils'
+import { render, screen, waitFor } from 'tests/utils'
 import Card from '..'
 import { MOVIE } from 'tests/mocks/movies.mock.js'
 import { PERSON } from 'tests/mocks/person.mock.js'
 
 describe('Card tests', () => {
-	test('Clicking on movie changes to movie route', () => {
+	test.only('Movie card', async () => {
 		const { history } = render(<Card {...MOVIE}/>)
 
+		expect(screen.getByText('Zack Snyder\'s Justice League')).toBeInTheDocument()
+
+		userEvent.hover(screen.getByTestId(MOVIE.id))
+		await waitFor(() => screen.findByText('Action'))
+		expect(screen.getByText('Adventure')).toBeInTheDocument()
+		expect(screen.getByText('Fantasy')).toBeInTheDocument()
+		userEvent.unhover(screen.getByTestId(MOVIE.id))
+
+		// Clicking on play icon does not change route
+		userEvent.click(screen.getByTestId('play-icon'))
+		expect(history.location.pathname).toBe('/')
+
+		// Clicking on movie changes to movie route
 		userEvent.click(screen.getByTestId(MOVIE.id))
 		expect(history.location.pathname).toBe(`/movie/${MOVIE.id}`)
 	})
@@ -19,12 +32,5 @@ describe('Card tests', () => {
     
 		userEvent.click(screen.getByTestId(PERSON.id))
 		expect(history.location.pathname).toBe(`/person/${PERSON.id}`)
-	})
-
-	test('Clicking on play icon does not change route' , async () => {
-		const { history } = render(<Card {...MOVIE}/>)
-		userEvent.click(screen.getByTestId('play-icon'))
-
-		expect(history.location.pathname).toBe('/')
 	})
 })

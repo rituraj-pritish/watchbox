@@ -1,16 +1,17 @@
 import React from 'react'
+import { useHistory } from 'react-router'
+import { Link as RouterLink } from 'react-router-dom'
 
+import { ReactComponent as Logo } from 'assets/Logo.svg'
 import useAuthentication from 'hooks/useAuthentication'
 import ThemeToggle from '../ThemeToggle'
 import FlexBox from '../ui/FlexBox'
 import Link from '../ui/Link/Link'
 import Skeleton from '../ui/Skeleton'
-
 import { Content, Wrapper } from './Navbar.styles'
 import useTheme from 'hooks/useTheme'
 import UserBadge from './UserBadge'
 import SearchBar from 'components/SearchBar'
-import { useHistory } from 'react-router'
 
 const Navbar = () => {
 	const history = useHistory()
@@ -54,13 +55,11 @@ const Navbar = () => {
 	return (
 		<Wrapper isDarkMode={isDarkMode}>
 			<Content>
-				<Link
+				<RouterLink
 					to='/'
-					size={4}
-					color='textSecondary'
 				>
-          WatchBox
-				</Link>
+					<Logo/>
+				</RouterLink>
 				<SearchBar/>
 				<FlexBox alignItems='center'>
 					<ThemeToggle/>

@@ -41,6 +41,7 @@ const Action = ({
 				circle={circle}
 				size={20}
 				p={12}
+				data-testid='action'
 				{...rest}
 			>
 				{children}

@@ -21,12 +21,18 @@ const Pagination = ({
 	const decrementPage = () => setCurrentPage((p) => p - 1)
 
 	useEffect(() => {
-		const { pathname } = history.location
-		history.push(`${pathname}?p=${currentPage}`)
+		const { pathname, search } = history.location
+		if(!search) {
+			return history.push(`${pathname}?p=${currentPage}`)
+		}
+		const paramsArr = search.split('&')
+		const queries = paramsArr.filter(p => !p.includes('p='))
+		queries.push(`p=${currentPage}`)
+		history.push(`${pathname}${queries.length > 1 ? `${queries.join('&')}` : `?p=${currentPage}`}`)
 	}, [currentPage])
 
 	useEffect(() => {
-		setCurrentPage(1)
+		setCurrentPage(currentPage)
 	}, [totalPages])
 
 	const breakEl = <Number disabled>...</Number>

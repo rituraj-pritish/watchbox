@@ -1,7 +1,6 @@
 import React, { useEffect, useRef, useState } from 'react'
 
 import { ReactComponent as CrossIcon } from 'assets/icons/cross.svg'
-import Input from 'components/common/ui/Input'
 import debounce from 'helpers/debounce'
 import { useQuery } from 'react-query'
 import api from 'api'
@@ -89,6 +88,8 @@ const SearchBar = () => {
 							{render()}
 						</Results>
 						<Link
+							to={`/search?query=${query}`}
+							onClick={() => setIsVisible(false)}
 							align='right'
 							mr={3}
 							p={3}

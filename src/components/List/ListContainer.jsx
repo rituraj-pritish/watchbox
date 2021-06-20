@@ -11,6 +11,7 @@ import FlexBox from 'components/common/ui/FlexBox'
 import Dropdown from 'components/common/Dropdown'
 import { getUniqueArrayOfObjects } from 'helpers/array'
 import List from './List'
+import Tooltip from 'components/common/Tooltip/Tooltip'
 
 export const LIST = 'LIST'
 export const GRID = 'GRID'
@@ -37,6 +38,7 @@ const ListContainer = ({
 	sort = {},
 	filter = {},
 	uniqueIdentifier = 'id',
+	totalResults,
 	dataRender,
 	itemsOnOnePage = 20
 }) => {
@@ -67,10 +69,12 @@ const ListContainer = ({
 		? sort.sortFn(filteredData, sortOption.value, sortOption.order)
 		: filteredData
 
-	const currentPageData = sortedData.slice(
-		factor * itemsOnOnePage,
-		factor * itemsOnOnePage + itemsOnOnePage
-	)
+	const currentPageData = totalResults
+		? data
+		: sortedData.slice(
+			factor * itemsOnOnePage,
+			factor * itemsOnOnePage + itemsOnOnePage
+		)
 
 	return (
 		<Wrapper>
@@ -81,20 +85,24 @@ const ListContainer = ({
 			>
 				{!onlyGrid && (
 					<>
-						<Icon
-							color={itemType === GRID ? 'primary' : undefined}
-							onClick={() => setItemType(GRID)}
-							mr={3}
-						>
-							<GridIcon />
-						</Icon>
-						<Icon
-							color={itemType === LIST ? 'primary' : undefined}
-							onClick={() => setItemType(LIST)}
-							mr={3}
-						>
-							<ListIcon />
-						</Icon>
+						<Tooltip tooltip='Grid view'>
+							<Icon
+								color={itemType === GRID ? 'primary' : undefined}
+								onClick={() => setItemType(GRID)}
+								mr={3}
+							>
+								<GridIcon />
+							</Icon>
+						</Tooltip>
+						<Tooltip tooltip='List view'>
+							<Icon
+								color={itemType === LIST ? 'primary' : undefined}
+								onClick={() => setItemType(LIST)}
+								mr={3}
+							>
+								<ListIcon />
+							</Icon>
+						</Tooltip>
 					</>
 				)}
 				{filter.options && (
@@ -121,10 +129,11 @@ const ListContainer = ({
 				dataRender={dataRender}
 			/>
 			<FlexBox flexGrow={1} />
-			{sortedData.length > itemsOnOnePage && (
+			{(totalResults || sortedData.length) > itemsOnOnePage && (
 				<Pagination
 					mt={4}
-					totalPages={parseInt(filteredData.length / itemsOnOnePage) + 1}
+					totalPages={parseInt((totalResults || filteredData.length) / itemsOnOnePage) + 
+						(parseInt((totalResults || filteredData.length) % itemsOnOnePage) ? 1 : 0) }
 				/>
 			)}
 		</Wrapper>
@@ -146,7 +155,8 @@ ListContainer.propTypes = {
 		initialValue: PropTypes.string.isRequired,
 		filterFn: PropTypes.func.isRequired
 	}),
-	itemsOnOnePage: PropTypes.number
+	itemsOnOnePage: PropTypes.number,
+	totalResults: PropTypes.number
 }
 
 export default ListContainer
