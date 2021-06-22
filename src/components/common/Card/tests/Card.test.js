@@ -6,7 +6,7 @@ import Card from '..'
 import { MOVIE, PERSON } from './data'
 
 describe('Card tests', () => {
-	test.only('Movie card', async () => {
+	test('Movie card', async () => {
 		const { history } = render(<Card {...MOVIE}/>)
 
 		expect(screen.getByText('Zack Snyder\'s Justice League')).toBeInTheDocument()

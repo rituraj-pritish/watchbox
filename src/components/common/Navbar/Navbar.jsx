@@ -46,6 +46,7 @@ const Navbar = () => {
 				}}
 				size={3}
 				color='primary'
+				bold
 			>
         Login
 			</Link>

@@ -9,13 +9,13 @@ const Home = () => {
 	
 	return (
 		<div>
-			{/* <Carousel
+			<Carousel
 				title='Popular Shows'
 				request={{
 					request: getPopularTv,
 					key: ['tvs', 'popular']
 				}}
-			/> */}
+			/>
 			<Carousel
 				title='Popular Movies'
 				request={{

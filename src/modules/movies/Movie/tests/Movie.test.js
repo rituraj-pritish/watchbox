@@ -1,6 +1,6 @@
 import userEvent from '@testing-library/user-event'
 import { withinSection } from 'tests/getUtils'
-import { renderApp, screen, waitFor, waitForElementToBeRemoved } from 'tests/utils'
+import { renderApp, screen, waitFor } from 'tests/utils'
 
 jest.mock('hooks/usePositionOffset.js', () => () => [jest.fn(), true])
 

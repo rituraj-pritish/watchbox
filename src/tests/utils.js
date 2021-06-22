@@ -26,15 +26,9 @@ export const render = (ui, { route } = { route: '/' }) => {
 	}
 }
 
-export const renderApp = ({ route } = { route: '/' }) => {
-	const history = createMemoryHistory({
-		initialEntries: [route]
-	})
-
-	const ui = React.cloneElement(<App/>)
-
+export const renderApp = () => {
 	return {
-		...rtlRender(ui),
+		...rtlRender(<App/>),
 		history
 	}
 }

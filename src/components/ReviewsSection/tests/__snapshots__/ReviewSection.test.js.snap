@@ -5,7 +5,9 @@ exports[`Reviews section Does not Render view all link 1`] = `
   <div
     class="css-ahmskn-SkeletonTheme"
   >
-    <div>
+    <div
+      data-testid="Reviews-section"
+    >
       <div
         class="sc-dkPtyc ggyVGj"
       >
@@ -33,7 +35,9 @@ exports[`Reviews section Render empty message if no data 1`] = `
   <div
     class="css-ahmskn-SkeletonTheme"
   >
-    <div>
+    <div
+      data-testid="Reviews-section"
+    >
       <div
         class="sc-dkPtyc ggyVGj"
       >
@@ -61,7 +65,9 @@ exports[`Reviews section Render view all link if totals reviews greater than 3 1
   <div
     class="css-ahmskn-SkeletonTheme"
   >
-    <div>
+    <div
+      data-testid="Reviews-section"
+    >
       <div
         class="sc-dkPtyc ggyVGj"
       >

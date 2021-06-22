@@ -2,7 +2,8 @@
     "env": {
         "browser": true,
         "es2021": true,
-        "jest": true
+        "jest": true,
+        "react-percy/globals": true
     },
     "extends": [
         "eslint:recommended",
@@ -16,7 +17,8 @@
         "sourceType": "module"
     },
     "plugins": [
-        "react"
+        "react",
+        "react-percy"
     ],
     "rules": {
         "indent": ["warn","tab", { "ignoredNodes": ["TemplateLiteral"]}],

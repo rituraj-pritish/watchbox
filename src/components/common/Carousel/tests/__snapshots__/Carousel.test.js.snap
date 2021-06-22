@@ -7,6 +7,7 @@ exports[`Carousel Renders empty message if no data 1`] = `
   >
     <div
       class="sc-cidCJl bsHAMR"
+      data-testid="Movies-section"
     >
       <div />
       <div
