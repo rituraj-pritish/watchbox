@@ -12,6 +12,18 @@ export const getPopularMovies = (page = 1) => {
 	return api('/movie/popular', {}, { page })
 }
 
+export const getNowPlayingMovies = (page = 1) => {
+	return api('/movie/now_playing', {}, { page })
+}
+
+export const getTopRatedMovies = (page = 1) => {
+	return api('/movie/top_rated', {}, { page })
+}
+
+export const getUpcomingMovies = (page = 1) => {
+	return api('/movie/upcoming', {}, { page })
+}
+
 export const getFavoriteMovies = (accountId, page = 1) => {
 	return api(`/account/${accountId}/favorite/movies`, {}, { page })
 }

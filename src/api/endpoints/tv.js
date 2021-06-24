@@ -20,11 +20,21 @@ export const getEpisodeDetails = (showId, seasonNumber, episodeNumber) => {
 	)
 }
 
-
 export const getPopularTv = (page = 1) => {
 	return api('/tv/popular', {}, { page })
 }
 
+export const getAiringTodayShows = (page = 1) => {
+	return api('/tv/airing_today', {}, { page })
+}
+
+export const getTopRatedShows = (page = 1) => {
+	return api('/tv/top_rated', {}, { page })
+}
+
+export const getOnTheAirShows = (page = 1) => {
+	return api('/tv/on_the_air', {}, { page })
+}
 
 export const getFavoriteShows = (accountId, page = 1) => {
 	return api(`/account/${accountId}/favorite/tv`, {}, { page })

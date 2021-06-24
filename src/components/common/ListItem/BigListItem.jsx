@@ -17,6 +17,7 @@ const DATE_FORMAT = 'DD MMM YYYY'
 const BigListItem = ({
 	poster_path,
 	title,
+	name,
 	release_date,
 	overview,
 	media_type,
@@ -81,7 +82,7 @@ const BigListItem = ({
 					size={3}
 					to={`/${media_type}/${id}`}
 				>
-					{title}
+					{title || name}
 				</Link>
 				<Text
 					color='textTertiary'

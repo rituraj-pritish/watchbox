@@ -6,6 +6,7 @@ import Modal from 'components/common/Modal'
 import Text from 'components/common/ui/Text'
 import VideoPlayer from 'components/common/VideoPlayer'
 import { getVideos } from 'api/endpoints/media'
+import FlexBox from 'components/common/ui/FlexBox'
 
 const TrailerModal = ({ 
 	trigger,
@@ -20,6 +21,7 @@ const TrailerModal = ({
 	)
 
 	const trailerVideoKey = data?.results.find(({ type }) => type === 'Trailer')?.key
+	const hasNoTrailer = data && !trailerVideoKey
 
 	return (
 		<Modal
@@ -41,7 +43,19 @@ const TrailerModal = ({
 			>
 				{title}
 			</Text>
-			<VideoPlayer videoKey={trailerVideoKey} />
+			{
+				hasNoTrailer
+					? (
+						<FlexBox 
+							height='100%'
+							width='100%'
+							centerElement
+						>
+							Trailer not available
+						</FlexBox>
+					)
+					: <VideoPlayer videoKey={trailerVideoKey} />
+			}
 		</Modal>
 	)
 }

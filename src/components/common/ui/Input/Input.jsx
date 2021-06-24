@@ -1,5 +1,6 @@
+// forward ref function does not support prop types
+/* eslint-disable react/prop-types */ 
 import React, { forwardRef, useImperativeHandle, useState } from 'react'
-import PropTypes from 'prop-types'
 import FlexBox from '../FlexBox'
 import Text from '../Text'
 import { StyledInput } from './Input.styles'
@@ -49,16 +50,6 @@ const Input = ({
 			/>
 		</FlexBox>
 	)
-}
-
-Input.propTypes = {
-	label: PropTypes.string,
-	onChange: PropTypes.func.isRequired,
-	value: PropTypes.oneOfType([
-		PropTypes.string,PropTypes.number,
-	]),
-	space: PropTypes.number,
-	className: PropTypes.string
 }
 
 export default forwardRef(Input)

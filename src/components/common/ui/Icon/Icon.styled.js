@@ -1,3 +1,4 @@
+import { darken } from 'polished'
 import styled, { css } from 'styled-components'
 import { space } from 'styled-system'
 
@@ -27,7 +28,8 @@ export const Wrapper = styled.div`
       cursor: pointer;
       width: fit-content;
       height: fit-content;
-      background: ${theme.colors.tertiary};
+      background: ${({ theme }) => 
+        theme.isDarkMode ? theme.colors.tertiary : darken(0.1, theme.colors.tertiary)};
       border-radius: ${circle ? '50%' : theme.borderRadius};
 
       &:hover {

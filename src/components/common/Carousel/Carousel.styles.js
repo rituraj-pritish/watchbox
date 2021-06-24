@@ -53,6 +53,10 @@ export const SliderWrapper = styled.div`
     width: ${theme.spacing(2)};
     display: flex !important;
 
+    &:hover {
+      background: ${({ theme }) => theme.colors.textTertiary + '80'}; // opacity 50%
+    }
+
     svg {
       padding: ${theme.spacing(0.25)};
     }

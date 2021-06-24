@@ -35,7 +35,7 @@ const MediaActions = ({
 			<Action
 				mr={3}
 				tooltip={isInWatchlist ? 'Remove from watchlist' :'Add to watchlist'}
-				color={isInWatchlist && 'green'}
+				color={isInWatchlist ? 'green' : undefined}
 				apiRequest={toggleWatchlist}
 				requestOptions={{
 					onSuccess: refetchWatchlist
@@ -47,7 +47,7 @@ const MediaActions = ({
 			<Action
 				mr={3}
 				tooltip={isFavorite ? 'Remove from favorites' :'Add to favorites'}
-				color={isFavorite && 'red'}
+				color={isFavorite ? 'danger' : undefined}
 				apiRequest={toggleFavorite}
 				requestOptions={{
 					onSuccess: refetchFavorites

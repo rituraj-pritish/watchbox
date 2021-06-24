@@ -16,7 +16,7 @@ const GlobalStyle = createGlobalStyle`
   }
 
   ::-webkit-scrollbar {
-    background-color: ${({ isDarkMode }) => isDarkMode ? '#656565' : 'white'}; 
+    background-color: ${({ isDarkMode }) => isDarkMode ? '#656565' : '#f2f2f2'}; 
     border-radius: 10px;
     width: 15px;
     height: 15px;
@@ -25,7 +25,7 @@ const GlobalStyle = createGlobalStyle`
   ::-webkit-scrollbar-thumb {
     background-color: ${({ isDarkMode }) => isDarkMode ? '#c6c6c6' : '#bebebe'}; 
     border-radius: 10px;
-    border: 3px solid ${({ isDarkMode }) => isDarkMode ? '#656565' : 'white'};
+    border: 3px solid ${({ isDarkMode }) => isDarkMode ? '#656565' : '#f2f2f2'};
   }
 
   ::-webkit-scrollbar-thumb:hover {

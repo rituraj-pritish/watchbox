@@ -15,6 +15,7 @@ const Home = () => {
 					request: getPopularTv,
 					key: ['tvs', 'popular']
 				}}
+				viewAllLink='/discover/tv?type=popular'
 			/>
 			<Carousel
 				title='Popular Movies'
@@ -22,6 +23,7 @@ const Home = () => {
 					request: getPopularMovies,
 					key: ['movies', 'popular']
 				}}
+				viewAllLink='/discover/movie?type=popular'
 				mt={4}
 			/>
 		</div>
