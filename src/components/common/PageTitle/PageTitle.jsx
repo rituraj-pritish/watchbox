@@ -10,7 +10,7 @@ import Icon from '../ui/Icon'
 
 const PageTitle = ({
 	title,
-	ancestors,
+	ancestors = [],
 	...rest
 }) => {
 	return (

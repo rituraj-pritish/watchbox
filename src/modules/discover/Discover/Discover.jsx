@@ -6,7 +6,8 @@ import { useQuery } from 'react-query'
 import { discover, getMediaByType } from 'api/endpoints/discover'
 import List from 'components/List'
 import useTitle from 'hooks/useTitle'
-import { capitalize } from 'helpers/string'
+import PageTitle from 'components/common/PageTitle'
+import { camelCasedToNormal, capitalize } from 'helpers/string'
 
 const Discover = () => {
 	const { mediaType } = useParams()
@@ -40,6 +41,9 @@ const Discover = () => {
 
 	return (
 		<div>
+			<PageTitle
+				title={camelCasedToNormal(type) + ' ' + (mediaType === 'tv' ? 'Shows' : 'Movies')}
+			/>
 			<List
 				data={!isFetching ? data?.results : null}
 				totalResults={data?.total_results}
