@@ -22,6 +22,7 @@ const Pagination = ({
 
 	useEffect(() => {
 		const { pathname, search } = history.location
+		if(currentPage === 1) return
 		if(!search) {
 			return history.push(`${pathname}?p=${currentPage}`)
 		}

@@ -4,6 +4,8 @@ import PropTypes from 'prop-types'
 import Image from '../ui/Image'
 import VideoPlayer from '../VideoPlayer'
 import Modal from '../Modal'
+import { ReactComponent as PlayIcon } from 'assets/icons/play-icon.svg'
+import { TriggerWrapper } from './Videos.styles'
 
 const getVideoThumbnailUrl = key => {
 	return `https://img.youtube.com/vi/${key}/0.jpg`
@@ -14,13 +16,15 @@ const VideoCard = ({ videoKey, ...rest }) => {
 		<Modal
 			key={videoKey}
 			trigger={(
-				<Image
-					directUrl={getVideoThumbnailUrl(videoKey)}
-					height={300}
-					width={500}
-					mr={3}
-					{...rest}
-				/>
+				<TriggerWrapper>
+					<Image
+						directUrl={getVideoThumbnailUrl(videoKey)}
+						height={300}
+						width={500}
+						mr={3}
+					/>
+					<PlayIcon/>
+				</TriggerWrapper>
 			)}
 			styles={{
 				height: '50vw',

@@ -5,6 +5,9 @@ import Button from 'components/common/ui/Button'
 import Input from 'components/common/ui/Input'
 import FlexBox from 'components/common/ui/FlexBox'
 import useAuthentication from 'hooks/useAuthentication'
+import { StyledLink } from './Login.styles'
+
+const SIGNUP_URL = 'https://www.themoviedb.org/signup'
 
 const Login = () => {
 	const { login } = useAuthentication()
@@ -48,6 +51,16 @@ const Login = () => {
 				>
           Login
 				</Button>
+			</FlexBox>
+
+			<FlexBox>
+				{'Don\'t have an account'}
+				<StyledLink
+					href={SIGNUP_URL}
+					target='_blank'
+					rel='noreferrer'
+				>Sign up
+				</StyledLink>
 			</FlexBox>
 		</FlexBox>
 	)

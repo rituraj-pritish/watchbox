@@ -14,6 +14,7 @@ const DATE_FORMAT = 'DD MMM YYYY'
 const SmallListItem = ({
 	poster_path,
 	title,
+	name,
 	release_date,
 	overview,
 	id,
@@ -61,7 +62,7 @@ const SmallListItem = ({
 						mb={2}
 						size={3}
 					>
-						{title}
+						{title || name}
 					</Text>
 					{includeType && (
 						<Text
