@@ -98,7 +98,6 @@ const ListContainer = ({
 							<Icon
 								color={itemType === LIST ? 'primary' : undefined}
 								onClick={() => setItemType(LIST)}
-								mr={3}
 							>
 								<ListIcon />
 							</Icon>

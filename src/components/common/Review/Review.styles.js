@@ -10,7 +10,7 @@ export const Wrapper = styled.div`
   height: ${({ fullView }) => fullView ? '100%' : 'fit-content'};
   width: 100%;
   padding: ${theme.spacing()};
-  padding-top: 0;
+  padding-top: ${({ isLoading }) => isLoading ? theme.spacing() : 0};
   padding-bottom: ${theme.spacing(1.5)};
   position: relative;
   overflow: auto;

@@ -24,6 +24,7 @@ const Review = ({ fullView, ...review }) => {
 		<Wrapper
 			fullView={fullView}
 			my={2}
+			isLoading={!id}
 		>
 			<FlexBox
 				alignItems='center'

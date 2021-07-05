@@ -8,6 +8,7 @@ export const Wrapper = styled.footer`
   display: flex;
   justify-content: center;
   height: 200px;
+  margin-top: ${theme.spacing()};
 `
 
 export const Content = styled.div`

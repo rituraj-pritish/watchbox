@@ -19,6 +19,7 @@ export const SliderWrapper = styled.div`
 
   .slick-list {
     height: 100%;
+    overflow: visible;
   }
 
   .slick-track {
@@ -133,6 +134,7 @@ export const SliderWrapper = styled.div`
 
 export const Wrapper = styled.div`
   position: relative;
+  overflow-x: hidden;
 
   ${space};
 `
