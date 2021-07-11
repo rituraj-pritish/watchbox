@@ -1,5 +1,5 @@
 import { useEffect } from 'react'
-import { useQueries, useQueryClient } from 'react-query'
+import { useQueries } from 'react-query'
 
 import { getFavoriteMovies } from 'api/endpoints/movies'
 import { getFavoriteShows } from 'api/endpoints/tv'
@@ -15,8 +15,6 @@ export default (mediaId, mediaType) => {
 		{ queryKey: ['favorites', 'movies'], queryFn: getFavoriteMovies, enabled: false },
 		{ queryKey: ['favorites', 'tvs'], queryFn: getFavoriteShows, enabled: false }
 	])
-
-	const client = useQueryClient()
 
 	useEffect(() => {
 		if(accountId && !movies.isFetched && !shows.isFetched) {

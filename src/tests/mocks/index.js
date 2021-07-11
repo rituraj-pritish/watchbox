@@ -14,9 +14,12 @@ export const worker = process.env.NODE_ENV !== 'test'
 	? setupWorker(...handlers)
 	: null
 
-const server = setupServer(...handlers)
-
-beforeAll(() => server.listen())
-afterEach(() => server.resetHandlers())
-afterAll(() => server.close())
+// don't run for storybook
+if(global.process !== undefined) {
+	const server = setupServer(...handlers)
+	
+	beforeAll(() => server.listen())
+	afterEach(() => server.resetHandlers())
+	afterAll(() => server.close())
+}
 

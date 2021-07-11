@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useImperativeHandle, useState } from 'react'
 import PropTypes from 'prop-types'
 
 import ReactModal from 'react-modal'
@@ -12,9 +12,13 @@ const Modal = ({
 	onOpen,
 	onClose,
 	styles
-}) => {
+}, ref) => {
 	const [isOpen, setIsOpen] = useState(false)
 	const { theme, isDarkMode } = useTheme()
+
+	useImperativeHandle(ref, () => ({
+		close: () => setIsOpen(false)
+	}))
 
 	return (
 		<div onClick={e => e.stopPropagation()}>
@@ -65,4 +69,4 @@ Modal.propTypes = {
 	onClose: PropTypes.func,
 }
 
-export default Modal
+export default React.forwardRef(Modal)

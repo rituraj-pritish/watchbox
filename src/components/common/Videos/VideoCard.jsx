@@ -11,7 +11,7 @@ const getVideoThumbnailUrl = key => {
 	return `https://img.youtube.com/vi/${key}/0.jpg`
 }
 
-const VideoCard = ({ videoKey, ...rest }) => {
+const VideoCard = ({ videoKey }) => {
 	return (
 		<Modal
 			key={videoKey}
@@ -39,7 +39,7 @@ const VideoCard = ({ videoKey, ...rest }) => {
 }
 
 VideoCard.propTypes = {
-	videoKey: PropTypes.string.isRequired
+	videoKey: PropTypes.string.isRequired,
 }
 
 export default VideoCard

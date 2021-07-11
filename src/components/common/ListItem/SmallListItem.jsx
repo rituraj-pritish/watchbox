@@ -95,6 +95,7 @@ const SmallListItem = ({
 SmallListItem.propTypes = {
 	poster_path: PropTypes.string,
 	title: PropTypes.string,
+	name: PropTypes.string,
 	release_date: PropTypes.string,
 	overview: PropTypes.string,
 	id: PropTypes.number,

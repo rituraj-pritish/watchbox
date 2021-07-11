@@ -4,7 +4,8 @@ import { addDecorator } from '@storybook/react';
 import Providers from '../src/components/App/Providers'
 import ThemeToggle from '../src/components/common/ThemeToggle'
 
-if (typeof global.process === 'undefined') {
+// only run for storybook
+if (global.process === undefined) {
   const { worker } = require('../src/tests/mocks')
   worker.start()
 }

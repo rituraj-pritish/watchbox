@@ -130,6 +130,11 @@ MediaOverview.propTypes = {
 	genres: PropTypes.array,
 	runtime: PropTypes.number,
 	release_date: PropTypes.string,
+	number_of_seasons: PropTypes.number,
+	first_air_date: PropTypes.string,
+	last_air_date: PropTypes.string,
+	status: PropTypes.string,
+	type: PropTypes.string
 }
 
 export default MediaOverview

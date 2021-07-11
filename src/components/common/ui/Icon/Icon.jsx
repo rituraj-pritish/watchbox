@@ -10,6 +10,7 @@ const Icon = ({
 	onClick,
 	disabled,
 	circle,
+	enablePropagation = false,
 	...rest
 }) => {
 	return (
@@ -18,7 +19,7 @@ const Icon = ({
 			color={color}
 			className={className}
 			onClick={e => {
-				e.stopPropagation()
+				if(!enablePropagation) e.stopPropagation()
 				onClick()
 			}}
 			disabled={disabled}
