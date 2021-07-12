@@ -9,10 +9,12 @@ import FlexBox from 'components/common/ui/FlexBox'
 import Action from 'components/common/Action'
 import RateMedia from 'components/RateMedia'
 import AddToList from 'components/AddToList'
+import useRating from 'hooks/useRating'
 
 const MediaActions = ({
 	mediaType,
-	mediaId
+	mediaId,
+	name
 }) => {
 	const { 
 		isFavorite, 
@@ -30,6 +32,7 @@ const MediaActions = ({
 			<RateMedia
 				mediaType={mediaType}
 				mediaId={mediaId}
+				name={name}
 			/>
 
 			<Action
@@ -66,7 +69,8 @@ const MediaActions = ({
 
 MediaActions.propTypes = {
 	mediaType: PropTypes.string.isRequired,
+	name: PropTypes.string.isRequired,
 	mediaId: PropTypes.number.isRequired
 }
 
-export default MediaActions
+export default React.memo(MediaActions)

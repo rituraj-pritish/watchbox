@@ -80,6 +80,7 @@ const MediaOverview = ({
 					<MediaActions
 						mediaType={title ? 'movie' : 'tv'}
 						mediaId={id}
+						name={title || name}
 					/>
 					<FlexBox mt={3}/>
 					<Genres

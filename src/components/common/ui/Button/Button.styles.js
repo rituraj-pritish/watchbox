@@ -67,9 +67,10 @@ export const StyledButton = styled.div`
 } 
 }
 
-	${({ isLoading }) => isLoading && css`
+	${({ isLoading, disabled }) => (isLoading || disabled) && css`
 		cursor: not-allowed;
 		opacity: 0.7;
+		pointer-events: none;
 	`};
 
 	${space}

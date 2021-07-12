@@ -9,7 +9,7 @@ exports[`Reviews section Does not Render view all link 1`] = `
       data-testid="Reviews-section"
     >
       <div
-        class="sc-dkPtyc ggyVGj"
+        class="sc-dkPtyc gCxyHM"
       >
         <div
           class="sc-hKwCoD ecqkwW"
@@ -20,7 +20,7 @@ exports[`Reviews section Does not Render view all link 1`] = `
         </div>
       </div>
       <div
-        class="sc-dkPtyc dxBLBq"
+        class="sc-dkPtyc iizqRJ"
         height="50"
       >
         No reviews available
@@ -39,7 +39,7 @@ exports[`Reviews section Render empty message if no data 1`] = `
       data-testid="Reviews-section"
     >
       <div
-        class="sc-dkPtyc ggyVGj"
+        class="sc-dkPtyc gCxyHM"
       >
         <div
           class="sc-hKwCoD ecqkwW"
@@ -50,7 +50,7 @@ exports[`Reviews section Render empty message if no data 1`] = `
         </div>
       </div>
       <div
-        class="sc-dkPtyc dxBLBq"
+        class="sc-dkPtyc iizqRJ"
         height="50"
       >
         No reviews available
@@ -69,7 +69,7 @@ exports[`Reviews section Render view all link if totals reviews greater than 3 1
       data-testid="Reviews-section"
     >
       <div
-        class="sc-dkPtyc ggyVGj"
+        class="sc-dkPtyc gCxyHM"
       >
         <div
           class="sc-hKwCoD ecqkwW"
@@ -92,10 +92,10 @@ exports[`Reviews section Render view all link if totals reviews greater than 3 1
         </div>
       </div>
       <div
-        class="sc-dPiKHq ktXSgo"
+        class="sc-cNKpQo jtpFHv"
       >
         <div
-          class="sc-dkPtyc gzMWFX"
+          class="sc-dkPtyc zeVNc"
         >
           <span>
             <span
@@ -133,10 +133,10 @@ exports[`Reviews section Render view all link if totals reviews greater than 3 1
         </span>
       </div>
       <div
-        class="sc-dPiKHq ktXSgo"
+        class="sc-cNKpQo jtpFHv"
       >
         <div
-          class="sc-dkPtyc gzMWFX"
+          class="sc-dkPtyc zeVNc"
         >
           <span>
             <span
@@ -174,10 +174,10 @@ exports[`Reviews section Render view all link if totals reviews greater than 3 1
         </span>
       </div>
       <div
-        class="sc-dPiKHq ktXSgo"
+        class="sc-cNKpQo jtpFHv"
       >
         <div
-          class="sc-dkPtyc gzMWFX"
+          class="sc-dkPtyc zeVNc"
         >
           <span>
             <span

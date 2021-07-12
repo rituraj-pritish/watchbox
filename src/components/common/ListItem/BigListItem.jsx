@@ -98,6 +98,7 @@ const BigListItem = ({
 				<MediaActions
 					mediaType={media_type}
 					mediaId={id}
+					name={name || title}
 				/>
 			</RightSection>   
 		</Wrapper>

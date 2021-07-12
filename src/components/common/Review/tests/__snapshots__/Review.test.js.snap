@@ -6,10 +6,10 @@ exports[`Review renders review component with full review 1`] = `
     class="css-ahmskn-SkeletonTheme"
   >
     <div
-      class="sc-dPiKHq ktXSgo"
+      class="sc-cNKpQo dBMQXU"
     >
       <div
-        class="sc-dkPtyc eqceaR"
+        class="sc-dkPtyc tojMa"
       >
         <div
           class="sc-egiSv bEDQSa"
@@ -76,10 +76,10 @@ exports[`Review renders review component without full review 1`] = `
     class="css-ahmskn-SkeletonTheme"
   >
     <div
-      class="sc-dPiKHq ktXSgo"
+      class="sc-cNKpQo dBMQXU"
     >
       <div
-        class="sc-dkPtyc eqceaR"
+        class="sc-dkPtyc tojMa"
       >
         <div
           class="sc-egiSv bEDQSa"

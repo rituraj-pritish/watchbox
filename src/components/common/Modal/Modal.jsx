@@ -17,7 +17,10 @@ const Modal = ({
 	const { theme, isDarkMode } = useTheme()
 
 	useImperativeHandle(ref, () => ({
-		close: () => setIsOpen(false)
+		close: () => {
+			setIsOpen(false)
+			if(onRequestClose) onRequestClose()
+		}
 	}))
 
 	return (

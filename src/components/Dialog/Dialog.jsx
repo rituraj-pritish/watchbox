@@ -11,7 +11,11 @@ const Dialog = ({
 	trigger,
 	title,
 	onConfirm,
-	children
+	confirmText,
+	children,
+	extraButtons,
+	disabled,
+	onCancel
 }) => {
 	const modalRef = useRef()
 
@@ -23,6 +27,7 @@ const Dialog = ({
 				height: 'fit-content',
 				width: '40rem'
 			}}
+			onRequestClose={onCancel}
 		>
 			<Text
 				bold
@@ -46,7 +51,14 @@ const Dialog = ({
 				>
           Cancel
 				</Button>
-				<Button>Confirm</Button>
+				{extraButtons}
+				<Button 
+					disabled={disabled}
+					onClick={onConfirm}
+					ml={extraButtons ? 3 : undefined}
+				>
+					{confirmText || 'Confirm'}
+				</Button>
 			</FlexBox>
 		</Modal>
 	)
@@ -54,7 +66,12 @@ const Dialog = ({
 
 Dialog.propTypes = {
 	trigger: PropTypes.node.isRequired,
-	title: PropTypes.string.isRequired
+	title: PropTypes.string.isRequired,
+	onConfirm: PropTypes.func.isRequired,
+	confirmText: PropTypes.string,
+	children: PropTypes.node.isRequired,
+	extraButtons: PropTypes.node,
+	disabled: PropTypes.bool,
 }
 
 export default Dialog

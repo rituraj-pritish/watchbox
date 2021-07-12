@@ -6,7 +6,6 @@ import { getFavoriteShows } from 'api/endpoints/tv'
 import { addToFavorite, removeFromFavorite } from 'api/endpoints/account'
 import useAuthentication from './useAuthentication'
 
-// if notFetched -> for multiple pages
 export default (mediaId, mediaType) => {
 	const { user } = useAuthentication()
 	const accountId = user?.id

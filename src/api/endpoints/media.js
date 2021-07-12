@@ -21,3 +21,7 @@ export const deleteRating = (mediaType, mediaId) => {
 		{ method: 'DELETE' }
 	)
 }
+
+export const getRatedMedia = (accountId, mediaType) => {
+	return api(`/account/${accountId}/rated/${mediaType}`)
+}

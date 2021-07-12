@@ -19,6 +19,8 @@ const Icon = ({
 			color={color}
 			className={className}
 			onClick={e => {
+				if(!onClick) return
+				
 				if(!enablePropagation) e.stopPropagation()
 				onClick()
 			}}
