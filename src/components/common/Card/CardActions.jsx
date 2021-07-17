@@ -10,12 +10,10 @@ import { ActionWrapper, StyledAction } from './Card.styles'
 const CardActions = ({ mediaId, mediaType }) => {
 	const { 
 		isFavorite, 
-		refetchFavorites, 
 		toggleFavorite 
 	} = useFavorites(mediaId,mediaType)
 	const { 
 		isInWatchlist, 
-		refetchWatchlist, 
 		toggleWatchlist 
 	} = useWatchlist(mediaId,mediaType)
 
@@ -33,9 +31,6 @@ const CardActions = ({ mediaId, mediaType }) => {
 				tooltip={isInWatchlist ? 'Remove from watchlist' : 'Add to watchlist'}
 				color={isInWatchlist ? 'green' : undefined}
 				apiRequest={toggleWatchlist}
-				requestOptions={{
-					onSuccess: refetchWatchlist
-				}}
 			>
 				<BookmarkIcon />
 			</StyledAction>
@@ -48,9 +43,6 @@ const CardActions = ({ mediaId, mediaType }) => {
 				tooltip={isFavorite ? 'Remove from favorites' : 'Add to favorites'}
 				color={isFavorite ? 'danger' : undefined}
 				apiRequest={toggleFavorite}
-				requestOptions={{
-					onSuccess: refetchFavorites
-				}}
 			>
 				<HeartIcon />
 			</StyledAction>

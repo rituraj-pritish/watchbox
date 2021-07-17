@@ -1,5 +1,5 @@
-import { useEffect } from 'react'
-import { useQueries } from 'react-query'
+import { useEffect, useState } from 'react'
+import { useMutation, useQueries } from 'react-query'
 
 import { getFavoriteMovies } from 'api/endpoints/movies'
 import { getFavoriteShows } from 'api/endpoints/tv'
@@ -8,6 +8,7 @@ import useAuthentication from './useAuthentication'
 
 export default (mediaId, mediaType) => {
 	const { user } = useAuthentication()
+	const [isLoading, setIsLoading] = useState(false)
 	const accountId = user?.id
 
 	const [movies, shows] = useQueries([
@@ -28,9 +29,9 @@ export default (mediaId, mediaType) => {
 
 	const refetchFavorites = () => {
 		if(mediaType === 'movie') {
-			movies.refetch()
+			return movies.refetch()
 		} else {
-			shows.refetch()
+			return shows.refetch()
 		}
 	}
 
@@ -41,17 +42,26 @@ export default (mediaId, mediaType) => {
 		media_id: mediaId
 	}
 
-	const toggleFavorite = () => {
-		if(isFavorite) {
-			return removeFromFavorite(accountId, payload)
-		} else {
-			return addToFavorite(accountId, payload)
+	const mutateFunction = isFavorite ? removeFromFavorite : addToFavorite
+
+	const { mutate } = useMutation(
+		() => mutateFunction(accountId, payload),
+		{
+			onSuccess: () => {
+				refetchFavorites()
+					.then(() => setIsLoading(false))
+			}
 		}
+	)
+
+	const toggleFavorite = () => {
+		setIsLoading(true)	
+		mutate()
 	}
 
 	return {
-		refetchFavorites,
 		isFavorite,
-		toggleFavorite
+		toggleFavorite,
+		isLoading
 	}
 }

@@ -164,4 +164,4 @@ Carousel.propTypes = {
 	isLoading: PropTypes.bool
 }
 
-export default Carousel
+export default React.memo(Carousel)

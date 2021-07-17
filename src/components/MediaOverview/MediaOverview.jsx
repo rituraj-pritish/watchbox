@@ -138,4 +138,4 @@ MediaOverview.propTypes = {
 	type: PropTypes.string
 }
 
-export default MediaOverview
+export default React.memo(MediaOverview)

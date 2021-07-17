@@ -9,7 +9,6 @@ import FlexBox from 'components/common/ui/FlexBox'
 import Action from 'components/common/Action'
 import RateMedia from 'components/RateMedia'
 import AddToList from 'components/AddToList'
-import useRating from 'hooks/useRating'
 
 const MediaActions = ({
 	mediaType,
@@ -18,13 +17,13 @@ const MediaActions = ({
 }) => {
 	const { 
 		isFavorite, 
-		refetchFavorites,
-		toggleFavorite
+		toggleFavorite,
+		isLoading: isFavoriteLoading
 	} = useFavorites(mediaId, mediaType)
 	const { 
 		isInWatchlist, 
-		refetchWatchlist,
-		toggleWatchlist
+		toggleWatchlist,
+		isLoading: isWatchlistLoading
 	} = useWatchlist(mediaId, mediaType)
 
 	return (
@@ -39,10 +38,8 @@ const MediaActions = ({
 				mr={3}
 				tooltip={isInWatchlist ? 'Remove from watchlist' :'Add to watchlist'}
 				color={isInWatchlist ? 'green' : undefined}
-				apiRequest={toggleWatchlist}
-				requestOptions={{
-					onSuccess: refetchWatchlist
-				}}
+				onClick={toggleWatchlist}
+				isLoading={isWatchlistLoading}
 			>
 				<BookmarkIcon/>
 			</Action>
@@ -51,10 +48,8 @@ const MediaActions = ({
 				mr={3}
 				tooltip={isFavorite ? 'Remove from favorites' :'Add to favorites'}
 				color={isFavorite ? 'danger' : undefined}
-				apiRequest={toggleFavorite}
-				requestOptions={{
-					onSuccess: refetchFavorites
-				}}
+				onClick={toggleFavorite}
+				isLoading={isFavoriteLoading}
 			>
 				<HeartIcon/>
 			</Action>

@@ -65,4 +65,4 @@ ReviewsSection.propTypes = {
 	viewAllLink: PropTypes.string.isRequired
 }
 
-export default ReviewsSection
+export default React.memo(ReviewsSection)

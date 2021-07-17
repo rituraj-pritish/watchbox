@@ -1,5 +1,5 @@
-import { useEffect } from 'react'
-import { useQueries } from 'react-query'
+import { useEffect, useState } from 'react'
+import { useMutation, useQueries } from 'react-query'
 
 import { addToWatchlist, removeFromWatchlist } from 'api/endpoints/account'
 import { getMovieWatchlist } from 'api/endpoints/movies'
@@ -8,6 +8,7 @@ import useAuthentication from './useAuthentication'
 
 export default (mediaId, mediaType) => {
 	const { user } = useAuthentication()
+	const [isLoading, setIsLoading] = useState(false)
 	const accountId = user?.id
 
 	const [movies, shows] = useQueries([
@@ -30,28 +31,37 @@ export default (mediaId, mediaType) => {
 
 	const refetchWatchlist = () => {
 		if(mediaType === 'movie') {
-			movies.refetch()
+			return movies.refetch()
 		} else {
-			shows.refetch()
+			return shows.refetch()
 		}
 	}
 
 	const payload = {
 		media_type: mediaType,
 		media_id: mediaId
-	}
+	}	
+
+	const mutationFunction = isInWatchlist ? removeFromWatchlist : addToWatchlist
+
+	const { mutate } = useMutation(
+		() => mutationFunction(accountId, payload),
+		{
+			onSuccess: () => {
+				refetchWatchlist()
+					.then(() => setIsLoading(false))
+			}
+		}
+	)
 
 	const toggleWatchlist = () => {
-		if(isInWatchlist) {
-			return removeFromWatchlist(accountId, payload)
-		} else {
-			return addToWatchlist(accountId, payload)
-		}
+		setIsLoading(true)
+		mutate()
 	}
 
 	return {
 		isInWatchlist,
-		refetchWatchlist,
-		toggleWatchlist
+		toggleWatchlist,
+		isLoading
 	}
 }

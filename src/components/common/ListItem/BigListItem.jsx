@@ -20,7 +20,6 @@ const BigListItem = ({
 	name,
 	release_date,
 	overview,
-	media_type,
 	genre_ids,
 	id
 }) => {
@@ -64,9 +63,11 @@ const BigListItem = ({
 		</Wrapper>
 	)
 
+	const mediaType = title ? 'movie' : 'tv'
+
 	return (
 		<Wrapper>
-			<Link to={`/${media_type}/${id}`}>
+			<Link to={`/${mediaType}/${id}`}>
 				<Image
 					url={poster_path}
 					width={200}
@@ -80,7 +81,7 @@ const BigListItem = ({
 					color='primary'
 					mb={2}
 					size={3}
-					to={`/${media_type}/${id}`}
+					to={`/${mediaType}/${id}`}
 				>
 					{title || name}
 				</Link>
@@ -96,7 +97,7 @@ const BigListItem = ({
 				<Genres ids={genre_ids} />
 				<FlexBox mb={3}/>
 				<MediaActions
-					mediaType={media_type}
+					mediaType={mediaType}
 					mediaId={id}
 					name={name || title}
 				/>
@@ -111,7 +112,7 @@ BigListItem.propTypes = {
 	release_date: PropTypes.string,
 	overview: PropTypes.string,
 	id: PropTypes.number,
-	media_type: PropTypes.string,
+	name: PropTypes.string,
 	includeType: PropTypes.bool,
 	genre_ids: PropTypes.array,
 }

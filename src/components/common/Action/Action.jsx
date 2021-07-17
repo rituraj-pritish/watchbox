@@ -2,20 +2,18 @@ import React from 'react'
 import PropTypes from 'prop-types'
 
 import Icon from '../ui/Icon'
-import { useMutation } from 'react-query'
 import Tooltip from '../Tooltip'
 import Text from '../ui/Text'
 import useAuthentication from 'hooks/useAuthentication'
+import Loader from '../Loader'
 
 const Action = ({
 	children,
-	apiRequest,
-	requestOptions,
 	tooltip,
-	circle = true,
+	isLoading,
+	onClick,
 	...rest
 }) => {
-	const { mutate } = useMutation(apiRequest, requestOptions)
 	const { isAuthenticated } = useAuthentication()
 
 	const tooltipEl = (
@@ -34,17 +32,22 @@ const Action = ({
 		</>
 	)
 
+	const handleClick = () => {
+		if(!isAuthenticated || isLoading) return 
+		if(onClick) onClick()
+	}
+
 	return (
 		<Tooltip tooltip={tooltipEl}>
 			<Icon
-				onClick={isAuthenticated ? mutate : () => {}}
-				circle={circle}
+				onClick={handleClick}
 				size={20}
+				circle
 				p={12}
 				data-testid='action'
 				{...rest}
 			>
-				{children}
+				{!isLoading ? children : <Loader size={20}/>}
 			</Icon>
 		</Tooltip>
 	)
@@ -53,7 +56,9 @@ const Action = ({
 Action.propTypes = {
 	children: PropTypes.node.isRequired,
 	apiRequest: PropTypes.func.isRequired,
-	tooltip: PropTypes.string
+	tooltip: PropTypes.string,
+	onClick: PropTypes.func.isRequired,
+	isLoading: PropTypes.bool.isRequired
 }
 
 export default Action

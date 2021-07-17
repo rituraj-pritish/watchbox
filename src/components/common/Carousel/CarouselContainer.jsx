@@ -61,4 +61,4 @@ CarouselContainer.propTypes = {
 	requestDeps: PropTypes.array
 }
 
-export default CarouselContainer
+export default React.memo(CarouselContainer)

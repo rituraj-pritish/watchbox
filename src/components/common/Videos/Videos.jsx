@@ -85,4 +85,4 @@ Videos.propTypes = {
 	viewAllLink: PropTypes.string
 }
 
-export default Videos
+export default React.memo(Videos)

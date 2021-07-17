@@ -94,4 +94,4 @@ Images.propTypes = {
 	viewAllLink: PropTypes.string
 }
 
-export default Images
+export default React.memo(Images)

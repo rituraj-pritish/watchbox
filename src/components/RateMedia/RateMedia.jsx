@@ -52,6 +52,7 @@ const RateMedia = ({
 				<Action
 					tooltip={tooltip}
 					enablePropagation={isAuthenticated}
+					onClick={() => {}}
 					mr={3}
 				>
 					<StarIcon/>

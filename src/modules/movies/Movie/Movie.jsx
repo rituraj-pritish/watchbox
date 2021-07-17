@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import { useQuery } from 'react-query'
 import { useParams } from 'react-router'
 
@@ -16,6 +16,10 @@ const Movie = () => {
 		['movie', movieId],
 		() => getMovieDetails(movieId),
 	)
+
+	useEffect(() => {
+		window.scrollTo({ top: 0 })
+	}, [movieId])
 
 	useTitle(`${data?.title} - Movie`)
 
