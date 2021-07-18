@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react'
+import React from 'react'
 import { Route } from 'react-router'
 
 import Home from 'modules/home/Home'
@@ -14,6 +14,9 @@ import Episode from 'modules/tv/Episode'
 import Reviews from 'components/Reviews'
 import SearchResults from 'components/SearchResults'
 import Discover from 'modules/discover/Discover'
+import AllLists from 'modules/lists/AllLists'
+import Favorites from 'modules/lists/Favorites'
+import Watchlist from 'modules/lists/Watchlist'
 
 const CommonRoutes = () => {
 	return (
@@ -94,6 +97,21 @@ const CommonRoutes = () => {
 				exact
 				path='/tv/:tvId/seasons/:seasonNumber/episodes/:episodeNumber'
 				component={Episode}
+			/>
+			<Route
+				exact
+				path='/lists'
+				component={AllLists}
+			/>
+			<Route
+				exact
+				path='/lists/watchlist'
+				component={Watchlist}
+			/>
+			<Route
+				exact
+				path='/lists/favorites'
+				component={Favorites}
 			/>
 		</>
 	)

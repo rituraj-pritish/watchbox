@@ -12,6 +12,7 @@ const Action = ({
 	tooltip,
 	isLoading,
 	onClick,
+	circle = true,
 	...rest
 }) => {
 	const { isAuthenticated } = useAuthentication()
@@ -42,7 +43,7 @@ const Action = ({
 			<Icon
 				onClick={handleClick}
 				size={20}
-				circle
+				circle={circle}
 				p={12}
 				data-testid='action'
 				{...rest}
@@ -58,7 +59,8 @@ Action.propTypes = {
 	apiRequest: PropTypes.func.isRequired,
 	tooltip: PropTypes.string,
 	onClick: PropTypes.func.isRequired,
-	isLoading: PropTypes.bool.isRequired
+	isLoading: PropTypes.bool.isRequired,
+	circle: PropTypes.bool
 }
 
 export default Action

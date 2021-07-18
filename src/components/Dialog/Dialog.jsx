@@ -15,7 +15,8 @@ const Dialog = ({
 	children,
 	extraButtons,
 	disabled,
-	onCancel
+	onCancel,
+	isLoading
 }) => {
 	const modalRef = useRef()
 
@@ -55,6 +56,7 @@ const Dialog = ({
 				<Button 
 					disabled={disabled}
 					onClick={onConfirm}
+					isLoading={isLoading}
 					ml={extraButtons ? 3 : undefined}
 				>
 					{confirmText || 'Confirm'}

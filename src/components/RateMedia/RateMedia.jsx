@@ -20,7 +20,12 @@ const RateMedia = ({
 	mediaId,
 	name
 }) => {
-	const { rating: initialRating, deleteRating, rate } = useRating(mediaId, mediaType)
+	const { 
+		rating: initialRating, 
+		deleteRating, 
+		rate,
+		isLoading
+	} = useRating(mediaId, mediaType)
 	const [rating, setRating] = useState()
 	const { isAuthenticated } = useAuthentication()
 
@@ -53,6 +58,7 @@ const RateMedia = ({
 					tooltip={tooltip}
 					enablePropagation={isAuthenticated}
 					onClick={() => {}}
+					isLoading={isLoading}
 					mr={3}
 				>
 					<StarIcon/>
@@ -62,11 +68,13 @@ const RateMedia = ({
 			disabled={!rating || initialRating}
 			confirmText={`Rate ${rating ? rating : ''}`}
 			onConfirm={() => rate(rating)}
+			isLoading={!initialRating && isLoading}
 			extraButtons={(
 				<Button 
 					variant={BUTTON_VARIANTS.DANGER}
 					disabled={!initialRating}
 					onClick={deleteRating}
+					isLoading={initialRating && isLoading}
 				>
 					Remove Rating
 				</Button>

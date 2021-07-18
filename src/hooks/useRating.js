@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { useEffect } from 'react'
 import { useMutation, useQueries } from 'react-query'
 
@@ -8,6 +8,7 @@ import useAuthentication from './useAuthentication'
 
 export default (mediaId, mediaType) => {
 	const { user } = useAuthentication()
+	const [isLoading, setIsLoading] = useState(false)
 	const accountId = user?.id
 
 	const [movies, shows] = useQueries([
@@ -25,20 +26,24 @@ export default (mediaId, mediaType) => {
 
 	const refetchRecords = React.useCallback(() => {
 		const refetchFunction = mediaType === 'movie' ? movies.refetch : shows.refetch
-		setTimeout(refetchFunction, 1000)
+		setTimeout(() => {
+			refetchFunction()
+				.then(() => setIsLoading(false))
+		}, 1000)
 	}, [mediaType])
+
+	const mutateOptions = {
+		onMutate: () => setIsLoading(true),
+		onSuccess: refetchRecords
+	}
 
 	const { mutate: remove } = useMutation(
 		() => deleteRating(mediaType, mediaId),
-		{
-			onSuccess: refetchRecords
-		}
+		mutateOptions
 	)
 	const { mutate: rate } = useMutation(
 		(r) => rateMedia(mediaType, mediaId, (r * 2)),
-		{
-			onSuccess: refetchRecords
-		}
+		mutateOptions
 	)
 
 	useEffect(() => {
@@ -59,6 +64,7 @@ export default (mediaId, mediaType) => {
 	return {
 		rating,
 		deleteRating: remove,
-		rate
+		rate,
+		isLoading
 	}
 }

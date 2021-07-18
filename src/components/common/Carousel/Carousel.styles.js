@@ -134,7 +134,7 @@ export const SliderWrapper = styled.div`
 
 export const Wrapper = styled.div`
   position: relative;
-  overflow-x: hidden;
+  overflow: hidden;
 
   ${space};
 `
