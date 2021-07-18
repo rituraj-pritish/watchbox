@@ -15,8 +15,7 @@ import Reviews from 'components/Reviews'
 import SearchResults from 'components/SearchResults'
 import Discover from 'modules/discover/Discover'
 import AllLists from 'modules/lists/AllLists'
-import Favorites from 'modules/lists/Favorites'
-import Watchlist from 'modules/lists/Watchlist'
+import ListPage from 'modules/lists/ListPage'
 
 const CommonRoutes = () => {
 	return (
@@ -105,13 +104,8 @@ const CommonRoutes = () => {
 			/>
 			<Route
 				exact
-				path='/lists/watchlist'
-				component={Watchlist}
-			/>
-			<Route
-				exact
-				path='/lists/favorites'
-				component={Favorites}
+				path='/lists/:listName'
+				component={ListPage}
 			/>
 		</>
 	)

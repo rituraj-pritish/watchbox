@@ -74,6 +74,8 @@ Dialog.propTypes = {
 	children: PropTypes.node.isRequired,
 	extraButtons: PropTypes.node,
 	disabled: PropTypes.bool,
+	onCancel: PropTypes.func,
+	isLoading: PropTypes.bool
 }
 
 export default Dialog

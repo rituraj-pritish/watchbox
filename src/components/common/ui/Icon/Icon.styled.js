@@ -29,7 +29,7 @@ export const Wrapper = styled.div`
       width: fit-content;
       height: fit-content;
       background: ${({ theme }) => 
-        theme.isDarkMode ? theme.colors.tertiary : darken(0.1, theme.colors.tertiary)};
+	theme.isDarkMode ? theme.colors.tertiary : darken(0.1, theme.colors.tertiary)};
       border-radius: ${circle ? '50%' : theme.borderRadius};
 
       &:hover {

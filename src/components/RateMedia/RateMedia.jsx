@@ -60,6 +60,7 @@ const RateMedia = ({
 					onClick={() => {}}
 					isLoading={isLoading}
 					mr={3}
+					color={initialRating ? 'gold' : undefined}
 				>
 					<StarIcon/>
 				</Action>

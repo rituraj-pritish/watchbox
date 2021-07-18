@@ -110,6 +110,7 @@ const ListContainer = ({
 						options={filter.options}
 						value={filterOption.value}
 						onChange={(val) => setFilterOption(getFilterState(val))}
+						ml={3}
 					/>
 				)}
 				{sort.options && (

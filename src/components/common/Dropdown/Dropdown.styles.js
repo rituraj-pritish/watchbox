@@ -19,7 +19,7 @@ export const Trigger = styled.div`
   
   &:hover {
     background: ${({ theme, isDarkMode }) => isDarkMode
-		? lighten(0.03, theme.colors.tertiary) : darken(0.03, theme.colors.tertiary)};
+	? lighten(0.03, theme.colors.tertiary) : darken(0.03, theme.colors.tertiary)};
   }
 `
 

@@ -62,6 +62,7 @@ export default (mediaId, mediaType) => {
 	return {
 		isInWatchlist,
 		toggleWatchlist,
-		isLoading
+		isLoading,
+		watchlist: allItems
 	}
 }

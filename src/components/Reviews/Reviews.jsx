@@ -10,7 +10,7 @@ import List from 'components/List'
 import Review from 'components/common/Review'
 
 const Reviews = () => {
-	const { movieId, tvId, creditType } = useParams()
+	const { movieId, tvId } = useParams()
 	const mediaType = movieId ? 'movie' : 'tv'
 	const mediaId = movieId || tvId
 

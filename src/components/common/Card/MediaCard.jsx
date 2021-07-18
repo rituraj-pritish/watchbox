@@ -20,8 +20,6 @@ const MediaCard = ({
 	title,
 	name,
 	poster_path,
-	vote_average,
-	release_date,
 	genre_ids
 }) => {
 	const { isDarkMode } = useTheme()

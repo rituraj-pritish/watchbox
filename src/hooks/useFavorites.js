@@ -62,6 +62,7 @@ export default (mediaId, mediaType) => {
 	return {
 		isFavorite,
 		toggleFavorite,
-		isLoading
+		isLoading,
+		favorites: allItems
 	}
 }

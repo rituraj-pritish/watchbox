@@ -15,7 +15,7 @@ const Loader = ({
 }
 
 Loader.propTypes = {
-
+	size: PropTypes.number
 }
 
 export default Loader

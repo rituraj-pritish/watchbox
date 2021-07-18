@@ -42,7 +42,8 @@ Icon.propTypes = {
 	color: PropTypes.string,
 	onClick: PropTypes.func,
 	disabled: PropTypes.bool,
-	circle: PropTypes.bool
+	circle: PropTypes.bool,
+	enablePropagation: PropTypes.bool
 }
 
 export default Icon
