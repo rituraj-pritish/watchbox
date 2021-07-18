@@ -37,7 +37,7 @@ const Providers = ({ children, history }) => {
 								highlightColor={theme.colors.skeletonHighlight}
 							>
 								<GlobalState />
-								<GlobalStyle isDarkMode={isDarkMode} />
+								<GlobalStyle/>
 								{children}
 							</SkeletonTheme>
 						)}

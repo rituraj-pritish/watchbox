@@ -1,4 +1,4 @@
-import React, { useMemo, useState } from 'react'
+import React, { useLayoutEffect, useMemo, useRef, useState } from 'react'
 import PropTypes from 'prop-types'
 
 import useComponentVisible from 'hooks/useComponentVisible'
@@ -8,12 +8,12 @@ import { ReactComponent as ChevronDown } from 'assets/icons/chevron-down.svg'
 import { ReactComponent as ChevronUp } from 'assets/icons/chevron-down.svg'
 import FlexBox from '../ui/FlexBox'
 import Icon from '../ui/Icon'
-import useTheme from 'hooks/useTheme'
 
 const Dropdown = ({ options, onChange, value: initialValue, label, ...rest }) => {
-	const { isDarkMode } = useTheme()
 	const [selected, setSelected] = useState(initialValue)
+	const [width, setWidth] = useState()
 	const [ref, showOptions, setShowOptions] = useComponentVisible(false)
+	const labelRef = useRef()
 
 	const valueLabelPairs = useMemo(
 		() =>
@@ -34,13 +34,26 @@ const Dropdown = ({ options, onChange, value: initialValue, label, ...rest }) =>
 		setShowOptions(false)
 	}
 
+	useLayoutEffect(() => {
+		if(ref?.current && labelRef?.current) {
+			setWidth(ref.current.offsetWidth + labelRef.current.offsetWidth + 45)
+		}
+	}, [])
+
 	return (
-		<Wrapper {...rest}>
+		<Wrapper
+			{...rest}
+		>
 			<Trigger
 				onClick={() => setShowOptions(!showOptions)}
-				isDarkMode={isDarkMode}
+				width={width}
 			>
-				<Text color='textTdertiary'>{label}</Text>
+				<Text
+					elRef={labelRef}
+					color='textTdertiary'
+				>
+					{label}
+				</Text>
 				<FlexBox alignItems='center'>
 					<Text
 						ml={3}
@@ -50,24 +63,29 @@ const Dropdown = ({ options, onChange, value: initialValue, label, ...rest }) =>
 					>
 						{valueLabelPairs[selected]}
 					</Text>
-					<Icon color='textTertiary'>
+					<Icon 
+						mt={0.5}
+						color='text'
+					>
 						{showOptions ? <ChevronUp/> : <ChevronDown/>}
 					</Icon>
 				</FlexBox>
 			</Trigger>
-			{showOptions && (
-				<Menu ref={ref}>
-					{options.map(({ value, label }, idx) => (
-						<Option
-							key={idx}
-							onClick={() => handleChange(value)}
-							selected={value === selected}
-						>
-							{label}
-						</Option>
-					))}
-				</Menu>
-			)}
+			<Menu
+				ref={ref}
+				isVisible={showOptions}
+				width={width}
+			>
+				{options.map(({ value, label }, idx) => (
+					<Option
+						key={idx}
+						onClick={() => handleChange(value)}
+						selected={value === selected}
+					>
+						{label}
+					</Option>
+				))}
+			</Menu>
 		</Wrapper>
 	)
 }

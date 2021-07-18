@@ -6,7 +6,7 @@ exports[`Carousel Renders empty message if no data 1`] = `
     class="css-ahmskn-SkeletonTheme"
   >
     <div
-      class="sc-jcFkyM conreW"
+      class="sc-jcFkyM iARGMT"
       data-testid="Movies-section"
     >
       <div />

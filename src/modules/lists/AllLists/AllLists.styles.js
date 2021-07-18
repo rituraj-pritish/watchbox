@@ -7,8 +7,21 @@ export const ListCard = styled.div`
   width: 50%;
   overflow: hidden;
   
+  // first card
   &:first-child {
     margin-right: ${theme.spacing()};
+  }
+
+  // toggle menu
+  & > div:last-child {
+    position: absolute;
+    top: ${theme.spacing(0.5)};
+    right: ${theme.spacing(0.5)};
+    visibility: hidden;
+  }
+
+  &:hover div:last-child {
+    visibility: visible;
   }
 `
 

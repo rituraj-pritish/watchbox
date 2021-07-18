@@ -45,7 +45,6 @@ const Input = ({
 				className={className}
 				value={text}
 				onChange={handleChange}
-				isDarkMode={isDarkMode}
 				{...rest}
 			/>
 		</FlexBox>

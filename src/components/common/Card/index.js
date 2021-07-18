@@ -1,18 +1,15 @@
 import React from 'react'
 
-import useTheme from 'hooks/useTheme'
 import MediaCard from './MediaCard'
 import PersonCard from './PersonCard'
 import  SimpleCard from './Card'
 import { SkeletonWrapper, Wrapper } from './Card.styles'
 import Skeleton from '../ui/Skeleton'
 
-const Card = props => {
-	const { isDarkMode } = useTheme()
-	
+const Card = props => {	
 	if(!props.id) {
 		return (
-			<Wrapper isDarkMode={isDarkMode}>
+			<Wrapper>
 				<SkeletonWrapper>
 					<Skeleton
 						height='100%'

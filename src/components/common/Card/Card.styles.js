@@ -12,7 +12,7 @@ export const Overlay = styled.div`
   justify-content: space-between;
   padding: ${theme.spacing()};
   cursor: default;
-  background: ${({ isDarkMode }) => isDarkMode ? '#000000ad' : '#efefefe8'};
+  background: ${({ theme }) => theme.isDarkMode ? '#000000ad' : '#efefefe8'};
   opacity: 0;
   z-index: 1;
 
@@ -55,8 +55,8 @@ export const Wrapper = styled.div`
   display: flex;
   flex-direction: column;
   cursor: pointer;
-  box-shadow: ${({ isDarkMode }) =>  
-		`0 0px 15px 10px ${isDarkMode ?'#2c2c2ce0' : '#d8d8d882'}`};
+  box-shadow: ${({ theme }) =>  
+		`0 0px 15px 10px ${theme.isDarkMode ?'#2c2c2ce0' : '#d8d8d882'}`};
 
   &:hover ${Overlay} {
     opacity: 1;

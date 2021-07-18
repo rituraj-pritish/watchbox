@@ -10,10 +10,9 @@ const ThemeToggle = () => {
 
 	return (
 		<Wrapper
-			isDarkMode={isDarkMode}
 			onClick={toggleTheme}
 		>
-			<IconContainer isDarkMode={isDarkMode}>
+			<IconContainer>
 				{isDarkMode ? <MoonIcon /> : <SunIcon />}
 			</IconContainer>
 		</Wrapper>

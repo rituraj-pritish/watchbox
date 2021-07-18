@@ -22,7 +22,7 @@ export const Menu = styled.div`
   margin-top: ${theme.spacing(0.5)};
 
   & > *:not(hr) {
-    padding: ${theme.spacing(0.4)} ${theme.spacing(0.5)};;
+    padding: ${theme.spacing(0.4)} ${theme.spacing()};;
     margin: ${theme.spacing(0.1)} 0;
     cursor: pointer;
     

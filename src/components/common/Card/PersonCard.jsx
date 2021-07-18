@@ -3,7 +3,6 @@ import PropTypes from 'prop-types'
 import { useHistory } from 'react-router'
 
 import { Wrapper } from './Card.styles'
-import useTheme from 'hooks/useTheme'
 import Image from '../ui/Image'
 import FlexBox from '../ui/FlexBox'
 import Text from '../ui/Text'
@@ -20,11 +19,9 @@ const PersonCard = ({
 	gender
 }) => {
 	const history = useHistory()
-	const { isDarkMode } = useTheme()
 
 	return (
 		<Wrapper
-			isDarkMode={isDarkMode}
 			onClick={() => history.push(`/person/${id}`)}
 			data-testid={id}
 		>

@@ -9,9 +9,9 @@ export const Wrapper = styled.div`
   border-radius: ${theme.spacing(20)};
   height: 20px;
   width: 50px;
-  background: ${({ theme, isDarkMode }) => isDarkMode
+  background: ${({ theme }) => theme.isDarkMode
 	? lighten(0.08, theme.colors.layout) : lighten(0.02, theme.colors.layout)};
-  border: 1px solid ${({ theme, isDarkMode }) => isDarkMode
+  border: 1px solid ${({ theme }) => theme.isDarkMode
 		? lighten(0.18, theme.colors.layout) : lighten(0.1, theme.colors.layout)};
   align-items: center;
   position: relative;
@@ -27,16 +27,16 @@ export const IconContainer = styled.div`
   height: 30px;
   cursor: pointer;
   position: absolute;
-  background: ${({ theme, isDarkMode }) => isDarkMode
+  background: ${({ theme }) => theme.isDarkMode
 	? darken(0.1, theme.colors.layout) : lighten(0.2, theme.colors.layout)};
 
-  transform: ${({ isDarkMode }) => isDarkMode && 'translateX(20px)' };
+  transform: ${({ theme }) => theme.isDarkMode && 'translateX(20px)' };
   transition: all 0.3s;
 
   & > svg {
     width: 20px;
     height: 20px;
-    fill: ${({ theme, isDarkMode }) => isDarkMode
+    fill: ${({ theme }) => theme.isDarkMode
 		? lighten(0.4,theme.colors.layout) : darken(0.2, theme.colors.layout)};
   }
 `

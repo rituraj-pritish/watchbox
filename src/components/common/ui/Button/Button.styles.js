@@ -47,9 +47,9 @@ export const StyledButton = styled.div`
   padding: ${({ theme }) => `${theme.spacing(0.5)} ${theme.spacing(1)}`};
 	box-sizing: border-box;
 
-	${({ theme, variant, type, isDarkMode, isLoading }) => {
+	${({ theme, variant, type, isLoading }) => {
 	const bgColor = getBgColor(variant, type, theme)
-	const color = getColor(variant, type, theme, isDarkMode)
+	const color = getColor(variant, type, theme, theme.isDarkMode)
 
 	return css`
 			background: ${bgColor};

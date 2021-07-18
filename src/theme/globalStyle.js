@@ -16,21 +16,21 @@ const GlobalStyle = createGlobalStyle`
   }
 
   ::-webkit-scrollbar {
-    background-color: ${({ isDarkMode }) => isDarkMode ? '#656565' : '#f2f2f2'}; 
+    background-color: ${({ theme }) => theme.isDarkMode ? '#656565' : '#f2f2f2'}; 
     border-radius: 10px;
     width: 15px;
     height: 15px;
   }
 
   ::-webkit-scrollbar-thumb {
-    background-color: ${({ isDarkMode }) => isDarkMode ? '#c6c6c6' : '#bebebe'}; 
+    background-color: ${({ theme }) => theme.isDarkMode ? '#c6c6c6' : '#bebebe'}; 
     border-radius: 10px;
-    border: 3px solid ${({ isDarkMode }) => isDarkMode ? '#656565' : '#f2f2f2'};
+    border: 3px solid ${({ theme }) => theme.isDarkMode ? '#656565' : '#f2f2f2'};
   }
 
   ::-webkit-scrollbar-thumb:hover {
-    background-color: ${({ isDarkMode }) =>
-	isDarkMode ?  lighten(0.2,'#c6c6c6') : darken(0.2, '#bebebe')}; 
+    background-color: ${({ theme }) =>
+	theme.isDarkMode ?  lighten(0.2,'#c6c6c6') : darken(0.2, '#bebebe')}; 
   }
 
 

@@ -14,13 +14,12 @@ const Button = ({
 	isLoading = false,
 	...rest
 }) => {
-	const { isDarkMode, theme } = useTheme()
+	const { theme } = useTheme()
 
 	return (
 		<StyledButton
 			variant={variant}
 			type={type}
-			isDarkMode={isDarkMode}
 			isLoading={isLoading}
 			role='button'
 			{...rest}
@@ -29,7 +28,7 @@ const Button = ({
 				<SpinnerWrapper>
 					<Ring
 						size={28}
-						color={getColor(variant, type, theme, isDarkMode)}
+						color={getColor(variant, type, theme)}
 					/>
 				</SpinnerWrapper>
 			)}

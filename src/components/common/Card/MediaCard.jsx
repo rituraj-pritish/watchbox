@@ -6,7 +6,6 @@ import 'react-circular-progressbar/dist/styles.css'
 import { ReactComponent as PlayIcon } from 'assets/icons/play-icon.svg'
 import { Overlay, Wrapper } from './Card.styles'
 import Text from '../ui/Text'
-import useTheme from 'hooks/useTheme'
 import FlexBox from '../ui/FlexBox'
 import Genres from '../Genres'
 import Image from '../ui/Image'
@@ -22,18 +21,16 @@ const MediaCard = ({
 	poster_path,
 	genre_ids
 }) => {
-	const { isDarkMode } = useTheme()
 	const history = useHistory()
 
 	const mediaType = title ? 'movie' : 'tv'
 
 	return (
 		<Wrapper
-			isDarkMode={isDarkMode}
 			onClick={() => history.push(`/${title ? 'movie' : 'tv'}/${id}`)}
 			data-testid={id}
 		>
-			<Overlay isDarkMode={isDarkMode}>
+			<Overlay>
 				<div/>
 				<TrailerModal
 					trigger={(

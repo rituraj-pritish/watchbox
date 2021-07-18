@@ -9,14 +9,12 @@ import FlexBox from '../ui/FlexBox'
 import Link from '../ui/Link/Link'
 import Skeleton from '../ui/Skeleton'
 import { Content, Wrapper } from './Navbar.styles'
-import useTheme from 'hooks/useTheme'
 import UserBadge from './UserBadge'
 import SearchBar from 'components/SearchBar'
 
 const Navbar = () => {
 	const history = useHistory()
 	const { isAuthenticated, isLoading } = useAuthentication()
-	const { isDarkMode } = useTheme()
 
 	const render = () => {
 		if(isLoading) return (
@@ -54,7 +52,7 @@ const Navbar = () => {
 	}
 
 	return (
-		<Wrapper isDarkMode={isDarkMode}>
+		<Wrapper>
 			<Content>
 				<RouterLink
 					to='/'

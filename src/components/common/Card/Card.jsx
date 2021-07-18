@@ -2,7 +2,6 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import { useHistory } from 'react-router'
 
-import useTheme from 'hooks/useTheme'
 import { Wrapper } from './Card.styles'
 import Image from '../ui/Image'
 import FlexBox from '../ui/FlexBox'
@@ -16,10 +15,9 @@ const Card = ({
 	imageSize
 }) => {
 	const history = useHistory()
-	const { isDarkMode } = useTheme()
+
 	return (
 		<Wrapper
-			isDarkMode={isDarkMode}
 			onClick={() => history.push(link)}
 		>
 			<Image

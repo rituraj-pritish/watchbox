@@ -46,7 +46,7 @@ export const lightTheme = {
 
 	colors: {
 		...theme.colors,
-
+		isDarkMode: false,
 		appBg: '#DEDEDE',
 		layout: '#C8C8C8',
 		paper: '#F4F4F4',

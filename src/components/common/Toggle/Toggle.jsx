@@ -2,11 +2,9 @@ import React, { useState } from 'react'
 import PropTypes from 'prop-types'
 
 import { Option, Wrapper } from './Toggle.styles'
-import useTheme from 'hooks/useTheme'
 
 const Toggle = ({ options, onChange }) => {
 	const [selected, setSelected] = useState(options[0].value)
-	const { isDarkMode } = useTheme()
 	const values = options.map(({ value }) => value)
 
 	const handleClick = (value) => {
@@ -26,7 +24,6 @@ const Toggle = ({ options, onChange }) => {
 						key={idx}
 						onClick={() => handleClick(value)}
 						isSelected={isSelected}
-						isDarkMode={isDarkMode}
 					>
 						{label}
 					</Option>
