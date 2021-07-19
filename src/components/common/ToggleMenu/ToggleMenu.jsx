@@ -22,14 +22,13 @@ const ToggleMenu = ({
 					</Icon>
 				)}
 			</Trigger>
-			{showMenu && (
-				<Menu
-					ref={ref}
-					onClick={() => setShowMenu(false)}
-				>
-					{children}
-				</Menu>
-			)}
+			<Menu
+				isVisible={showMenu}
+				ref={ref}
+				onClick={() => setShowMenu(false)}
+			>
+				{children}
+			</Menu>
 		</Wrapper>
 	)
 }

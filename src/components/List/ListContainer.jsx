@@ -109,7 +109,10 @@ const ListContainer = ({
 						label='Filter'
 						options={filter.options}
 						value={filterOption.value}
-						onChange={(val) => setFilterOption(getFilterState(val))}
+						onChange={(val) => {
+							setFilterOption(getFilterState(val))
+							if(filter.onChange) filter.onChange(val)
+						}}
 						ml={3}
 					/>
 				)}
@@ -118,7 +121,10 @@ const ListContainer = ({
 						label='Sort'
 						options={sort.options}
 						value={Object.values(sortOption).join('/')}
-						onChange={(val) => setSortOption(getSortState(val))}
+						onChange={(val) => {
+							setSortOption(getSortState(val))
+							if(sort.onChange) sort.onChange(val)
+						}}
 						ml={3}
 					/>
 				)}

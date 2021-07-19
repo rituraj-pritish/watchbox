@@ -20,6 +20,7 @@ export const Menu = styled.div`
   width: fit-content;
   border-radius: ${theme.borderRadius};
   margin-top: ${theme.spacing(0.5)};
+  visibility: ${({ isVisible }) => isVisible ? 'visible' : 'hidden'};
 
   & > *:not(hr) {
     padding: ${theme.spacing(0.4)} ${theme.spacing()};;

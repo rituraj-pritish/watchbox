@@ -41,7 +41,6 @@ const Episode = () => {
 					}
 				]}
 				title='Episode'
-				mb={4}
 			/>
 			<EpisodeOverview {...episode}/>
 			<Carousel

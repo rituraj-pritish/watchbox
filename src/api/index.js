@@ -1,6 +1,7 @@
 import { SESSION_ID_KEY } from 'hooks/useAuthentication'
 
 const TMDB_BASE_URL = 'https://api.themoviedb.org/3'
+const TMDB_BASE_URL_v4 = 'https://api.themoviedb.org/4'
 const TMDB_IMAGE_BASE_URL = 'https://image.tmdb.org/t/p'
 
 const DEFAULT_OPTIONS = {
@@ -19,7 +20,8 @@ const apiKey = process.env.REACT_APP_TMDB_API_KEY
 const api = (
 	url,
 	options = {},
-	params = {}
+	params = {},
+	useV4 = false
 ) => {
 	const sessionId = localStorage.getItem(SESSION_ID_KEY)
 
@@ -28,7 +30,7 @@ const api = (
 		return acc
 	}, '')
 
-	const pathname = TMDB_BASE_URL + url +
+	const pathname = (useV4 ? TMDB_BASE_URL_v4 : TMDB_BASE_URL) + url +
 		`?api_key=${apiKey}` +
 	(sessionId ? `&session_id=${sessionId}` : '') +
 	stringParams

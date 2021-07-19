@@ -34,7 +34,6 @@ const Episodes = () => {
 					{ title: season?.name, path: `/tv/${show?.id}/seasons/${seasonNumber}` },
 				]}
 				title='Episodes'
-				mb={4}
 			/>
 			{episodes.map((item) => (
 				<Wrapper

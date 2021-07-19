@@ -16,6 +16,8 @@ import SearchResults from 'components/SearchResults'
 import Discover from 'modules/discover/Discover'
 import AllLists from 'modules/lists/AllLists'
 import ListPage from 'modules/lists/ListPage'
+import CustomListPage from 'modules/lists/CustomListPage'
+import ProtectedRoute from 'components/common/ProtectedRoute'
 
 const CommonRoutes = () => {
 	return (
@@ -97,15 +99,20 @@ const CommonRoutes = () => {
 				path='/tv/:tvId/seasons/:seasonNumber/episodes/:episodeNumber'
 				component={Episode}
 			/>
-			<Route
+			<ProtectedRoute
 				exact
 				path='/lists'
 				component={AllLists}
 			/>
-			<Route
+			<ProtectedRoute
 				exact
 				path='/lists/:listName'
 				component={ListPage}
+			/>
+			<ProtectedRoute
+				exact
+				path='/lists/custom/:listId'
+				component={CustomListPage}
 			/>
 		</>
 	)

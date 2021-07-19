@@ -29,7 +29,6 @@ const Seasons = () => {
 			<PageTitle
 				ancestors={[{ title: data?.name, path: `/tv/${data?.id}` }]}
 				title='Seasons'
-				mb={4}
 			/>
 			{seasons.map((item) => (
 				<Wrapper

@@ -16,7 +16,8 @@ const Dialog = ({
 	extraButtons,
 	disabled,
 	onCancel,
-	isLoading
+	isLoading,
+	forDeletion
 }) => {
 	const modalRef = useRef()
 
@@ -57,9 +58,10 @@ const Dialog = ({
 					disabled={disabled}
 					onClick={onConfirm}
 					isLoading={isLoading}
+					variant={forDeletion && BUTTON_VARIANTS.DANGER}
 					ml={extraButtons ? 3 : undefined}
 				>
-					{confirmText || 'Confirm'}
+					{forDeletion ? (confirmText || 'Delete') : (confirmText || 'Confirm')}
 				</Button>
 			</FlexBox>
 		</Modal>

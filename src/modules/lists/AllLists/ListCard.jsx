@@ -6,7 +6,7 @@ import Image from 'components/common/ui/Image'
 import { ListCard, CardLabel } from './AllLists.styles'
 import posters from './posters.jpg'
 import Text from 'components/common/ui/Text'
-import ToggleMenu from 'components/common/ToggleMenu'
+import ListToggleMenu from '../ListToggleMenu'
 
 const Card = ({ id, to, label, imageUrl }) => (
 	<ListCard>
@@ -25,19 +25,15 @@ const Card = ({ id, to, label, imageUrl }) => (
 				</Text>
 			</CardLabel>
 		</Link>
-		{!!id && (
-			<ToggleMenu>
-				<Text>Edit</Text>
-				<Text color='danger'>Delete</Text>
-			</ToggleMenu>
-		)}
+		{!!id && <ListToggleMenu id={id}/>}
 	</ListCard>
 )
 
 Card.propTypes = {
 	to: PropTypes.string.isRequired,
 	label: PropTypes.string.isRequired,
-	imageUrl: PropTypes.string
+	imageUrl: PropTypes.string,
+	id: PropTypes.number
 }
 
 export default Card

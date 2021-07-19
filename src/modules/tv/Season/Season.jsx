@@ -45,7 +45,6 @@ const Season = () => {
 					{ title: 'Seasons', path: `/tv/${show?.id}/seasons` }
 				]}
 				title='Season'
-				mb={4}
 			/>
 			<SeasonOverview {...season} />
 			<Carousel

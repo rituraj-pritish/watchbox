@@ -11,59 +11,67 @@ import Icon from '../ui/Icon'
 const PageTitle = ({
 	title,
 	ancestors = [],
+	right,
 	...rest
 }) => {
 	return (
 		<FlexBox
-			flexDirection='column'
+			justifyContent='space-between'
+			alignItems='flex-end'
+			mb={4}
 			{...rest}
 		>
-			<FlexBox>
-				{
-					ancestors.map(({ title, path }, index) => (
-						<FlexBox
-							key={title}
-							alignItems='center'
-						>
-							{
-								ancestors.length === 1 && (
-									<Icon
-										size={12}
-										mr={1}
-										color='secondary'
-									>
-										<ChevronLeft/>
-									</Icon>
-								)
-							}
-							<Link
-								to={path}
-							>
-								{title}
-							</Link>
-							{
-								index !== (ancestors.length - 1) && (
-									<Icon
-										size={12}
-										mx={2}
-									>
-										<ChevronRight/>
-									</Icon>
-								)
-							}
-						</FlexBox>
-					))
-				}
-			</FlexBox>
-			<Text
-				mt={2}
-				size={5}
-				bold
-				color='primary'
-				capitalize
+			<FlexBox
+				flexDirection='column'
 			>
-				{title}
-			</Text>
+				<FlexBox>
+					{
+						ancestors.map(({ title, path }, index) => (
+							<FlexBox
+								key={title}
+								alignItems='center'
+							>
+								{
+									ancestors.length === 1 && (
+										<Icon
+											size={12}
+											mr={1}
+											color='secondary'
+										>
+											<ChevronLeft/>
+										</Icon>
+									)
+								}
+								<Link
+									to={path}
+								>
+									{title}
+								</Link>
+								{
+									index !== (ancestors.length - 1) && (
+										<Icon
+											size={12}
+											mx={2}
+										>
+											<ChevronRight/>
+										</Icon>
+									)
+								}
+							</FlexBox>
+						))
+					}
+				</FlexBox>
+				<Text
+					mt={2}
+					size={5}
+					bold
+					color='primary'
+					capitalize
+				>
+					{title}
+				</Text>
+			</FlexBox>
+			{!!right && right}
 		</FlexBox>
 	)
 }
@@ -73,7 +81,8 @@ PageTitle.propTypes = {
 	ancestors: PropTypes.arrayOf(PropTypes.shape({
 		title: PropTypes.string.isRequired,
 		path: PropTypes.string.isRequired,
-	}))
+	})),
+	right: PropTypes.node
 }
 
 export default PageTitle

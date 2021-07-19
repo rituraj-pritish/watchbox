@@ -6,6 +6,8 @@ import { getLists } from 'api/endpoints/lists'
 import useAuthentication from 'hooks/useAuthentication'
 import ListCard from './ListCard'
 import PageLoader from 'components/common/Loader/PageLoader'
+import FlexBox from 'components/common/ui/FlexBox'
+import ListForm from '../ListForm'
 
 const CustomLists = () => {
 	const { user } = useAuthentication()
@@ -17,18 +19,24 @@ const CustomLists = () => {
 
 	return (
 		<div>
-			<Text 
+			<FlexBox
+				alignItems='center'
+				justifyContent='space-between'
 				my={4}
-				size={4}
-				color='primary'
-				bold
 			>
+				<Text 
+					size={4}
+					color='primary'
+					bold
+				>
         Custom Lists
-			</Text>
+				</Text>
+				<ListForm/>
+			</FlexBox>
 
 			{isLoading && <PageLoader text='Loading lists'/>}
 
-			{data?.results.map(item => (
+			{data && data.results.map(item => (
 				<ListCard
 					key={item.id}
 					to={`/lists/custom/${item.id}`}
