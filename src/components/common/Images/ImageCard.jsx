@@ -31,8 +31,10 @@ const ImageCard = ({
 				/>
 			)}
 			styles={{
-				height: 'fit-content',
-				width: 'fit-content'
+				wrapper: {
+					height: 'fit-content',
+					width: 'fit-content'
+				}
 			}}
 		>
 			<Image

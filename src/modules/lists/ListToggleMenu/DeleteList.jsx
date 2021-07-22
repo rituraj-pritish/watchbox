@@ -8,7 +8,7 @@ import { deleteList } from 'api/endpoints/lists'
 
 const DeleteList = ({ id }) => {
 	const client = useQueryClient()
-	const { mutate, isLoading } = useMutation(
+	const { mutateAsync, isLoading } = useMutation(
 		() => deleteList(id),
 		{
 			onSuccess: () => {
@@ -22,14 +22,13 @@ const DeleteList = ({ id }) => {
 			trigger={(
 				<Text
 					color='danger'
-					onClick={() => console.log('click')}
 				>
           Delete
 				</Text>
 			)}
 			title='Are you sure you want to delete list ?'
 			isLoading={isLoading}
-			onConfirm={mutate}
+			onConfirm={mutateAsync}
 			forDeletion
 		/>
 	)

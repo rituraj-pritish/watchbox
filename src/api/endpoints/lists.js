@@ -31,3 +31,11 @@ export const updateList = (body) => {
 export const deleteList = (listId) => {
 	return api(`/list/${listId}`, { method: 'DELETE' })
 }
+
+export const addToList = (listId, mediaId) => {
+	return api(`/list/${listId}/add_item`, { method: 'POST', body: { media_id: mediaId } })
+}
+
+export const removeFromList = (listId, mediaId) => {
+	return api(`/list/${listId}/remove_item`, { method: 'POST', body: { media_id: mediaId } })
+}

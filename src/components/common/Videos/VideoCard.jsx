@@ -27,8 +27,10 @@ const VideoCard = ({ videoKey }) => {
 				</TriggerWrapper>
 			)}
 			styles={{
-				height: '50vw',
-				width: '80vw'
+				wrapper: {
+					height: '50vw',
+					width: '80vw'
+				}
 			}}
 		>
 			<VideoPlayer

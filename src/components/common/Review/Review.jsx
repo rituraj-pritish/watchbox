@@ -95,11 +95,13 @@ const Review = ({ fullView, ...review }) => {
 						</Link>
 					}
 					styles={{
-						width: '50%',
-						height: '50%',
-						overflow: 'hidden',
-						paddingTop: '0.5rem',
-						paddingBottom: '1.5rem'
+						wrapper: {
+							width: '50%',
+							height: '50%',
+							overflow: 'hidden',
+							paddingTop: '0.5rem',
+							paddingBottom: '1.5rem'
+						}
 					}}
 				>
 					<Review

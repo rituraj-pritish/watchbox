@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useImperativeHandle } from 'react'
 import PropTypes from 'prop-types'
 
 import { ReactComponent as EllipsisIcon } from 'assets/icons/ellipsis.svg'
@@ -9,8 +9,14 @@ import Icon from '../ui/Icon'
 const ToggleMenu = ({
 	trigger,
 	children
-}) => {
-	const [ref, showMenu, setShowMenu] = useComponentVisible(false)
+}, ref) => {
+	const [menuRef, showMenu, setShowMenu] = useComponentVisible(false)
+
+	useImperativeHandle(ref, () => ({
+		close: () => {
+			setShowMenu(false)
+		}
+	}))
 
 	return (
 		<Wrapper>
@@ -24,7 +30,7 @@ const ToggleMenu = ({
 			</Trigger>
 			<Menu
 				isVisible={showMenu}
-				ref={ref}
+				ref={menuRef}
 				onClick={() => setShowMenu(false)}
 			>
 				{children}
@@ -38,4 +44,4 @@ ToggleMenu.propTypes = {
 	children: PropTypes.node.isRequired,
 }
 
-export default ToggleMenu
+export default React.forwardRef(ToggleMenu)

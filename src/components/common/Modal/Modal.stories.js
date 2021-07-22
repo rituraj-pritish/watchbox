@@ -10,8 +10,10 @@ export const modal = () => {
 		<Modal
 			trigger={<Button>Show modal</Button>}
 			styles={{
-				width: '50rem',
-				height: '40rem'
+				wrapper: {
+					width: '50rem',
+					height: '40rem'
+				}
 			}}
 		>
 				content

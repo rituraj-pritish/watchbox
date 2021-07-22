@@ -1,5 +1,5 @@
 import styled, { css } from 'styled-components'
-import { space } from 'styled-system'
+import { layout, space } from 'styled-system'
 
 import { BUTTON_TYPES, BUTTON_VARIANTS } from 'constants/buttons'
 import theme from 'theme'
@@ -46,6 +46,7 @@ export const StyledButton = styled.div`
 	cursor: pointer;
   padding: ${({ theme }) => `${theme.spacing(0.5)} ${theme.spacing(1)}`};
 	box-sizing: border-box;
+	${centerElement};
 
 	${({ theme, variant, type, isLoading }) => {
 	const bgColor = getBgColor(variant, type, theme)
@@ -73,7 +74,7 @@ export const StyledButton = styled.div`
 		pointer-events: none;
 	`};
 
-	${space}
+	${space} ${layout}
 `
 
 export const SpinnerWrapper = styled.div`

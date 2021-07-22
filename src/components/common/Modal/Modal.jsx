@@ -3,7 +3,12 @@ import PropTypes from 'prop-types'
 
 import ReactModal from 'react-modal'
 import useTheme from 'hooks/useTheme'
-import { Trigger } from './Modal.styles'
+import { 
+	Trigger,
+	Header,
+	Footer,
+	Content
+} from './Modal.styles'
 
 const Modal = ({
 	children,
@@ -11,6 +16,8 @@ const Modal = ({
 	onRequestClose,
 	onOpen,
 	onClose,
+	header,
+	footer,
 	styles
 }, ref) => {
 	const [isOpen, setIsOpen] = useState(false)
@@ -46,15 +53,17 @@ const Modal = ({
 						borderRadius: theme.borderRadius,
 						background: theme.colors.appBg,
 				
-						left: styles?.width ? '50%' : undefined,
-						top: styles?.height ? '50%' : undefined,
-						transform: `translate(${styles?.width ? '-50%' : '0'}, 
-					${styles?.height ? '-50%' : '0'})`,
-						...styles,
+						left: styles?.wrapper?.width ? '50%' : undefined,
+						top: styles?.wrapper?.height ? '50%' : undefined,
+						transform: `translate(${styles?.wrapper?.width ? '-50%' : '0'}, 
+					${styles?.wrapper?.height ? '-50%' : '0'})`,
+						...styles?.wrapper,
 					}
 				}}
 			>
-				{children}
+				{!!header && <Header extendedStyles={styles?.header}>{header}</Header>}
+				<Content extendedStyles={styles?.content}>{children}</Content>
+				{!!footer && <Header extendedStyles={styles?.footer}>{footer}</Header>}
 			</ReactModal>
 		)
 	}

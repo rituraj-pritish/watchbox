@@ -6,10 +6,16 @@ import FlexBox from 'components/common/ui/FlexBox'
 import Button from 'components/common/ui/Button'
 import { BUTTON_VARIANTS } from 'constants/buttons'
 
-const ListForm = ({ isLoading, isEditing, onCancel ,onSubmit }) => {
-	const [name, setName] = useState('')
-	const [description, setDescription] = useState('')
-	const [isPublic, setIsPublic] = useState(false)
+const ListForm = ({ 
+	initialValues,
+	isLoading, 
+	isEditing, 
+	onCancel ,
+	onSubmit 
+}) => {
+	const [name, setName] = useState(initialValues?.name || '')
+	const [description, setDescription] = useState(initialValues?.description || '')
+	const [isPublic, setIsPublic] = useState(initialValues?.public || false)
 
 	const handleSubmit = () => {
 		onSubmit({
@@ -24,12 +30,14 @@ const ListForm = ({ isLoading, isEditing, onCancel ,onSubmit }) => {
 			<Input
 				isRequired
 				label='Name'
+				value={name}
 				placeholder='Enter name'
 				onChange={setName}
 				mb={3}
 			/>
 			<Input
 				label='Description'
+				value={description}
 				placeholder='Enter description'
 				onChange={setDescription}
 			/>

@@ -54,10 +54,10 @@ const MediaActions = ({
 				<HeartIcon/>
 			</Action>
 
-			{/* <AddToList
+			<AddToList
 				mediaType={mediaType}
 				mediaId={mediaId}
-			/> */}
+			/>
 		</FlexBox>
 	)
 }

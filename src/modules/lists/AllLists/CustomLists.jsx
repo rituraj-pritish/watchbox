@@ -22,7 +22,8 @@ const CustomLists = () => {
 			<FlexBox
 				alignItems='center'
 				justifyContent='space-between'
-				my={4}
+				my={2}
+				mb={4}
 			>
 				<Text 
 					size={4}
@@ -36,14 +37,16 @@ const CustomLists = () => {
 
 			{isLoading && <PageLoader text='Loading lists'/>}
 
-			{data && data.results.map(item => (
-				<ListCard
-					key={item.id}
-					to={`/lists/custom/${item.id}`}
-					label={item.name}
-					{...item}
-				/>
-			))}
+			<FlexBox flexWrap='wrap'>
+				{data && data.results.map(item => (
+					<ListCard
+						key={item.id}
+						to={`/lists/custom/${item.id}`}
+						label={item.name}
+						list={item}
+					/>
+				))}
+			</FlexBox>
 		</div>
 	)
 }

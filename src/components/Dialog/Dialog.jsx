@@ -21,13 +21,20 @@ const Dialog = ({
 }) => {
 	const modalRef = useRef()
 
+	const handleConfirm = () => {
+		return onConfirm()
+			.then(() => modalRef.current.close())
+	}
+
 	return (
 		<Modal
 			ref={modalRef}
 			trigger={trigger}
 			styles={{
-				height: 'fit-content',
-				width: '40rem'
+				wrapper: {
+					height: 'fit-content',
+					width: '40rem'
+				}
 			}}
 			onRequestClose={onCancel}
 		>
@@ -56,7 +63,7 @@ const Dialog = ({
 				{extraButtons}
 				<Button 
 					disabled={disabled}
-					onClick={onConfirm}
+					onClick={handleConfirm}
 					isLoading={isLoading}
 					variant={forDeletion && BUTTON_VARIANTS.DANGER}
 					ml={extraButtons ? 3 : undefined}

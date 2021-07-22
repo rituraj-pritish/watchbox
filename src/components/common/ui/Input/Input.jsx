@@ -4,7 +4,6 @@ import React, { forwardRef, useImperativeHandle, useState } from 'react'
 import FlexBox from '../FlexBox'
 import Text from '../Text'
 import { StyledInput } from './Input.styles'
-import useTheme from 'hooks/useTheme'
 
 const Input = ({
 	label,
@@ -12,9 +11,9 @@ const Input = ({
 	value,
 	space,
 	className,
+	isRequired,
 	...rest
 }, ref) => {
-	const { isDarkMode } = useTheme()
 	const [text, setText] = useState(value || '')
 
 	useImperativeHandle(ref, () => ({
@@ -32,15 +31,25 @@ const Input = ({
 			space={space}
 			{...rest}
 		>
-			{label && (
-				<Text
-					mb={2}
-					bold
-					color='textTertiary'
-				>
-					{label}
-				</Text>
-			)}
+			<FlexBox>
+				{label && (
+					<Text
+						mb={2}
+						bold
+						color='textTertiary'
+					>
+						{label}
+					</Text>
+				)}
+				{isRequired && (
+					<Text
+						ml={1}
+						color='danger'
+					>
+					*
+					</Text>
+				)}
+			</FlexBox>
 			<StyledInput
 				className={className}
 				value={text}

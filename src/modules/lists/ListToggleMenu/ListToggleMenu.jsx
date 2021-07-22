@@ -4,11 +4,11 @@ import ToggleMenu from 'components/common/ToggleMenu'
 import ListForm from '../ListForm'
 import DeleteList from './DeleteList'
 
-const ListToggleMenu = ({ id }) => {
+const ListToggleMenu = ({ list, menuRef }) => {
 	return (
-		<ToggleMenu>
-			<ListForm isEditing/>
-			<DeleteList id={id}/>
+		<ToggleMenu ref={menuRef}>
+			{/* <ListForm list={list}/> */}
+			<DeleteList id={list?.id}/>
 		</ToggleMenu>
 	)
 }

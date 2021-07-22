@@ -30,10 +30,12 @@ const TrailerModal = ({
 				if(!data) refetch()
 			}}
 			styles={{
-				width: '80%',
-				height: '55%',
-				display: 'flex',
-				flexDirection: 'column'
+				wrapper: {
+					width: '80%',
+					height: '55%',
+					display: 'flex',
+					flexDirection: 'column'
+				}
 			}}
 		>
 			<Text

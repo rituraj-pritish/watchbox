@@ -4,11 +4,14 @@ import { centerElement } from 'theme/commonStyles'
 
 export const ListCard = styled.div`
   position: relative;
-  width: 50%;
+  flex-grow: 1;
+  min-width: 45%;
+  max-width: ${theme.spacing(36)};
   overflow: hidden;
+  margin-bottom: ${theme.spacing()};
   
   // first card
-  &:first-child {
+  &:nth-child(odd) {
     margin-right: ${theme.spacing()};
   }
 
@@ -20,7 +23,7 @@ export const ListCard = styled.div`
     visibility: hidden;
   }
 
-  &:hover div:last-child {
+  &:hover > div:last-child {
     visibility: visible;
   }
 `
@@ -35,4 +38,8 @@ export const CardLabel = styled.div`
   height: 100%;
   ${centerElement}
   background: ${({ theme }) => theme.isDarkMode ? '#0000007a' : '#d6d6d6c7'};
+`
+
+export const ListWrapper = styled.div`
+  
 `

@@ -2,8 +2,7 @@
     "env": {
         "browser": true,
         "es2021": true,
-        "jest": true,
-        "react-percy/globals": true
+        "jest": true
     },
     "extends": [
         "eslint:recommended",
