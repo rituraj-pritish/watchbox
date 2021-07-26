@@ -5,6 +5,7 @@ import { getFavoriteMovies } from 'api/endpoints/movies'
 import { getFavoriteShows } from 'api/endpoints/tv'
 import { addToFavorite, removeFromFavorite } from 'api/endpoints/account'
 import useAuthentication from './useAuthentication'
+import toast from 'react-hot-toast'
 
 export default (mediaId, mediaType) => {
 	const { user } = useAuthentication()
@@ -49,7 +50,15 @@ export default (mediaId, mediaType) => {
 		{
 			onSuccess: () => {
 				refetchFavorites()
-					.then(() => setIsLoading(false))
+					.then(() => {
+						toast.success(
+							isFavorite ? 'Removed from favorites.' : 'Added to favorites.'
+						)
+						setIsLoading(false)
+					})
+			},
+			onError: () => {
+				toast.error('Something went wrong. Please try again.')
 			}
 		}
 	)

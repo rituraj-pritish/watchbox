@@ -9,6 +9,7 @@ import GlobalState from 'components/GlobalState'
 import GlobalStyle from 'theme/globalStyle'
 import useTheme from 'hooks/useTheme'
 import { QueryClient, QueryClientProvider } from 'react-query'
+import Toaster from 'components/common/Toast/Toaster'
 
 export const queryClient = new QueryClient({
 	defaultOptions: {
@@ -36,6 +37,7 @@ const Providers = ({ children, history }) => {
 								color={theme.colors.skeleton}
 								highlightColor={theme.colors.skeletonHighlight}
 							>
+								<Toaster/>
 								<GlobalState />
 								<GlobalStyle/>
 								{children}

@@ -6,7 +6,7 @@ export const Wrapper = styled.nav`
   background: ${({ theme }) => theme.colors.layout};
   display: flex;
   justify-content: center;
-  height: 50px;
+  height: ${theme.navHeight};;
   position: sticky;
   top: 0;
   left: 0;

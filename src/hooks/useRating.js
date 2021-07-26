@@ -5,6 +5,7 @@ import { useMutation, useQueries } from 'react-query'
 import { getRatedMedia } from 'api/endpoints/media'
 import { deleteRating, rateMedia } from 'api/endpoints/media'
 import useAuthentication from './useAuthentication'
+import toast from 'react-hot-toast'
 
 export default (mediaId, mediaType) => {
 	const { user } = useAuthentication()
@@ -28,20 +29,26 @@ export default (mediaId, mediaType) => {
 		const refetchFunction = mediaType === 'movie' ? movies.refetch : shows.refetch
 		setTimeout(() => {
 			refetchFunction()
-				.then(() => setIsLoading(false))
+				.then(() => {
+					toast.success(
+						rating ? 'Rating removed.' : 'Rated successfully.'
+					)
+					setIsLoading(false)
+				})
 		}, 1000)
 	}, [mediaType])
 
 	const mutateOptions = {
 		onMutate: () => setIsLoading(true),
-		onSuccess: refetchRecords
+		onSuccess: refetchRecords,
+		onError: () => toast.error('Something went wrong. Please try again.')
 	}
 
-	const { mutate: remove } = useMutation(
+	const { mutateAsync: remove } = useMutation(
 		() => deleteRating(mediaType, mediaId),
 		mutateOptions
 	)
-	const { mutate: rate } = useMutation(
+	const { mutateAsync: rate } = useMutation(
 		(r) => rateMedia(mediaType, mediaId, (r * 2)),
 		mutateOptions
 	)

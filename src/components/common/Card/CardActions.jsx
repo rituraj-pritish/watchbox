@@ -26,7 +26,7 @@ const CardActions = ({ mediaId, mediaType }) => {
 		>
 			<StyledAction
 				circle={false}
-				mr={1}
+				mr={2}
 				size={20}
 				p={2}
 				isVisible={isInWatchlist}

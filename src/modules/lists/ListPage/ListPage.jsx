@@ -6,6 +6,7 @@ import useFavorites from 'hooks/useFavorites'
 import useWatchlist from 'hooks/useWatchlist'
 import List from 'components/List'
 import { filterFn, sortFn } from 'helpers/array'
+import useTitle from 'hooks/useTitle'
 
 const ListPage = () => {
 	const { listName } = useParams()
@@ -13,7 +14,7 @@ const ListPage = () => {
 	const { watchlist } = useWatchlist()
 
 	const list = listName === 'favorites' ? favorites : watchlist
-
+	useTitle(listName)
 	return (
 		<div>
 			<PageTitle

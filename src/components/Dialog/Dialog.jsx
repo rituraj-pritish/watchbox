@@ -11,6 +11,8 @@ const Dialog = ({
 	trigger,
 	title,
 	onConfirm,
+	onSuccess,
+	onError,
 	confirmText,
 	children,
 	extraButtons,
@@ -23,7 +25,13 @@ const Dialog = ({
 
 	const handleConfirm = () => {
 		return onConfirm()
-			.then(() => modalRef.current.close())
+			.then(() => {
+				modalRef.current.close()
+				if(onSuccess) onSuccess()
+			})
+			.catch(() => {
+				if(onError) onError()
+			})
 	}
 
 	return (
@@ -85,6 +93,8 @@ Dialog.propTypes = {
 	extraButtons: PropTypes.node,
 	disabled: PropTypes.bool,
 	onCancel: PropTypes.func,
+	onSuccess: PropTypes.func,
+	onError: PropTypes.func,
 	isLoading: PropTypes.bool
 }
 

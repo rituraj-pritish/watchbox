@@ -5,6 +5,7 @@ import { addToWatchlist, removeFromWatchlist } from 'api/endpoints/account'
 import { getMovieWatchlist } from 'api/endpoints/movies'
 import { getShowsWatchlist } from 'api/endpoints/tv'
 import useAuthentication from './useAuthentication'
+import toast from 'react-hot-toast'
 
 export default (mediaId, mediaType) => {
 	const { user } = useAuthentication()
@@ -49,7 +50,15 @@ export default (mediaId, mediaType) => {
 		{
 			onSuccess: () => {
 				refetchWatchlist()
-					.then(() => setIsLoading(false))
+					.then(() => {
+						toast.success(
+							isInWatchlist ? 'Removed from watchlist.' : 'Added to watchlist.'
+						)
+						setIsLoading(false)
+					})
+			},
+			onError: () => {
+				toast.error('Something went wrong. Please try again.')
 			}
 		}
 	)

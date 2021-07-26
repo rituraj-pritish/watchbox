@@ -16,8 +16,7 @@
         "sourceType": "module"
     },
     "plugins": [
-        "react",
-        "react-percy"
+        "react"
     ],
     "rules": {
         "indent": ["warn","tab", { "ignoredNodes": ["TemplateLiteral"]}],

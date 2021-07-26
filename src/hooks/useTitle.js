@@ -1,4 +1,5 @@
 import { useEffect } from 'react'
+import { capitalize } from 'helpers/string'
 
 const TITLE_SUFFIX = ' - WatchBox'
 
@@ -8,7 +9,7 @@ export default title => {
 	useEffect(() => {
 		if(!title) return
 
-		let pageTitle = title 
+		let pageTitle = capitalize(title) 
 
 		if(pageTitle.includes('undefined - ')) {
 			pageTitle = pageTitle.replace('undefined - ', '')

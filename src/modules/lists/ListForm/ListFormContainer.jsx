@@ -7,6 +7,7 @@ import Modal from 'components/common/Modal'
 import ListForm from './ListForm'
 import Text from 'components/common/ui/Text'
 import { createList, updateList } from 'api/endpoints/lists'
+import toast from 'react-hot-toast'
 
 const ListFormContainer = ({ list, trigger: formTrigger }) => {
 	const isEditing = !!list
@@ -37,7 +38,13 @@ const ListFormContainer = ({ list, trigger: formTrigger }) => {
 		const mutateFn = isEditing ? update : create
 
 		return mutateFn(values)
-			.then(() => modalRef.current.close())
+			.then(() => {
+				modalRef.current.close()
+				toast.success(
+					isEditing ? 'List updated.' : 'List created.'
+				)
+			})
+			.catch(() => toast.error('Something went wrong. List cannot be created.'))
 	}
 
 	return (

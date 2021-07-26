@@ -4,6 +4,7 @@ const theme = {
 	spacing: (factor = 1) => `${factor * SIZE_UNIT}rem`,
 	borderRadius: '5px',
 	maxWidth: '1200px',
+	navHeight: '50px',
 
 	space: [0, 4, 8, 16, 24, 32],
 	fontSizes: [0, 13.5, 16, 20, 25, 31.25],

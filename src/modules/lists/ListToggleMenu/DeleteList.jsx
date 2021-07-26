@@ -5,6 +5,7 @@ import { useMutation, useQueryClient } from 'react-query'
 import Dialog from 'components/Dialog'
 import Text from 'components/common/ui/Text'
 import { deleteList } from 'api/endpoints/lists'
+import toast from 'react-hot-toast'
 
 const DeleteList = ({ id }) => {
 	const client = useQueryClient()
@@ -29,6 +30,7 @@ const DeleteList = ({ id }) => {
 			title='Are you sure you want to delete list ?'
 			isLoading={isLoading}
 			onConfirm={mutateAsync}
+			onSuccess={() => toast.success('List deleted.')}
 			forDeletion
 		/>
 	)
