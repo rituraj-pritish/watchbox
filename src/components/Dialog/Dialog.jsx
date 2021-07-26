@@ -30,6 +30,7 @@ const Dialog = ({
 		<Modal
 			ref={modalRef}
 			trigger={trigger}
+			showCloseIcon={false}
 			styles={{
 				wrapper: {
 					height: 'fit-content',

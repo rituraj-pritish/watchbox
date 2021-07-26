@@ -11,6 +11,7 @@ const Icon = ({
 	disabled,
 	circle,
 	enablePropagation = false,
+	styles,
 	...rest
 }) => {
 	return (
@@ -26,6 +27,7 @@ const Icon = ({
 			}}
 			disabled={disabled}
 			circle={circle}
+			style={styles}
 			{...rest}
 
 			isClickable={!!onClick}

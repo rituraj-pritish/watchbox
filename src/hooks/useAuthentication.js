@@ -1,12 +1,12 @@
 import { createState, useState } from '@hookstate/core'
+import { queryClient } from 'components/App/Providers'
+import { useHistory } from 'react-router'
 
 import { 
 	getUser, 
 	login as loginEndpoint, 
 	logout as logoutEndpoint 
 } from 'api/endpoints/authentication' 
-import { queryClient } from 'components/App/Providers'
-import { useHistory } from 'react-router'
 import useUrlParams from './useUrlParams'
 
 const INITIAL_STATE = {
@@ -29,8 +29,6 @@ export default () => {
 	const { redirect_url } = useUrlParams(['redirect_url'])
 	const history = useHistory()
 	const authState = useState(AUTH_STATE)
-
-	// const client = useQueryClient()
 
 	const login = async data => {
 		try {

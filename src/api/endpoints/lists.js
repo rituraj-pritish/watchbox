@@ -39,3 +39,7 @@ export const addToList = (listId, mediaId) => {
 export const removeFromList = (listId, mediaId) => {
 	return api(`/list/${listId}/remove_item`, { method: 'POST', body: { media_id: mediaId } })
 }
+
+export const getMediaStatus = (listId, mediaId) => {
+	return api(`/list/${listId}/item_status`, {}, { movie_id: mediaId })
+}

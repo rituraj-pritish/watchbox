@@ -1,7 +1,8 @@
 import React, { useImperativeHandle, useState } from 'react'
 import PropTypes from 'prop-types'
-
 import ReactModal from 'react-modal'
+
+import { ReactComponent as CrossIcon } from 'assets/icons/cross.svg'
 import useTheme from 'hooks/useTheme'
 import { 
 	Trigger,
@@ -9,6 +10,7 @@ import {
 	Footer,
 	Content
 } from './Modal.styles'
+import Icon from '../ui/Icon'
 
 const Modal = ({
 	children,
@@ -18,16 +20,19 @@ const Modal = ({
 	onClose,
 	header,
 	footer,
+	showCloseIcon = true,
 	styles
 }, ref) => {
 	const [isOpen, setIsOpen] = useState(false)
 	const { theme, isDarkMode } = useTheme()
 
+	const closeModal = () => {
+		setIsOpen(false)
+		if(onRequestClose) onRequestClose()
+	}
+
 	useImperativeHandle(ref, () => ({
-		close: () => {
-			setIsOpen(false)
-			if(onRequestClose) onRequestClose()
-		}
+		close: closeModal
 	}))
 
 	const render = () => {
@@ -36,10 +41,7 @@ const Modal = ({
 		return (
 			<ReactModal
 				isOpen={isOpen}
-				onRequestClose={() => {
-					setIsOpen(false)
-					if(onRequestClose) onRequestClose()
-				}}
+				onRequestClose={closeModal}
 				onAfterOpen={onOpen}
 				onAfterClose={onClose}
 				style={{
@@ -52,18 +54,36 @@ const Modal = ({
 						border: 'none',
 						borderRadius: theme.borderRadius,
 						background: theme.colors.appBg,
-				
+						display: 'flex',
+						flexDirection: 'column',
+
 						left: styles?.wrapper?.width ? '50%' : undefined,
 						top: styles?.wrapper?.height ? '50%' : undefined,
 						transform: `translate(${styles?.wrapper?.width ? '-50%' : '0'}, 
 					${styles?.wrapper?.height ? '-50%' : '0'})`,
 						...styles?.wrapper,
+						overflow: footer ? 'hidden' : 'auto'
 					}
 				}}
 			>
+				{showCloseIcon && (
+					<Icon 
+						styles={{
+							position: 'absolute',
+							right: '0.7rem',
+							top: '0.6rem',
+							background: 'transparent'
+						}}
+						size={14}
+						color='textTertiary'
+						onClick={closeModal}
+					>
+						<CrossIcon/>
+					</Icon>
+				)}
 				{!!header && <Header extendedStyles={styles?.header}>{header}</Header>}
 				<Content extendedStyles={styles?.content}>{children}</Content>
-				{!!footer && <Header extendedStyles={styles?.footer}>{footer}</Header>}
+				{!!footer && <Footer extendedStyles={styles?.footer}>{footer}</Footer>}
 			</ReactModal>
 		)
 	}
@@ -87,6 +107,9 @@ Modal.propTypes = {
 	onRequestClose: PropTypes.func,
 	onOpen: PropTypes.func,
 	onClose: PropTypes.func,
+	header: PropTypes.node,
+	footer: PropTypes.node,
+	showCloseIcon: PropTypes.bool
 }
 
 export default React.forwardRef(Modal)

@@ -1,5 +1,6 @@
 import React, { useState } from 'react'
 import { useQuery } from 'react-query'
+import { useHistory } from 'react-router-dom'
 
 import Button from 'components/common/ui/Button'
 import Input from 'components/common/ui/Input'
@@ -10,7 +11,8 @@ import { StyledLink } from './Login.styles'
 const SIGNUP_URL = 'https://www.themoviedb.org/signup'
 
 const Login = () => {
-	const { login } = useAuthentication()
+	const history = useHistory()
+	const { login, isAuthenticated, isLoading } = useAuthentication()
 
 	const [username, setUsername] = useState('uniqueJohnDoe21')
 	const [password, setPassword] = useState('123456')
@@ -20,6 +22,8 @@ const Login = () => {
 		() => login({ username, password }),
 		{ enabled: false }
 	)
+	
+	if(isAuthenticated && !isLoading) history.replace('/')
 
 	return (
 		<FlexBox
