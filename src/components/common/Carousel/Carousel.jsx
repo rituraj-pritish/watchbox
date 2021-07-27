@@ -25,6 +25,7 @@ const Carousel = ({
 	viewAllLink,
 	cardRender,
 	isLoading,
+	isTriggered = true,
 	...rest
 }) => {
 	const settings = {
@@ -83,6 +84,8 @@ const Carousel = ({
 	}
 
 	const render = () => {
+		if(!isTriggered) return null
+
 		if(isLoading || !data) return new Array(5)
 			.fill(0).map((_, idx) => <Card key={idx} />)
 

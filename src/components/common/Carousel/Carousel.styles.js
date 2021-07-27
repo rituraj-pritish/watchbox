@@ -124,11 +124,6 @@ export const SliderWrapper = styled.div`
       width: 87%;
     }
   }
-
-  @media (hover:none) {
-    .slick-arrow {
-      visibility: hidden;
-    }
   }
 `
 

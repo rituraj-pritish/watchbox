@@ -81,7 +81,13 @@ const Modal = ({
 						<CrossIcon/>
 					</Icon>
 				)}
-				{!!header && <Header extendedStyles={styles?.header}>{header}</Header>}
+				{!!header && (
+					<Header
+						showCloseIcon={showCloseIcon}
+						extendedStyles={styles?.header}
+					>
+						{header}
+					</Header>)}
 				<Content extendedStyles={styles?.content}>{children}</Content>
 				{!!footer && <Footer extendedStyles={styles?.footer}>{footer}</Footer>}
 			</ReactModal>

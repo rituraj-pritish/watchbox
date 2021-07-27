@@ -32,19 +32,22 @@ const TrailerModal = ({
 			styles={{
 				wrapper: {
 					width: '80%',
-					height: '55%',
-					display: 'flex',
-					flexDirection: 'column'
+					height: '55%'
+				},
+				content: {
+					overflow: 'hidden'
 				}
 			}}
+			header={(
+				<Text
+					color='primary'
+					mb={3}
+					size={4}
+				>
+					{title}
+				</Text>
+			)}
 		>
-			<Text
-				color='primary'
-				mb={3}
-				size={4}
-			>
-				{title}
-			</Text>
 			{
 				hasNoTrailer
 					? (

@@ -101,6 +101,9 @@ const Review = ({ fullView, ...review }) => {
 							overflow: 'hidden',
 							paddingTop: '0.5rem',
 							paddingBottom: '1.5rem'
+						},
+						content: {
+							overflow: 'hidden'
 						}
 					}}
 				>

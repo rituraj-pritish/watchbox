@@ -21,4 +21,8 @@ export const AppContent = styled.div`
     display: flex;
     flex-direction: column;
   }
+
+  @media (max-width: ${theme.maxWidth}) {
+    padding: ${theme.spacing()} 0;
+  }
 `

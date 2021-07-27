@@ -81,7 +81,7 @@ const ListContainer = ({
 			<FlexBox
 				justifyContent='flex-end'
 				alignItems='center'
-				mb={3}
+				mb={(!onlyGrid || sort.options || filter.options) ? 3 : undefined}
 			>
 				{!onlyGrid && (
 					<>

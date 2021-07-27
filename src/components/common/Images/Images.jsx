@@ -8,6 +8,7 @@ import Link from '../ui/Link'
 import ImageCard from './ImageCard'
 import { shuffleArray } from 'helpers/array'
 import Skeleton from '../ui/Skeleton'
+import usePositionOffset from 'hooks/usePositionOffset'
 
 const DATA_CHUNK = 20
 
@@ -16,6 +17,8 @@ const Images = ({
 	viewAllLink,
 	...rest
 }) => {
+	const [ref, isTriggered] = usePositionOffset(300)
+
 	const images = React.useMemo(() => data 
 		? shuffleArray(Object.values(data).flat()) 
 		: [],
@@ -23,6 +26,8 @@ const Images = ({
 	const hasMoreData = images.length > DATA_CHUNK
 
 	const render = () => {
+		if(!isTriggered) return null
+		
 		if(!data) return new Array(3).fill(0).map((_, idx) => (
 			<Skeleton
 				key={idx}
@@ -55,6 +60,7 @@ const Images = ({
 	return (
 		<Wrapper
 			data-testid='Photos-section'
+			ref={ref}
 			{...rest}
 		>
 			<FlexBox

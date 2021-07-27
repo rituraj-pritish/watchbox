@@ -12,6 +12,7 @@ const CarouselContainer = ({ request, toggleOptions, requestDeps = [], ...rest }
 		return (
 			<Carousel 
 				containerRef={ref}
+				isTriggered={isTriggered}
 				{...rest}
 			/>
 		)

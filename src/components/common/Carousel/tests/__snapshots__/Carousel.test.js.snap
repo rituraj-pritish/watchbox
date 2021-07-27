@@ -6,16 +6,19 @@ exports[`Carousel Renders empty message if no data 1`] = `
     class="css-ahmskn-SkeletonTheme"
   >
     <div
-      class="sc-jcFkyM iARGMT"
+      style="position: fixed; z-index: 9999; top: 50px; left: 16px; right: 16px; bottom: 16px; pointer-events: none; max-width: 1200px; margin: 0px auto;"
+    />
+    <div
+      class="sc-bBHHQT kIBBOG"
       data-testid="Movies-section"
     >
       <div />
       <div
-        class="sc-dkPtyc jgYvCw"
+        class="sc-hKwCoD jdPlMZ"
       >
         <div>
           <div
-            class="sc-hKwCoD gKFhOv"
+            class="sc-eCImvq jUdula"
             color="primary"
             font-size="4"
             font-weight="bold"
@@ -25,7 +28,7 @@ exports[`Carousel Renders empty message if no data 1`] = `
         </div>
       </div>
       <div
-        class="sc-cidCJl dOkjYZ"
+        class="sc-dPiKHq fkdxZd"
       >
         <div
           class="slick-slider slick-initialized"
@@ -51,7 +54,7 @@ exports[`Carousel Renders empty message if no data 1`] = `
                     tabindex="-1"
                   >
                     <div
-                      class="sc-dkPtyc jiYgdk"
+                      class="sc-hKwCoD bzoNGB"
                       height="100%"
                     >
                       No data available
@@ -72,7 +75,7 @@ exports[`Carousel Renders empty message if no data 1`] = `
                     tabindex="-1"
                   >
                     <div
-                      class="sc-dkPtyc jiYgdk"
+                      class="sc-hKwCoD bzoNGB"
                       height="100%"
                     >
                       No data available

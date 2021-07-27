@@ -6,13 +6,16 @@ exports[`Reviews section Does not Render view all link 1`] = `
     class="css-ahmskn-SkeletonTheme"
   >
     <div
+      style="position: fixed; z-index: 9999; top: 50px; left: 16px; right: 16px; bottom: 16px; pointer-events: none; max-width: 1200px; margin: 0px auto;"
+    />
+    <div
       data-testid="Reviews-section"
     >
       <div
-        class="sc-dkPtyc gCxyHM"
+        class="sc-hKwCoD gqXDbt"
       >
         <div
-          class="sc-hKwCoD ecqkwW"
+          class="sc-eCImvq fmqIj"
           color="textPrimary"
           font-size="4"
         >
@@ -20,7 +23,7 @@ exports[`Reviews section Does not Render view all link 1`] = `
         </div>
       </div>
       <div
-        class="sc-dkPtyc iizqRJ"
+        class="sc-hKwCoD gFGiLo"
         height="50"
       >
         No reviews available
@@ -36,13 +39,16 @@ exports[`Reviews section Render empty message if no data 1`] = `
     class="css-ahmskn-SkeletonTheme"
   >
     <div
+      style="position: fixed; z-index: 9999; top: 50px; left: 16px; right: 16px; bottom: 16px; pointer-events: none; max-width: 1200px; margin: 0px auto;"
+    />
+    <div
       data-testid="Reviews-section"
     >
       <div
-        class="sc-dkPtyc gCxyHM"
+        class="sc-hKwCoD gqXDbt"
       >
         <div
-          class="sc-hKwCoD ecqkwW"
+          class="sc-eCImvq fmqIj"
           color="textPrimary"
           font-size="4"
         >
@@ -50,7 +56,7 @@ exports[`Reviews section Render empty message if no data 1`] = `
         </div>
       </div>
       <div
-        class="sc-dkPtyc iizqRJ"
+        class="sc-hKwCoD gFGiLo"
         height="50"
       >
         No reviews available
@@ -66,25 +72,28 @@ exports[`Reviews section Render view all link if totals reviews greater than 3 1
     class="css-ahmskn-SkeletonTheme"
   >
     <div
+      style="position: fixed; z-index: 9999; top: 50px; left: 16px; right: 16px; bottom: 16px; pointer-events: none; max-width: 1200px; margin: 0px auto;"
+    />
+    <div
       data-testid="Reviews-section"
     >
       <div
-        class="sc-dkPtyc gCxyHM"
+        class="sc-hKwCoD gqXDbt"
       >
         <div
-          class="sc-hKwCoD ecqkwW"
+          class="sc-eCImvq fmqIj"
           color="textPrimary"
           font-size="4"
         >
           Reviews
         </div>
         <div
-          class="sc-hKwCoD bVSAYo"
+          class="sc-eCImvq fkgxFZ"
           color="secondary"
           font-size="1"
         >
           <a
-            class="sc-eCImvq iuTZXO"
+            class="sc-jRQAMF Vchss"
             href="/link"
           >
             View all
@@ -92,14 +101,14 @@ exports[`Reviews section Render view all link if totals reviews greater than 3 1
         </div>
       </div>
       <div
-        class="sc-cNKpQo jtpFHv"
+        class="sc-jeqYYF iPvZIX"
       >
         <div
-          class="sc-dkPtyc zeVNc"
+          class="sc-hKwCoD cIVIRx"
         >
           <span>
             <span
-              class="react-loading-skeleton sc-jRQAMF dkWHGm css-1eg0sfo-skeletonStyles-Skeleton"
+              class="react-loading-skeleton sc-gKckTs fCGrse css-1eg0sfo-skeletonStyles-Skeleton"
               style="width: 40px; height: 40px; border-radius: 50%;"
             >
               ‌
@@ -107,7 +116,7 @@ exports[`Reviews section Render view all link if totals reviews greater than 3 1
           </span>
           <span>
             <span
-              class="react-loading-skeleton sc-jRQAMF evKoAY css-1eg0sfo-skeletonStyles-Skeleton"
+              class="react-loading-skeleton sc-gKckTs hLiuCk css-1eg0sfo-skeletonStyles-Skeleton"
               style="width: 150px; height: 20px;"
             >
               ‌
@@ -116,31 +125,31 @@ exports[`Reviews section Render view all link if totals reviews greater than 3 1
         </div>
         <span>
           <span
-            class="react-loading-skeleton sc-jRQAMF eDrjwW css-1eg0sfo-skeletonStyles-Skeleton"
+            class="react-loading-skeleton sc-gKckTs iffvqi css-1eg0sfo-skeletonStyles-Skeleton"
           >
             ‌
           </span>
           <span
-            class="react-loading-skeleton sc-jRQAMF eDrjwW css-1eg0sfo-skeletonStyles-Skeleton"
+            class="react-loading-skeleton sc-gKckTs iffvqi css-1eg0sfo-skeletonStyles-Skeleton"
           >
             ‌
           </span>
           <span
-            class="react-loading-skeleton sc-jRQAMF eDrjwW css-1eg0sfo-skeletonStyles-Skeleton"
+            class="react-loading-skeleton sc-gKckTs iffvqi css-1eg0sfo-skeletonStyles-Skeleton"
           >
             ‌
           </span>
         </span>
       </div>
       <div
-        class="sc-cNKpQo jtpFHv"
+        class="sc-jeqYYF iPvZIX"
       >
         <div
-          class="sc-dkPtyc zeVNc"
+          class="sc-hKwCoD cIVIRx"
         >
           <span>
             <span
-              class="react-loading-skeleton sc-jRQAMF dkWHGm css-1eg0sfo-skeletonStyles-Skeleton"
+              class="react-loading-skeleton sc-gKckTs fCGrse css-1eg0sfo-skeletonStyles-Skeleton"
               style="width: 40px; height: 40px; border-radius: 50%;"
             >
               ‌
@@ -148,7 +157,7 @@ exports[`Reviews section Render view all link if totals reviews greater than 3 1
           </span>
           <span>
             <span
-              class="react-loading-skeleton sc-jRQAMF evKoAY css-1eg0sfo-skeletonStyles-Skeleton"
+              class="react-loading-skeleton sc-gKckTs hLiuCk css-1eg0sfo-skeletonStyles-Skeleton"
               style="width: 150px; height: 20px;"
             >
               ‌
@@ -157,31 +166,31 @@ exports[`Reviews section Render view all link if totals reviews greater than 3 1
         </div>
         <span>
           <span
-            class="react-loading-skeleton sc-jRQAMF eDrjwW css-1eg0sfo-skeletonStyles-Skeleton"
+            class="react-loading-skeleton sc-gKckTs iffvqi css-1eg0sfo-skeletonStyles-Skeleton"
           >
             ‌
           </span>
           <span
-            class="react-loading-skeleton sc-jRQAMF eDrjwW css-1eg0sfo-skeletonStyles-Skeleton"
+            class="react-loading-skeleton sc-gKckTs iffvqi css-1eg0sfo-skeletonStyles-Skeleton"
           >
             ‌
           </span>
           <span
-            class="react-loading-skeleton sc-jRQAMF eDrjwW css-1eg0sfo-skeletonStyles-Skeleton"
+            class="react-loading-skeleton sc-gKckTs iffvqi css-1eg0sfo-skeletonStyles-Skeleton"
           >
             ‌
           </span>
         </span>
       </div>
       <div
-        class="sc-cNKpQo jtpFHv"
+        class="sc-jeqYYF iPvZIX"
       >
         <div
-          class="sc-dkPtyc zeVNc"
+          class="sc-hKwCoD cIVIRx"
         >
           <span>
             <span
-              class="react-loading-skeleton sc-jRQAMF dkWHGm css-1eg0sfo-skeletonStyles-Skeleton"
+              class="react-loading-skeleton sc-gKckTs fCGrse css-1eg0sfo-skeletonStyles-Skeleton"
               style="width: 40px; height: 40px; border-radius: 50%;"
             >
               ‌
@@ -189,7 +198,7 @@ exports[`Reviews section Render view all link if totals reviews greater than 3 1
           </span>
           <span>
             <span
-              class="react-loading-skeleton sc-jRQAMF evKoAY css-1eg0sfo-skeletonStyles-Skeleton"
+              class="react-loading-skeleton sc-gKckTs hLiuCk css-1eg0sfo-skeletonStyles-Skeleton"
               style="width: 150px; height: 20px;"
             >
               ‌
@@ -198,17 +207,17 @@ exports[`Reviews section Render view all link if totals reviews greater than 3 1
         </div>
         <span>
           <span
-            class="react-loading-skeleton sc-jRQAMF eDrjwW css-1eg0sfo-skeletonStyles-Skeleton"
+            class="react-loading-skeleton sc-gKckTs iffvqi css-1eg0sfo-skeletonStyles-Skeleton"
           >
             ‌
           </span>
           <span
-            class="react-loading-skeleton sc-jRQAMF eDrjwW css-1eg0sfo-skeletonStyles-Skeleton"
+            class="react-loading-skeleton sc-gKckTs iffvqi css-1eg0sfo-skeletonStyles-Skeleton"
           >
             ‌
           </span>
           <span
-            class="react-loading-skeleton sc-jRQAMF eDrjwW css-1eg0sfo-skeletonStyles-Skeleton"
+            class="react-loading-skeleton sc-gKckTs iffvqi css-1eg0sfo-skeletonStyles-Skeleton"
           >
             ‌
           </span>

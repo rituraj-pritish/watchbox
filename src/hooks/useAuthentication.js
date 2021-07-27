@@ -42,7 +42,7 @@ export default () => {
 					isAuthenticated: true,
 					user
 				})
-				history.push(redirect_url || '/')
+				history.replace(redirect_url || '/')
 			}
 		} catch (err) {
 			// todo show message

@@ -6,24 +6,27 @@ exports[`Review renders review component with full review 1`] = `
     class="css-ahmskn-SkeletonTheme"
   >
     <div
-      class="sc-cNKpQo dBMQXU"
+      style="position: fixed; z-index: 9999; top: 50px; left: 16px; right: 16px; bottom: 16px; pointer-events: none; max-width: 1200px; margin: 0px auto;"
+    />
+    <div
+      class="sc-jeqYYF fQdZzU"
     >
       <div
-        class="sc-dkPtyc tojMa"
+        class="sc-hKwCoD fquBwD"
       >
         <div
-          class="sc-egiSv bEDQSa"
+          class="sc-bqiQRQ bpCSyw"
           height="40"
           width="40"
         >
           <div
-            class="sc-bqiQRQ jJORTs"
+            class="sc-ksdxAp dstzbx"
             height="40"
             width="40"
           />
         </div>
         <div
-          class="sc-hKwCoD dAmahb"
+          class="sc-eCImvq gpGiiu"
           color="textSecondary"
           font-size="2"
           font-weight="bold"
@@ -31,7 +34,7 @@ exports[`Review renders review component with full review 1`] = `
           TheDarkKnight31
         </div>
         <div
-          class="sc-hKwCoD jllRuy"
+          class="sc-eCImvq jvcZyr"
           color="textTertiary"
           font-size="2"
         >
@@ -39,7 +42,7 @@ exports[`Review renders review component with full review 1`] = `
         </div>
       </div>
       <div
-        class="sc-hKwCoD excitZ"
+        class="sc-eCImvq iEZrXs"
         color="textSecondary"
         font-size="2"
       >
@@ -52,12 +55,12 @@ This is the best adaptation of such a legendary title.
           class="sc-kfPtPH jkzmwL"
         >
           <div
-            class="sc-hKwCoD fqsjRy"
+            class="sc-eCImvq icgMjj"
             color="secondary"
             font-size="1"
           >
             <a
-              class="sc-eCImvq iuTZXO"
+              class="sc-jRQAMF Vchss"
               href=""
             >
               View full review
@@ -76,24 +79,27 @@ exports[`Review renders review component without full review 1`] = `
     class="css-ahmskn-SkeletonTheme"
   >
     <div
-      class="sc-cNKpQo dBMQXU"
+      style="position: fixed; z-index: 9999; top: 50px; left: 16px; right: 16px; bottom: 16px; pointer-events: none; max-width: 1200px; margin: 0px auto;"
+    />
+    <div
+      class="sc-jeqYYF fQdZzU"
     >
       <div
-        class="sc-dkPtyc tojMa"
+        class="sc-hKwCoD fquBwD"
       >
         <div
-          class="sc-egiSv bEDQSa"
+          class="sc-bqiQRQ bpCSyw"
           height="40"
           width="40"
         >
           <div
-            class="sc-bqiQRQ jJORTs"
+            class="sc-ksdxAp dstzbx"
             height="40"
             width="40"
           />
         </div>
         <div
-          class="sc-hKwCoD dAmahb"
+          class="sc-eCImvq gpGiiu"
           color="textSecondary"
           font-size="2"
           font-weight="bold"
@@ -101,7 +107,7 @@ exports[`Review renders review component without full review 1`] = `
           TheDarkKnight31
         </div>
         <div
-          class="sc-hKwCoD jllRuy"
+          class="sc-eCImvq jvcZyr"
           color="textTertiary"
           font-size="2"
         >
@@ -109,7 +115,7 @@ exports[`Review renders review component without full review 1`] = `
         </div>
       </div>
       <div
-        class="sc-hKwCoD excitZ"
+        class="sc-eCImvq iEZrXs"
         color="textSecondary"
         font-size="2"
       >
