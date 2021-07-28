@@ -6,7 +6,7 @@ Checkout the app [here](https://watchbox-watchbox.herokuapp.com/)
 
 ##### Screenshots
 
-![home-light](![home](https://res.cloudinary.com/dyr3j7rgu/image/upload/v1627489427/watchbox/Screenshot_2021-07-28_at_9.38.40_PM_pthzze.png))
+![home-light](https://res.cloudinary.com/dyr3j7rgu/image/upload/v1627489610/watchbox/Screenshot_2021-07-28_at_9.56.44_PM_g0fn7x.png)
 
 ![home](https://res.cloudinary.com/dyr3j7rgu/image/upload/v1627489427/watchbox/Screenshot_2021-07-28_at_9.38.40_PM_pthzze.png)
 
