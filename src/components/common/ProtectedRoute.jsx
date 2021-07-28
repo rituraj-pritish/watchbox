@@ -8,7 +8,7 @@ const ProtectedRoute = props => {
 	const { isAuthenticated, isLoading } = useAuthentication()
 
 	if(!isLoading && !isAuthenticated) {
-		history.push('/')
+		history.replace('/')
 	}
 
 	return (

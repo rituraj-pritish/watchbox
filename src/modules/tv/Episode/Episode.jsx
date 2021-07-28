@@ -46,7 +46,7 @@ const Episode = () => {
 			<Carousel
 				title='Guest Stars'
 				data={episode?.guest_stars}
-				mt={4}
+				my={4}
 			/>
 			<Images
 				data={episode?.images?.stills}
@@ -56,7 +56,6 @@ const Episode = () => {
 				data={episode?.credits?.cast}
 				mt={3}
 			/>
-
 		</div>
 	)
 }

@@ -14,12 +14,12 @@ export default (mediaId, mediaType) => {
 
 	const [movies, shows] = useQueries([
 		{ 
-			queryKey: ['rated', 'movies'], 
+			queryKey: ['rating', 'movies'], 
 			queryFn: () => getRatedMedia(accountId, 'movies'), 
 			enabled: false
 		},
 		{ 
-			queryKey: ['rated', 'tvs'], 
+			queryKey: ['rating', 'tvs'], 
 			queryFn: () => getRatedMedia(accountId, 'tv'), 
 			enabled: false 
 		}

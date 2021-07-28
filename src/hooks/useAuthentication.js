@@ -22,7 +22,9 @@ const QUERIES_TO_RESET = [
 	['favorites', 'movies'],
 	['favorites', 'tvs'],
 	['watchlist', 'movies'],
-	['watchlist', 'tvs']
+	['watchlist', 'tvs'],
+	['rating', 'movies'],
+	['rating', 'tvs']
 ]
 
 export default () => {

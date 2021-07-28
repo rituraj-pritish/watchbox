@@ -5,7 +5,7 @@ import useAuthentication from 'hooks/useAuthentication'
 import Avatar from 'components/common/Avatar'
 import { useHistory } from 'react-router-dom'
 
-const BADGE_SIZE = 32
+const BADGE_SIZE = 36
 
 const UserBadge = () => {
 	const { user, logout } = useAuthentication()

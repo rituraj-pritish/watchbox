@@ -43,6 +43,11 @@ const ListPage = () => {
 					],
 					sortFn: sortFn
 				}}
+				styles={{
+					wrapper: {
+						marginTop: '1rem'
+					}
+				}}
 			/>
 		</div>
 	)

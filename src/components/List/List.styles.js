@@ -5,6 +5,8 @@ export const Wrapper = styled.div`
   flex-grow: 1;
   display: flex;
   flex-direction: column;
+
+  ${({ extendedStyles }) => extendedStyles && extendedStyles};
 `
 
 export const ListContainer = styled.div`

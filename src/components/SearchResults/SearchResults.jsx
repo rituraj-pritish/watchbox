@@ -34,13 +34,17 @@ const SearchResults = () => {
 
 	return (
 		<div>
-			<Text>
+			<Text 
+				size={3}
+				mt={2}
+			>
         Search results for 
 				<Text 
 					inline 
 					bold
 					display='inline'
 					ml={1}
+					size={3}
 				>
 					{query}
 				</Text>

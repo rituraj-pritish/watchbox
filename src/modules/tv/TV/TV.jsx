@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react'
+import React from 'react'
 import { useParams } from 'react-router'
 import { useQuery } from 'react-query'
 
@@ -21,10 +21,6 @@ const TV = () => {
 	)
 
 	useTitle(`${data?.name} - TV`)
-
-	useEffect(() => {
-		window.scrollTo({ top: 0 })
-	}, [tvId])
 
 	const seasons = data
 		? data.seasons.map(({ 

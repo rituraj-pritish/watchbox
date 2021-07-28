@@ -10,9 +10,11 @@ import useAuthentication from 'hooks/useAuthentication'
 import Skeleton from 'components/common/ui/Skeleton'
 import FlexBox from 'components/common/ui/FlexBox'
 import CommonRoutes from './CommonRoutes'
+import ScrollToTop from 'components/ScrollToTop'
 
 const App = () => {
-	const { checkIfAuthenticated, isLoading, isAuthenticated } = useAuthentication()
+	const { checkIfAuthenticated, isLoading } = useAuthentication()
+	
 	useEffect(() => {
 		checkIfAuthenticated()	
 	}, [])
@@ -30,12 +32,6 @@ const App = () => {
 					height={300}
 				/>
 			</FlexBox>
-		)
-
-		if(isAuthenticated) return (
-			<>
-				<CommonRoutes/>
-			</>
 		)
 		
 		return (
@@ -55,7 +51,9 @@ const App = () => {
 				<Navbar/>
 				<AppContent>
 					<Switch>
-						{render()}
+						<ScrollToTop>
+							{render()}
+						</ScrollToTop>
 					</Switch>
 				</AppContent>
 				<Footer/>

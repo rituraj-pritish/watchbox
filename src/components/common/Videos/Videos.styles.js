@@ -2,7 +2,8 @@ import styled from 'styled-components'
 
 export const TriggerWrapper = styled.div`
   position: relative;
-
+  overflow: hidden;
+  
   &::after {
       content: '';
       position: absolute;

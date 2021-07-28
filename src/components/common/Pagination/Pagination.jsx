@@ -25,7 +25,7 @@ const Pagination = ({
 		if(!search) {
 			return history.replace(`${pathname}?p=${currentPage}`)
 		}
-		if(!page) return
+
 		const paramsArr = search.split('&')
 		const queries = paramsArr.filter(p => !p.includes('p='))
 		queries.push(`p=${currentPage}`)

@@ -41,7 +41,8 @@ const ListContainer = ({
 	uniqueIdentifier = 'id',
 	totalResults,
 	dataRender,
-	itemsOnOnePage = 20
+	itemsOnOnePage = 20,
+	styles
 }) => {
 	const [itemType, setItemType] = useState(window.localStorage.getItem(VIEW_TYPE_KEY) || GRID)
 	const [sortOption, setSortOption] = useState(getSortState(sort.initialValue))
@@ -49,10 +50,6 @@ const ListContainer = ({
 		getFilterState(filter.initialValue)
 	)
 	const { p: page } = useUrlParams(['p'])
-
-	useEffect(() => {
-		window.scrollTo({ top: 0, behavior: 'smooth' })
-	}, [page])
 	
 	const factor = (page || 1) - 1
 	const uniqueData = getUniqueArrayOfObjects(data || [], uniqueIdentifier)
@@ -83,7 +80,7 @@ const ListContainer = ({
 		)
 
 	return (
-		<Wrapper>
+		<Wrapper extendedStyles={styles?.wrapper}>
 			<FlexBox
 				justifyContent='flex-end'
 				alignItems='center'
@@ -170,7 +167,8 @@ ListContainer.propTypes = {
 		filterFn: PropTypes.func.isRequired
 	}),
 	itemsOnOnePage: PropTypes.number,
-	totalResults: PropTypes.number
+	totalResults: PropTypes.number,
+	styles: PropTypes.object
 }
 
 export default ListContainer

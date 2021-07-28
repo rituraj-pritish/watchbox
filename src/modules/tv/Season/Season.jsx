@@ -51,32 +51,32 @@ const Season = () => {
 				title='Cast'
 				person
 				data={season?.credits?.cast}
-				viewAllLink={`/tv/${tvId}/credits/cast`}
+				// viewAllLink={`/tv/${tvId}/credits/cast`}
 				my={3}
 			/>
 
 			<Carousel
 				title='Episodes'
 				data={episodes}
-				viewAllLink={`/tv/${tvId}/seasons/${seasonNumber}/episodes`}
+				// viewAllLink={`/tv/${tvId}/seasons/${seasonNumber}/episodes`}
 				mb={3}
 			/>
 
 			<Images
 				data={season ? [...season?.images?.posters] : []}
 				mb={4}
-				viewAllLink={`/tv/${season?.id}/media/photos`}
+				// viewAllLink={`/tv/${season?.id}/media/photos`}
 			/>
 			<Videos 
 				data={season?.videos?.results}
-				viewAllLink={`/tv/${season?.id}/media/videos`}
+				// viewAllLink={`/tv/${season?.id}/media/videos`}
 			/>
 
 			<Carousel
 				title='Crew'
 				person
 				data={season?.credits?.crew}
-				viewAllLink={`/tv/${tvId}/credits/crew`}
+				// viewAllLink={`/tv/${tvId}/credits/crew`}
 				mt={4}
 			/>
 		</div>

@@ -30,6 +30,9 @@ const VideoCard = ({ videoKey }) => {
 				wrapper: {
 					height: '50vw',
 					width: '80vw'
+				},
+				content: {
+					overflow: 'hidden'
 				}
 			}}
 		>

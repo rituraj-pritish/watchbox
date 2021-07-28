@@ -23,7 +23,6 @@ const Footer = () => {
 	]
 
 	const isMediumScreen = window.matchMedia(`(max-width: ${sizes.md})`).matches
-	console.log('is', isMediumScreen)
 	return (
 		<Wrapper>
 			<Content>

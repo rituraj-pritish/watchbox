@@ -32,10 +32,6 @@ const Discover = () => {
 	)
 
 	useEffect(() => {
-		window.scrollTo({ top: 0, behavior: 'smooth' })
-	}, [type, mediaType])
-
-	useEffect(() => {
 		refetch()
 	}, [...Object.values(urlParams)])
 
