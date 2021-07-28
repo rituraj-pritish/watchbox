@@ -1,4 +1,4 @@
-## WATCHit
+## WatchBox
 
 Browse **movies**, **shows** and **stars**.
 
