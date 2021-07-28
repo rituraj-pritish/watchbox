@@ -17,13 +17,13 @@ const ListPage = () => {
 	useTitle(listName)
 	return (
 		<div>
-			<PageTitle
+			{/* <PageTitle
 				title={listName}
 				ancestors={[{
 					title: 'Lists',
 					path: '/lists'
 				}]}
-			/>
+			/> */}
 			<List
 				data={list}
 				filter={{

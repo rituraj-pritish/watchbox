@@ -1,4 +1,7 @@
+import SIZES from './sizes'
 const SIZE_UNIT = 1
+
+export const sizes = SIZES
 
 const theme = {
 	spacing: (factor = 1) => `${factor * SIZE_UNIT}rem`,
@@ -8,6 +11,7 @@ const theme = {
 
 	space: [0, 4, 8, 16, 24, 32],
 	fontSizes: [0, 13.5, 16, 20, 25, 31.25],
+	breakpoints: Object.values(SIZES),
 
 	colors: {
 		white: '#FFFFFF',

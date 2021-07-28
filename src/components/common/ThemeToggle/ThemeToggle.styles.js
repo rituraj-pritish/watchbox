@@ -30,7 +30,7 @@ export const IconContainer = styled.div`
   background: ${({ theme }) => theme.isDarkMode
 	? darken(0.1, theme.colors.layout) : lighten(0.2, theme.colors.layout)};
 
-  transform: ${({ theme }) => theme.isDarkMode && 'translateX(15px)' };
+  transform: ${({ theme }) => theme.isDarkMode ? 'translateX(15px)' : 'translateX(-1px)'};
   transition: all 0.3s;
 
   & > svg {

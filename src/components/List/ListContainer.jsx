@@ -13,6 +13,7 @@ import { getUniqueArrayOfObjects } from 'helpers/array'
 import List from './List'
 import Tooltip from 'components/common/Tooltip/Tooltip'
 
+const VIEW_TYPE_KEY = 'list_view_type'
 export const LIST = 'LIST'
 export const GRID = 'GRID'
 
@@ -42,7 +43,7 @@ const ListContainer = ({
 	dataRender,
 	itemsOnOnePage = 20
 }) => {
-	const [itemType, setItemType] = useState(GRID)
+	const [itemType, setItemType] = useState(window.localStorage.getItem(VIEW_TYPE_KEY) || GRID)
 	const [sortOption, setSortOption] = useState(getSortState(sort.initialValue))
 	const [filterOption, setFilterOption] = useState(
 		getFilterState(filter.initialValue)
@@ -59,6 +60,11 @@ const ListContainer = ({
 	useEffect(() => {
 		dataCopy = uniqueData
 	}, [filterOption])
+
+	const handleViewChange = view => {
+		setItemType(view)
+		window.localStorage.setItem(VIEW_TYPE_KEY, view)
+	}
 
 	let dataCopy = uniqueData
 
@@ -88,7 +94,7 @@ const ListContainer = ({
 						<Tooltip tooltip='Grid view'>
 							<Icon
 								color={itemType === GRID ? 'primary' : undefined}
-								onClick={() => setItemType(GRID)}
+								onClick={() => handleViewChange(GRID)}
 								mr={3}
 							>
 								<GridIcon />
@@ -97,7 +103,7 @@ const ListContainer = ({
 						<Tooltip tooltip='List view'>
 							<Icon
 								color={itemType === LIST ? 'primary' : undefined}
-								onClick={() => setItemType(LIST)}
+								onClick={() => handleViewChange(LIST)}
 							>
 								<ListIcon />
 							</Icon>

@@ -91,7 +91,10 @@ const BigListItem = ({
 				>
 					{moment(release_date).format(DATE_FORMAT)}
 				</Text>
-				<Text my={3}>
+				<Text 
+					my={3}
+					maxLines={6}
+				>
 					{overview}
 				</Text>
 				<Genres ids={genre_ids} />

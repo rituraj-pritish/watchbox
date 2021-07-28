@@ -3,8 +3,9 @@ import { Link as RouterLink } from 'react-router-dom'
 
 import FlexBox from '../ui/FlexBox'
 import Link from '../ui/Link'
-import { ReactComponent as Logo } from 'assets/Logo.svg'
 import { Content, Wrapper, StyledTMDBLogo } from './Footer.styles'
+import sizes from 'theme/sizes'
+import Logo from '../Logo'
 
 const Footer = () => {
 	const movieLinks = [
@@ -20,14 +21,19 @@ const Footer = () => {
 		{ text: 'Airing Today tv', path: '/discover/tv?type=airing_today' },
 		{ text: 'On the air tv', path: '/discover/tv?type=on_the_air' }
 	]
+
+	const isMediumScreen = window.matchMedia(`(max-width: ${sizes.md})`).matches
+	console.log('is', isMediumScreen)
 	return (
 		<Wrapper>
 			<Content>
-				<RouterLink
-					to='/'
-				>
-					<Logo/>
-				</RouterLink>
+				{!isMediumScreen && (
+					<RouterLink
+						to='/'
+					>
+						<Logo/>
+					</RouterLink>
+				)}
 				
 				<FlexBox>
 					<FlexBox
@@ -58,13 +64,22 @@ const Footer = () => {
 					</FlexBox>
 				</FlexBox>
 				
-				<a
-					href='https://www.themoviedb.org/'
-					target='_blank'
-					rel='noreferrer'
-				>
-					<StyledTMDBLogo/>
-				</a>
+				<FlexBox>
+					{isMediumScreen && (
+						<RouterLink
+							to='/'
+						>
+							<Logo/>
+						</RouterLink>
+					)}
+					<a
+						href='https://www.themoviedb.org/'
+						target='_blank'
+						rel='noreferrer'
+					>
+						<StyledTMDBLogo/>
+					</a>
+				</FlexBox>
 			</Content>
 		</Wrapper>
 	)

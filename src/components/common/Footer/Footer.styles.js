@@ -1,5 +1,5 @@
 import styled from 'styled-components'
-import theme from 'theme'
+import theme, { sizes } from 'theme'
 
 import { ReactComponent as TMDBLogo } from './tmdb-logo.svg'
 
@@ -9,6 +9,10 @@ export const Wrapper = styled.footer`
   justify-content: center;
   height: 200px;
   margin-top: ${theme.spacing()};
+
+  @media (max-width: ${sizes.md}) {
+    height: fit-content;
+  }
 `
 
 export const Content = styled.div`
@@ -19,6 +23,15 @@ export const Content = styled.div`
   display: flex;
   align-items: center;
   justify-content: space-between;
+
+  @media (max-width: ${sizes.md}) {
+    flex-direction: column;
+    padding: ${theme.spacing()};
+
+    & > div:first-child {
+      margin-bottom: ${theme.spacing(2)};
+    }
+  }
 `
 
 export const StyledTMDBLogo = styled(TMDBLogo)`

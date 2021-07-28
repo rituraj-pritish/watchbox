@@ -21,7 +21,10 @@ const UserBadge = () => {
 				/>
 			)}
 		>
-			<div onClick={() => history.push('/lists')}>Lists</div>
+			{/* <div onClick={() => history.push('/lists')}>Lists</div> */}
+			<div onClick={() => history.push('/lists/favorites')}>Favorites</div>
+			<div onClick={() => history.push('/lists/watchlist')}>Watchlist</div>
+			<hr/>
 			<div onClick={logout}>Logout</div>
 		</ToggleMenu>
 	)
