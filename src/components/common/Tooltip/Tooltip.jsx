@@ -3,6 +3,7 @@ import PropTypes from 'prop-types'
 import ReactTooltip from 'react-tooltip'
 import useTheme from 'hooks/useTheme'
 import getNewGuid from 'helpers/getNewGuid'
+import { lighten } from 'polished'
 
 const Tooltip = ({
 	tooltip,
@@ -20,7 +21,7 @@ const Tooltip = ({
 				id={id}
 				effect='solid'
 				textColor={theme.colors.textSecondary}
-				backgroundColor={theme.colors.appBg}
+				backgroundColor={lighten(0.2, theme.colors.appBg)}
 				style={{ borderRadius: '50%' }}
 				{...rest}
 			>

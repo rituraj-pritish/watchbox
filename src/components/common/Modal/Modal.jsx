@@ -1,4 +1,4 @@
-import React, { useImperativeHandle, useState } from 'react'
+import React, { useEffect, useImperativeHandle, useState } from 'react'
 import PropTypes from 'prop-types'
 import ReactModal from 'react-modal'
 
@@ -12,6 +12,8 @@ import {
 } from './Modal.styles'
 import Icon from '../ui/Icon'
 
+const MAX_PERCENTAGE = 85 / 100
+
 const Modal = ({
 	children,
 	trigger,
@@ -21,9 +23,11 @@ const Modal = ({
 	header,
 	footer,
 	showCloseIcon = true,
-	styles
+	styles,
+	aspectRatio
 }, ref) => {
 	const [isOpen, setIsOpen] = useState(false)
+	const [modalDimensions, setModalDimensions] = useState({})
 	const { theme, isDarkMode } = useTheme()
 
 	const closeModal = () => {
@@ -34,6 +38,65 @@ const Modal = ({
 	useImperativeHandle(ref, () => ({
 		close: closeModal
 	}))
+
+	const setDimensions = () => {
+		if(!isOpen) return 
+
+		const screenHeight = window.innerHeight
+		const screenWidth = window.innerWidth
+
+		let h
+		let w
+
+		if(screenHeight > screenWidth) {
+			const ph = screenHeight * MAX_PERCENTAGE
+			const pw = aspectRatio * ph
+
+			if(pw > screenWidth * 85 /100) {
+				w = screenWidth * MAX_PERCENTAGE
+				h = w / aspectRatio
+			} else {
+				h = ph
+				w = pw
+			}
+		} else {
+			const pw = screenWidth * MAX_PERCENTAGE
+			const ph = pw / aspectRatio
+
+			if(ph > screenHeight * 85 /100) {
+				h = screenHeight * MAX_PERCENTAGE
+				w = h * aspectRatio
+			} else {
+				h = ph
+				w = pw
+			}
+		}
+
+		setModalDimensions({
+			height: h + 'px',
+			width: w + 'px'
+		})
+	}
+
+	useEffect(() => {
+		if(!aspectRatio || !isOpen) return
+		setDimensions()
+
+		window.addEventListener('resize', setDimensions)
+
+		return () => {
+			setModalDimensions({})
+			window.removeEventListener('resize', setDimensions)
+		}
+	}, [isOpen])
+
+	const contentStyles = (styles?.wrapper?.width && styles?.wrapper?.height) || modalDimensions
+		?	{
+			left: '50%',
+			top:  '50%',
+			transform: 'translate(-50%, -50%)',
+		}
+		: {}
 
 	const render = () => {
 		if(!isOpen) return null
@@ -46,7 +109,7 @@ const Modal = ({
 				onAfterClose={onClose}
 				style={{
 					overlay: {
-						zIndex: 5,
+						zIndex: 15,
 						background: isDarkMode ? '#84848482' : '#82828259'
 					},
 					content: {
@@ -56,14 +119,11 @@ const Modal = ({
 						background: theme.colors.appBg,
 						display: 'flex',
 						flexDirection: 'column',
-
-						left: styles?.wrapper?.width ? '50%' : undefined,
-						top: styles?.wrapper?.height ? '50%' : undefined,
-						transform: `translate(${styles?.wrapper?.width ? '-50%' : '0'}, 
-					${styles?.wrapper?.height ? '-50%' : '0'})`,
 						...styles?.wrapper,
-						overflow: footer ? 'hidden' : 'auto'
-					}
+						...contentStyles,
+						overflow: footer ? 'hidden' : 'auto',
+						...modalDimensions
+					},
 				}}
 			>
 				{showCloseIcon && (

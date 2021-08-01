@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useRef, useState } from 'react'
 import PropTypes from 'prop-types'
 import Rating from 'react-rating'
 
@@ -20,6 +20,8 @@ const RateMedia = ({
 	mediaId,
 	name
 }) => {
+	const dialogRef = useRef()
+
 	const { 
 		rating: initialRating, 
 		deleteRating, 
@@ -53,6 +55,7 @@ const RateMedia = ({
 
 	return (
 		<Dialog
+			ref={dialogRef}
 			trigger={(
 				<Action
 					tooltip={tooltip}
@@ -74,7 +77,7 @@ const RateMedia = ({
 				<Button 
 					variant={BUTTON_VARIANTS.DANGER}
 					disabled={!initialRating}
-					onClick={deleteRating}
+					onClick={() => deleteRating().then(() => dialogRef.current.close())}
 					isLoading={initialRating && isLoading}
 				>
 					Remove Rating

@@ -7,6 +7,7 @@ import Images from 'components/common/Images'
 import PersonOverview from './PersonOverview'
 import Carousel from 'components/common/Carousel'
 import { sortFn } from 'helpers/array'
+import useTitle from 'hooks/useTitle'
 
 const Person = () => {
 	const { personId } =  useParams()
@@ -14,7 +15,7 @@ const Person = () => {
 		['person', personId],
 		() => getPersonDetails(personId) 
 	)
-
+	useTitle(data?.name)
 	const starringMedia = data
 		?	sortFn(data?.combined_credits?.cast, 'popularity')
 		: null

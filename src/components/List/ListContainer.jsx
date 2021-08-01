@@ -33,6 +33,11 @@ const getFilterState = (value) => {
 	}
 }
 
+const getListView = (onlyGrid) => {
+	if(onlyGrid) return GRID
+	return window.localStorage.getItem(VIEW_TYPE_KEY) || GRID
+}
+
 const ListContainer = ({
 	data,
 	onlyGrid = false,
@@ -44,7 +49,7 @@ const ListContainer = ({
 	itemsOnOnePage = 20,
 	styles
 }) => {
-	const [itemType, setItemType] = useState(window.localStorage.getItem(VIEW_TYPE_KEY) || GRID)
+	const [itemType, setItemType] = useState(() => getListView(onlyGrid))
 	const [sortOption, setSortOption] = useState(getSortState(sort.initialValue))
 	const [filterOption, setFilterOption] = useState(
 		getFilterState(filter.initialValue)

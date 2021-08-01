@@ -1,18 +1,22 @@
 import React from 'react'
-import { Route, useHistory } from 'react-router-dom'
+import { Redirect, Route } from 'react-router-dom'
 
 import useAuthentication from 'hooks/useAuthentication'
 
-const ProtectedRoute = props => {
-	const history = useHistory()
+const ProtectedRoute = ({
+	component: Component,
+	...rest
+}) => {
 	const { isAuthenticated, isLoading } = useAuthentication()
 
-	if(!isLoading && !isAuthenticated) {
-		history.replace('/')
-	}
-
 	return (
-		<Route {...props}/>  
+		<Route 
+			{...rest}
+			render={props => (!isLoading && !isAuthenticated) 
+				? <Component {...props}/>
+				: <Redirect to='/'/>
+			}
+		/>  
 	)
 }
 

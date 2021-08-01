@@ -16,10 +16,10 @@ const Footer = () => {
 	]
 
 	const showLinks = [
-		{ text: 'Popular tv', path: '/discover/tv?type=popular' },
-		{ text: 'Top rated tv', path: '/discover/tv?type=top_rated' },
-		{ text: 'Airing Today tv', path: '/discover/tv?type=airing_today' },
-		{ text: 'On the air tv', path: '/discover/tv?type=on_the_air' }
+		{ text: 'Popular shows', path: '/discover/tv?type=popular' },
+		{ text: 'Top rated shows', path: '/discover/tv?type=top_rated' },
+		{ text: 'Airing Today shows', path: '/discover/tv?type=airing_today' },
+		{ text: 'On the air shows', path: '/discover/tv?type=on_the_air' }
 	]
 
 	const isMediumScreen = window.matchMedia(`(max-width: ${sizes.md})`).matches

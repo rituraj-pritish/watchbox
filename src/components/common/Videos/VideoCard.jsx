@@ -26,11 +26,8 @@ const VideoCard = ({ videoKey }) => {
 					<PlayIcon/>
 				</TriggerWrapper>
 			)}
+			aspectRatio={1.6}
 			styles={{
-				wrapper: {
-					height: '50vw',
-					width: '80vw'
-				},
 				content: {
 					overflow: 'hidden'
 				}

@@ -14,9 +14,6 @@ const ImageCard = ({
 	const isBackdrop = aspect_ratio > 1
 	const triggerHeight = 300
 
-	const expandedHeight = isBackdrop ? `${80 / aspect_ratio}vw` : '80vh'
-	const expandedWidth = isBackdrop ? '80vw' : `${80 * aspect_ratio}vh`
-
 	return (
 		<Modal
 			key={file_path}
@@ -30,17 +27,10 @@ const ImageCard = ({
 					{...triggerStyles}
 				/>
 			)}
-			styles={{
-				wrapper: {
-					height: 'fit-content',
-					width: 'fit-content'
-				}
-			}}
+			aspectRatio={aspect_ratio}
 		>
 			<Image
 				url={file_path}
-				height={expandedHeight}
-				width={expandedWidth}
 				imageSize={null}
 			/>
 		</Modal>

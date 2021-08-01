@@ -25,7 +25,7 @@ export default (mediaId, mediaType) => {
 		}
 	])
 
-	const refetchRecords = React.useCallback(() => {
+	const refetchRecords = React.useCallback((rating) => {
 		const refetchFunction = mediaType === 'movie' ? movies.refetch : shows.refetch
 		setTimeout(() => {
 			refetchFunction()
@@ -40,7 +40,7 @@ export default (mediaId, mediaType) => {
 
 	const mutateOptions = {
 		onMutate: () => setIsLoading(true),
-		onSuccess: refetchRecords,
+		onSuccess: () => refetchRecords(rating),
 		onError: () => toast.error('Something went wrong. Please try again.')
 	}
 

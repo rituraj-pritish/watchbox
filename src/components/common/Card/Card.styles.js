@@ -36,6 +36,10 @@ export const ActionWrapper = styled.div`
   top: 0;
   right: ${theme.spacing(0.5)};
   z-index: 1;
+
+  & > .__react_component_tooltip {
+    top: -28px !important;
+  }
 `
 
 export const StyledAction = styled(Action)`

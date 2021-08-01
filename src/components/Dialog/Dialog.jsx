@@ -1,4 +1,4 @@
-import React, { useRef } from 'react'
+import React, { useImperativeHandle, useRef } from 'react'
 import PropTypes from 'prop-types'
 
 import Modal from 'components/common/Modal'
@@ -20,8 +20,12 @@ const Dialog = ({
 	onCancel,
 	isLoading,
 	forDeletion
-}) => {
+}, ref) => {
 	const modalRef = useRef()
+
+	useImperativeHandle(ref, () => ({
+		close: modalRef.current.close
+	}))
 
 	const handleConfirm = () => {
 		return onConfirm()
@@ -98,4 +102,4 @@ Dialog.propTypes = {
 	isLoading: PropTypes.bool
 }
 
-export default Dialog
+export default React.forwardRef(Dialog)

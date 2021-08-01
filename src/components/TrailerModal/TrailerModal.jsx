@@ -29,11 +29,12 @@ const TrailerModal = ({
 			onOpen={() => {
 				if(!data) refetch()
 			}}
+			aspectRatio={1.6}
 			styles={{
-				wrapper: {
-					width: '80%',
-					height: '55%'
-				},
+				// wrapper: {
+				// 	width: '80%',
+				// 	height: '55%'
+				// },
 				content: {
 					overflow: 'hidden'
 				}
