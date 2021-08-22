@@ -13,7 +13,6 @@ export const Overlay = styled.div`
   padding: ${theme.spacing()};
   cursor: default;
   background: ${({ theme }) => theme.isDarkMode ? '#000000ad' : '#efefefe8'};
-  opacity: 0;
   z-index: 1;
 
   svg {
@@ -36,10 +35,6 @@ export const ActionWrapper = styled.div`
   top: 0;
   right: ${theme.spacing(0.5)};
   z-index: 1;
-
-  & > .__react_component_tooltip {
-    top: -28px !important;
-  }
 `
 
 export const StyledAction = styled(Action)`
@@ -61,10 +56,6 @@ export const Wrapper = styled.div`
   cursor: pointer;
   box-shadow: ${({ theme }) =>  
 		`0 0px 15px 10px ${theme.isDarkMode ?'#2c2c2ce0' : '#d8d8d882'}`};
-
-  &:hover ${Overlay} {
-    opacity: 1;
-  }
 
   &:hover ${StyledAction} {
     opacity: 1;

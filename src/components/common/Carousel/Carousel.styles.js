@@ -6,6 +6,11 @@ export const SliderWrapper = styled.div`
   position: relative;
   padding-bottom: 30%; // to maintain aspect ratio
 
+  // media card tooltip
+  .__react_component_tooltip {
+    top: -28px !important;
+  }
+
   .slick-slider {
     height: 100%;
     position: absolute;

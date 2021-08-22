@@ -22,12 +22,12 @@ const Pagination = ({
 
 	useEffect(() => {
 		const { pathname, search } = history.location
-		if(!search) {
-			return history.replace(`${pathname}?p=${currentPage}`)
-		}
+
+		if(!page && currentPage === 1) return
 
 		const paramsArr = search.split('&')
 		const queries = paramsArr.filter(p => !p.includes('p='))
+		
 		queries.push(`p=${currentPage}`)
 		history.push(`${pathname}${queries.length > 1 ? `${queries.join('&')}` : `?p=${currentPage}`}`)
 	}, [currentPage])

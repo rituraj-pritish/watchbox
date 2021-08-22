@@ -97,7 +97,10 @@ const BigListItem = ({
 				>
 					{overview}
 				</Text>
-				<Genres ids={genre_ids} />
+				<Genres
+					mediaType={mediaType}
+					ids={genre_ids}
+				/>
 				<FlexBox mb={3}/>
 				<MediaActions
 					mediaType={mediaType}

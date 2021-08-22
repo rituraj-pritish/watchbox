@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState } from 'react'
 import PropTypes from 'prop-types'
 
 import 'react-circular-progressbar/dist/styles.css'
@@ -22,6 +22,7 @@ const MediaCard = ({
 	genre_ids
 }) => {
 	const history = useHistory()
+	const [showOverlay, setShowOverlay] = useState(false)
 
 	const mediaType = title ? 'movie' : 'tv'
 
@@ -29,24 +30,28 @@ const MediaCard = ({
 		<Wrapper
 			onClick={() => history.push(`/${title ? 'movie' : 'tv'}/${id}`)}
 			data-testid={id}
+			onMouseEnter={() => setShowOverlay(true)}
+			onMouseLeave={() => setShowOverlay(false)}
 		>
-			<Overlay>
-				<div/>
-				<TrailerModal
-					trigger={(
-						<PlayIcon data-testid='play-icon'/>
-					)}
-					mediaType={mediaType}
-					mediaId={id}
-					title={title || name}
-				/>
+			{showOverlay && (
+				<Overlay>
+					<div/>
+					<TrailerModal
+						trigger={(
+							<PlayIcon data-testid='play-icon'/>
+						)}
+						mediaType={mediaType}
+						mediaId={id}
+						title={title || name}
+					/>
 
-				<Genres
-					mediaType={mediaType}
-					ids={genre_ids}
-					vertical
-				/>
-			</Overlay>
+					<Genres
+						mediaType={mediaType}
+						ids={genre_ids}
+						vertical
+					/>
+				</Overlay>
+			)}
 			
 			<CardActions
 				mediaType={mediaType}
