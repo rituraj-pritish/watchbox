@@ -2,7 +2,7 @@
 
 Browse **movies**, **shows** and **actors**.
 
-Checkout the app [here](https://watchbox-watchbox.herokuapp.com/)
+Checkout the app [here](https://watchbox-watchbox.netlify.app/)
 
 ##### Screenshots
 
