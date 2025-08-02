@@ -2,10 +2,6 @@
   "name": "muveez",
   "version": "0.1.0",
   "private": true,
-  "engines": {
-    "node": "14.15.4",
-    "npm": "6.14.10"
-  },
   "dependencies": {
     "@hookstate/core": "^3.0.7",
     "@testing-library/jest-dom": "^5.11.10",
@@ -24,7 +20,6 @@
     "react-query": "^3.16.0",
     "react-rating": "^2.0.5",
     "react-router-dom": "^5.2.0",
-    "react-scripts": "4.0.3",
     "react-slick": "^0.28.1",
     "react-spinners-css": "^2.0.1",
     "react-tooltip": "^4.2.21",
@@ -82,8 +77,9 @@
     "eslint-plugin-react": "^7.23.2",
     "eslint-plugin-react-percy": "^0.2.4",
     "husky": "^6.0.0",
-    "msw": "^0.28.2",
-    "msw-storybook-addon": "^1.1.0",
-    "prettier": "^2.2.1"
+    "msw": "^2.10.4",
+    "msw-storybook-addon": "^2.0.5",
+    "prettier": "^2.2.1",
+    "react-scripts": "^5.0.1"
   }
 }
