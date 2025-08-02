@@ -63,7 +63,7 @@ const Season = () => {
 			/>
 
 			<Images
-				data={season ? [...season?.images?.posters] : []}
+				data={season ? [...season.images.posters] : []}
 				mb={4}
 				// viewAllLink={`/tv/${season?.id}/media/photos`}
 			/>

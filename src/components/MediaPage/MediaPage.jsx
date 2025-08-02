@@ -48,7 +48,7 @@ const MediaPage = () => {
 					initialValue: 'all',
 					options: [
 						{ label: 'All', value: 'all' },
-						...videoTypes?.map(type => ({
+						...videoTypes.map(type => ({
 							label: type,
 							value: `type/${type}`
 						}))
