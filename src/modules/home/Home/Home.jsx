@@ -32,7 +32,7 @@ const Home = () => {
 			<Carousel
 				title='Popular Shows'
 				request={{
-					request: getPopularTv,
+					request: () => getPopularTv(1),
 					key: ['tvs', 'popular']
 				}}
 				viewAllLink='/discover/tv?type=popular'
@@ -41,7 +41,7 @@ const Home = () => {
 			<Carousel
 				title='Popular Movies'
 				request={{
-					request: getPopularMovies,
+					request: () => getPopularMovies(1),
 					key: ['movies', 'popular']
 				}}
 				viewAllLink='/discover/movie?type=popular'
